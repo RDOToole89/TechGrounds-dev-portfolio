@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opdracht 01 - Web Developement TechGrounds</title>
+  </head>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #dcdcdc;
+      font-size: 20px;
+      font-family: 'Courier New', Courier, monospace;
+      line-height: 1.2;
+      /* background-image: url('https://images.unsplash.com/photo-1611199604791-ab575956d8b2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); */
+      /* background-size: cover;
+      background-repeat: no-repeat;
+      background-position-x: -50rem;
+      background-position-y: -40rem;  */
+    }
+
+    h1 {
+      text-transform: uppercase;
+    }
+
+    p {
+      background-color: rgba(255, 255, 255, 0.6);
+      color: red;
+      font-size: 14px;
+      padding: 1rem;
+      text-align: right;
+    }
+
+    ul {
+      font-style: italic;
+    }
+
+    section {
+      padding-bottom: 1.5rem;
+    }
+
+    .container {
+      margin: 0 auto;
+      padding: 1rem 6rem;
+    }
+
+    .format {
+      width: 50%;
+    }
+
+    .quote {
+      font-size: 20px;
+      width: fit-content;
+      text-align: center;
+    }
+
+    .section__cards {
+      display: flex;
+      justify-content: center;
+      grid-gap: 3em;
+    }
+
+    .card-techground {
+      padding: 1.5rem 1.5rem 6rem 1.5rem;
+      display: flex;
+      border: 3px black solid;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 30%;
+      background-color: #83878d;
+      box-shadow: 0px 0px 0px 5px #83878d;
+    }
+
+    .card-techground__title {
+      color: green;
+    }
+
+    .card-techground__img {
+      padding: 0.7rem 0;
+    }
+
+    .card-techground__desc {
+      width: 100%;
+      text-align: center;
+    }
+
+    .card-infotext {
+      display: grid;
+      background-color: #698076;
+      box-shadow: 0px 0px 0px 5px #698076;
+      border: 3px black solid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: auto;
+      width: 55%;
+    }
+
+    .card-infotext__img {
+      grid-column: 1 / span 2;
+      width: 90%;
+      align-self: center;
+      margin: 0 auto;
+    }
+
+    .card-infotext__desc--right {
+      text-align: unset;
+      grid-column: 3 / span 4;
+    }
+
+    .card-infotext__desc {
+      text-align: unset;
+      grid-column: 1 / -1;
+    }
+  </style>
+
+  <div class="container">
+    <body>
+      <!-- Heading tags zijn bedoelt om de hierarchy in de titles op je pagina aan te geven -->
+      <!-- De h1 tag is met name belangrijk er dient er maar een van te zijn op een pagina 
+           omdat search engines gebruik van headers maken voor SEO  -->
+      <section>
+        <h1>1 ) Heading opdrachten</h1>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <h5>Heading 5</h5>
+        <h6>Heading 6</h6>
+      </section>
+
+      <section>
+        <h3>2) Paragraaf opdrachten</h3>
+        <p style="width: 40%">
+          Een paragraaf is een <strong>block-level</strong> element. Dat
+          betekent dat het in principe, tenzij het door de developer anders
+          wordt geconfigureerd de volledige ruimte van zijn 'parent' element /
+          container inneemt. Ook creëren block level elementen een regel white
+          space boven en onder het element. Block elementen kunnen dus niet
+          zomaar naast elkaar staan omdat ze in principe een eigen regel in de
+          markup opnemen. Paragrafen worden met name gebruikt om text / content
+          te weergeven.
+        </p>
+      </section>
+
+      <!-- HTML5 heeft meerdere text formateer opties  -->
+      <!-- blockquote -->
+      <section>
+        <h3>3 ) Text formateer opdrachten</h3>
+        <div class="format">
+          <blockquote>
+            Never dream about success. <strong>Work</strong> for it.
+          </blockquote>
+          <cite
+            >A computer is like air <mark>conditioning</mark> - it becomes
+            useless when you open <del>windows</del></cite
+          >
+          <p class="quote">~ Linus Torvalds ~</p>
+          <code
+            >Talk is <small>cheap</small>. <ins>Show</ins> me the code.</code
+          >
+          <p>
+            <q
+              >Software is like sex: it's better when it's free -
+              <span style="font-style: bold; font-size: 1.2rem; color: black"
+                >Linus Torvalds</span
+              ></q
+            >
+          </p>
+        </div>
+      </section>
+
+      <!-- Dit zijn een ordered list en een unordered list  -->
+      <!-- Een ordered list is genummerd een unordered list gebruikt bijvoorbeeld bulletpoints -->
+
+      <h3>4 ) List opdrachten</h3>
+      <p
+        style="
+          width: 40%;
+          text-align: unset;
+          text-transform: uppercase;
+          background-color: #dcdcdc;
+          padding: unset;
+        "
+      >
+        Deze tags heten ordered en unordered lists
+      </p>
+      <section>
+        <ol>
+          <li>item 1</li>
+          <li>item 2</li>
+          <li>item 3</li>
+        </ol>
+
+        <ol>
+          <li>item 1</li>
+          <li>
+            item 2
+            <ol>
+              <li>sub item 1</li>
+              <li>sub item 2</li>
+            </ol>
+          </li>
+          <li>item 3</li>
+        </ol>
+
+        <ul>
+          <li>item 1</li>
+          <li>item 2</li>
+          <li>item 4</li>
+        </ul>
+
+        <ul>
+          <li>item 1</li>
+          <li>
+            item 2
+            <ul>
+              <li>sub item 1</li>
+              <li>sub item 2</li>
+            </ul>
+          </li>
+          <li>item 3</li>
+        </ul>
+
+        <ul>
+          <li>item 1</li>
+          <li>
+            item 2
+            <ol>
+              <li>sub item 1</li>
+              <li>sub item 2</li>
+            </ol>
+          </li>
+          <li>item 3</li>
+        </ul>
+      </section>
+
+      <!-- Anchor tags worden gebruikt om te linken naar een andere pagina -->
+      <!-- De target atribute zorgt ervoor dat de link in een nieuw tab blad geopend wordt -->
+      <section class="pb">
+        <h3>5 ) Anochor tag opdracht</h3>
+        <a target="_blank" href="https://techgrounds.nl">Visit Techgrounds!</a>
+      </section>
+
+      <section>
+        <h3>6 ) Image opdracht</h3>
+        <img
+        src=https://images.unsplash.com/photo-1534665482403-a909d0d97c67?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80"
+        alt="Man vbusy coding on laptop">
+      </section>
+
+      <section>
+        <h3>8 ) CSS Vragen</h3>
+        <div style="width: 65%">
+          <p
+            style="
+              text-align: unset;
+              color: #000;
+              text-transform: uppercase;
+              font-weight: 800;
+            "
+          >
+            De meeste vragen zijn al beantwoord in de layout, hieronder een
+            toelichting op de extra vragen:
+          </p>
+          <p style="text-align: unset">
+            <strong>4a ) </strong>Er zijn meerdere properties om een 'plaatje'
+            als background in te stellen. De 'shorthand' background: url('etc'),
+            background-image en bijvoorbeeld background position om de juiste
+            plek op het scherm te configureren. Wat opvalt is dat het plaatje
+            herhaalt dit kan je uitzetten met background-repeat: no-repeat;
+          </p>
+          <p style="text-align: unset">
+            <strong>5 ) </strong>Een font-style is de manier waarop een font
+            wordt weergeven. Bijvoorbeeld bold, cursief of inheriten (erven) van
+            een parent element.
+          </p>
+
+          <p style="text-align: unset">
+            <strong>6a ) </strong> Met text-transform kan je onder anderen:
+            capitalizen, lowercasen en eerdere stylen uitschakelen.
+          </p>
+        </div>
+      </section>
+
+      <h3>8 ) Card opdracht</h3>
+      <section class="section__cards">
+        <div class="card-techground">
+          <h2 class="card-techground__title">Card</h2>
+          <img
+            class="card-techground__img"
+            style="width: 60%"
+            src="https://2020.vuejs.amsterdam/image/sponsor-pictures/all/techgrounds.png"
+            alt="Techgrounds Logo"
+          />
+          <p class="card-techground__desc">
+            I want to be part of TechGrounds!😜
+          </p>
+          <p class="card-techground__desc">Hello World! - How original....</p>
+        </div>
+
+        <div class="card-infotext">
+          <img
+            class="card-infotext__img"
+            src="https://2020.vuejs.amsterdam/image/sponsor-pictures/all/techgrounds.png"
+            alt="Techgrounds Logo"
+          />
+          <p class="card-infotext__desc--right">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
+            possimus maiores vitae! Est, repellat nihil laudantium officia
+            molestiae similique illum libero iure. Perspiciatis labore quaerat
+            cumque inventore deserunt quas minima nostrum laboriosam, facere
+            unde? Alias error voluptates similique quos iure optio id doloribus
+            atque? Et aperiam cum, soluta quidem saepe, reiciendis voluptatum
+            totam eos doloremque laborum autem atque adipisci id quasi quibusdam
+            nisi necessitatibus ipsam veniam vel at?
+          </p>
+          <p class="card-infotext__desc">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et iure ad
+            delectus! Aliquam laborum quis odit reiciendis incidunt animi? Et
+            tenetur numquam pariatur repudiandae at autem tempora dolores eius
+            voluptatibus?
+          </p>
+          <p class="card-infotext__desc">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque magni
+            tempore laboriosam dicta voluptas. Omnis, non velit maxime eius
+            minima architecto quasi nesciunt dolor quia expedita, dolorem atque
+            reprehenderit veritatis.
+          </p>
+        </div>
+      </section>
+    </body>
+  </div>
+</html>
