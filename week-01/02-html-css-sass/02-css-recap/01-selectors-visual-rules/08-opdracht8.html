@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Selectors & Visual rules - opdracht 3</title>
+    <title>Selectors & Visual rules - opdracht 8</title>
     <link rel="stylesheet" href="style.css" />
     <style>
       h1 {
@@ -21,73 +21,104 @@
         font-weight: 800;
         color: orangered;
       }
+
+      #div1 {
+        color: red;
+      }
     </style>
   </head>
   <body>
-    <h1>Opdracht 3</h1>
+    <h1>Opdracht 8</h1>
 
-    <h3 style="width: 60%">Er zijn verschillende selectors, bijvoorbeeld:</h3>
-    <ul>
-      <li>type selectors</li>
-      <li>descendant selectors</li>
-      <li>class selectors</li>
-    </ul>
+    <h3 style="width: 60%">
+      Leg in eigen woorden uit wat met cascade en inheritance wordt bedoeld.
+      Maak voorbeelden om je antwoord uit te leggen.
+    </h3>
 
-    <p>
-      Maak van de bovengenoemde selectors voorbeelden. Geef in je antwoord ook
-      aan wat de voordelen zijn van elke selector.
-    </p>
-
-    <div>
-      <h4>Type selectors:</h4>
+    <div style="width: 50%">
       <p>
-        Type selectors selecteren elementen aan hun type of "node name".
-        Bijvoorbeeld: <code>a { text-decoration: none; } </code>
+        CSS staat voor Cascading Style Sheets. Cascade, specificity en
+        inheritance zijn belangrijke concepten in de wereld CSS.
       </p>
       <p>
-        <strong>Voordeel: </strong>Een simpele selector, makkelijk te begrijpen.
+        <strong>"The Cascade"</strong> is het mechanisme wat er voor zorgt dat
+        een style regel wordt toegepast op een een bepaalt element. Als er twee
+        regels op hetzelfde element van toepassing zijn en deze dezelfde
+        <strong>specificity</strong> hebben is de regel die als laatste in de
+        stylesheet staat geldig.
       </p>
       <p>
-        <strong> Nadeel: </strong>
-        Target alle elementen van dat type, dit is niet altijd wenselijk.
+        <strong>Uitleg:</strong>
+      </p>
+      <p>
+        normale selectors dus
+        <strong>type / element</strong> selectors hebben een specificity van:
+        0,0,0,1.
+      </p>
+      <p>
+        <strong>.class</strong> selectors hebben een specificity van: 0,0,1,0.
+      </p>
+      <p><strong>#id</strong> selectors hebben een specificity van: 0,1,0,0.</p>
+
+      <p>
+        <strong>style attribute</strong> wint altijd met een specificity van:
+        1,0,0,0.
+      </p>
+
+      <strong>Voorbeeld: </strong>
+      <p><code>ul#nav li.active a { property: value; }</code></p>
+      <p>specificity: (0, 1, 1, 3)</p>
+      <p>
+        There are 0 style attributes, there is 1 #id, there is 1 class/
+        pseudo-class / attribute, there are 3 elements
       </p>
     </div>
 
-    <div>
-      <h4>Descendant selectors:</h4>
-      <p>
-        Descendant selectors selecteren elementen die "descendants of van een
-        bepaald soort parent element zijn". Bijvoorbeeld:
-        <code
-          >div a { text-decoration: none; } of ul.shopping-list li { color: red;
-          }
-        </code>
-      </p>
-      <p>
-        <strong>Voordeel: </strong> Je kunt 'nested' elementen selecteren met
-        deze selector.
-      </p>
-      <p>
-        <strong> Nadeel: </strong>
-        Target alle elementen van die hetzelfde 'nesting' structuur vertonen,
-        dit is niet altijd wenselijk.
-      </p>
-    </div>
+    <img
+      src="https://i2.wp.com/css-tricks.com/wp-content/uploads/2021/01/specificity-calculationbase_rhrovi.png?w=570&ssl=1"
+      alt="specificity calculation logic"
+    />
 
-    <div>
-      <h4>Class selectors:</h4>
+    <div style="width: 50%">
       <p>
-        Class selector kunnen hergebruikt worden. Daarnaast zijn ze ook vrij
-        specifiek. Bijvoorbeeld: <code>.my-class { font-size: 2rem; } </code>
+        <strong>"Inheritance"</strong> is het mechanisme dat reguleert wat voor
+        waarde een een property op een element heeft als er geen
+        <strong>specifieke</strong> waarde is aangegeven door de developer. Het
+        werkt dus als een soort <strong>default</strong> waarde. Als een
+        property inheritance heeft wordt dit doorgegeven van parent tot child
+        element. Een voorbeeld hiervan is bijvoorbeeld <strong>color</strong>.
+        Als dit wordt aangegeven op een parent element zullen de child elementen
+        dit overnemen.
       </p>
+
       <p>
-        <strong>Voordeel: </strong>Specifiek, herbruikbaar. Het is gebruikelijk
-        tegenwoordig om op alle elementen een class toe te passen.
+        Niet alle properties worden geinherit, het zou bijvoorbeeld niet handig
+        zijn als een property als border inheritance zou hebben.
       </p>
+
       <p>
-        <strong> Nadeel: </strong>
-        alleen van toepassing op elementen die die .class dragen
+        Het child element <strong>inherit</strong> in het volgende voorbeeld de
+        kleur rood.
       </p>
+
+      <p>
+        &lt;style&gt; #div1 { color: red; } &lt;/style&gt; <br />
+        <br />
+        &lt;div id=&quot;div1&quot;&gt; Parent Div <br />
+        &nbsp;&nbsp;&lt;div id=&quot;div1Child&quot;&gt;Child Div 1&lt;/div&gt;
+        <br />
+        &nbsp;&nbsp;&lt;div id=&quot;div2Child&quot;&gt;Child Div 2&lt;/div&gt;
+        <br />
+        &lt;/div&gt;
+      </p>
+
+      <p>Output:</p>
+
+      <div id="div1" style="margin-bottom: 20px">
+        Parent Div
+        <div id="div1Child">Child Div 1</div>
+        <div id="div2Child">Child Div 2</div>
+      </div>
     </div>
 
     <a href="../index.html"><input type="button" value="Go Back" /></a>

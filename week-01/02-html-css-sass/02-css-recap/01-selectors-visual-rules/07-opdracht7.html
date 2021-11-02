@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Selectors & Visual rules - opdracht 3</title>
+    <title>Selectors & Visual rules - opdracht 7</title>
     <link rel="stylesheet" href="style.css" />
     <style>
       h1 {
@@ -17,78 +17,54 @@
         color: steelblue;
       }
 
-      code {
+      ul code {
         font-weight: 800;
         color: orangered;
+      }
+
+      .selector-list {
+        list-style-type: georgian;
+      }
+
+      ul.selector-list > li:nth-child(1) {
+        color: purple;
+      }
+
+      li:first-of-type + li {
+        color: green;
+      }
+
+      li ~ li {
+        color: goldenrod;
       }
     </style>
   </head>
   <body>
-    <h1>Opdracht 3</h1>
+    <h1>Opdracht 7</h1>
 
-    <h3 style="width: 60%">Er zijn verschillende selectors, bijvoorbeeld:</h3>
-    <ul>
-      <li>type selectors</li>
-      <li>descendant selectors</li>
-      <li>class selectors</li>
+    <h3 style="width: 60%">
+      Maak nu een html bestand aan met voorbeelden van alle soorten selectors
+      erin. Maak een link in je antwoord die naar dat html bestand verwijst.
+    </h3>
+    <ul class="selector-list">
+      <li>Type selectors <code>selector { property: value; }</code></li>
+      <li>
+        Descendant combinator
+        <code>selector1 selector2 { property: value; }</code>
+      </li>
+      <li>Class <code>.class-selector { property: value; }</code></li>
+      <li>
+        Child combinator <code>selector1 > selector2 { property: value; }</code>
+      </li>
+      <li>
+        Adjacent combinator
+        <code>selector1 + selector2 { property: value; }</code>
+      </li>
+      <li>
+        General combinator
+        <code>selector1 ~ selector2 { property: value; }</code>
+      </li>
     </ul>
-
-    <p>
-      Maak van de bovengenoemde selectors voorbeelden. Geef in je antwoord ook
-      aan wat de voordelen zijn van elke selector.
-    </p>
-
-    <div>
-      <h4>Type selectors:</h4>
-      <p>
-        Type selectors selecteren elementen aan hun type of "node name".
-        Bijvoorbeeld: <code>a { text-decoration: none; } </code>
-      </p>
-      <p>
-        <strong>Voordeel: </strong>Een simpele selector, makkelijk te begrijpen.
-      </p>
-      <p>
-        <strong> Nadeel: </strong>
-        Target alle elementen van dat type, dit is niet altijd wenselijk.
-      </p>
-    </div>
-
-    <div>
-      <h4>Descendant selectors:</h4>
-      <p>
-        Descendant selectors selecteren elementen die "descendants of van een
-        bepaald soort parent element zijn". Bijvoorbeeld:
-        <code
-          >div a { text-decoration: none; } of ul.shopping-list li { color: red;
-          }
-        </code>
-      </p>
-      <p>
-        <strong>Voordeel: </strong> Je kunt 'nested' elementen selecteren met
-        deze selector.
-      </p>
-      <p>
-        <strong> Nadeel: </strong>
-        Target alle elementen van die hetzelfde 'nesting' structuur vertonen,
-        dit is niet altijd wenselijk.
-      </p>
-    </div>
-
-    <div>
-      <h4>Class selectors:</h4>
-      <p>
-        Class selector kunnen hergebruikt worden. Daarnaast zijn ze ook vrij
-        specifiek. Bijvoorbeeld: <code>.my-class { font-size: 2rem; } </code>
-      </p>
-      <p>
-        <strong>Voordeel: </strong>Specifiek, herbruikbaar. Het is gebruikelijk
-        tegenwoordig om op alle elementen een class toe te passen.
-      </p>
-      <p>
-        <strong> Nadeel: </strong>
-        alleen van toepassing op elementen die die .class dragen
-      </p>
-    </div>
 
     <a href="../index.html"><input type="button" value="Go Back" /></a>
   </body>
