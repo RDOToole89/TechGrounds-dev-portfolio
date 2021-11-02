@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selectors & Visual rules - opdracht 6</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      h1 {
+        font-size: 1rem;
+        color: orangered;
+      }
+
+      h4 {
+        font-size: 1.4rem;
+        color: steelblue;
+      }
+
+      code {
+        font-weight: 800;
+        color: orangered;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Opdracht 6</h1>
+
+    <h3 style="width: 60%">Er zijn verschillende selectors, bijvoorbeeld:</h3>
+    <ul>
+      <li>Child selectors</li>
+      <li>Adjacent selectors</li>
+      <li>General selectors</li>
+    </ul>
+
+    <p>
+      Maak van de bovengenoemde selectors voorbeelden. Geef in je antwoord ook
+      aan wat de voordelen zijn van elke selector.
+    </p>
+
+    <div>
+      <h4>Child selector / combinator:</h4>
+      <p>
+        Child selector selector / combinator <code> ></code> selecteren
+        elementen die matchen met de "tweede selector" EN een directe "child"
+        relatie hebben met het eerste element. Bijvoorbeeld:
+        <code>ul > li { margin: 2rem; } </code>
+      </p>
+      <p>
+        <strong>Voordeel: </strong>Mogelijk om elementen te selecteren die een
+        parent > child relatie hebben.
+      </p>
+      <p>
+        <strong> Nadeel: </strong>
+        Target alle elementen van dat die aan die relatie voldoen, dit is niet
+        altijd wenselijk.
+      </p>
+    </div>
+
+    <div>
+      <h4>Adjacent selector / combinator:</h4>
+      <p>
+        Adjacent selector / combinator <code> +</code> matcht elementen als ze
+        DIRECT volgen na het eerste element en toebehoren aan HETZELFDE parent
+        element. Bijvoorbeeld:
+        <code>h2 + p { color: green; } </code>
+      </p>
+      <p>
+        <strong>Voordeel: </strong> Je kunt elementen selecteren die direct
+        naast elkaar liggen.
+      </p>
+      <p>
+        <strong> Nadeel: </strong>
+        Target alle elementen die een zelfde relatie hebben. Dit is niet altijd
+        wenselijk.
+      </p>
+    </div>
+
+    <div>
+      <h4>General selector / combinator:</h4>
+      <p>
+        General selectors <code> ~</code> matcht elementen als ze volgen na het
+        eerste element (maar niet per definitie DIRECT volgen) en toebehoren aan
+        HETZELFDE parent element. Bijvoorbeeld:
+        <code>h2 ~ p { color: green; } </code>
+      </p>
+      <p>
+        <strong>Voordeel: </strong>Je kunt elementen matchen die elkaar volgen
+        maar geen directe "sibling" relatie hebben.
+      </p>
+      <p>
+        <strong> Nadeel: </strong>
+        Target alle elementen die een zefde relatie hebben. Dit is niet altijd
+        wenselijk.
+      </p>
+    </div>
+
+    <a href="../index.html"><input type="button" value="Go Back" /></a>
+  </body>
+</html>
