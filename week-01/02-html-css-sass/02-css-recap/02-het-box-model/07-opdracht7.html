@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Het Box Model - opdracht 7</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      div.box {
+        border: 5px solid black;
+        background-color: lightgray;
+        margin: 5px;
+        height: 100px;
+        width: 100px;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Opdracht 7</h1>
+
+    <img src="./img/boxdim.png" alt="box model" />
+
+    <h3 style="width: 60%">
+      Maak nu een blok met width: 100px, height: 100px, margin: 5px, padding 5px
+      en border-width: 5px. Zie hieronder:
+    </h3>
+
+    <div class="parent">
+      <div class="box">dit is de content</div>
+    </div>
+
+    <h4>1. Hoe breed is de box?</h4>
+    <p>120px</p>
+    <h4>2. Hoe hoog is de box?</h4>
+    <p>120px</p>
+    <h4>3. Wat merk je op met width en height?</h4>
+    <p>Dat deze toeneemt wanneer je margin en padding top</p>
+
+    <a href="../index.html"><input type="button" value="Go Back" /></a>
+  </body>
+</html>

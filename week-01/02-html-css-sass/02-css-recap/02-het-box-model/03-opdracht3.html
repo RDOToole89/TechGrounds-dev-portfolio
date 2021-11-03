@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Het Box Model - opdracht 3</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      h4 {
+        color: orangered;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Opdracht 3</h1>
+
+    <img src="./img/boxdim.png" alt="box model" />
+
+    <h3 style="width: 60%">
+      Hierboven zie je een box-model. Leg uit wat de volgende termen betekenen:
+      content, padding, margin en border.
+    </h3>
+
+    <div style="width: 60%">
+      <h4>Content</h4>
+      <p>
+        <strong>Content</strong> is bijvoorbeeld de tekst in dit paragraaf
+        element. Het neemt alleen de ruimte in die het nodig. Vaak heeft het een
+        achtergrond kleur.
+      </p>
+      <h4>Padding</h4>
+      <p>
+        <strong>Padding</strong> is de ruimte buiten de
+        <strong>content</strong> area die ademruimte geeft tussen de content en
+        de border. Deze ruimte maakt deel uit van de content-box en houdt op bij
+        de border.
+      </p>
+      <h4>Border</h4>
+      <p>
+        De <strong>border</strong> verlengt de padding area en is de ruimte
+        tussen de padding en het volgende element mits er geen margin op het
+        element zit.
+      </p>
+      <h4>Margin</h4>
+      <p>
+        <strong>Margin</strong> is de ruimte tussen de
+        <strong>border</strong> en het volgende element. Het verlengt de border
+        ruimte met een stuk <strong>lege</strong> ruimte die bedoelt is op om
+        elementen van elkaar te scheiden.
+      </p>
+    </div>
+
+    <a href="../index.html"><input type="button" value="Go Back" /></a>
+  </body>
+</html>

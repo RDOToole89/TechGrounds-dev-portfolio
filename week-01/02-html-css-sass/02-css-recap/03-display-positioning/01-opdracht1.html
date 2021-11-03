@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Display & Positioning</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      h4:not(h4:first-of-type) {
+        color: orangered;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Opdracht 1</h1>
+
+    <img
+      src="./img/css-positioning.png"
+      alt="positioning in css"
+      style="width: 800px"
+    />
+
+    <h3 style="width: 60%">
+      Welke position values zijn er? Leg voor elke position values uit wat het
+      doet. Geef ook aan welke default position waarde elementen hebben die je
+      gebruikt in html.
+    </h3>
+
+    <div style="width: 60%">
+      <p>
+        De default positioning waarden van elementen zijn
+        <strong>static</strong>. Element volgen normaliter de
+        <strong>normale</strong> document flow.
+      </p>
+    </div>
+
+    <h4>Static</h4>
+    <div style="width: 60%">
+      <p>
+        Dit is de <strong>default</strong> waarde voor alle elementen. De
+        <strong>top right bottom left en z-index</strong> properties hebben geen
+        effect op statische of terwijl <strong>default</strong> elementen.
+      </p>
+    </div>
+    <h4>Relative</h4>
+    <div style="width: 60%">
+      <p>
+        <strong>Relative</strong> is de positie waar een element relatief staat
+        tot zijn normale positie in de document flow. Wanneer de relative
+        positie wordt gegeven aan een element gebeuren er
+        <strong>twee dingen</strong>. Je kan gebruik maken van z-index op het
+        element, dit werkt niet bij statische elementen. En
+        <strong>child</strong> elementen kunnen
+        <strong>absoluut </strong> gepositioneerd worden in dat blok
+      </p>
+    </div>
+    <h4>Absolute</h4>
+    <div style="width: 60%">
+      <p>
+        <strong>Absolute</strong> positioning betekent dat een element uit de
+        <strong>normale document flow</strong> wordt verwijderd. Het element
+        wordt dan (by default) <strong>relatief</strong> in de
+        <strong>top left hoek</strong> van zijn
+        <strong>parent element</strong> geplaatst. Zijn positie wordt dan
+        bepaalt door de de <strong>top left bottom en left</strong> waardes.
+      </p>
+      <p>
+        Daarnaast wordt er ook een nieuwe
+        <strong>stacking context</strong> gecreerd als de waarde van de
+        <strong>z-index</strong> niet op auto staat.
+        <strong>Margin collapse</strong> treedt ook niet meer op bij absolute
+        gepositioneerde elementen.
+      </p>
+    </div>
+    <h4>Fixed</h4>
+    <div style="width: 60%">
+      <p>
+        Een <strong>fixed</strong> element wordt relatief aan de
+        <strong>browser window / viewport</strong> gepositioneerd. Het element
+        wordt ook verwijdert uit de <strong>normale document flow</strong>. Een
+        fixed element blijft op dezelfde positie ook als je scrolled. De positie
+        van die element wordt bepaalt door de waardes van de
+        <strong>top right bottom left</strong> waardes. Als een parent element
+        <strong>transform, perspective of filter</strong> toepast zal
+        <strong>DAT ELEMENT</strong> als containing block functioneren.
+      </p>
+    </div>
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    <h4>Sticky</h4>
+    <div style="width: 60%">
+      <p>
+        Een <strong>sticky</strong> element wordt relatief aan de
+        <strong>browser window / viewport</strong> gepositioneerd. Het element
+        wordt ook verwijdert uit de <strong>normale document flow</strong>. Een
+        fixed element blijft op dezelfde positie ook als je scrolled. De positie
+        van die element wordt bepaalt door de waardes van de
+        <strong>top right bottom left</strong> waardes. Als een parent element
+        <strong>transform, perspective of filter</strong> toepast zal
+        <strong>DAT ELEMENT</strong> als containing block functioneren.
+      </p>
+    </div>
+
+    <a href="../index.html"><input type="button" value="Go Back" /></a>
+  </body>
+</html>
