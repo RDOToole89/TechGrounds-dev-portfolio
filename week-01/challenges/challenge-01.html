@@ -65,6 +65,10 @@
         z-index: 150;
       }
 
+      .display {
+        display: none;
+      }
+
       .box.down {
         transform: translateY(0);
       }
@@ -78,6 +82,7 @@
         font-size: 2rem;
         top: 20px;
         right: 20px;
+        transition: all 200ms ease-in;
       }
 
       .close:hover,
@@ -142,20 +147,26 @@
       const openBtn = document.querySelector('.open-modal');
       const close = document.querySelector('.close');
 
-      openBtn.addEventListener('click', () => {
-        if (
-          content.classList.contains('down') ||
-          content.classList.contains('down150')
-        ) {
-          content.classList.remove('down');
-          content.classList.remove('down150');
+      const removeClasses = (element, array) => {
+        for (let i = 0; i < array.length; i++) {
+          if (element.classList.contains(array[i])) {
+            element.classList.remove(array[i]);
+          }
         }
+        console.log('classes removed');
+      };
+
+      openBtn.addEventListener('click', () => {
+        removeClasses(content, ['down', 'down150']);
+
         modal.classList.toggle('open');
         openBtn.style.display = 'none';
-        content.classList.toggle('down');
+        content.classList.add('down');
       });
 
       close.addEventListener('click', () => {
+        removeClasses(content, ['down', 'down150']);
+
         modal.classList.toggle('open');
         openBtn.style.display = 'block';
         content.classList.toggle('down150');

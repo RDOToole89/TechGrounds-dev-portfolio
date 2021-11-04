@@ -6,10 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Display & Positioning</title>
     <link rel="stylesheet" href="style.css" />
-    <style></style>
+    <style>
+      div.box {
+        height: 350px;
+        position: relative;
+        padding: 1rem 1rem;
+      }
+
+      div img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+    </style>
   </head>
   <body>
-    <h1>Opdracht 1</h1>
+    <h1>Opdracht 5</h1>
 
     <img
       src="./img/css-positioning.png"
@@ -18,16 +31,20 @@
     />
 
     <h3 style="width: 60%">
-      Welke position values zijn er? Leg voor elke position values uit wat het
-      doet. Geef ook aan welke default position waarde elementen hebben die je
-      gebruikt in html.
+      Positioneer het <img /> element achter de tekst. Zie voorbeeld hierboven
+      en gebruik onderstaande HTML code. Je mag zelf een eigen image gebruiken.
     </h3>
 
-    <h4>Static</h4>
-    <div style="width: 60%">
-      <p></p>
+    <div class="box">
+      <h1>Dit is een titel</h1>
+      <p>Dit is een paragraaf.</p>
+      <p>Dit is nog een paragraaf.</p>
+      <img style="width: 500px;"
+      src=https://images.unsplash.com/photo-1635978792510-9bb10faeac49?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80
+      />
     </div>
-
-    <a href="../index.html"><input type="button" value="Go Back" /></a>
+    <div>
+      <a href="../index.html"><input type="button" value="Go Back" /></a>
+    </div>
   </body>
 </html>
