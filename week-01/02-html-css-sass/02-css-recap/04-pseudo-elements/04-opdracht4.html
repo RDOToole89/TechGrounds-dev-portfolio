@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pseudo Elements</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      img {
+        width: 400px;
+        margin-bottom: 4rem;
+      }
+
+      #content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        color: white;
+        position: relative;
+        width: 700px;
+        height: 50px;
+        background-color: #20b2aa;
+        margin-bottom: 2rem;
+      }
+
+      #content::before {
+        content: '';
+        position: absolute;
+        height: 10px;
+        width: 50px;
+        background-color: orangered;
+        left: 20px;
+        top: 0;
+        left: 0;
+      }
+
+      #content::after {
+        content: '';
+        position: absolute;
+        height: 50px;
+        width: 10px;
+        background-color: orangered;
+        left: 20px;
+        top: 0;
+        left: 0;
+      }
+
+      #inner {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        letter-spacing: 1px;
+        font-size: 1.4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      #inner::before {
+        content: '';
+        position: absolute;
+        height: 50px;
+        width: 10px;
+        background-color: orangered;
+        right: 0;
+        bottom: 0;
+      }
+
+      #inner::after {
+        content: '';
+        position: absolute;
+        height: 10px;
+        width: 50px;
+        background-color: orangered;
+        right: 0;
+        bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Opdracht 4</h1>
+
+    <img
+      src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2011/06/multiplecanvases.jpg?w=570&ssl=1"
+      alt="pseudo elements visual"
+    />
+
+    <div id="content">
+      <div id="inner">Button</div>
+    </div>
+
+    <a href="../index.html"><input type="button" value="Go Back" /></a>
+  </body>
+</html>
