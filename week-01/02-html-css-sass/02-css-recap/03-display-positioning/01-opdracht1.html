@@ -90,14 +90,15 @@
     <h4>Sticky</h4>
     <div style="width: 60%">
       <p>
-        Een <strong>sticky</strong> element wordt relatief aan de
-        <strong>browser window / viewport</strong> gepositioneerd. Het element
-        wordt ook verwijdert uit de <strong>normale document flow</strong>. Een
-        fixed element blijft op dezelfde positie ook als je scrolled. De positie
-        van die element wordt bepaalt door de waardes van de
-        <strong>top right bottom left</strong> waardes. Als een parent element
-        <strong>transform, perspective of filter</strong> toepast zal
-        <strong>DAT ELEMENT</strong> als containing block functioneren.
+        Een <strong>sticky</strong> element is een soort combinatie van een
+        <strong>relative</strong> en een <strong>fixed</strong> position
+        element. Het sticky element verandert van
+        <strong>state</strong> afhankelijk van de scroll positie van de browser.
+        De positie wordt bepaald door de
+        <strong>top bottom left en right</strong> waardes. De developer creerd
+        een <strong>offset</strong> relatief tot het dichstbijzijnde scrollbare
+        parent element en containing block. Een sticky element creerd ook een
+        nieuwe stacking context.
       </p>
     </div>
 

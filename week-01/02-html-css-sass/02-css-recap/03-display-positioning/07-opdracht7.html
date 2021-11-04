@@ -6,10 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Display & Positioning</title>
     <link rel="stylesheet" href="style.css" />
-    <style></style>
+    <style>
+      div {
+        position: relative;
+        height: 300px;
+        width: 500px;
+        background: url(https://images.unsplash.com/photo-1617619048454-3d50d1dc831d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bW91bnRhaW5zJTIwc25vd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)
+          no-repeat;
+        margin-bottom: 1.5rem;
+      }
+
+      div > h2 {
+        top: 48%;
+        transform: translateY(-50%);
+        position: absolute;
+        background-color: yellow;
+        padding: 0.6rem 1rem;
+        width: 80%;
+      }
+
+      div > p {
+        position: absolute;
+        padding: 0.3rem 0.5rem;
+        width: 60%;
+        background-color: rgba(255, 255, 255, 0.8);
+        bottom: 18%;
+        left: 20px;
+      }
+
+      div > div {
+        position: absolute;
+        top: 47%;
+        /* transform: translateY(-50%); */
+        height: 48.2px;
+        width: 110%;
+        background-color: yellow;
+        z-index: -100;
+      }
+    </style>
   </head>
   <body>
-    <h1>Opdracht 1</h1>
+    <h1>Opdracht 7</h1>
 
     <img
       src="./img/css-positioning.png"
@@ -17,15 +54,10 @@
       style="width: 800px"
     />
 
-    <h3 style="width: 60%">
-      Welke position values zijn er? Leg voor elke position values uit wat het
-      doet. Geef ook aan welke default position waarde elementen hebben die je
-      gebruikt in html.
-    </h3>
-
-    <h4>Static</h4>
-    <div style="width: 60%">
-      <p></p>
+    <div>
+      <h2>Bbbrrrrrrrr...</h2>
+      <p>Super koud hier zeg!</p>
+      <div></div>
     </div>
 
     <a href="../index.html"><input type="button" value="Go Back" /></a>
