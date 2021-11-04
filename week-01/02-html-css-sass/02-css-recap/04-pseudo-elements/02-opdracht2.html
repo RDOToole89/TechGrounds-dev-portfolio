@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pseudo Elements</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      img {
+        width: 400px;
+      }
+
+      h4 {
+        color: orangered;
+      }
+
+      .pseudo-after {
+        position: relative;
+        background: #66b4a3;
+        height: 100px;
+        width: 100px;
+      }
+
+      .pseudo-after::after {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        content: '::AFTER';
+        position: absolute;
+        background: green;
+        height: 100px;
+        width: 100px;
+        left: 100px;
+      }
+
+      .pseudo-before {
+        position: relative;
+        background: #66b4a3;
+        height: 100px;
+        width: 100px;
+      }
+
+      .pseudo-before::before {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        content: '::BEFORE';
+        position: absolute;
+        background: green;
+        height: 100px;
+        width: 100px;
+        left: 50px;
+        top: 20px;
+      }
+
+      .first-letter::first-letter {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #66b4a3;
+      }
+      .first-line::first-line {
+        font-weight: bold;
+        color: palevioletred;
+      }
+
+      input[type='file']::file-selector-button {
+        border: 2px solid #6c5ce7;
+        padding: 0.2em 0.4em;
+        border-radius: 0.2em;
+        background-color: #a29bfe;
+        transition: 1s;
+      }
+
+      input[type='file']::file-selector-button:hover {
+        background-color: #81ecec;
+        border: 2px solid #00cec9;
+      }
+
+      .grammer-error::grammar-error {
+        text-decoration: underline red;
+        color: red;
+      }
+
+      ul.marker li::marker {
+        color: red;
+        font-size: 1.5em;
+      }
+
+      .placeholder::placeholder {
+        color: purple;
+        font-size: 1.2em;
+        font-style: italic;
+      }
+
+      p.selection::selection {
+        color: goldenrod;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Opdracht 2</h1>
+
+    <img
+      src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2011/06/multiplecanvases.jpg?w=570&ssl=1"
+      alt="pseudo elements visual"
+    />
+
+    <h3 style="width: 60%">
+      Er zijn 14 verschillende pseudo elementen. Je hebt in de voorgaande
+      opdracht reeds 4 kunnen benoemen. Kun je de andere 10 ook benoemen en
+      aangeven wat ze precies doen?
+    </h3>
+
+    <h4>::after</h4>
+    <p>::after kan een element zonder HTML voor een achter element plaatsten</p>
+    <div class="pseudo-after"></div>
+
+    <h4>::backdrop</h4>
+    <p>Creëert een box zo groot als de viewport in fullscreen mode.</p>
+
+    <h4>::backdrop</h4>
+    <p>Creëert een box zo groot als de viewport in fullscreen mode.</p>
+
+    <h4>::before</h4>
+    <p>::before kan een element zonder HTML voor een ander element plaatsten</p>
+    <div class="pseudo-before"></div>
+
+    <h4>::cue</h4>
+    <p>::cue kunnen media captions mee gestyled worden in VTT tracks</p>
+
+    <h4>::first-letter</h4>
+    <p class="first-letter">
+      Het ::first-letter pseudo element voegt stijlen toe aan de eerste letter
+      van een block element
+    </p>
+
+    <h4>::first-line</h4>
+    <p class="first-line">
+      Het ::first-line pseudo element voegt stijlen toe aan de eerste regel van
+      een block element.
+    </p>
+
+    <h4>::file-selector-button</h4>
+    <p>
+      Het ::file-selector-button pseudo element selecteert de file button van
+      een input met type="file".
+    </p>
+
+    <form>
+      <label for="fileUpload">Upload file</label>
+      <input type="file" id="fileUpload" />
+    </form>
+
+    <h4>::grammar-error (experimenteel)</h4>
+    <p class="grammer-error">
+      ::grammar-error kan een element zonder HTML voor een ander element
+      plaatsten
+    </p>
+
+    <h4>::marker (experimenteel)</h4>
+    <ul class="marker">
+      <li>
+        ::marker pseudo element seleteert het markeer boxje van een list item.
+      </li>
+      <li>exprimenteel</li>
+    </ul>
+
+    <h4>::placeholder</h4>
+    <p>
+      ::placeholder pseudo element selecteert de placeholder text in een input
+      of textarea
+    </p>
+    <input class="placeholder" placeholder="Type here..." />
+
+    <h4>::selection</h4>
+    <p class="selection">
+      ::selection pseudo element voegt stijlen toe aan door de gebruiker
+      highlighted contents. Zoals muis click & drag over tekst.
+    </p>
+
+    <div style="height: 200px"></div>
+
+    <a href="../index.html"><input type="button" value="Go Back" /></a>
+  </body>
+</html>

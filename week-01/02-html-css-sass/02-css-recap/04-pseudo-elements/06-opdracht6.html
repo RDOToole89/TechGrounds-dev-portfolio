@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pseudo Elements</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      img {
+        width: 400px;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        gap: 10rem;
+        width: 60%;
+      }
+
+      .circle {
+        display: flex;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        position: relative;
+        background-color: black;
+        border-radius: 50%;
+        height: 200px;
+        width: 200px;
+      }
+
+      .circle::before {
+        content: '';
+        position: absolute;
+        background-color: black;
+        width: 130px;
+        height: 120px;
+        border-radius: 50%;
+        top: 50%;
+        right: 25%;
+        transform: translate(-50%, -50%);
+      }
+
+      .circle::after {
+        content: '';
+        position: absolute;
+        background-color: black;
+        width: 130px;
+        height: 120px;
+        border-radius: 50%;
+        top: 50%;
+        left: 25%;
+        transform: translate(50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Opdracht 6</h1>
+
+    <img
+      src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2011/06/multiplecanvases.jpg?w=570&ssl=1"
+      alt="pseudo elements visual"
+    />
+
+    <h3 style="width: 60%">
+      Kun je enkele voorbeelden geven van pseudo-elementen
+      <strong> (minimaal 4)</strong> ? Beschrijf met je eigen woorden wat deze
+      pseudo-elementen inhouden.
+    </h3>
+
+    <div class="container">
+      <div class="circle">1</div>
+      <div class="circle">2</div>
+      <div class="circle">3</div>
+    </div>
+
+    <a href="../index.html"><input type="button" value="Go Back" /></a>
+  </body>
+</html>

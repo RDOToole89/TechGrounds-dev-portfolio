@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pseudo Elements</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      img {
+        width: 400px;
+      }
+
+      .box {
+        position: relative;
+        z-index: 100;
+        width: 40%;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .box::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url(https://dogfriendlyscene.co.uk/wp-content/uploads/2020/09/German-Shepherd-1024x685.jpg?ezimgfmt=ng:webp/ngcb11)
+          no-repeat left;
+        z-index: -100;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Opdracht 5</h1>
+
+    <img
+      src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2011/06/multiplecanvases.jpg?w=570&ssl=1"
+      alt="pseudo elements visual"
+    />
+
+    <h3 style="width: 60%">
+      Kun je enkele voorbeelden geven van pseudo-elementen
+      <strong> (minimaal 4)</strong> ? Beschrijf met je eigen woorden wat deze
+      pseudo-elementen inhouden.
+    </h3>
+
+    <p class="box">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus dolor
+      autem tenetur, suscipit aliquid reiciendis sit, aliquam quas vitae nam
+      unde tempora sed dolorum earum eos distinctio amet, cupiditate vero iure
+      ullam cum animi. Eos consequatur voluptas consectetur debitis dicta,
+      aliquam obcaecati pariatur. Exercitationem dolorem sequi cumque sed ipsam
+      tenetur, tempore blanditiis consectetur aut sapiente. Animi obcaecati
+      soluta nemo tempore error quod qui, excepturi facere ipsum asperiores
+      numquam, dolorem quo totam ab nostrum! Ducimus veniam quo tempora
+      inventore, eos quis esse ut facere officiis quos earum corrupti rem, natus
+      unde velit nulla blanditiis voluptates a dicta in. Provident ea soluta
+      iste, reprehenderit sed sint velit recusandae, praesentium consequatur
+      eligendi laborum id dolorem laboriosam voluptatem sit cum suscipit harum
+      at inventore in ducimus quibusdam! Magni nihil, atque exercitationem est
+      nisi vitae assumenda! Doloribus aliquam earum nihil. Inventore natus
+      corrupti reiciendis rerum obcaecati minus ipsa maxime voluptates
+      repudiandae. Labore praesentium quas dicta reprehenderit eius animi
+      magnam! Iure eveniet cum doloremque magnam nemo eos! Tempora voluptatem
+      possimus incidunt laborum maiores aperiam corrupti exercitationem tenetur
+      aliquid ipsam. Dolorem repellat, veritatis libero aut obcaecati assumenda
+      optio velit maxime nesciunt et quisquam in delectus illo tenetur placeat
+      omnis corrupti quas sapiente hic quia natus consequuntur iure!
+    </p>
+
+    <div class="div">
+      <a href="../index.html"><input type="button" value="Go Back" /></a>
+    </div>
+  </body>
+</html>

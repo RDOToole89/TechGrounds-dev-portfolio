@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pseudo Elements</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      img {
+        width: 400px;
+      }
+
+      .box {
+        position: relative;
+        z-index: 10;
+        padding: 30px;
+        background: #fff;
+        border: 2px solid #390;
+        margin-bottom: 1.5rem;
+      }
+      .box:before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 2px;
+        left: 2px;
+        right: 2px;
+        bottom: 2px;
+        border: 2px solid #36f;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Opdracht 1</h1>
+
+    <img
+      src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2011/06/multiplecanvases.jpg?w=570&ssl=1"
+      alt="pseudo elements visual"
+    />
+
+    <h3 style="width: 60%">
+      Kun je enkele voorbeelden geven van pseudo-elementen
+      <strong> (minimaal 4)</strong> ? Beschrijf met je eigen woorden wat deze
+      pseudo-elementen inhouden.
+    </h3>
+
+    <h4>Antwoord:</h4>
+
+    <div class="box" style="width: 60%">
+      <p class="article">
+        Met <strong>pseudo elementen</strong> kan je doomiddel van de
+        <strong>:before en :after psuedo classes</strong> als het ware twee
+        extra lagen toevoegen aan een element zonder deze in je html markup te
+        hoeven schrijven. Je kan deze elementen absolute positioneren relatief
+        tot hun parent element.
+      </p>
+
+      <p class="article">
+        Hierdoor is het mogelijk om bijvoorbeeld meerdere achtergronden toe te
+        voegen aan een element, vormen te creeren, dubbele borders te maken, of
+        een icon voor een stukje tekst of link te plaatsen of overlays te maken.
+      </p>
+    </div>
+
+    <a href="../index.html"><input type="button" value="Go Back" /></a>
+  </body>
+</html>
