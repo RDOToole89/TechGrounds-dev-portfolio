@@ -11,6 +11,10 @@
         width: 40%;
       }
 
+      p {
+        width: 60%;
+      }
+
       .flex-box {
         padding: 0.8rem;
         display: flex;
@@ -27,23 +31,41 @@
         width: 100px;
         background-color: #bbfdae;
       }
+
+      .box2 {
+        /* flex-grow / flex-shrink / flex-basis */
+        flex: 1 1 0;
+      }
     </style>
   </head>
   <body>
-    <h1>Opdracht 1</h1>
+    <h1>Opdracht 3</h1>
 
     <img
       src="https://res.cloudinary.com/practicaldev/image/fetch/s---3gDSFf1--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/fsln7je4ax7ft3er28hh.png"
       alt="pseudo elements visual"
     />
 
-    <h3 style="width: 60%">
-      Kun je enkele voorbeelden geven van pseudo-elementen
-      <strong> (minimaal 4)</strong> ? Beschrijf met je eigen woorden wat deze
-      pseudo-elementen inhouden.
-    </h3>
-
     <h4>Antwoord:</h4>
+
+    <h4>flex-basis</h4>
+    <p>
+      De <strong>flex-basis </strong> property zet de initiele grootte van een
+      flex-item. Als de <strong>flex-basis</strong> niet wordt gespecificeerd
+      staat deze automatisch op <strong>auto</strong>. <br />
+      <br />
+      Als <strong>flex-basis</strong> op <strong>auto</strong> staat dan zal dit
+      flex-item de grootte hebben van de sizing properties van het element, dit
+      kan ook op auto staan en dan neemt het de sizing van de content.
+      <br /><br />
+      <strong>flex</strong> is een shorthand property for
+      <strong>flex-basis flex-shrink flex-grow</strong> als je deze op 1 zet,
+      dus <strong>flex: 1;</strong> dan betekent dit
+      <strong>flex: 1 1 0;</strong> waarin in 0 een initiele waarde
+      vertegenwoordigd van 0 of terwijl enkel de content van het element. Als
+      <strong>flex: 1 1 auto;</strong> wordt gezet dan betekent dit dat de
+      flex-basis de groote aanneemt die op het element gezet is.
+    </p>
 
     <div class="flex-box">
       <div class="box box1">1</div>
