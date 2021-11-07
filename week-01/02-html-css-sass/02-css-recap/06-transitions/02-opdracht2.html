@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transitions</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .img-box {
+        display: flex;
+        flex-direction: column;
+      }
+
+      img {
+        width: 40%;
+      }
+
+      img:nth-child(2) {
+        width: 30%;
+      }
+
+      h2.transition {
+        text-align: center;
+        transform: scale(1) rotate(0);
+        color: initial;
+        font-size: 4rem;
+        transition-property: color, transform;
+        transition-duration: 0.5s, 1s;
+        transition-timing-function: ease-in, ease-in-out;
+        transition-delay: 200ms, 500ms;
+      }
+
+      h2.transition:hover,
+      h2.transition:focus {
+        transform: scale(2) rotate(360deg);
+        color: orangered;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Opdracht 2</h1>
+
+    <div class="img-box">
+      <img
+        src="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions/transitionsprinciple.png"
+        alt="transitions elements visual"
+      />
+
+      <img
+        src="https://d33wubrfki0l68.cloudfront.net/02ca5906d1d4d7e7725e83029a0ff236a2756988/7b62e/images/css/back-to-basics-css-transitions/anatomy-of-transition.svg"
+        alt="transitions elements visual"
+      />
+    </div>
+
+    <h4>Antwoord:</h4>
+
+    <h3 style="width: 60%">
+      Maak een simpele transition wat de kleur van een tekst aanpast.
+    </h3>
+
+    <div style="width: 60%">
+      <h2 class="transition">Hover Me</h2>
+    </div>
+
+    <a href="../index.html"><input type="button" value="Go Back" /></a>
+  </body>
+</html>

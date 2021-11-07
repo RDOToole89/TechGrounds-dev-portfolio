@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transitions</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .img-box {
+        display: flex;
+        flex-direction: column;
+      }
+
+      img {
+        width: 40%;
+      }
+
+      img:nth-child(2) {
+        width: 30%;
+      }
+
+      h4 {
+        color: orangered;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Opdracht 1</h1>
+
+    <div class="img-box">
+      <img
+        src="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions/transitionsprinciple.png"
+        alt="transitions elements visual"
+      />
+
+      <img
+        src="https://d33wubrfki0l68.cloudfront.net/02ca5906d1d4d7e7725e83029a0ff236a2756988/7b62e/images/css/back-to-basics-css-transitions/anatomy-of-transition.svg"
+        alt="transitions elements visual"
+      />
+    </div>
+
+    <h4>Antwoord:</h4>
+
+    <h3 style="width: 60%">
+      Zoek uit wat transitions zijn en beschrijf met eigen woorden wat het
+      betekent.
+    </h3>
+
+    <div style="width: 60%">
+      <p>
+        CSS Transitions zijn een manier om properties op een element te
+        <strong>animeren</strong>. Normaal gesproken doet de browser dit voor je
+        en in de meeste gevallen neemt de transitie dan direct plaats.
+
+        <br /><br />
+        Met de <strong>transition properties</strong> heeft de developer
+        controle over hoe de transitie tussen twee
+        <strong>states</strong> plaats neemt doormiddel van 4 verschillende
+        properties die de animatie bepalen.
+      </p>
+    </div>
+
+    <code>
+      transition: &lt;property&gt; &lt;duration&gt; &lt;timing-function&gt;
+      &lt;delay&gt;;
+    </code>
+
+    <h4 style="color: black">De properties:</h4>
+
+    <h4>transition-property</h4>
+    <div style="width: 60%">
+      <p>
+        Specificeert de naam of namen van de <strong>CSS properties</strong> die
+        geanimeerd moeten worden. Alleen de properties die hier worden
+        toegevoegd worden geanimeerd. Alle ander properties worden direct
+        getransitioneerd zoals gewoonlijk.
+      </p>
+    </div>
+
+    <h4>transition-duration</h4>
+    <div style="width: 60%">
+      <p>
+        Specificeert de duratie of hoe lang een transitie dient plaats te nemen.
+        Je kan een enkele duratie specificeren voor alle properties of
+        verschillende om een transitie interval te creeren.
+      </p>
+    </div>
+
+    <h4>transition-timing-function</h4>
+    <div style="width: 60%">
+      <p>
+        De timing function berekent hoe de waardes van de begin
+        <strong>state</strong> to de eind <strong>state</strong> worden
+        berekend. In de praktijk zie je hier het resultaat van in vloeiendheid
+        van de transitie. ease-in bijvoorbeeld begint langzaam en neem dan in
+        snelheid toe. In cijfers zou je dit kunnen weergeven als: 0.1 0.15 0.2
+        0.6 .1.2.
+      </p>
+    </div>
+
+    <h4>transition-delay</h4>
+    <div style="width: 60%">
+      <p>
+        Definieerd hoe lang een property moet wachten om aan zijn transitie te
+        beginnen.
+      </p>
+    </div>
+
+    <a href="../index.html"><input type="button" value="Go Back" /></a>
+  </body>
+</html>

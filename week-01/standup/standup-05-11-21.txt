@@ -1,0 +1,5 @@
+FATOS => bezig met display en positioning 
+
+TIMOTHY => pseudo elements - alles gelukt => terminal uitleg
+
+CYLVIA => moeilijkheden met postioning absolute en relative.

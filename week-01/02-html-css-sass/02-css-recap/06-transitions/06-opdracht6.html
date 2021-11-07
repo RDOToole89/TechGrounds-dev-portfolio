@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transitions</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Cardo:400i,700i|Rubik:400,700&display=swap');
+
+      .img-box {
+        display: flex;
+        flex-direction: column;
+      }
+
+      img {
+        width: 40%;
+      }
+
+      img:nth-child(2) {
+        width: 30%;
+      }
+
+      .card__top__title {
+        font-size: 1.3rem;
+        letter-spacing: 1.5px;
+      }
+
+      .card__location {
+        font-family: 'Cardo';
+        font-weight: 700;
+        font-size: 1.3rem;
+        letter-spacing: 1.8px;
+      }
+
+      .container {
+        display: flex;
+        padding: 8rem 2rem;
+        background-color: #f1f1f1;
+      }
+
+      .card {
+        font-family: 'Rubik', sans-serif;
+        font-weight: 500;
+        position: relative;
+        color: whitesmoke;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1.5rem;
+        height: 250px;
+        width: 160px;
+        left: 0px;
+        background-color: #7d7d7d;
+        transition: all 0.5s ease-in-out;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1),
+          0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1),
+          0 16px 16px rgba(0, 0, 0, 0.1);
+      }
+
+      .card .card::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: -1;
+      }
+
+      .card--one {
+        background: url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=872&q=80)
+          no-repeat center / cover;
+      }
+
+      .card--two {
+        background: url(https://images.unsplash.com/photo-1504681869696-d977211a5f4c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=652&q=80)
+          no-repeat center / cover;
+        transform: translateX(-50%);
+      }
+
+      .card--three {
+        background: url(https://images.unsplash.com/photo-1559767180-47d8f4919e5d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=830&q=80)
+          no-repeat center / cover;
+
+        transform: translateX(-100%);
+      }
+
+      .card--four {
+        background: url(https://images.unsplash.com/photo-1525153537143-f88592837fb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=770&q=80)
+          no-repeat center / cover;
+
+        transform: translateX(-150%);
+      }
+
+      .card:hover ~ .card:not(:first-child) {
+        left: 102px;
+      }
+
+      .card--one:hover {
+        transform: translateY(-20%);
+      }
+
+      .card--two:hover {
+        transform: translate(-50%, -20%);
+      }
+
+      .card--three:hover {
+        transform: translate(-100%, -20%);
+      }
+
+      .card--four:hover {
+        transform: translate(-150%, -20%);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Opdracht 1</h1>
+
+    <div class="img-box">
+      <img
+        src="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions/transitionsprinciple.png"
+        alt="transitions elements visual"
+      />
+
+      <img
+        src="https://d33wubrfki0l68.cloudfront.net/02ca5906d1d4d7e7725e83029a0ff236a2756988/7b62e/images/css/back-to-basics-css-transitions/anatomy-of-transition.svg"
+        alt="transitions elements visual"
+      />
+    </div>
+
+    <h4>Antwoord:</h4>
+
+    <h3 style="width: 60%">
+      Zie de onderstaande card deck. Kun jij deze zelf namaken? Je mag uiteraard
+      weer je eigen creativiteit erop los laten.
+    </h3>
+
+    <div class="container">
+      <div class="card card--one">
+        <div class="card__top">
+          <h3 class="card__top__title">Explore</h3>
+        </div>
+        <p class="card__location">Mountain</p>
+      </div>
+      <div class="card card--two">
+        <div class="card__top">
+          <h3 class="card__top__title">Experience</h3>
+        </div>
+        <p class="card__location">Beach</p>
+      </div>
+      <div class="card card--three">
+        <div class="card__top">
+          <h3 class="card__top__title">Express</h3>
+        </div>
+        <p class="card__location">Desert</p>
+      </div>
+      <div class="card card--four">
+        <div class="card__top">
+          <h3 class="card__top__title">Expand</h3>
+        </div>
+        <p class="card__location">Galaxy</p>
+      </div>
+    </div>
+
+    <a href="../index.html"><input type="button" value="Go Back" /></a>
+  </body>
+</html>
