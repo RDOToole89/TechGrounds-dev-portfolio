@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transitions</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .img-box {
+        display: flex;
+        flex-direction: column;
+      }
+
+      img {
+        width: 40%;
+      }
+
+      img:nth-child(2) {
+        width: 30%;
+      }
+
+      .container {
+        position: relative;
+        padding: 2rem;
+        border: 1px solid black;
+        height: 300px;
+        width: 700px;
+        background-color: #f1f1f1;
+        margin-bottom: 2rem;
+        gap: 0.4rem;
+      }
+
+      .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0;
+        margin-left: 0;
+        height: 50px;
+        width: 50px;
+        background-color: transparent;
+        border: 1px solid black;
+      }
+
+      .box:not(:last-child) {
+        margin-bottom: 10px;
+      }
+
+      .box1 {
+        transition: all 1.5s ease-in-out;
+      }
+
+      .box2 {
+        transition: all 2s ease-in-out;
+      }
+
+      .box3 {
+        transition: all 1.5s ease-in-out;
+      }
+
+      .box4 {
+        transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .box5 {
+        transition: all 2.5s cubic-bezier(0.47, 0, 0.5, 0.715);
+      }
+
+      .container:hover .box1,
+      .container:hover .box2,
+      .container:hover .box3,
+      .container:hover .box4,
+      .container:hover .box5 {
+        margin-left: calc(700px - 3rem);
+        color: white;
+        background-color: red;
+      }
+
+      .container:hover .box1 {
+        border-radius: 50%;
+      }
+
+      .container:hover .box2 {
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Opdracht 3</h1>
+
+    <div class="img-box">
+      <img
+        src="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions/transitionsprinciple.png"
+        alt="transitions elements visual"
+      />
+
+      <img
+        src="https://d33wubrfki0l68.cloudfront.net/02ca5906d1d4d7e7725e83029a0ff236a2756988/7b62e/images/css/back-to-basics-css-transitions/anatomy-of-transition.svg"
+        alt="transitions elements visual"
+      />
+    </div>
+
+    <h4>Antwoord:</h4>
+
+    <h3 style="width: 60%">
+      Transitions kent verschillende transition-timing. Zie hieronder een
+      voorbeeld. Maak het na.
+    </h3>
+
+    <div class="container">
+      <div class="box box1">1</div>
+      <div class="box box2">2</div>
+      <div class="box box3">3</div>
+      <div class="box box4">4</div>
+      <div class="box box5">5</div>
+    </div>
+
+    <a href="../index.html"><input type="button" value="Go Back" /></a>
+  </body>
+</html>
