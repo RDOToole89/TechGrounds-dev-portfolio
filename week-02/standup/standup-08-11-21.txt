@@ -1,0 +1,4 @@
+FATOS => pseudo elementen => prima
+CYLVIA => pseudo elementen => had moeite / flexbox => gaat wel goed main axis / cross axis
+
+Donderdag => Mandy presentatie uitvragen. 

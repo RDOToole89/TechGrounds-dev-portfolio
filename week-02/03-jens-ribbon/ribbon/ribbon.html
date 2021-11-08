@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ribbon</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: grey;
+            margin: 0;
+        }
+
+        .ribbon {
+            background-color: yellow;
+            width: 200px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 20vh auto;
+            position: relative;
+        }
+
+        .ribbon::before,
+        .ribbon::after {
+            content: '';
+            display: inline-block;
+            background-color: orange;
+            width: 8%;
+            height: 1em;
+            position: absolute;
+            top: 35%;
+            z-index: -1;
+        }
+
+        .ribbon::before {
+            left: 0;
+            transform: skewY(40deg);
+        }
+
+        .ribbon::after {
+            right: 0;
+            transform: skewY(-40deg);
+        }
+
+        .text::before,
+        .text::after {
+            content: '';
+            display: inline-block;
+            background-color: red;
+            width: 20%;
+            height: 1em;
+            position: absolute;
+            top: 65%;
+            z-index: -2;
+        }
+
+        .text::before {
+            left: -12%;
+        }
+
+        .text::after {
+            right: -12%;
+        }
+    </style>
+</head>
+
+<body>
+        <div class="ribbon">
+            <span class="text">Hello World!</span>
+        </div>
+</body>
+
+</html>
