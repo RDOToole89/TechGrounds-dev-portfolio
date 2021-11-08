@@ -1,0 +1,94 @@
+// Include partials at the top
+@import './resets';
+@import './variables';
+
+// Sass function
+// Sass functions are meant to compute values and return values
+@function weight($weight-name) {
+  @return map-get($font-weights, $weight-name);
+}
+
+// Sass Mixin => reusable code
+// Can take arguments
+// Mixins and functions are similar
+// Mixins are specifically for defining styles
+@mixin flexCenter($direction) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+
+// Light theme Mixin
+@mixin theme($light-theme: true) {
+  // control flow logic
+  @if $light-theme {
+    // lighten and darken are Sass color functions
+    background: lighten($primary-color, 100%);
+    color: darken($text-color, 100%);
+  }
+}
+
+// Media Query Mixin
+@mixin mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+body {
+  color: $text-color;
+  background: $primary-color;
+  // Example of how to use a Sass Map
+}
+
+// Example of SCSS nesting
+.main {
+  // Example of how to INCLUDE a Sass Mixin
+  @include flexCenter(row);
+  // Sass calculation => the operation needs to be of the same type
+  width: 80% - 10%;
+  margin: 0 auto;
+
+  // Standard nesting
+  .main__paragraph1 {
+    // Exanoke if Sass function in use
+    font-weight: weight(regular);
+  }
+
+  // Shortcutting the .main text => the "&" always refers to the parent.
+  &__paragraph {
+    line-height: 1.5;
+  }
+
+  // Interpolating everything that has come before paragraph
+  #{&}__paragraph1 {
+    border: thin solid black;
+    padding: 1rem;
+    margin: 2rem 2rem 0 0;
+
+    // Nesting a pseudo class
+    &:hover {
+      color: pink;
+    }
+  }
+
+  // Extending code => copying code from another element
+  #{&}__paragraph2 {
+    @extend .main__paragraph1;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+
+  // Media Query Mixin
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+// Class using the $light-theme Mixin
+.light {
+  @include theme($light-theme: true);
+}
