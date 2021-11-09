@@ -73,7 +73,7 @@ body {
     }
   }
 
-  // Extending code => copying code from another element
+  // Extending code => copying code from another element => elements need to have a relation
   #{&}__paragraph2 {
     @extend .main__paragraph1;
 

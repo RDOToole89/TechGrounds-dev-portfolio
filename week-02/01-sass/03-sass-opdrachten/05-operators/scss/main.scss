@@ -1,0 +1,40 @@
+.image {
+  &-01 {
+    height: 400px * 2;
+    width: auto;
+  }
+
+  &-02 {
+    height: 400px + 100;
+  }
+
+  &-03 {
+    height: 400px - 300px;
+    width: auto;
+  }
+
+  &-04 {
+    height: 200px + 100px -400px;
+    width: auto;
+  }
+
+  &-05 {
+    height: 200px * 3;
+    width: auto;
+  }
+
+  &-06 {
+    height: 750px * 1;
+    width: auto;
+  }
+
+  &-07 {
+    height: 30px / 5px;
+    width: 24px / 4;
+  }
+
+  &-08 {
+    height: (30px / 5px);
+    width: (24px / 4);
+  }
+}

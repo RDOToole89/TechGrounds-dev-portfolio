@@ -1,0 +1,82 @@
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
+body {
+  background: -webkit-gradient(linear, right top, left bottom, from(rgba(234, 237, 94, 0.2)), to(rgba(216, 216, 75, 0.5)));
+  background: linear-gradient(top right, rgba(234, 237, 94, 0.2), rgba(216, 216, 75, 0.5));
+  height: 100vh;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-family: 'Architects Daughter', cursive;
+  text-align: center;
+  letter-spacing: 4px;
+}
+
+.banner {
+  font-family: 'Pacifico', cursive;
+  height: 400px;
+  background: -webkit-gradient(linear, right top, left bottom, from(rgba(234, 237, 94, 0.2)), to(rgba(216, 216, 75, 0.5))), url(https://images.unsplash.com/photo-1609639643505-3c158a56de42?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1712&q=80) no-repeat center/cover;
+  background: linear-gradient(top right, rgba(234, 237, 94, 0.2), rgba(216, 216, 75, 0.5)), url(https://images.unsplash.com/photo-1609639643505-3c158a56de42?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1712&q=80) no-repeat center/cover;
+  margin-bottom: 4rem;
+  -webkit-clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+          clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+  border: 4px solid rgba(0, 0, 0, 0.5);
+}
+
+.banner__slogan {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  border: 4px solid rgba(0, 0, 0, 0.5);
+  top: 200px;
+  left: 25%;
+  width: 50%;
+  height: 200px;
+  text-align: center;
+}
+
+.banner__slogan__title {
+  font-size: 2rem;
+  line-height: 200px;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+}
+
+.container .icon {
+  background-color: pink;
+  width: 30%;
+  height: auto;
+  border: 3px solid yellowgreen;
+  font-size: 1.4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .icon img {
+  width: 100px;
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,42 @@
+@mixin button {
+  background-color: orangered;
+  color: white;
+}
+
+@mixin buttonHover {
+  background-color: orange;
+  color: #101010;
+}
+
+@mixin squareColorChange($startColor, $endColor, $duration) {
+  margin: 100px 0 0 100px;
+  width: 200px;
+  height: 200px;
+  background-color: $startColor;
+  transition: all $duration ease;
+
+  &:hover {
+    background: $endColor;
+  }
+}
+
+@mixin squareColorChangeHover($background-color) {
+}
+
+.button {
+  @include button();
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  padding: 0.8rem 1.4rem;
+  border-radius: 1.8rem;
+  border: none;
+  transition: all 0.8s ease;
+
+  &:hover {
+    @include buttonHover();
+  }
+}
+
+.color-changing-square {
+  @include squareColorChange(lightgreen, olive, 1s);
+}
