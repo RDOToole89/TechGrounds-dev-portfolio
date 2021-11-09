@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>Sass - Extend and Inheritance</title>
+  </head>
+  <body>
+    <div class="top">
+      <h1>Extends & Inheritance</h1>
+
+      <h4>
+        We hebben nu zowel mixins als extends gezien die beiden styling kunnen
+        overnemen. Lees dit artikel en geef een uitleg wanneer we inheritance
+        gebruiken en wanneer we mixins gebruiken.
+      </h4>
+      <p>
+        <strong>@mixin / @include</strong> zijn een manier om code te dupliceren
+        op meerdere plekken. Ze kunnen ook argumenten aanenemen en zijn dus
+        ideaal voor dynamische stylen. Ze leiden wel te herhaling van code en
+        zijn dus in tegenstrijd met het DRY principe.
+      </p>
+
+      <p>
+        <strong>%.placeholder @extend</strong> is een andere manier om code in
+        Sass te dupliceren. Extends kunnen het best gebruikt worden als meerdere
+        elementen dezelfde <strong>statische</strong> properties hebben. Code
+        wordt niet meerdere malen in de css gedupliceerd en volgt dus het DRY
+      </p>
+    </div>
+
+    <div class="buttons">
+      <button class="btn">Basic Button</button>
+      <button class="btn--report">Report Button</button>
+      <button class="btn--submit">Submit Button</button>
+    </div>
+  </body>
+</html>

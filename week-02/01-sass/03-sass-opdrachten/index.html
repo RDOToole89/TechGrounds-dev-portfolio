@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SASS Opdrachten</title>
+    <style>
+      body {
+        background: linear-gradient(
+            to right,
+            rgba(39, 39, 39, 0.3),
+            rgba(39, 39, 39, 0.1)
+          ),
+          url(https://miro.medium.com/max/3840/1*kJUB3nltsNpwxGjxo7PzRg.jpeg)
+            no-repeat center / cover;
+        height: 100vh;
+      }
+
+      .opdrachten-lijst {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .opdrachten-lijst__item > a {
+        font-size: 1.3rem;
+        text-decoration: none;
+        color: whitesmoke;
+        transition: 0.2s ease;
+      }
+
+      .opdrachten-lijst__item:hover a {
+        color: palevioletred;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="main">
+      <h1>Sass Opdrachten</h1>
+
+      <ul class="opdrachten-lijst">
+        <li class="opdrachten-lijst__item">
+          <a href="./01-nesting-variables/dist/index.html"
+            >Opdracht 1 - Nesting</a
+          >
+        </li>
+        <li class="opdrachten-lijst__item">
+          <a href="./01-nesting-variables/dist/index.html"
+            >Opdracht 2 - Variables</a
+          >
+        </li>
+        <li class="opdrachten-lijst__item">
+          <a href="./02-partials-modules/dist/index.html"
+            >Opdracht 3 - Partials and Modules</a
+          >
+        </li>
+        <li class="opdrachten-lijst__item">
+          <a href="./01-nesting/dist/01-opdracht1.html"
+            >Opdracht 4 - Mixins and Includes</a
+          >
+        </li>
+        <li class="opdrachten-lijst__item">
+          <a href="./01-nesting/dist/01-opdracht1.html"
+            >Opdracht 5 - Extend and Inheritance</a
+          >
+        </li>
+        <li class="opdrachten-lijst__item">
+          <a href="./01-nesting/dist/01-opdracht1.html"
+            >Opdracht 6 - Operators</a
+          >
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>

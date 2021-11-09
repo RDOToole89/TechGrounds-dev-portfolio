@@ -1,0 +1,16 @@
+$primary-color: #c1272d;
+$secondary-color: #cce7fe;
+$tertiary-color: #0088fa;
+
+$button-color: #fff;
+$button-hover-color: #141414;
+
+$font-weights: (
+  'light': 300,
+  'medium': 500,
+  'bold': 700,
+);
+
+@function weight($weight-name) {
+  @return map-get($font-weights, $weight-name);
+}
