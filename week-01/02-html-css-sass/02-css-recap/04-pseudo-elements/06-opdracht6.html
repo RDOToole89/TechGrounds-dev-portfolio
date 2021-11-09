@@ -19,18 +19,18 @@
       }
 
       .circle {
+        position: relative;
         display: flex;
         color: white;
         justify-content: center;
         align-items: center;
         font-size: 3rem;
-        position: relative;
         background-color: black;
         border-radius: 50%;
         height: 200px;
         width: 200px;
       }
-
+      /* 
       .circle::before {
         content: '';
         position: absolute;
@@ -54,6 +54,49 @@
         left: 25%;
         transform: translate(50%, -50%);
       }
+ */
+
+      .small-circle--left {
+        position: absolute;
+        width: 130px;
+        height: 120px;
+        left: -25%;
+        border-radius: 50%;
+        background-color: black;
+        z-index: 100;
+      }
+
+      .small-circle--left::after {
+        content: '';
+        position: absolute;
+        top: 20%;
+        right: 60%;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: white;
+      }
+
+      .small-circle--right {
+        position: absolute;
+        width: 130px;
+        height: 120px;
+        right: -25%;
+        border-radius: 50%;
+        background-color: black;
+        z-index: 100;
+      }
+
+      .small-circle--right::after {
+        content: '';
+        position: absolute;
+        bottom: 20%;
+        left: 60%;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: white;
+      }
     </style>
   </head>
   <body>
@@ -71,9 +114,21 @@
     </h3>
 
     <div class="container">
-      <div class="circle">1</div>
-      <div class="circle">2</div>
-      <div class="circle">3</div>
+      <div class="circle">
+        1
+        <div class="small-circle--left"></div>
+        <div class="small-circle--right"></div>
+      </div>
+      <div class="circle">
+        2
+        <div class="small-circle--left"></div>
+        <div class="small-circle--right"></div>
+      </div>
+      <div class="circle">
+        3
+        <div class="small-circle--left"></div>
+        <div class="small-circle--right"></div>
+      </div>
     </div>
 
     <a href="../index.html"><input type="button" value="Go Back" /></a>
