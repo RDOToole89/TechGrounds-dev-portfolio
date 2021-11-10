@@ -24,7 +24,7 @@
         position: relative;
         border: 1px solid black;
         height: 500px;
-        width: 700px;
+        width: 1000px;
         background-color: #f1f1f1;
         overflow: hidden;
       }
@@ -72,9 +72,9 @@
         top: 50%;
 
         transform: translate(-50%, -50%);
-        transition-property: left, top;
-        transition-duration: 1.5s, 2s, 0s;
-        transition-delay: 0ms, 1s, 0s;
+        transition-property: left, top, transform;
+        transition-duration: 2s, 1s, 1s;
+        transition-delay: 0s, 3s, 3.5s;
         animation-timing-function: ease-in, ease, linear;
       }
 
@@ -91,9 +91,9 @@
       }
 
       .container:hover .box3 {
-        left: 0%;
-        top: 95%;
-        transform: translate(0%, -50%);
+        left: 25px;
+        top: 100%;
+        transform: translate(-50%, -100%);
       }
     </style>
   </head>
