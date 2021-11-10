@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <title>Challenge 2</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: rgba(252, 211, 77, 0.8);
+      }
+
+      h4 {
+        font-family: 'Press Start 2P', cursive;
+        font-size: 0.5rem;
+        letter-spacing: 1.5px;
+        animation-name: grow;
+        animation-delay: 0ms;
+        animation-duration: 1s;
+        animation-timing-function: ease;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+        height: 200px;
+        /* background-color: rgba(252, 211, 77, 0.2); */
+        gap: 4rem;
+        z-index: 100;
+      }
+
+      .circle {
+        position: relatve;
+        height: 40px;
+        width: 40px;
+        border-radius: 50px;
+        animation-name: grow;
+        animation-duration: 1s;
+        animation-timing-function: ease;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+
+      .circle1 {
+        background-color: #f87171;
+      }
+
+      .circle2 {
+        background-color: #ef4444;
+        animation-delay: 333ms;
+      }
+
+      .circle3 {
+        background-color: #b91c1c;
+        animation-delay: 333ms;
+      }
+
+      @keyframes grow {
+        0% {
+          transform: scale(1);
+        }
+
+        100% {
+          transform: scale(1.6);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle3"></div>
+    </div>
+    <h4>Loading ...</h4>
+  </body>
+</html>
