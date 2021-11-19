@@ -1,0 +1,32 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+  background-color: #0093e9;
+  background-image: linear-gradient(to right, #0093e9 0%, #80d0c7 100%);
+}
+
+.clock {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  border: 3px solid rgba(0, 0, 0, 0.8);
+}
+
+.clock .number {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(orangered, 0.3);
+  text-align: center;
+}
+
+.clock .number1 {
+  transform: rotate;
+}
