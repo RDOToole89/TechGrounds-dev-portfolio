@@ -7,18 +7,19 @@
 
 body {
   display: flex;
+  font-size: 1.6rem;
   min-height: 100vh;
   justify-content: center;
   align-items: center;
-  background-color: #0093e9;
-  background-image: linear-gradient(to right, #0093e9 0%, #80d0c7 100%);
+  background-color: #f4d03f;
+  background-image: linear-gradient(132deg, #f4d03f 0%, #16a085 100%);
   overflow: hidden;
 }
 
 .clock {
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: 600px;
+  height: 600px;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
   border: 3px solid rgba(0, 0, 0, 0.8);
@@ -98,33 +99,37 @@ body {
   background-color: black;
 }
 
+/* middlepoint */
 .clock::after {
   content: '';
   position: absolute;
   background-color: black;
   z-index: 11;
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   top: 50%;
   left: 50%;
-  transform: translate(-50%);
+  transform: translate(-50%, -50%);
   border-radius: 50%;
 }
 
+/* second hand */
 .clock .hand.second {
   width: 3px;
   height: 45%;
   background-color: orangered;
 }
 
+/* minute hand */
 .clock .hand.minute {
   width: 7px;
   height: 40%;
   background-color: black;
 }
 
+/* hour hand */
 .clock .hand.hour {
-  width: 2px;
+  width: 10px;
   height: 35%;
   background-color: black;
 }
