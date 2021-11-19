@@ -11,11 +11,10 @@ const setClock = () => {
   const currentSecond = currentDate.getSeconds();
 
   hoursEl.textContent = currentHour;
-  minutesEl.textContent = currentMinute * 1;
+  minutesEl.textContent =
+    currentMinute < 10 ? '0' + currentMinute.toString() : currentMinute;
   secondsEl.textContent = currentSecond;
 };
-
-setClock();
 
 let timer = null;
 
@@ -35,3 +34,6 @@ stop.addEventListener('click', () => {
     timer = null;
   }
 });
+
+setClock();
+startClock();
