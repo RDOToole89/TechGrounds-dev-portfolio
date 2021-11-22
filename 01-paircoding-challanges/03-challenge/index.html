@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Hover Calendar</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        font-family: 'Ubuntu', sans-serif;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .calendar {
+        display: flex;
+        flex-wrap: wrap;
+        width: 500px;
+        height: 500px;
+        background: #60a5fa;
+      }
+
+      .calendar__box {
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        transition: all 400ms ease;
+      }
+
+      .calendar__box:hover {
+        cursor: pointer;
+
+        /* box-shadow: inset 0 0 0 6px #fff; */
+        box-shadow: inset rgba(99, 99, 99, 0.7) 0px 0px 16px 2px;
+      }
+
+      .calendar__day {
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: all 400ms ease;
+      }
+
+      .calendar__date {
+        font-size: 4rem;
+        transition: all 400ms ease;
+      }
+
+      .calendar__box:hover .calendar__day {
+        transform: scale(0.97);
+      }
+      .calendar__box:hover .calendar__date {
+        transform: scale(0.97);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calendar">
+      <div class="calendar__box">
+        <p class="calendar__day">friday</p>
+        <h2 class="calendar__date">15</h2>
+      </div>
+      <div class="calendar__box">
+        <p class="calendar__day">Saturday</p>
+        <h2 class="calendar__date">15</h2>
+      </div>
+      <div class="calendar__box">
+        <p class="calendar__day">Sunday</p>
+        <h2 class="calendar__date">17</h2>
+      </div>
+      <div class="calendar__box">
+        <p class="calendar__day">Monday</p>
+        <h2 class="calendar__date">18</h2>
+      </div>
+    </div>
+  </body>
+</html>
