@@ -57,19 +57,52 @@ console.log('increment++ effect: ', increment++); // toont oude waarde => maar i
 console.log('increment++ effect: ', increment++);
 console.log('++increment effect: ', ++increment);
 
+console.log('');
+console.log('<===== divider ====>');
+console.log('');
+
 let modulo = 24 % 10;
 console.log('Modulo 24 % 10: ', modulo); // 4
 
 let division = 24 / 10;
 console.log('Division 24 / 10: ', 24 / 10);
-let someNumber2 = 'Text';
-console.log('someNumber = "Text"', !someNumber2);
-console.log('someNumber = "Text"', !someNumber2);
-console.log('someNumber = "Text"', !someNumber2);
-console.log('someNumber = "Text"', !someNumber2);
-console.log('someNumber = "Text"', !someNumber2);
-console.log('someNumber = "Text"', !someNumber2);
-console.log('someNumber = "Text"', !someNumber2);
-console.log('someNumber = "Text"', !someNumber2);
-console.log('someNumber = "Text"', !someNumber2);
-console.log('someNumber = "Text"', !someNumber2);
+
+let someValue1 = 'Text';
+let someValue2 = Boolean;
+let someValue3 = false;
+let someValue4 = 'false';
+let someValue5 = true;
+let someValue6 = 'true';
+let someValue7 = null;
+let someValue8 = undefined;
+
+console.log('');
+console.log('<===== divider ====>');
+console.log('');
+
+console.log('someValue1 = "Text"', !someValue1);
+console.log('someValue2 = "Boolean"', !someValue2);
+console.log('someValue3 = "false"', !someValue3);
+console.log('someValue4 = "false string"', !someValue4);
+console.log('someValue5 = "true"', !someValue5);
+console.log('someValue6 = "true string"', !someValue6);
+console.log('someValue7 = "null"', !someValue7);
+console.log('someValue8 = "undefined"', !someValue8);
+
+console.log('');
+console.log('<===== divider ====>');
+console.log('');
+
+let anotherValue1 = 'text';
+let anotherValue2 = 3;
+let anotherValue3 = 10;
+let anotherValue4 = 15;
+let anotherValue5 = 20;
+let anotherValue6 = 2;
+
+console.log('anotherValue1 "tekst" += "text"', (anotherValue1 += anotherValue1)); // output: teksttekst => "tekst" + "tekst"
+console.log('anotherValue5 20 -= 10', (anotherValue5 -= anotherValue3)); // output: 10 => 20 - 10
+console.log('anotherValue2 3 *= 2', (anotherValue2 *= anotherValue6)); // output: 6 => 3 * 2
+console.log('anotherValue3 10 /= 2', (anotherValue3 /= anotherValue6)); // output: 5 => 10 / 2
+console.log('anotherValue4 15 %= 2 ', (anotherValue4 %= anotherValue6)); // output: 1 => 15 % 2 => what is left after dividing 15 in chunks of 2
+console.log('anotherValue4 2 **= 2 ', (anotherValue6 **= anotherValue6)); // output: 4 => 2 **= 2 => exponentiation
