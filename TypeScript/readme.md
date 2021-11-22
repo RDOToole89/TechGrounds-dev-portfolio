@@ -125,6 +125,8 @@ console.log(i);
 
 \*\*\* When to use Type annotations?!
 
+// Variable type annotations:
+
 1. When we declare a variable on one line then initialize it later
    let words = ['red', 'green', 'blue'];
    // let foundWord; => TypeScript declares it has the Any type.
@@ -167,3 +169,132 @@ coordinates: { x: number; y: number }
 
 \*\*\* ANY is a type just like string or boolean. It means that TypeScript doesn't know what it is
 and can't check it. Avoid any at all cost.
+
+### Section 04 - Function Type Annotations in Action
+
+// Function type annotations
+
+Type annotations for functions =>
+
+Code we add to tell TypeScript what type of arguments a function will receive and what type of values it will return.
+
+Type inference for functions => TypeScript tries to figure out what type of value a function will RETURN!
+
+// function add takes two arguments a and b which are both numbers.
+// this functions RETURNS the addition of those number thus it must return a number
+
+// Here we declare all the types and also on the return type
+const add = (a: number, b: number): number => {
+return a + b;
+};
+
+// It's a better practice to ALWAYS add return type to avoid an unwanted void return
+when forgetting a return statement in the function
+
+// Typescript can also infer the return type from the body of the functions
+const add = (a: number, b: number) => {
+return a + b;
+};
+
+// Type annotation anonymous functions
+const multiply = function (a: number, b: number): number {
+return a \* b;
+};
+
+// Function that returns void can return void or null or nothing at all
+const logger = (message: string): void => {
+console.log(message);
+};
+
+// Never indicated that we for example throw an Error and never reach the
+// end of the function with a value
+const throwError = (message: string): never => {
+throw new Error(message);
+};
+
+// Desctructuring with types
+
+// here we describe a forecast object that has a date a weather property
+const logWeather = (forecast: { date: Date; weather: string }): void => {
+console.log(forecast.date);
+console.log(forecast.weather);
+};
+
+// with destructing we just annotate the desctructured object
+const logWeather2 = ({ date, weather }: { date: Date; weather: string }): void => {
+console.log(date);
+console.log(weather);
+};
+
+logWeather(todaysWeather);
+
+// Types on objects
+
+const profile = {
+name: 'alex',
+age: 20,
+coords: {
+lat: 0,
+lng: 15,
+},
+setAge(age: number): void {
+this.age = age;
+},
+};
+
+// Typing a destructured variable! => we describe
+const { age }: { age: number } = profile;
+
+// Typing a destructured object within an object
+// The below code is just like a regular JS object.
+const {
+coords: { lat, lng },
+}: { coords: { lat: number; lng: number } } = profile;
+
+### Section 05 - Mastering Typed Arrays
+
+All JS array feautes will still work. Types arrays usually contain one specific TYPE of value.
+
+Typed Array => Array where each element is some consistent type of value
+
+Usually we use typed arrays to represent a colleciton of records with some arbitrary sort order
+
+// In this example we have an array of strings
+const carMakers: string[] = ['ford', 'toyota', 'chevy'];
+
+// If we dont add a type to an empty array TypeScript will infer the ANY type on the Array. Which is
+something we want to avoid in TypeScript.
+const flowers = []
+
+// This example is a little more complicated. This type is an array with array of string
+const carsByMake: string[][] = [['f150'], ['corolla'], ['camaro']];
+
+so... why care about Typed Arrays
+
+Positives:
+
+1. TS can do type inference when extracting values from an array
+
+// TypeScript knows the carMakers array contains strings
+// thus it infers that values coming from that array must also be strings.
+const ford = carMakers[0];
+const myCar = carMakers.pop();
+
+2. TS can prevents us from adding incompatible values to the array
+   // The following will create a typescript error because the carMakers array is types as string[]
+   // `carMakers.push(100);`
+
+3. We can get help with 'map', 'forEach', 'reduce' functions
+
+For exampple:
+// In higher order functions such as .map, if TypeScript knows the type of value
+// it will automatically suggest the methods you can use on that return type
+carMakers.map((car: string): string => {
+return car.toUpperCase();
+});
+
+4. Flexible - arrays can still contain multiple different types
+
+// Here we specifically declare it can by either of Type (Date | string)[]
+// because TypeScript wasn't able to infer this from the initialization
+const mostImportantDates: (Date | string)[] = [new Date()];
