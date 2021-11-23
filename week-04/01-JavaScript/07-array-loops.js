@@ -140,8 +140,43 @@ const ballSports = dutchSports.splice(0, 2);
 console.log('BallSports array with splice(0,2)', ballSports);
 console.log('dutchSport array after dutchSport.splice(0,2)', dutchSports);
 
-dutchSports.sort((a, b) => {
-  a - b;
-});
 dutchSports.push('Apenkooien');
-console.log('dutchSports after .sort()', dutchSports);
+dutchSports.push('Basketball');
+dutchSports.sort();
+console.log('Dutch Sports after sort', dutchSports);
+loopLogger('regular', dutchSports);
+
+const sportsLengthArr = dutchSports.map((sport) => sport.length);
+console.log(sportsLengthArr);
+
+console.log('');
+console.log('<===== divider ====>');
+console.log('');
+
+// Opdracht 5.4
+
+const arrayLike = document.querySelectorAll('div');
+console.log('Array Like NodeList => ', arrayLike);
+
+const nodeListToArray = Array.from(arrayLike);
+
+console.log('Array.from NodeList', Array.from(nodeListToArray));
+
+console.log('');
+console.log('<===== divider ====>');
+console.log('');
+
+const valueArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 7, 10, 7];
+const valueArraySeven = [7, 7, 7, 7, 7, 7];
+
+const evenNumbers = valueArray.filter((item) => item % 2 === 0);
+console.log('Log even numbers', evenNumbers);
+
+const findSevenInValueArray = valueArray.find((item) => item === 7);
+console.log('Find value in array', findSevenInValueArray);
+
+const areSomeValueSeven = valueArray.some((item) => item === 7);
+console.log('Are some values seven? ', areSomeValueSeven);
+
+const isEveryNumberSeven = valueArraySeven.every((item) => item === 7);
+console.log('Is every number seven?', isEveryNumberSeven);
