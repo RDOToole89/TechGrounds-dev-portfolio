@@ -1,0 +1,146 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #93c5fd;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn,
+.count-box,
+.displayText,
+.text-display-box {
+  position: relative;
+  margin-top: 10%;
+  background: #93c5fd;
+  border: 1px solid white;
+  padding: 20px;
+  font-size: 0.9em;
+  color: white;
+  box-shadow: 4px 4px 0px 0px white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  transition: all 400ms ease-in-out;
+  left: 0;
+}
+
+.text-display-box {
+  width: 100%;
+}
+
+.btn:hover {
+  top: 0;
+  left: 4px;
+  top: 4px;
+  box-shadow: 0 0 0 0 white;
+}
+
+.input-group {
+  display: block;
+  margin-top: 3rem;
+  width: 441px;
+  max-width: 100%;
+  height: 82px;
+  border: 0;
+  background-color: #ffffff;
+  border-bottom-left-radius: 41px;
+  border-bottom-right-radius: 41px;
+  border-top-left-radius: 41px;
+  border-top-right-radius: 0;
+  box-shadow: 0 17px 40px 0 rgba(75, 128, 182, 0.07);
+  margin-bottom: 22px;
+  position: relative;
+  font-size: 17px;
+  color: #a7b4c1;
+  transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+.input-group:hover {
+  box-shadow: 0 14px 44px 0 rgba(0, 0, 0, 0.077);
+}
+
+.input-group__input {
+  position: absolute;
+  border: 0;
+  box-shadow: none;
+  background-color: rgba(255, 255, 255, 0);
+  top: 0;
+  height: 65px;
+  width: 100%;
+  padding: 0 53px;
+  box-sizing: border-box;
+  z-index: 3;
+  display: block;
+  color: #1a6fc4;
+  font-size: 17px;
+  font-family: 'Oxygen', sans-serif;
+  transition: top 0.1s ease-in-out;
+}
+
+.input-group__input::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.input-group__input:focus,
+.input-group__input:not(:placeholder-shown) {
+  top: 10px;
+}
+
+.input-group__label {
+  position: absolute;
+  border: 0;
+  top: 0;
+  left: 0px;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  padding: 0 53px;
+  box-sizing: border-box;
+  transition: all 0.1s ease-in-out;
+  cursor: text;
+}
+
+.input-group__input:focus + label,
+.input-group__input:not(:placeholder-shown) + label {
+  bottom: 20px;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.btn-round {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  position: absolute;
+  width: 20%;
+  /* pointer-events: none; */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  color: #e0e0e0;
+  font-family: 'Ubuntu', sans-serif;
+  cursor: pointer;
+  z-index: 100;
+  border-bottom-right-radius: 41px;
+}

@@ -89,10 +89,6 @@ console.log('someValue6 = "true string"', !someValue6);
 console.log('someValue7 = "null"', !someValue7);
 console.log('someValue8 = "undefined"', !someValue8);
 
-console.log('');
-console.log('<===== divider ====>');
-console.log('');
-
 let anotherValue1 = 'text';
 let anotherValue2 = 3;
 let anotherValue3 = 10;

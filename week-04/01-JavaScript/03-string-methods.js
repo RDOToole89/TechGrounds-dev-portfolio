@@ -3,7 +3,9 @@
 let placeholderText = 'How vexingly quick daft zebras jump!';
 
 const splitText = placeholderText.split(' ');
+
 const splitInTwo = placeholderText.slice(placeholderText.indexOf('daft'));
+
 console.log('placeholder text => ', placeholderText);
 console.log('splitText => ', splitText);
 
@@ -62,5 +64,3 @@ console.log('');
 console.log('text.substring(-10 ) =>', substringAndSliceText.substring(-5, -1));
 
 console.log('text.slice(-12,0) =>', substringAndSliceText.slice(-12, -1));
-
-console.log(splitInTwo);
