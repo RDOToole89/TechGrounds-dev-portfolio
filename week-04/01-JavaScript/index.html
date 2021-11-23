@@ -5,12 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="#" type="image/x-icon" />
-    <script
-      defer
-      src="04-conditions.js
-    "
-    ></script>
-    <title>JavaScript - Basics</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="05-functions.js"></script>
+
+    <style></style>
+    <title>JavaScript - Basics - functions</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <div class="count-box">0</div>
+      <button onclick="printMyName('Harry')" class="btn">Print name to console</button>
+      <button onclick="multiplyOrIncrement('increment', 1)" class="btn">Increment counter</button>
+      <button class="btn btn--random">Generate Random Number</button>
+
+      <div class="text-display-box"></div>
+
+      <div class="input-group">
+        <!-- <label for="text">Hello!</label> -->
+        <input
+          value=""
+          class="form-control input-group__input"
+          placeholder="input something"
+          type="text"
+          name="text"
+          id="text-input"
+        />
+        <!-- <div class="req-mark">!</div> -->
+        <button class="btn-round">
+          <ion-icon name="checkmark-circle-outline" size="large"></ion-icon>
+        </button>
+      </div>
+      <div class="input-group">
+        <input
+          value=""
+          class="form-control input-group__input"
+          placeholder="enter colleague name"
+          type="text"
+          name="text"
+          id="text-input--names"
+        />
+        <!-- <div class="req-mark">!</div> -->
+        <button class="btn-round btn-round--name">
+          <ion-icon name="checkmark-circle-outline" size="large"></ion-icon>
+        </button>
+      </div>
+    </div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  </body>
 </html>
