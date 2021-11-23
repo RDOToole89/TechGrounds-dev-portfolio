@@ -71,6 +71,7 @@ const randomNumber = () => {
   console.log(randomNum);
   console.log(counter);
 
+  count = randomNum;
   counter.innerText = randomNum;
 };
 
