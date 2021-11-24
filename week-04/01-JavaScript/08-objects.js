@@ -31,7 +31,12 @@ function Person(name, age, country, city) {
   this.city = city;
 }
 
-const roibinFunctionObject = new Person('Roibin', 32, 'The Netherlands', 'Amsterdam');
+const roibinFunctionObject = new Person(
+  'Roibin',
+  32,
+  'The Netherlands',
+  'Amsterdam'
+);
 console.log('Roibin function constructor Person =>', roibinFunctionObject);
 
 // Factory function
@@ -45,8 +50,16 @@ function createPerson(name, age, country, city) {
   };
 }
 
-const roibinFromFactoryFunction = createPerson('Roibin', 32, 'The Netherlands', 'Amsterdam');
-console.log('Roibn constructed from a factory function =>', roibinFromFactoryFunction);
+const roibinFromFactoryFunction = createPerson(
+  'Roibin',
+  32,
+  'The Netherlands',
+  'Amsterdam'
+);
+console.log(
+  'Roibn constructed from a factory function =>',
+  roibinFromFactoryFunction
+);
 
 // Singleton constructor => used for namespacing
 
@@ -91,7 +104,10 @@ const roibinSingleton = new (function () {
   };
 })();
 
-console.log('Roibin from singleton constructor => ', roibinSingleton.getInstance());
+console.log(
+  'Roibin from singleton constructor => ',
+  roibinSingleton.getInstance()
+);
 
 // Prototypal inheritance
 // The prototype is essentially the schematics that every instance of an type of object
@@ -131,9 +147,16 @@ class PersonClass {
   }
 }
 
-const roibinFromClassConstructor = new PersonClass('Roibin', 32, 'The Netherlands', 'Amsterdam');
+const roibinFromClassConstructor = new PersonClass(
+  'Roibin',
+  32,
+  'The Netherlands',
+  'Amsterdam'
+);
 console.log('Roibin from class constructor', roibinFromClassConstructor);
-console.log('Calling sayHello() method on the roibinFromClassConstructor object');
+console.log(
+  'Calling sayHello() method on the roibinFromClassConstructor object'
+);
 roibinFromClassConstructor.sayHello();
 
 // Opdracht 6.1
@@ -161,6 +184,8 @@ function Animal(species, name, age) {
 
 const cat = new Animal('Cat', 'Tijgertje', 13);
 console.log('cat =>', cat);
+
+// HAMSTER SINGLETON pattern constructor
 
 const hamsterSingleton = function Hamster() {
   // cached instance
@@ -211,7 +236,10 @@ console.log('Object.create(dog) from new Object() constructor', dog2);
 const cat2 = Object.create(cat);
 console.log('Object.create(cat) from new Object() constructor', cat2);
 const hamster2 = Object.create(hamsterSingleton);
-console.log('Object.create(hamsterSingleton) from new Object() constructor', hamsterSingleton);
+console.log(
+  'Object.create(hamsterSingleton) from new Object() constructor',
+  hamsterSingleton
+);
 const parrot2 = Object.create(parrot);
 console.log('Object.create(parrot) from new Object() constructor', parrot2);
 
@@ -261,7 +289,11 @@ const ajax = {
   name: 'Ajax',
   type: 'Football Club',
   members: 100000,
-  contactInformation: { address: 'Bijlmer', telephone: 123456, contactPerson: 'Erik Ten Hag' },
+  contactInformation: {
+    address: 'Bijlmer',
+    telephone: 123456,
+    contactPerson: 'Erik Ten Hag',
+  },
 };
 
 const feyenoord = new Club('Feyenoord', 'Football Club', 2, {
@@ -274,14 +306,22 @@ const ado = {
   name: 'Ado Den Haag',
   type: 'Football Club',
   members: 2,
-  contactInformation: { address: 'Het Plein', telephone: 112, contactPerson: 'Herman den Blijker' },
+  contactInformation: {
+    address: 'Het Plein',
+    telephone: 112,
+    contactPerson: 'Herman den Blijker',
+  },
 };
 
 const psv = {
   name: 'PSV',
   type: 'Football Club',
   members: 6,
-  contactInformation: { address: 'Ergens ', telephone: 43456, contactPerson: 'Mark van Bommel' },
+  contactInformation: {
+    address: 'Ergens ',
+    telephone: 43456,
+    contactPerson: 'Mark van Bommel',
+  },
 };
 
 const utrecht = {
@@ -295,12 +335,12 @@ const utrecht = {
   },
 };
 
-const clubArray = [ajax, feyenoord, ado, psv, utrecht];
+// const clubArray = [ajax, feyenoord, ado, psv, utrecht];
 
-clubArray.forEach((club) => {
-  console.log('-------');
-  console.log(club.name);
-  console.log(club.contactInformation.telephone);
-  console.log(club.contactInformation.contactPerson);
-  console.log('-------');
-});
+// clubArray.forEach((club) => {
+//   console.log('-------');
+//   console.log(club.name);
+//   console.log(club.contactInformation.telephone);
+//   console.log(club.contactInformation.contactPerson);
+//   console.log('-------');
+// });

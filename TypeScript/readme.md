@@ -298,3 +298,53 @@ return car.toUpperCase();
 // Here we specifically declare it can by either of Type (Date | string)[]
 // because TypeScript wasn't able to infer this from the initialization
 const mostImportantDates: (Date | string)[] = [new Date()];
+
+### Section 06 - Tuples in TypeScript
+
+Tuple is an array-like structure where each element represents some property of a record
+
+Object which represents a drink
+
+// cola
+{
+color: brown
+carbonated: true
+sugar:40
+}
+
+// This is a Tuple its an array organized in a very SPECIFIC way
+// In order for that specific memorization to stay in place we can use a Tuple
+[ [brown, true, 40] ]
+
+// Tuples are not used often in JavaScript
+
+### Section 07 - Interfaces in TypeScript
+
+Interfaces => Creates a new TYPE, describing the property names and value types of an object.
+
+- it is basically a CUSTOM type
+
+Interfaces + Classes = Really strong code reuse in TS
+
+What is an Interface?
+
+An interface is a way of describing an object and the Types it is expected to hold.
+
+// An interface can hold any kind of type. It is not limited to primitives. We can aslo
+express function definitions inside our interfaces.
+
+interface Vehicle {
+name: string;
+year: Date;
+broken: boolean;
+summary(): string;
+}
+
+Try keeping interfaces quite general. The summary() function has little to do with the interface of vehicle.
+It would be better to seperate that functionality into a different interface called Reportable
+
+interface Reportable {
+summary(): string;
+}
+
+reportable can be reused on many different sorts of objects
