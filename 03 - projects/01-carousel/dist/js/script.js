@@ -1,5 +1,5 @@
 const carousel = document.querySelector('.carousel');
-
+const carouselImageButtons = document.querySelectorAll('.carousel__buttons');
 const carouselViewEl = document.querySelectorAll('.carousel__view');
 const carouselBtnRight = document.querySelector('.carousel__btn--right');
 const carouselBtnLeft = document.querySelector('.carousel__btn--left');
@@ -7,41 +7,40 @@ const imgClasses = [];
 
 // Fetching logic
 
-const createImageFromUrl = async (imageRequest, element) => {
-  try {
-    const imageData = await imageRequest;
+// const createImageFromUrl = async (imageRequest, element) => {
+//   try {
+//     const imageData = await imageRequest;
 
-    console.log('IMAGE ===>', imageData);
-    // create a new image element
-    const image = document.createElement('img');
+//     // create a new image element
+//     const image = document.createElement('img');
 
-    image.classList.add('carousel__img');
-    image.src = imageData.url;
-    console.log(image);
+//     image.classList.add('carousel__img');
+//     image.src = imageData.url;
+//     image.alt = 'random unsplash image';
+//     console.log('IMAGE ELEMENT', image);
 
-    // add the newly created element and its content into the DOM
-    console.log(element);
-    element.appendChild(image);
-  } catch (error) {
-    console.log(error);
-  }
-};
+//     // add the newly created element and its content into the DOM
+//     element.appendChild(image);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
-const fetchImageAndMount = async (url, dimensions) => {
-  const imageResizedUrl = url + dimensions;
+// const fetchImageAndMount = async (url, dimensions) => {
+//   const imageResizedUrl = url + dimensions;
 
-  try {
-    const response = await fetch(imageResizedUrl);
-    if (response.status === 200) {
-      console.log(response);
-      await createImage(response);
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
+//   try {
+//     const imageResponse = await fetch(imageResizedUrl);
+//     if (imageResponse.status === 200) {
+//       console.log(imageResponse);
+//       await createImageFromUrl(imageResponse, carousel);
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
-fetchImageAndMount('https://source.unsplash.com/random/', '800x600');
+// fetchImageAndMount('https://source.unsplash.com/random/', '800x600');
 
 // UI Logic
 
@@ -114,4 +113,12 @@ carouselBtnLeft.addEventListener('click', () => {
       break;
     }
   }
+});
+
+carouselImageButtons.forEach((button) => {
+  button.addEventListener('click', (event) => {
+    console.log(event);
+
+    console.log('click');
+  });
 });
