@@ -10,13 +10,6 @@ body {
   margin: 0 auto;
 }
 
-.carousel__wrapper {
-  display: grid;
-  grid-template-columns: repeat(1fr);
-  grid-template-rows: 1fr;
-  gap: 5rem;
-}
-
 .carousel {
   position: relative;
   display: flex;
@@ -44,6 +37,17 @@ body {
 
     &--right {
       right: -2rem;
+    }
+  }
+
+  &__view {
+    position: absolute;
+    right: 100vw;
+    transition: all 1000ms ease;
+
+    &--active {
+      position: relative;
+      right: 0vw;
     }
   }
 

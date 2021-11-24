@@ -16,16 +16,6 @@ body {
   margin: 0 auto;
 }
 
-.carousel__wrapper {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: ()[1fr];
-      grid-template-columns: repeat(1fr);
-  -ms-grid-rows: 1fr;
-      grid-template-rows: 1fr;
-  gap: 5rem;
-}
-
 .carousel {
   position: relative;
   display: -webkit-box;
@@ -68,6 +58,18 @@ body {
 
 .carousel__btn--right {
   right: -2rem;
+}
+
+.carousel__view {
+  position: absolute;
+  right: 100vw;
+  -webkit-transition: all 1000ms ease;
+  transition: all 1000ms ease;
+}
+
+.carousel__view--active {
+  position: relative;
+  right: 0vw;
 }
 
 .carousel__img {
