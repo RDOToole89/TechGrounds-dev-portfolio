@@ -1,46 +1,11 @@
 const carousel = document.querySelector('.carousel');
 const carouselImageButtons = document.querySelectorAll('.carousel__buttons');
-const carouselViewEl = document.querySelectorAll('.carousel__view');
+const carouselViewEls = document.querySelectorAll('.carousel__view');
 const carouselBtnRight = document.querySelector('.carousel__btn--right');
 const carouselBtnLeft = document.querySelector('.carousel__btn--left');
 const carouselBtnRandom = document.querySelector('.carousel__button--random');
 
 // Fetching logic
-
-// const createImageFromUrl = async (imageRequest, element) => {
-//   try {
-//     const imageData = await imageRequest;
-
-//     // create a new image element
-//     const image = document.createElement('img');
-
-//     image.classList.add('carousel__img');
-//     image.src = imageData.url;
-//     image.alt = 'random unsplash image';
-//     console.log('IMAGE ELEMENT', image);
-
-//     // add the newly created element and its content into the DOM
-//     element.appendChild(image);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// const fetchImageAndMount = async (url, dimensions) => {
-//   const imageResizedUrl = url + dimensions;
-
-//   try {
-//     const imageResponse = await fetch(imageResizedUrl);
-//     if (imageResponse.status === 200) {
-//       console.log(imageResponse);
-//       await createImageFromUrl(imageResponse, carousel);
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// fetchImageAndMount('https://source.unsplash.com/random/', '800x600');
 
 const fetchRandomImage = async (url, dimensions) => {
   const imageResizedUrl = url + dimensions;
@@ -58,11 +23,11 @@ const fetchRandomImage = async (url, dimensions) => {
 
 let imageNumber = 1;
 
-const makeActive = (viewNumber) => {
-  carouselViewEl.forEach((view) => {
-    if (view.classList.contains('carousel__view--active')) {
-      view.classList.remove('carousel__view--active');
-      carouselViewEl[viewNumber - 1].classList.add('carousel__view--active');
+const makeActive = (elements, viewNumber, className) => {
+  elements.forEach((element) => {
+    if (element.classList.contains(className)) {
+      element.classList.remove(className);
+      elements[viewNumber - 1].classList.add(className);
     }
   });
 };
@@ -71,11 +36,11 @@ const controls = (direction, max) => {
   if (imageNumber < 1 || imageNumber > max) return;
 
   if (direction === 'forward') {
-    makeActive(imageNumber + 1);
+    makeActive(carouselViewEls, imageNumber + 1, 'carousel__view--active');
   }
 
   if (direction === 'backward') {
-    makeActive(imageNumber - 1);
+    makeActive(carouselViewEls, imageNumber - 1, 'carousel__view--active');
   }
 };
 
@@ -137,19 +102,19 @@ carouselImageButtons.forEach((button) => {
 
     switch (buttonNumber) {
       case 1: {
-        makeActive(buttonNumber);
+        makeActive(carouselViewEls, buttonNumber, 'carousel__view--active');
         break;
       }
       case 2: {
-        makeActive(buttonNumber);
+        makeActive(carouselViewEls, buttonNumber, 'carousel__view--active');
         break;
       }
       case 3: {
-        makeActive(buttonNumber);
+        makeActive(carouselViewEls, buttonNumber, 'carousel__view--active');
         break;
       }
       case 4: {
-        makeActive(buttonNumber);
+        makeActive(carouselViewEls, buttonNumber, 'carousel__view--active');
         break;
       }
       default: {
@@ -162,7 +127,7 @@ carouselImageButtons.forEach((button) => {
 carouselBtnRandom.addEventListener('click', () => {
   fetchRandomImage('https://source.unsplash.com/random/', '800x600')
     .then((response) => {
-      [...carouselViewEl].forEach((view) => {
+      [...carouselViewEls].forEach((view) => {
         if (view.classList.contains('carousel__view--active')) {
           view.innerHTML = `<img src="${response.url}" class="carousel__img"/>`;
         }

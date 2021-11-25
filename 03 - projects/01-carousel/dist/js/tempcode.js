@@ -20,3 +20,38 @@ carouselImageButtons.forEach((button) => {
     console.log(`click from ${event.target}`);
   });
 });
+
+const createImageFromUrl = async (imageRequest, element) => {
+  try {
+    const imageData = await imageRequest;
+
+    // create a new image element
+    const image = document.createElement('img');
+
+    image.classList.add('carousel__img');
+    image.src = imageData.url;
+    image.alt = 'random unsplash image';
+    console.log('IMAGE ELEMENT', image);
+
+    // add the newly created element and its content into the DOM
+    element.appendChild(image);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const fetchImageAndMount = async (url, dimensions) => {
+  const imageResizedUrl = url + dimensions;
+
+  try {
+    const imageResponse = await fetch(imageResizedUrl);
+    if (imageResponse.status === 200) {
+      console.log(imageResponse);
+      await createImageFromUrl(imageResponse, carousel);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+fetchImageAndMount('https://source.unsplash.com/random/', '800x600');
