@@ -47,23 +47,29 @@ const controls = (direction, max) => {
 };
 
 carouselBtnRight.addEventListener('click', () => {
+  console.log('INSIDE FORWARD => ', imageNumber);
+
   switch (imageNumber) {
     case 1: {
+      console.log(imageNumber);
       controls('forward', 3);
       imageNumber++;
       break;
     }
     case 2: {
+      console.log(imageNumber);
       controls('forward', 3);
       imageNumber++;
       break;
     }
     case 3: {
+      console.log(imageNumber);
       controls('forward', 3);
       imageNumber++;
       break;
     }
     case 4: {
+      console.log(imageNumber);
       break;
     }
     default: {
@@ -73,22 +79,27 @@ carouselBtnRight.addEventListener('click', () => {
 });
 
 carouselBtnLeft.addEventListener('click', () => {
+  console.log('INSIDE PREVIOUS => ', imageNumber);
+
   switch (imageNumber) {
     case 1: {
       break;
     }
     case 2: {
+      console.log(imageNumber);
       controls('backward', 3);
       imageNumber--;
       break;
     }
     case 3: {
-      controls('backward', 4);
+      console.log(imageNumber);
+      controls('backward', 3);
       imageNumber--;
       break;
     }
     case 4: {
-      controls('backward', 4);
+      console.log(imageNumber);
+      controls('backward', 3);
       imageNumber--;
       break;
     }
@@ -97,6 +108,8 @@ carouselBtnLeft.addEventListener('click', () => {
     }
   }
 });
+
+// => working
 
 carouselViewButtons.forEach((button) => {
   button.addEventListener('click', (event) => {
