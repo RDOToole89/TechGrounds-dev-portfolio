@@ -85,8 +85,8 @@ body {
 
 .carousel__view {
   position: absolute;
-  -webkit-transition: all 4000ms ease;
-  transition: all 4000ms ease;
+  -webkit-transition: all 1000ms ease;
+  transition: all 1000ms ease;
   right: 100vw;
 }
 
