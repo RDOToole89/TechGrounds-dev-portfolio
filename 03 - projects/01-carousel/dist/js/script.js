@@ -3,7 +3,7 @@ const carouselImageButtons = document.querySelectorAll('.carousel__buttons');
 const carouselViewEl = document.querySelectorAll('.carousel__view');
 const carouselBtnRight = document.querySelector('.carousel__btn--right');
 const carouselBtnLeft = document.querySelector('.carousel__btn--left');
-const imgClasses = [];
+const carouselBtnRandom = document.querySelector('.carousel__button--random');
 
 // Fetching logic
 
@@ -130,25 +130,61 @@ carouselBtnLeft.addEventListener('click', () => {
   }
 });
 
+const makeActive = (buttonNumber) => {
+  carouselViewEl.forEach((view) => {
+    if (view.classList.contains('carousel__view--active')) {
+      view.classList.remove('carousel__view--active');
+      carouselViewEl[buttonNumber - 1].classList.add('carousel__view--active');
+    }
+  });
+};
+
 carouselImageButtons.forEach((button) => {
   button.addEventListener('click', (event) => {
-    console.log(event);
-    const currentButton = event.target;
-    console.log(currentButton);
+    const buttonNumber = +event.target.dataset.btn;
+    console.log(buttonNumber);
 
-    fetchRandomImage('https://source.unsplash.com/random/', '800x600')
-      .then((response) => {
-        console.log('RESPONSE FROM FETHCRANDOMIMAGE', response.url);
-
-        [...carouselViewEl].forEach((view) => {
-          console.log('VIEW IN FOR EACH LOOP', view);
-          if (view.classList.contains('carousel__view--active')) {
-            view.innerHTML = `<img src="${response.url}" class="carousel__img"/>`;
-          }
-        });
-      })
-      .catch((error) => console.log(error));
-
-    console.log(`click from ${event.target}`);
+    switch (buttonNumber) {
+      case 0: {
+        makeActive(buttonNumber);
+        break;
+      }
+      case 1: {
+        makeActive(buttonNumber);
+        break;
+      }
+      case 2: {
+        makeActive(buttonNumber);
+        break;
+      }
+      case 3: {
+        makeActive(buttonNumber);
+        break;
+      }
+      default: {
+        break;
+      }
+    }
   });
+});
+
+carouselBtnRandom.addEventListener('click', (event) => {
+  console.log(event);
+  const currentButton = event.target;
+  console.log(currentButton);
+
+  fetchRandomImage('https://source.unsplash.com/random/', '800x600')
+    .then((response) => {
+      console.log('RESPONSE FROM FETHCRANDOMIMAGE', response.url);
+
+      [...carouselViewEl].forEach((view) => {
+        console.log('VIEW IN FOR EACH LOOP', view);
+        if (view.classList.contains('carousel__view--active')) {
+          view.innerHTML = `<img src="${response.url}" class="carousel__img"/>`;
+        }
+      });
+    })
+    .catch((error) => console.log(error));
+
+  console.log(`click from ${event.target}`);
 });
