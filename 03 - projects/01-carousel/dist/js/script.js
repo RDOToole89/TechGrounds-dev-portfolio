@@ -36,12 +36,12 @@ const controls = (direction, max) => {
   if (imageNumber < 1 || imageNumber > max) return;
 
   if (direction === 'forward') {
-    makeActive(carouselViewButtons, imageNumber + 1, 'carousel__button--active');
+    makeActive(carouselViewButtons, imageNumber, 'carousel__button--active');
     makeActive(carouselViewEls, imageNumber + 1, 'carousel__view--active');
   }
 
   if (direction === 'backward') {
-    makeActive(carouselViewButtons, imageNumber - 1, 'carousel__button--active');
+    makeActive(carouselViewButtons, imageNumber, 'carousel__button--active');
     makeActive(carouselViewEls, imageNumber - 1, 'carousel__view--active');
   }
 };

@@ -91,9 +91,9 @@ body {
 
 .carousel__view {
   position: absolute;
+  -webkit-transition: all 4000ms ease;
+  transition: all 4000ms ease;
   right: 100vw;
-  -webkit-transition: all 1000ms ease;
-  transition: all 1000ms ease;
 }
 
 .carousel__view--active {
@@ -102,8 +102,6 @@ body {
 }
 
 .carousel__img {
-  width: 100%;
-  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
