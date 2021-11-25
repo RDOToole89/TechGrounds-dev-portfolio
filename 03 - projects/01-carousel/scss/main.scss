@@ -108,6 +108,10 @@ body {
     cursor: pointer;
     transition: all 400ms ease;
 
+    &--active {
+      background: black;
+    }
+
     &--random {
       text-transform: uppercase;
       padding: 0.5rem 1.2rem;

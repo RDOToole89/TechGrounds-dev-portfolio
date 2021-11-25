@@ -150,6 +150,10 @@ body {
   transition: all 400ms ease;
 }
 
+.carousel__button--active {
+  background: black;
+}
+
 .carousel__button--random {
   text-transform: uppercase;
   padding: 0.5rem 1.2rem;

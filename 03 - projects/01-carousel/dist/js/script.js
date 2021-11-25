@@ -1,5 +1,5 @@
 const carousel = document.querySelector('.carousel');
-const carouselImageButtons = document.querySelectorAll('.carousel__buttons');
+const carouselViewButtons = document.querySelectorAll('.carousel__button');
 const carouselViewEls = document.querySelectorAll('.carousel__view');
 const carouselBtnRight = document.querySelector('.carousel__btn--right');
 const carouselBtnLeft = document.querySelector('.carousel__btn--left');
@@ -36,10 +36,12 @@ const controls = (direction, max) => {
   if (imageNumber < 1 || imageNumber > max) return;
 
   if (direction === 'forward') {
+    makeActive(carouselViewButtons, imageNumber + 1, 'carousel__button--active');
     makeActive(carouselViewEls, imageNumber + 1, 'carousel__view--active');
   }
 
   if (direction === 'backward') {
+    makeActive(carouselViewButtons, imageNumber - 1, 'carousel__button--active');
     makeActive(carouselViewEls, imageNumber - 1, 'carousel__view--active');
   }
 };
@@ -96,25 +98,29 @@ carouselBtnLeft.addEventListener('click', () => {
   }
 });
 
-carouselImageButtons.forEach((button) => {
+carouselViewButtons.forEach((button) => {
   button.addEventListener('click', (event) => {
-    const buttonNumber = +event.target.dataset.btn;
+    const viewNumber = +event.target.dataset.btn;
 
-    switch (buttonNumber) {
+    switch (viewNumber) {
       case 1: {
-        makeActive(carouselViewEls, buttonNumber, 'carousel__view--active');
+        makeActive(carouselViewButtons, viewNumber, 'carousel__button--active');
+        makeActive(carouselViewEls, viewNumber, 'carousel__view--active');
         break;
       }
       case 2: {
-        makeActive(carouselViewEls, buttonNumber, 'carousel__view--active');
+        makeActive(carouselViewButtons, viewNumber, 'carousel__button--active');
+        makeActive(carouselViewEls, viewNumber, 'carousel__view--active');
         break;
       }
       case 3: {
-        makeActive(carouselViewEls, buttonNumber, 'carousel__view--active');
+        makeActive(carouselViewButtons, viewNumber, 'carousel__button--active');
+        makeActive(carouselViewEls, viewNumber, 'carousel__view--active');
         break;
       }
       case 4: {
-        makeActive(carouselViewEls, buttonNumber, 'carousel__view--active');
+        makeActive(carouselViewButtons, viewNumber, 'carousel__button--active');
+        makeActive(carouselViewEls, viewNumber, 'carousel__view--active');
         break;
       }
       default: {
