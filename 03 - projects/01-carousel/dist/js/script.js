@@ -56,43 +56,47 @@ const fetchRandomImage = async (url, dimensions) => {
 
 // UI Logic
 
-let imageNumber = 0;
+let imageNumber = 1;
 
-const controls = (imgNum, className, direction, max) => {
-  if (imageNumber > max || imageNumber < 0) return;
+const makeActive = (viewNumber) => {
+  carouselViewEl.forEach((view) => {
+    if (view.classList.contains('carousel__view--active')) {
+      view.classList.remove('carousel__view--active');
+      carouselViewEl[viewNumber - 1].classList.add('carousel__view--active');
+    }
+  });
+};
+
+const controls = (direction, max) => {
+  if (imageNumber < 1 || imageNumber > max) return;
 
   if (direction === 'forward') {
-    carouselViewEl[imgNum].classList.remove(className);
-    carouselViewEl[imgNum + 1].classList.add(className);
+    makeActive(imageNumber + 1);
   }
 
   if (direction === 'backward') {
-    carouselViewEl[imgNum].classList.remove(className);
-    carouselViewEl[imgNum - 1].classList.add(className);
+    makeActive(imageNumber - 1);
   }
 };
 
 carouselBtnRight.addEventListener('click', () => {
-  console.log('click carouselBtnRight');
-  console.log(imageNumber);
-
   switch (imageNumber) {
-    case 0: {
-      controls(imageNumber, 'carousel__view--active', 'forward', 3);
-      imageNumber++;
-      break;
-    }
     case 1: {
-      controls(imageNumber, 'carousel__view--active', 'forward', 3);
+      controls('forward', 3);
       imageNumber++;
       break;
     }
     case 2: {
-      controls(imageNumber, 'carousel__view--active', 'forward', 3);
+      controls('forward', 3);
       imageNumber++;
       break;
     }
     case 3: {
+      controls('forward', 3);
+      imageNumber++;
+      break;
+    }
+    case 4: {
       break;
     }
     default: {
@@ -102,25 +106,22 @@ carouselBtnRight.addEventListener('click', () => {
 });
 
 carouselBtnLeft.addEventListener('click', () => {
-  console.log('click carouselBtnLeft');
-  console.log('Image Number inside BtnLeft', imageNumber);
-
   switch (imageNumber) {
-    case 0: {
-      break;
-    }
     case 1: {
-      controls(imageNumber, 'carousel__view--active', 'backward', 3);
-      imageNumber--;
       break;
     }
     case 2: {
-      controls(imageNumber, 'carousel__view--active', 'backward', 3);
+      controls('backward', 3);
       imageNumber--;
       break;
     }
     case 3: {
-      controls(imageNumber, 'carousel__view--active', 'backward', 3);
+      controls('backward', 4);
+      imageNumber--;
+      break;
+    }
+    case 4: {
+      controls('backward', 4);
       imageNumber--;
       break;
     }
@@ -130,25 +131,11 @@ carouselBtnLeft.addEventListener('click', () => {
   }
 });
 
-const makeActive = (buttonNumber) => {
-  carouselViewEl.forEach((view) => {
-    if (view.classList.contains('carousel__view--active')) {
-      view.classList.remove('carousel__view--active');
-      carouselViewEl[buttonNumber - 1].classList.add('carousel__view--active');
-    }
-  });
-};
-
 carouselImageButtons.forEach((button) => {
   button.addEventListener('click', (event) => {
     const buttonNumber = +event.target.dataset.btn;
-    console.log(buttonNumber);
 
     switch (buttonNumber) {
-      case 0: {
-        makeActive(buttonNumber);
-        break;
-      }
       case 1: {
         makeActive(buttonNumber);
         break;
@@ -161,6 +148,10 @@ carouselImageButtons.forEach((button) => {
         makeActive(buttonNumber);
         break;
       }
+      case 4: {
+        makeActive(buttonNumber);
+        break;
+      }
       default: {
         break;
       }
@@ -168,23 +159,14 @@ carouselImageButtons.forEach((button) => {
   });
 });
 
-carouselBtnRandom.addEventListener('click', (event) => {
-  console.log(event);
-  const currentButton = event.target;
-  console.log(currentButton);
-
+carouselBtnRandom.addEventListener('click', () => {
   fetchRandomImage('https://source.unsplash.com/random/', '800x600')
     .then((response) => {
-      console.log('RESPONSE FROM FETHCRANDOMIMAGE', response.url);
-
       [...carouselViewEl].forEach((view) => {
-        console.log('VIEW IN FOR EACH LOOP', view);
         if (view.classList.contains('carousel__view--active')) {
           view.innerHTML = `<img src="${response.url}" class="carousel__img"/>`;
         }
       });
     })
     .catch((error) => console.log(error));
-
-  console.log(`click from ${event.target}`);
 });
