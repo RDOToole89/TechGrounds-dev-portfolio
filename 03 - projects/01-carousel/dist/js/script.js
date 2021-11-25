@@ -42,12 +42,24 @@ const imgClasses = [];
 
 // fetchImageAndMount('https://source.unsplash.com/random/', '800x600');
 
+const fetchRandomImage = async (url, dimensions) => {
+  const imageResizedUrl = url + dimensions;
+
+  try {
+    const imageResponse = await fetch(imageResizedUrl);
+
+    return imageResponse;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // UI Logic
 
 let imageNumber = 0;
 
-const controls = (imgNum, className, direction) => {
-  if (imageNumber > 3 || imageNumber < 0) return;
+const controls = (imgNum, className, direction, max) => {
+  if (imageNumber > max || imageNumber < 0) return;
 
   if (direction === 'forward') {
     carouselViewEl[imgNum].classList.remove(className);
@@ -61,22 +73,22 @@ const controls = (imgNum, className, direction) => {
 };
 
 carouselBtnRight.addEventListener('click', () => {
-  console.log('click');
+  console.log('click carouselBtnRight');
   console.log(imageNumber);
 
   switch (imageNumber) {
     case 0: {
-      controls(imageNumber, 'carousel__view--active', 'forward');
+      controls(imageNumber, 'carousel__view--active', 'forward', 3);
       imageNumber++;
       break;
     }
     case 1: {
-      controls(imageNumber, 'carousel__view--active', 'forward');
+      controls(imageNumber, 'carousel__view--active', 'forward', 3);
       imageNumber++;
       break;
     }
     case 2: {
-      controls(imageNumber, 'carousel__view--active', 'forward');
+      controls(imageNumber, 'carousel__view--active', 'forward', 3);
       imageNumber++;
       break;
     }
@@ -90,22 +102,25 @@ carouselBtnRight.addEventListener('click', () => {
 });
 
 carouselBtnLeft.addEventListener('click', () => {
+  console.log('click carouselBtnLeft');
+  console.log('Image Number inside BtnLeft', imageNumber);
+
   switch (imageNumber) {
     case 0: {
       break;
     }
     case 1: {
-      controls(imageNumber, 'carousel__view--active', 'backward');
+      controls(imageNumber, 'carousel__view--active', 'backward', 3);
       imageNumber--;
       break;
     }
     case 2: {
-      controls(imageNumber, 'carousel__view--active', 'backward');
+      controls(imageNumber, 'carousel__view--active', 'backward', 3);
       imageNumber--;
       break;
     }
     case 3: {
-      controls(imageNumber, 'carousel__view--active', 'backward');
+      controls(imageNumber, 'carousel__view--active', 'backward', 3);
       imageNumber--;
       break;
     }
@@ -118,7 +133,22 @@ carouselBtnLeft.addEventListener('click', () => {
 carouselImageButtons.forEach((button) => {
   button.addEventListener('click', (event) => {
     console.log(event);
+    const currentButton = event.target;
+    console.log(currentButton);
 
-    console.log('click');
+    fetchRandomImage('https://source.unsplash.com/random/', '800x600')
+      .then((response) => {
+        console.log('RESPONSE FROM FETHCRANDOMIMAGE', response.url);
+
+        [...carouselViewEl].forEach((view) => {
+          console.log('VIEW IN FOR EACH LOOP', view);
+          if (view.classList.contains('carousel__view--active')) {
+            view.innerHTML = `<img src="${response.url}" class="carousel__img"/>`;
+          }
+        });
+      })
+      .catch((error) => console.log(error));
+
+    console.log(`click from ${event.target}`);
   });
 });
