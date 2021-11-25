@@ -24,6 +24,8 @@ const fetchRandomImage = async (url, dimensions) => {
 let imageNumber = 1;
 
 const makeActive = (elements, viewNumber, className) => {
+  console.log('Inside MakeACTIVE => elements', elements, viewNumber, className);
+
   elements.forEach((element) => {
     if (element.classList.contains(className)) {
       element.classList.remove(className);
@@ -36,12 +38,14 @@ const controls = (direction, max) => {
   if (imageNumber < 1 || imageNumber > max) return;
 
   if (direction === 'forward') {
-    makeActive(carouselViewButtons, imageNumber, 'carousel__button--active');
+    console.log('INSIDE FORWARD');
+
+    makeActive(carouselViewButtons, imageNumber + 1, 'carousel__button--active');
     makeActive(carouselViewEls, imageNumber + 1, 'carousel__view--active');
   }
 
   if (direction === 'backward') {
-    makeActive(carouselViewButtons, imageNumber, 'carousel__button--active');
+    makeActive(carouselViewButtons, imageNumber - 1, 'carousel__button--active');
     makeActive(carouselViewEls, imageNumber - 1, 'carousel__view--active');
   }
 };
@@ -52,19 +56,19 @@ carouselBtnRight.addEventListener('click', () => {
   switch (imageNumber) {
     case 1: {
       console.log(imageNumber);
-      controls('forward', 3);
+      controls('forward', 4);
       imageNumber++;
       break;
     }
     case 2: {
       console.log(imageNumber);
-      controls('forward', 3);
+      controls('forward', 4);
       imageNumber++;
       break;
     }
     case 3: {
       console.log(imageNumber);
-      controls('forward', 3);
+      controls('forward', 4);
       imageNumber++;
       break;
     }
@@ -83,23 +87,24 @@ carouselBtnLeft.addEventListener('click', () => {
 
   switch (imageNumber) {
     case 1: {
+      console.log(imageNumber);
       break;
     }
     case 2: {
       console.log(imageNumber);
-      controls('backward', 3);
+      controls('backward', 4);
       imageNumber--;
       break;
     }
     case 3: {
       console.log(imageNumber);
-      controls('backward', 3);
+      controls('backward', 4);
       imageNumber--;
       break;
     }
     case 4: {
       console.log(imageNumber);
-      controls('backward', 3);
+      controls('backward', 4);
       imageNumber--;
       break;
     }
@@ -114,6 +119,7 @@ carouselBtnLeft.addEventListener('click', () => {
 carouselViewButtons.forEach((button) => {
   button.addEventListener('click', (event) => {
     const viewNumber = +event.target.dataset.btn;
+    console.log('VIEWNUMBER => ', viewNumber);
 
     switch (viewNumber) {
       case 1: {
