@@ -15,19 +15,12 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-.container {
-  max-width: 75%;
-  margin: 0 auto;
-}
-
 .carousel {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: orangered;
-
-  width: 800px;
 
   &__btn {
     display: flex;

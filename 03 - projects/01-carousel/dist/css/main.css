@@ -22,11 +22,6 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-.container {
-  max-width: 75%;
-  margin: 0 auto;
-}
-
 .carousel {
   position: relative;
   display: -webkit-box;
@@ -40,7 +35,6 @@ body {
       -ms-flex-align: center;
           align-items: center;
   color: orangered;
-  width: 800px;
 }
 
 .carousel__btn {
