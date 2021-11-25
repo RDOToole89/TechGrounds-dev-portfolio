@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <link rel="shortcut icon" href="#" type="image/x-icon" />
@@ -17,8 +17,10 @@
   </head>
   <body>
     <div class="carousel">
-      <div class="carousel__btn carousel__btn--right">+</div>
-      <div class="carousel__btn carousel__btn--left">-</div>
+      <div class="carousel__btn carousel__btn--right"><ion-icon name="add-outline"></ion-icon></div>
+      <div class="carousel__btn carousel__btn--left">
+        <ion-icon name="remove-outline"></ion-icon>
+      </div>
 
       <div data-view="1" class="carousel__view carousel__view--one carousel__view--active">
         <img
@@ -58,5 +60,11 @@
         <div class="carousel__button carousel__button--random">random</div>
       </div>
     </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </body>
 </html>
