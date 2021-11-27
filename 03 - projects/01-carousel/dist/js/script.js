@@ -7,7 +7,9 @@ const carouselBtnRandom = document.querySelector('.carousel__button--random');
 
 // Fetching logic
 
+// Fetches a random image with the Unsplash API in mind from online
 const fetchRandomImage = async (url, dimensions) => {
+  // Resizes the the url with dimension in "800x600" format as specified in the Unsplash API guide
   const imageResizedUrl = url + dimensions;
 
   try {
@@ -21,8 +23,11 @@ const fetchRandomImage = async (url, dimensions) => {
 
 // UI Logic
 
+// Variable holding the current image view on the carousel
+
 let imageNumber = 1;
 
+// This functions takes in an array of elements and removes the active class
 const makeActive = (elements, viewNumber, className) => {
   console.log('Inside MakeACTIVE => elements', elements, viewNumber, className);
 
@@ -34,6 +39,7 @@ const makeActive = (elements, viewNumber, className) => {
   });
 };
 
+// Reusable function takes a direction.
 const controls = (direction, max) => {
   if (imageNumber < 1 || imageNumber > max) return;
 
@@ -50,6 +56,8 @@ const controls = (direction, max) => {
   }
 };
 
+// Naming could be better but I am too lazy to change it in the HTML.
+// Would be better as button forward / backward.
 carouselBtnRight.addEventListener('click', () => {
   console.log('INSIDE FORWARD => ', imageNumber);
 
@@ -114,7 +122,8 @@ carouselBtnLeft.addEventListener('click', () => {
   }
 });
 
-// => working
+// => I have a lot of switch statements ... I feel this is not DRY
+// code.
 
 carouselViewButtons.forEach((button) => {
   button.addEventListener('click', (event) => {
@@ -149,11 +158,13 @@ carouselViewButtons.forEach((button) => {
   });
 });
 
+// I like this ... JavaScript is such a cool programming language.
 carouselBtnRandom.addEventListener('click', () => {
   fetchRandomImage('https://source.unsplash.com/random/', '800x600')
     .then((response) => {
       [...carouselViewEls].forEach((view) => {
         if (view.classList.contains('carousel__view--active')) {
+          // Yeah I know shouldn't use .innerHTML, quick and dirty!
           view.innerHTML = `<img src="${response.url}" class="carousel__img"/>`;
         }
       });
