@@ -27,7 +27,7 @@ const fetchRandomImage = async (url, dimensions) => {
 
 let imageNumber = 1;
 
-// This functions takes in an array of elements and removes the active class
+// This functions takes in an array (nodeList) of elements and removes the active class
 const makeActive = (elements, viewNumber, className) => {
   console.log('Inside MakeACTIVE => elements', elements, viewNumber, className);
 
@@ -39,7 +39,7 @@ const makeActive = (elements, viewNumber, className) => {
   });
 };
 
-// Reusable function takes a direction.
+// Reusable function takes a direction and max number of images.
 const controls = (direction, max) => {
   if (imageNumber < 1 || imageNumber > max) return;
 
@@ -90,6 +90,7 @@ carouselBtnRight.addEventListener('click', () => {
   }
 });
 
+// Backwards button => Previous
 carouselBtnLeft.addEventListener('click', () => {
   console.log('INSIDE PREVIOUS => ', imageNumber);
 
