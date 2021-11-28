@@ -38,7 +38,7 @@ body {
     transition: all 400ms ease;
     cursor: pointer;
 
-    &--left {
+    &--previous {
       left: -2rem;
 
       &:hover {
@@ -47,7 +47,7 @@ body {
       }
     }
 
-    &--right {
+    &--next {
       right: -2rem;
     }
 
@@ -73,7 +73,7 @@ body {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
 
-  &__buttons {
+  &__navigation-btns {
     display: flex;
     padding: 0.3rem 1rem;
     position: absolute;
@@ -85,7 +85,7 @@ body {
     z-index: 100;
   }
 
-  &__button {
+  &__navigation-btn {
     display: flex;
     justify-content: center;
     align-items: center;

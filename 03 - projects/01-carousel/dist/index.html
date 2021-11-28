@@ -17,8 +17,8 @@
   </head>
   <body>
     <div class="carousel">
-      <div class="carousel__btn carousel__btn--right"><ion-icon name="add-outline"></ion-icon></div>
-      <div class="carousel__btn carousel__btn--left">
+      <div class="carousel__btn carousel__btn--next"><ion-icon name="add-outline"></ion-icon></div>
+      <div class="carousel__btn carousel__btn--previous">
         <ion-icon name="remove-outline"></ion-icon>
       </div>
 
@@ -50,14 +50,19 @@
           alt="unsplash random picture"
         />
       </div>
-      <div class="carousel__buttons">
-        <div data-btn="1" class="carousel__button carousel__button--one carousel__button--active">
+      <div class="carousel__navigation-btns">
+        <div
+          data-btn="1"
+          class="
+            carousel__navigation-btn carousel__navigation-btn--one carousel__navigation-btn--active
+          "
+        >
           1
         </div>
-        <div data-btn="2" class="carousel__button carousel__button--two">2</div>
-        <div data-btn="3" class="carousel__button carousel__button--three">3</div>
-        <div data-btn="4" class="carousel__button carousel__button--four">4</div>
-        <div class="carousel__button carousel__button--random">random</div>
+        <div data-btn="2" class="carousel__navigation-btn carousel__navigation-btn--two">2</div>
+        <div data-btn="3" class="carousel__navigation-btn carousel__navigation-btn--three">3</div>
+        <div data-btn="4" class="carousel__navigation-btn carousel__navigation-btn--four">4</div>
+        <div class="carousel__navigation-btn carousel__navigation-btn--random">random</div>
       </div>
     </div>
 

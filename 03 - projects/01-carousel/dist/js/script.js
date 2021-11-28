@@ -1,25 +1,20 @@
 const carousel = document.querySelector('.carousel');
-const carouselViewButtons = document.querySelectorAll('.carousel__button');
+const carouselViewButtons = document.querySelectorAll('.carousel__navigation-btn');
 const carouselViewEls = document.querySelectorAll('.carousel__view');
-const carouselBtnRight = document.querySelector('.carousel__btn--right');
-const carouselBtnLeft = document.querySelector('.carousel__btn--left');
-const carouselBtnRandom = document.querySelector('.carousel__button--random');
-const carouselViewActive = document.querySelector('.carousel__view--active');
+const carouselBtnNext = document.querySelector('.carousel__btn--next');
+const carouselBtnPrevious = document.querySelector('.carousel__btn--previous');
+const carouselBtnRandom = document.querySelector('.carousel__navigation-btn--random');
 
 // Fetching logic
 
 // Fetches a random image with the Unsplash API in mind from online
-const fetchRandomImage = async (url, dimensions) => {
+const fetchRandomImage = (url, dimensions) => {
   // Resizes the the url with dimension in "800x600" format as specified in the Unsplash API guide
   const imageResizedUrl = url + dimensions;
 
-  try {
-    const imageResponse = await fetch(imageResizedUrl);
-
-    return imageResponse;
-  } catch (error) {
-    console.log(error);
-  }
+  return fetch(imageResizedUrl)
+    .then((response) => response)
+    .catch((error) => console.log(error));
 };
 
 // UI Logic
@@ -30,7 +25,7 @@ let imageNumber = 1;
 
 // This functions takes in an array (nodeList) of elements and removes the active class
 const makeActive = (elements, elements2, viewNumber, className1, className2) => {
-  console.log('Inside MakeACTIVE => elements', elements, viewNumber, className1);
+  imageNumber = viewNumber;
 
   elements.forEach((element) => {
     if (element.classList.contains(className1)) {
@@ -58,7 +53,7 @@ const controls = (direction, max) => {
       carouselViewButtons,
       carouselViewEls,
       imageNumber + 1,
-      'carousel__button--active',
+      'carousel__navigation-btn--active',
       'carousel__view--active'
     );
   }
@@ -68,38 +63,22 @@ const controls = (direction, max) => {
       carouselViewButtons,
       carouselViewEls,
       imageNumber - 1,
-      'carousel__button--active',
+      'carousel__navigation-btn--active',
       'carousel__view--active'
     );
   }
 };
 
-// Naming could be better but I am too lazy to change it in the HTML.
-// Would be better as button forward / backward.
-carouselBtnRight.addEventListener('click', () => {
-  console.log('INSIDE FORWARD => ', imageNumber);
-
+carouselBtnNext.addEventListener('click', () => {
   switch (imageNumber) {
-    case 1: {
-      console.log(imageNumber);
-      controls('forward', 4);
-      imageNumber++;
-      break;
-    }
-    case 2: {
-      console.log(imageNumber);
-      controls('forward', 4);
-      imageNumber++;
-      break;
-    }
+    case 1:
+    case 2:
     case 3: {
-      console.log(imageNumber);
       controls('forward', 4);
-      imageNumber++;
       break;
     }
+
     case 4: {
-      console.log(imageNumber);
       break;
     }
     default: {
@@ -108,31 +87,16 @@ carouselBtnRight.addEventListener('click', () => {
   }
 });
 
-// Backwards button => Previous
-carouselBtnLeft.addEventListener('click', () => {
+carouselBtnPrevious.addEventListener('click', () => {
   console.log('INSIDE PREVIOUS => ', imageNumber);
-
   switch (imageNumber) {
     case 1: {
-      console.log(imageNumber);
       break;
     }
-    case 2: {
-      console.log(imageNumber);
-      controls('backward', 4);
-      imageNumber--;
-      break;
-    }
-    case 3: {
-      console.log(imageNumber);
-      controls('backward', 4);
-      imageNumber--;
-      break;
-    }
+    case 2:
+    case 3:
     case 4: {
-      console.log(imageNumber);
       controls('backward', 4);
-      imageNumber--;
       break;
     }
     default: {
@@ -140,55 +104,21 @@ carouselBtnLeft.addEventListener('click', () => {
     }
   }
 });
-
-// => I have a lot of switch statements ... I feel this is not DRY
-// code.
 
 carouselViewButtons.forEach((button) => {
   button.addEventListener('click', (event) => {
     const viewNumber = +event.target.dataset.btn;
-    console.log('VIEWNUMBER => ', viewNumber);
 
     switch (viewNumber) {
-      case 1: {
-        makeActive(
-          carouselViewButtons,
-          carouselViewEls,
-          viewNumber,
-          'carousel__button--active',
-          'carousel__view--active'
-        );
-
-        break;
-      }
-      case 2: {
-        makeActive(
-          carouselViewButtons,
-          carouselViewEls,
-          viewNumber,
-          'carousel__button--active',
-          'carousel__view--active'
-        );
-
-        break;
-      }
-      case 3: {
-        makeActive(
-          carouselViewButtons,
-          carouselViewEls,
-          viewNumber,
-          'carousel__button--active',
-          'carousel__view--active'
-        );
-
-        break;
-      }
+      case 1:
+      case 2:
+      case 3:
       case 4: {
         makeActive(
           carouselViewButtons,
           carouselViewEls,
           viewNumber,
-          'carousel__button--active',
+          'carousel__navigation-btn--active',
           'carousel__view--active'
         );
 
@@ -201,10 +131,14 @@ carouselViewButtons.forEach((button) => {
   });
 });
 
-const randomImage = fetchRandomImage('https://source.unsplash.com/random/', '800x600').catch(
-  (error) => console.log(error)
-);
-
 carouselBtnRandom.addEventListener('click', () => {
-  carouselViewActive.childNodes[imageNumber].src = randomImage;
+  const carouselViewActive = document.querySelector('.carousel__view--active');
+
+  fetchRandomImage('https://source.unsplash.com/random/', '800x600')
+    .then((response) => (carouselViewActive.childNodes[1].src = response.url))
+    .catch((error) => console.log(error));
 });
+
+const startCarousel = () => {
+  console.log(start);
+};

@@ -55,3 +55,17 @@ const fetchImageAndMount = async (url, dimensions) => {
 };
 
 fetchImageAndMount('https://source.unsplash.com/random/', '800x600');
+
+const fetchRandomImage = (url, dimensions) => {
+  const imageResizedUrl = url + dimensions;
+
+  const imageResponse = fetch(imageResizedUrl);
+
+  if (imageResponse) {
+    imageResponse.then((response) => console.log(response));
+
+    return imageResponse;
+  }
+
+  imageResponse.catch((error) => console.log(error));
+};
