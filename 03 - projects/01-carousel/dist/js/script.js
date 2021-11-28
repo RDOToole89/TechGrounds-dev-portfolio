@@ -1,9 +1,10 @@
 const carousel = document.querySelector('.carousel');
 const carouselViewButtons = document.querySelectorAll('.carousel__navigation-btn');
-const carouselViewEls = document.querySelectorAll('.carousel__view');
+const carouselViewElements = document.querySelectorAll('.carousel__view');
 const carouselBtnNext = document.querySelector('.carousel__btn--next');
 const carouselBtnPrevious = document.querySelector('.carousel__btn--previous');
 const carouselBtnRandom = document.querySelector('.carousel__navigation-btn--random');
+const spinner = document.querySelector('#spinner');
 
 // Fetching logic
 
@@ -47,11 +48,9 @@ const controls = (direction, max) => {
   if (imageNumber < 1 || imageNumber > max) return;
 
   if (direction === 'forward') {
-    console.log('INSIDE FORWARD');
-
     makeActive(
       carouselViewButtons,
-      carouselViewEls,
+      carouselViewElements,
       imageNumber + 1,
       'carousel__navigation-btn--active',
       'carousel__view--active'
@@ -61,7 +60,7 @@ const controls = (direction, max) => {
   if (direction === 'backward') {
     makeActive(
       carouselViewButtons,
-      carouselViewEls,
+      carouselViewElements,
       imageNumber - 1,
       'carousel__navigation-btn--active',
       'carousel__view--active'
@@ -116,7 +115,7 @@ carouselViewButtons.forEach((button) => {
       case 4: {
         makeActive(
           carouselViewButtons,
-          carouselViewEls,
+          carouselViewElements,
           viewNumber,
           'carousel__navigation-btn--active',
           'carousel__view--active'
@@ -139,6 +138,49 @@ carouselBtnRandom.addEventListener('click', () => {
     .catch((error) => console.log(error));
 });
 
-const startCarousel = () => {
-  console.log(start);
+const createImageElement = (url) => {
+  const image = document.createElement('img');
+  image.src = url;
+  image.alt = 'random insplash image';
+  image.classList.add('carousel__img');
+
+  return `<img src="${image.src}" alt="${image.alt} class="carousel__img">`;
 };
+
+const mountElementToView = (views, element) => {
+  console.log('ELement inside', element);
+
+  views.forEach((view) => {
+    console.log('VIIEEEWWWW', view);
+    if (!view.children.length) {
+      [...view.childNodes].push(element);
+    }
+  });
+};
+
+const startCarousel = (numberOfViews) => {
+  let loading = true;
+
+  if (loading) {
+    spinner.removeAttribute('hidden');
+  }
+
+  const imagePromises = [];
+
+  for (let i = 0; i < numberOfViews; i++) {
+    imagePromises.push(fetchRandomImage('https://source.unsplash.com/random/', '800x600'));
+    if (('LENGTH', !carouselViewElements.length)) {
+      console.log(carouselViewElements.lenth);
+    }
+    loading = false;
+  }
+
+  Promise.all(imagePromises).then((images) =>
+    images.forEach((element) => {
+      const newImageElement = createImageElement(element.url);
+      mountElementToView(carouselViewElements, newImageElement);
+    })
+  );
+};
+
+startCarousel(4);
