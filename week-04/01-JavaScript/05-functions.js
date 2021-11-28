@@ -66,16 +66,16 @@ textInputId.addEventListener('change', () => {
 
 // Opdracht 4.3
 
-const randomNumber = () => {
-  const randomNum = Math.floor(Math.random() * 1000) + 1;
-  console.log(randomNum);
-  console.log(counter);
+// const randomNumber = () => {
+//   const randomNum = Math.floor(Math.random() * 1000) + 1;
+//   console.log(randomNum);
+//   console.log(counter);
 
-  count = randomNum;
-  counter.innerText = randomNum;
-};
+//   count = randomNum;
+//   counter.innerText = randomNum;
+// };
 
-randomNumberBtn.addEventListener('click', randomNumber);
+// randomNumberBtn.addEventListener('click', randomNumber);
 
 console.log('');
 console.log('<===== divider ====>');
@@ -115,3 +115,36 @@ nameSubmitBtn.addEventListener('click', () => {
 
   textDisplayBox.innerText = messageToDisplay;
 });
+
+// console.log('MATH.RANDOM()', Math.floor(Math.random()));
+
+// const randomNumber = () => {
+//   const randomNum = Math.floor(Math.random() * 1000) + 1;
+//   console.log(randomNum);
+//   console.log(counter);
+
+//   count = randomNum;
+//   counter.innerText = randomNum;
+// };
+
+// randomNumber();
+
+const randomNumber = (min, max) => {
+  const randomNumber = Math.floor(Math.random() * max) + min;
+
+  return randomNumber;
+};
+
+const randomNumber2 = randomNumber(1, 1000);
+const randomNumber3 = randomNumber(1, 10000);
+
+console.log('MATHOBJECT', Math);
+
+console.log(Math.round(1022331.8435));
+
+const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+console.log(Math.min(...number)); // Math.min(1,2,3,4,5,6,7,8)
+
+console.log('MATH MIN', Math.min(2, 5, 7, 8, 10));
+console.log('MATH MAX', Math.max(2, 5, 7, 8, 10));

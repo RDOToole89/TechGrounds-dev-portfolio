@@ -5,6 +5,9 @@ Important commands so far:
 npm i -g typescript ts-node => install typescript compiler and ts-node helper tool
 tsc filename => to compile
 
+to run TypeScript code easily in the browser
+npm i -g parcel-bundler
+
 What is a type?
 
 A type is a description of a value + the functions, methods and properties it has. For example true or false
@@ -348,3 +351,69 @@ summary(): string;
 }
 
 reportable can be reused on many different sorts of objects
+
+// Interface Reportable acts as a gatekeeper to the printSummary function
+Interface Reportable => printSummary Function
+
+Interfaces are the general strategy for writing resuable code in TypeScript
+
+- Create functions that accept arguments that are typed with interface
+- Objects / classes can decide to 'implement' a given interface to work with a function
+
+### Section 07 - Classes in TypeScript
+
+What are classes?
+
+Classes are a blueprint to create an object with some fields (values) and methods (functions)
+to represent a 'thing'.
+
+Classes can contain modifiers for values and methods
+
+private => means that its is only accesible from within the Class  
+public => mean anyone can access it from anywhere
+protected => only the Class OR its child sub Classes have access
+
+There are three ways of defining and initialize variables in a Class in TypeScript
+
+class Vehicle {
+initalize at the top level
+color: string = 'red'
+
+honk() {
+console.log('beep')
+}
+}
+
+initialize via constructor the classic ES6 way
+
+class Vehicle {
+constructor(color, year) {
+this.color = color;
+this.year = year;
+}
+}
+
+initialize via the constructor by prepending the modifier
+class Vehicle {
+constructor(public color: string, public year: number){
+
+}
+
+}
+
+If a Class is extended by a parent class (inheritance) we need to call Super() in the constructor
+and list all the variables we want to INHERIT like so:
+
+class Car extends Vehicle {
+
+- notice we dont have to add the modifiers again in the subclass
+
+  constructor(public wheels: number, color: string, year: number) {
+  super(color, year)
+  }
+
+}
+
+Why care about Classes and where do we use them?
+
+Because Interfaces + Classes create really strong robust code.
