@@ -4,6 +4,7 @@ const carouselViewEls = document.querySelectorAll('.carousel__view');
 const carouselBtnRight = document.querySelector('.carousel__btn--right');
 const carouselBtnLeft = document.querySelector('.carousel__btn--left');
 const carouselBtnRandom = document.querySelector('.carousel__button--random');
+const carouselViewActive = document.querySelector('.carousel__view--active');
 
 // Fetching logic
 
@@ -28,13 +29,20 @@ const fetchRandomImage = async (url, dimensions) => {
 let imageNumber = 1;
 
 // This functions takes in an array (nodeList) of elements and removes the active class
-const makeActive = (elements, viewNumber, className) => {
-  console.log('Inside MakeACTIVE => elements', elements, viewNumber, className);
+const makeActive = (elements, elements2, viewNumber, className1, className2) => {
+  console.log('Inside MakeACTIVE => elements', elements, viewNumber, className1);
 
   elements.forEach((element) => {
-    if (element.classList.contains(className)) {
-      element.classList.remove(className);
-      elements[viewNumber - 1].classList.add(className);
+    if (element.classList.contains(className1)) {
+      element.classList.remove(className1);
+      elements[viewNumber - 1].classList.add(className1);
+    }
+  });
+
+  elements2.forEach((element) => {
+    if (element.classList.contains(className2)) {
+      element.classList.remove(className2);
+      elements2[viewNumber - 1].classList.add(className2);
     }
   });
 };
@@ -46,13 +54,23 @@ const controls = (direction, max) => {
   if (direction === 'forward') {
     console.log('INSIDE FORWARD');
 
-    makeActive(carouselViewButtons, imageNumber + 1, 'carousel__button--active');
-    makeActive(carouselViewEls, imageNumber + 1, 'carousel__view--active');
+    makeActive(
+      carouselViewButtons,
+      carouselViewEls,
+      imageNumber + 1,
+      'carousel__button--active',
+      'carousel__view--active'
+    );
   }
 
   if (direction === 'backward') {
-    makeActive(carouselViewButtons, imageNumber - 1, 'carousel__button--active');
-    makeActive(carouselViewEls, imageNumber - 1, 'carousel__view--active');
+    makeActive(
+      carouselViewButtons,
+      carouselViewEls,
+      imageNumber - 1,
+      'carousel__button--active',
+      'carousel__view--active'
+    );
   }
 };
 
@@ -133,23 +151,47 @@ carouselViewButtons.forEach((button) => {
 
     switch (viewNumber) {
       case 1: {
-        makeActive(carouselViewButtons, viewNumber, 'carousel__button--active');
-        makeActive(carouselViewEls, viewNumber, 'carousel__view--active');
+        makeActive(
+          carouselViewButtons,
+          carouselViewEls,
+          viewNumber,
+          'carousel__button--active',
+          'carousel__view--active'
+        );
+
         break;
       }
       case 2: {
-        makeActive(carouselViewButtons, viewNumber, 'carousel__button--active');
-        makeActive(carouselViewEls, viewNumber, 'carousel__view--active');
+        makeActive(
+          carouselViewButtons,
+          carouselViewEls,
+          viewNumber,
+          'carousel__button--active',
+          'carousel__view--active'
+        );
+
         break;
       }
       case 3: {
-        makeActive(carouselViewButtons, viewNumber, 'carousel__button--active');
-        makeActive(carouselViewEls, viewNumber, 'carousel__view--active');
+        makeActive(
+          carouselViewButtons,
+          carouselViewEls,
+          viewNumber,
+          'carousel__button--active',
+          'carousel__view--active'
+        );
+
         break;
       }
       case 4: {
-        makeActive(carouselViewButtons, viewNumber, 'carousel__button--active');
-        makeActive(carouselViewEls, viewNumber, 'carousel__view--active');
+        makeActive(
+          carouselViewButtons,
+          carouselViewEls,
+          viewNumber,
+          'carousel__button--active',
+          'carousel__view--active'
+        );
+
         break;
       }
       default: {
@@ -159,16 +201,10 @@ carouselViewButtons.forEach((button) => {
   });
 });
 
-// I like this ... JavaScript is such a cool programming language.
+const randomImage = fetchRandomImage('https://source.unsplash.com/random/', '800x600').catch(
+  (error) => console.log(error)
+);
+
 carouselBtnRandom.addEventListener('click', () => {
-  fetchRandomImage('https://source.unsplash.com/random/', '800x600')
-    .then((response) => {
-      [...carouselViewEls].forEach((view) => {
-        if (view.classList.contains('carousel__view--active')) {
-          // Yeah I know shouldn't use .innerHTML, quick and dirty!
-          view.innerHTML = `<img src="${response.url}" class="carousel__img"/>`;
-        }
-      });
-    })
-    .catch((error) => console.log(error));
+  carouselViewActive.childNodes[imageNumber].src = randomImage;
 });
