@@ -15,9 +15,16 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
+.none {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
 .carousel {
   position: relative;
-  display: flex;
   flex-direction: column;
   align-items: center;
   color: orangered;
@@ -119,13 +126,12 @@ body {
   }
 }
 
-#spinner:not([hidden]) {
+#spinner {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  display: flex;
   justify-content: center;
   align-items: center;
 }

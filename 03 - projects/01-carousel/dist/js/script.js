@@ -6,10 +6,24 @@ const carouselBtnPrevious = document.querySelector('.carousel__btn--previous');
 const carouselBtnRandom = document.querySelector('.carousel__navigation-btn--random');
 const spinner = document.querySelector('#spinner');
 
-// Fetching logic
+// Helper Functions
+
+const createImageElement = (url) => {
+  const image = document.createElement('img');
+  image.src = url;
+  image.alt = 'random insplash image';
+  image.classList.add('carousel__img');
+  return image;
+};
+
+const mountElementToView = (view, element) => {
+  view.appendChild(element);
+};
+
+// Fetching Logic
 
 // Fetches a random image with the Unsplash API in mind from online
-const fetchRandomImage = (url, dimensions) => {
+const fetchRandomImage = (url, dimensions, apikey) => {
   // Resizes the the url with dimension in "800x600" format as specified in the Unsplash API guide
   const imageResizedUrl = url + dimensions;
 
@@ -87,7 +101,6 @@ carouselBtnNext.addEventListener('click', () => {
 });
 
 carouselBtnPrevious.addEventListener('click', () => {
-  console.log('INSIDE PREVIOUS => ', imageNumber);
   switch (imageNumber) {
     case 1: {
       break;
@@ -133,52 +146,42 @@ carouselViewButtons.forEach((button) => {
 carouselBtnRandom.addEventListener('click', () => {
   const carouselViewActive = document.querySelector('.carousel__view--active');
 
-  fetchRandomImage('https://source.unsplash.com/random/', '800x600')
-    .then((response) => (carouselViewActive.childNodes[1].src = response.url))
+  fetchRandomImage(
+    'https://source.unsplash.com/random/',
+    '800x600',
+    '?client_id=-CFIntod8uM7nKEY3BaBd-WHhQ7lsMyw8kSH28sUvPY'
+  )
+    .then((response) => {
+      if (response.status === 200) {
+        carouselViewActive.childNodes[0].src = response.url;
+      }
+      return;
+    })
     .catch((error) => console.log(error));
 });
 
-const createImageElement = (url) => {
-  const image = document.createElement('img');
-  image.src = url;
-  image.alt = 'random insplash image';
-  image.classList.add('carousel__img');
-
-  return `<img src="${image.src}" alt="${image.alt} class="carousel__img">`;
-};
-
-const mountElementToView = (views, element) => {
-  console.log('ELement inside', element);
-
-  views.forEach((view) => {
-    console.log('VIIEEEWWWW', view);
-    if (!view.children.length) {
-      [...view.childNodes].push(element);
-    }
-  });
-};
-
 const startCarousel = (numberOfViews) => {
   let loading = true;
-
-  if (loading) {
-    spinner.removeAttribute('hidden');
-  }
 
   const imagePromises = [];
 
   for (let i = 0; i < numberOfViews; i++) {
     imagePromises.push(fetchRandomImage('https://source.unsplash.com/random/', '800x600'));
-    if (('LENGTH', !carouselViewElements.length)) {
-      console.log(carouselViewElements.lenth);
-    }
-    loading = false;
   }
 
   Promise.all(imagePromises).then((images) =>
-    images.forEach((element) => {
+    images.forEach((element, i) => {
       const newImageElement = createImageElement(element.url);
-      mountElementToView(carouselViewElements, newImageElement);
+      mountElementToView(carouselViewElements[i], newImageElement);
+
+      if (carouselViewElements[0].children.length > 0) {
+        loading = false;
+      }
+
+      if (!loading) {
+        carousel.classList.add('flex');
+        spinner.classList.remove('flex');
+      }
     })
   );
 };
