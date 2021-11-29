@@ -7,16 +7,15 @@ const carouselBtnRandom = document.querySelector('.carousel__navigation-btn--ran
 const spinner = document.querySelector('#spinner');
 const _APIURL = 'https://source.unsplash.com/random';
 const imageDimensions = '/800x600';
-const forceNewRequest = '/?sig=123';
+const getRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * max) + min;
+};
+const forceNewRequest = `/?sig=`;
 
 // Helper Functions
 
-const apiUrlBuilder = (url, dimensionsParam, forceRequestParam) =>
-  url + dimensionsParam + forceRequestParam;
-
-const apiUrl = apiUrlBuilder(_APIURL, imageDimensions, forceNewRequest);
-
-console.log(apiUrl);
+const apiUrlBuilder = (url, dimensionsParam, forceRequestParam, getRandomNumber) =>
+  url + dimensionsParam + forceRequestParam + getRandomNumber(1, 1000);
 
 const createImageElement = (url) => {
   const image = document.createElement('img');
@@ -32,12 +31,12 @@ const mountElementToView = (view, element) => {
 
 // Fetching Logic
 
-// Fetches a random image with the Unsplash API in mind from online
-const fetchRandomImage = (url, dimensions, NewRequestParam) => {
-  // Resizes the the url with dimension in "800x600" format as specified in the Unsplash API guide
-  const imageResizedUrl = url + dimensions + NewRequestParam;
+// Resizes the the url with dimension in "800x600" format as specified in the Unsplash API guide
+const randomUrl = apiUrlBuilder(_APIURL, imageDimensions, forceNewRequest, getRandomNumber);
 
-  return fetch(imageResizedUrl)
+// Fetches a random image with the Unsplash API in mind from online
+const fetchRandomImage = (url) => {
+  return fetch(url)
     .then((response) => response)
     .catch((error) => console.log(error));
 };
@@ -155,8 +154,9 @@ carouselViewButtons.forEach((button) => {
 
 carouselBtnRandom.addEventListener('click', () => {
   const carouselViewActive = document.querySelector('.carousel__view--active');
+  const apiUrl = apiUrlBuilder(_APIURL, imageDimensions, forceNewRequest, getRandomNumber);
 
-  fetchRandomImage(_APIURL, imageDimensions, forceNewRequest)
+  fetchRandomImage(apiUrl)
     .then((response) => {
       if (response.status === 200) {
         carouselViewActive.childNodes[0].src = response.url;
@@ -173,7 +173,9 @@ const startCarousel = (numberOfViews) => {
   const imagePromises = [];
 
   for (let i = 0; i < numberOfViews; i++) {
-    imagePromises.push(fetchRandomImage(_APIURL, imageDimensions, forceNewRequest));
+    const apiUrl = apiUrlBuilder(_APIURL, imageDimensions, forceNewRequest, getRandomNumber);
+
+    imagePromises.push(fetchRandomImage(apiUrl));
   }
 
   Promise.all(imagePromises).then((images) =>
