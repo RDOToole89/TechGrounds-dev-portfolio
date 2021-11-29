@@ -11,6 +11,13 @@ const forceNewRequest = '/?sig=123';
 
 // Helper Functions
 
+const apiUrlBuilder = (url, dimensionsParam, forceRequestParam) =>
+  url + dimensionsParam + forceRequestParam;
+
+const apiUrl = apiUrlBuilder(_APIURL, imageDimensions, forceNewRequest);
+
+console.log(apiUrl);
+
 const createImageElement = (url) => {
   const image = document.createElement('img');
   image.src = url;
@@ -26,9 +33,9 @@ const mountElementToView = (view, element) => {
 // Fetching Logic
 
 // Fetches a random image with the Unsplash API in mind from online
-const fetchRandomImage = (url, dimensions, forceNewRequestParam) => {
+const fetchRandomImage = (url, dimensions, NewRequestParam) => {
   // Resizes the the url with dimension in "800x600" format as specified in the Unsplash API guide
-  const imageResizedUrl = url + dimensions + forceNewRequestParam;
+  const imageResizedUrl = url + dimensions + NewRequestParam;
 
   return fetch(imageResizedUrl)
     .then((response) => response)
