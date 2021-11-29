@@ -159,6 +159,7 @@ carouselBtnRandom.addEventListener('click', () => {
     .catch((error) => console.log(error));
 });
 
+// Start function will that will start the carousel and load in images from the unsplash API.
 const startCarousel = (numberOfViews) => {
   let loading = true;
 
