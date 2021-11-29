@@ -10,5 +10,6 @@
       "format": "compressed",
       "savePath": "/dist/css"
     }
-  ]
+  ],
+  "liveServer.settings.port": 5501
 }

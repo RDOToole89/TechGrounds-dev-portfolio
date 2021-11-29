@@ -1,0 +1,83 @@
+.hero {
+  display: flex;
+  padding: 8.4rem 2rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &--btn {
+      display: none;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(1.5px);
+        box-shadow: 1px 1px 18px 0.1px rgba(#fef3c7, 0.2);
+      }
+    }
+  }
+
+  &__heading {
+    color: $primary-color;
+    line-height: $line-height-medium;
+    transition: all 0.5s ease;
+
+    span {
+      position: relative;
+      color: $primary-tint-light;
+    }
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+
+  &__heading-tertiary {
+    position: relative;
+    margin-bottom: 6.4rem;
+
+    &::after {
+      position: absolute;
+      content: '';
+      top: 3rem;
+      left: 0;
+      height: 0.5rem;
+      width: 100%;
+      background-color: $primary-shade-light;
+    }
+  }
+
+  &__image-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    z-index: 4;
+
+    &--btn {
+      transition: all 0.3s ease-in-out 0.1s;
+
+      &:hover {
+        transform: translateY(1.5px);
+        box-shadow: 1px 1px 18px 0.1px rgba(#fef3c7, 0.2);
+      }
+    }
+  }
+
+  &__img {
+    object-fit: cover;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 3px solid $primary-tint-light;
+    box-shadow: $primary-shadow;
+    position: relative;
+    animation: 3s ease-in-out 0s infinite alternate image-skew;
+    filter: drop-shadow(10px 10px 15px $primary-color) saturate(140%)
+      blur(0.4px);
+  }
+}

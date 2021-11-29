@@ -1,0 +1,55 @@
+body {
+  font-family: 'Ubuntu', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+
+  /* Only works if there is nothing absolutely positioned in relation to body */
+  overflow-x: hidden;
+}
+
+.heading-primary,
+.heading-secondary,
+.heading-tertiary {
+  font-weight: $font-weight-bold;
+  color: $primary-grey;
+  letter-spacing: $letter-spacing-xsmall;
+}
+
+.heading-primary {
+  font-size: 3rem;
+  line-height: $line-height-small;
+  margin-bottom: 1.6rem;
+}
+
+.heading-secondary {
+  font-size: 2.2rem;
+  color: $primary-white;
+  line-height: $line-height-medium;
+  margin-bottom: 2.4rem;
+  letter-spacing: $letter-spacing-medium;
+}
+
+.heading-tertiary {
+  font-size: 1.8rem;
+  color: $primary-white;
+  margin-bottom: 3rem;
+  line-height: $line-height-medium;
+}
+
+.subheading {
+  display: block;
+  font-size: 1.4rem;
+  color: $primary-white;
+  font-weight: 500;
+  color: $primary-white;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-medium;
+  margin-bottom: 1.6rem;
+}
+
+.paragraph-text {
+  font-size: 1.2rem;
+  color: $primary-white;
+  line-height: $line-height-paragraph-default;
+}

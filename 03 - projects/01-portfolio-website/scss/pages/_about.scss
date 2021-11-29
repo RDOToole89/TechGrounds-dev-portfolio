@@ -1,0 +1,116 @@
+.header.about-section {
+  @extend %header;
+
+  #particles-js {
+    @include particles(#1d4ed8, -2);
+  }
+
+  &:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+  }
+}
+
+.section-about {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 7.6rem 2.4rem 8.6rem 2.4rem;
+}
+
+.block {
+  position: absolute;
+  top: 60%;
+  left: 30%;
+  width: 25rem;
+  height: 25rem;
+  background: rgba($secondary-color, 0.6);
+  z-index: -1;
+  transform: rotate(45deg) translate(-350%, -50%);
+  animation: 2.5s forwards 0.5s alternate rotate-in-top;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  &-top {
+    width: 100%;
+  }
+
+  &__heading {
+    position: relative;
+    margin-bottom: 4rem;
+    letter-spacing: 2px;
+    text-align: center;
+
+    &::after {
+      position: absolute;
+      content: '';
+      top: 3.2rem;
+      left: 0;
+      height: 0.5rem;
+      width: 100%;
+      background-color: $primary-shade-light;
+    }
+  }
+
+  &__subheading {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: $primary-white;
+    padding: 1rem 2rem;
+    background-color: rgba($primary-grey, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    gap: 1.5rem;
+    cursor: pointer;
+    transform: translateX(-200%);
+
+    &--one {
+      animation: 1s forwards 0.5s alternate pop-in-left;
+    }
+
+    &--two {
+      animation: 1.5s forwards 1s alternate pop-in-left;
+    }
+
+    &--three {
+      animation: 2s forwards 1.5s alternate pop-in-left;
+    }
+  }
+
+  &-bottom {
+    width: 100%;
+  }
+
+  &-description {
+    background-color: rgba($secondary-shade-dark, 0.2);
+    padding: 1rem 2rem;
+    transform: translateY(1000%);
+    animation: 1s forwards 1s alternate pop-in-bottom;
+
+    &__subheading {
+      letter-spacing: 3px;
+    }
+
+    &__heading-tertiary {
+      letter-spacing: 2px;
+      color: $primary-white;
+    }
+
+    &__text {
+      color: $primary-color;
+    }
+  }
+}

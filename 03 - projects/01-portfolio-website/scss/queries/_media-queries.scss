@@ -1,0 +1,110 @@
+@media (min-width: 340px) {
+  html {
+    font-size: 70%;
+  }
+}
+
+@media (min-width: 400px) {
+  .section-about {
+    padding-top: 6.4rem;
+  }
+
+  .about__subheading {
+    width: 90%;
+  }
+}
+
+@media (min-width: 600px) {
+  // Header
+
+  html {
+    font-size: 75%;
+  }
+
+  .header__logo {
+    display: none;
+  }
+
+  .nav-secondary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  // Hero
+
+  .hero {
+    height: 80%;
+    flex-direction: row;
+    padding: 0rem 6.2rem;
+    gap: 4rem;
+
+    &__info {
+      align-items: flex-start;
+      text-align: left;
+
+      &--btn {
+        display: block;
+      }
+    }
+
+    &__image-box {
+      img {
+        width: 225px;
+        height: 225px;
+      }
+
+      &--btn {
+        display: none;
+      }
+    }
+  }
+
+  // Hamburger
+
+  .hamburger {
+    display: none;
+  }
+
+  // About
+
+  .section-about {
+    height: 75vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about {
+    flex-direction: row;
+  }
+
+  // Skills
+
+  .section-skills {
+    max-width: 75%;
+  }
+}
+
+@media (min-width: 850px) {
+  html {
+    font-size: 77.5%;
+  }
+
+  .section-skills {
+    margin: 0 auto;
+    max-width: 70%;
+    padding-top: 6.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-skills-text__heading {
+    justify-self: center;
+  }
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 100%;
+  }
+}

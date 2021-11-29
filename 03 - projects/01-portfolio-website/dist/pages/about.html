@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <title>TechGrounds - Portfolio Website - Roibin O'Toole</title>
+  </head>
+  <body>
+    <header class="header about-section">
+      <div id="particles-js"></div>
+
+      <div class="hamburger collapse"><span></span></div>
+      <a href="../../index.html" class="header__logo">&lt;RDO/&gt;</a>
+
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__list-item"><a href="../../index.html">Home</a></li>
+          <li class="nav__list-item"><a href="./about.html">About</a></li>
+          <li class="nav__list-item"><a href="./skills.html">Skills</a></li>
+          <li class="nav__list-item">
+            <a href="./projects.html">Projects</a>
+          </li>
+          <li class="nav__list-item"><a href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="container">
+        <nav class="nav-secondary">
+          <a href="../../index.html" class="header__logo--secondary">
+            &lt;RDO/&gt;
+          </a>
+
+          <ul class="nav-secondary__list">
+            <li class="nav-secondary__item">
+              <a class="link" href="../../index.html">Home</a>
+            </li>
+            <li class="nav-secondary__item active">
+              <a class="link" href="./about.html">About</a>
+            </li>
+            <li class="nav-secondary__item">
+              <a class="link" href="./skills.html">Skills</a>
+            </li>
+            <li class="nav-secondary__item">
+              <a class="link" href="./projects.html">Projects</a>
+            </li>
+
+            <li class="nav-secondary__item">
+              <a class="link" href="./contact.html">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <section class="section-about container-fluid">
+        <div class="block"></div>
+        <h2 class="heading-secondary about__heading">What I am about...</h2>
+
+        <div class="about">
+          <div class="about-top">
+            <p class="about__subheading about__subheading--one subheading">
+              <ion-icon class="icon" name="build"></ion-icon> => { Building cool
+              stuff };
+            </p>
+            <p class="about__subheading subheading about__subheading--two">
+              <ion-icon class="icon" name="book"></ion-icon> => { Lifelong
+              learner };
+            </p>
+            <p class="about__subheading subheading about__subheading--three">
+              <ion-icon class="icon" name="bulb"></ion-icon> => { Problem solver
+              };
+            </p>
+          </div>
+
+          <div class="about-bottom">
+            <div class="about-description">
+              <p class="subheading about-description__subheading">Hi I'am...</p>
+              <h3 class="heading-tertiary about-description__heading-tertiary">
+                Roibin O'Toole
+              </h3>
+              <p class="paragraph-text about-description__text">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis
+                at laudantium totam vel sapiente consectetur sequi modi iusto
+                soluta. Temporibus.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/roibinotoole/"
+          ><ion-icon class="icon" name="logo-linkedin"></ion-icon
+        ></a>
+        <a href="https://github.com/RDOToole89"
+          ><ion-icon class="icon" name="logo-github"></ion-icon
+        ></a>
+      </div>
+    </header>
+    <div class="ribbon"></div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+      particlesJS.load('particles-js', 'particles.json', function () {
+        console.log('particles.json loaded...');
+      });
+    </script>
+    <script defer src="../js/script.js"></script>
+  </body>
+</html>

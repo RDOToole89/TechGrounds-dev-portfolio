@@ -1,0 +1,66 @@
+// 1. TYPOGRAPHY SYSTEM
+
+// - Font sizes (px)
+// 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+// 2) Font Weights
+
+$font-weight-default: 400;
+$font-weight-medium: 500;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+
+// 3) Line Heights
+
+$line-height-default: 1;
+$line-height-small: 1.05;
+$line-height-medium: 1.2;
+$line-height-paragraph-default: 1.6;
+$line-height-large: 1.8;
+
+// 4) Letter Spacing
+
+$letter-spacing-xsmall: -0.5px;
+$letter-spacing-small: 0.75px;
+$letter-spacing-medium: 1.5px;
+
+// 2. COLOR SYSTEM
+
+// 1) Color Variables
+
+$primary-color: #36d1c6;
+$primary-tint-light: #c3f1ee;
+$primary-tint-dark: #72dfd7;
+$primary-shade-light: #31bcb2;
+$primary-shade-dark: #26928b;
+
+$secondary-color: #008f11;
+$secondary-tint-light: #b3ddb8;
+$secondary-tint-dark: #33a541;
+$secondary-shade-light: #00810f;
+$secondary-shade-dark: #00560a;
+
+$primary-grey: #333;
+$primary-grey-tint: #707070;
+$primary-grey-shade: #292929;
+
+$secondary-grey: #555;
+$secondary-grey-tint: #bbbbbb;
+$secondary-grey-shade: #444444;
+
+$primary-white: #fff;
+$primary-black: #1a1a1a;
+
+// 3. SHADOWS
+
+$primary-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+
+// 4. BORDER-RADIUS
+
+$border-radius-default: 9px;
+$border-radius-medium: 11px;
+
+// 5. WHITESPACE SYSTEM
+
+// - Spacing system (px)
+// 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128

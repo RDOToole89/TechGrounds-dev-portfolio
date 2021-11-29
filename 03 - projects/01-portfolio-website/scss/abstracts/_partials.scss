@@ -1,0 +1,13 @@
+%header {
+  position: relative;
+  height: calc(100vh - 11px);
+  overflow: hidden;
+}
+
+@mixin particles($color, $z-index) {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: $color;
+  z-index: $z-index;
+}

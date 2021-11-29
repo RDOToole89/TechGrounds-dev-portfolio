@@ -1,0 +1,90 @@
+.header.skills {
+  position: relative;
+  height: calc(100vh - 11px);
+  overflow: hidden;
+
+  #particles-js {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #ef4444;
+    z-index: -2;
+  }
+
+  &:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+  }
+}
+
+.section-skills {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  &-text {
+    padding: 6.2rem 0;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+    &__heading {
+      position: relative;
+      margin-bottom: 4rem;
+      letter-spacing: 2px;
+      justify-self: center;
+
+      &::after {
+        position: absolute;
+        content: '';
+        top: 3.2rem;
+        left: 0;
+        height: 0.5rem;
+        width: 100%;
+        background-color: $primary-shade-light;
+      }
+    }
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex: 1 1 0;
+  }
+
+  &__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    transform: translateY(-15rem);
+    opacity: 0;
+
+    &--one {
+      animation: 1.8s forwards 0s linear fade-in-bottom;
+    }
+    &--two {
+      animation: 1.8s forwards 0.5s linear fade-in-bottom;
+    }
+    &--three {
+      animation: 1.2s forwards 0.8s linear fade-in-bottom;
+    }
+    &--four {
+      animation: 1.1s forwards 1s linear fade-in-bottom;
+    }
+    &--five {
+      animation: 1.25s forwards 1.2s linear fade-in-bottom;
+    }
+    &--six {
+      animation: 1.5s forwards 1.1s linear fade-in-bottom;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "particles": {
+    "number": {
+      "value": 100
+    },
+    "color": {
+      "value": "fff"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 1,
+        "color": "#ccc"
+      },
+      "image": {
+        "src": "https://w0.pngwave.com/png/15/996/computer-icons-crown-icon-png-clip-art-thumbnail.png"
+      }
+    },
+    "opacity": {
+      "value": 0.5,
+      "random": true,
+      "anim": {
+        "enable": true,
+        "speed": 1
+      }
+    },
+    "size": {
+      "value": 5,
+      "random": true,
+      "anim": {
+        "enable": true,
+        "speed": 30
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 120,
+      "color": "#fff",
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 2,
+      "direction": "none",
+      "straight": false
+    }
+  },
+  "interactivity": {
+    "events": {
+      "onhover": {
+        "enable": true,
+        "mode": "none"
+      },
+      "onclick": {
+        "enable": true,
+        "mode": "push"
+      }
+    },
+    "modes": {
+      "repulse": {
+        "distance": 50,
+        "duration": 0.4
+      },
+      "bubble": {
+        "distance": 100,
+        "size": 10
+      }
+    }
+  }
+}

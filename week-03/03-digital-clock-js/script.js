@@ -11,24 +11,26 @@ const setClock = () => {
   const currentSecond = currentDate.getSeconds();
 
   hoursEl.textContent = currentHour;
-  minutesEl.textContent =
-    currentMinute < 10 ? '0' + currentMinute.toString() : currentMinute;
+  minutesEl.textContent = currentMinute < 10 ? '0' + currentMinute.toString() : currentMinute;
   secondsEl.textContent = currentSecond;
 };
 
 let timer = null;
+let running = true;
 
 const startClock = () => {
-  if (timer) {
-    timer = null;
-  } else {
+  if (!timer) {
     timer = setInterval(setClock, 1000);
+    console.log('TIMER => INTERVAL', timer);
   }
+
+  return;
 };
 
 start.addEventListener('click', startClock);
 
 stop.addEventListener('click', () => {
+  console.log('STOP => INTERVAL', timer);
   if (timer) {
     clearInterval(timer);
     timer = null;

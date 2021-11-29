@@ -7,20 +7,23 @@ const carouselBtnRandom = document.querySelector('.carousel__navigation-btn--ran
 const spinner = document.querySelector('#spinner');
 const _APIURL = 'https://source.unsplash.com/random';
 const imageDimensions = '/800x600';
-const getRandomNumber = (min, max) => {
-  return Math.floor(Math.random() * max) + min;
-};
 const forceNewRequest = `/?sig=`;
 
 // Helper Functions
 
+const getRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * max) + min;
+};
+
+// Funtion that builds the unsplash request APIURL. Takes a random number to force the API
+// to deliver a new image each time request is made.
 const apiUrlBuilder = (url, dimensionsParam, forceRequestParam, getRandomNumber) =>
   url + dimensionsParam + forceRequestParam + getRandomNumber(1, 1000);
 
 const createImageElement = (url) => {
   const image = document.createElement('img');
   image.src = url;
-  image.alt = 'random insplash image';
+  image.alt = 'random unsplash image';
   image.classList.add('carousel__img');
   return image;
 };
@@ -47,13 +50,17 @@ const fetchRandomImage = (url) => {
 
 let imageNumber = 1;
 
-// This functions takes in an array (nodeList) of elements and removes the active class
+// This functions takes in an two arrays (nodeLists) of elements and removes the active class
+// appends the class to the correct view
 const makeActive = (elements, elements2, viewNumber, className1, className2) => {
+  // Sets the correct imageNumber as specifief in the arguments
   imageNumber = viewNumber;
 
   elements.forEach((element) => {
     if (element.classList.contains(className1)) {
       element.classList.remove(className1);
+
+      // viewNumber - 1 because Array start at an index of 0
       elements[viewNumber - 1].classList.add(className1);
     }
   });
@@ -66,10 +73,13 @@ const makeActive = (elements, elements2, viewNumber, className1, className2) => 
   });
 };
 
-// Reusable function takes a direction and max number of images.
+// This function takes a 'carousel' direction and max number of images.
+// If the image number is out of bounds it returns
 const controls = (direction, max) => {
   if (imageNumber < 1 || imageNumber > max) return;
 
+  // If the user want the next view the makeActive function is called
+  // imageNumber is increased with one to signal the forward movement
   if (direction === 'forward') {
     makeActive(
       carouselViewButtons,
@@ -80,6 +90,8 @@ const controls = (direction, max) => {
     );
   }
 
+  // If the user wants the next view the makeActive function is called
+  // imageNumber is decreased with one to signal the backward movement
   if (direction === 'backward') {
     makeActive(
       carouselViewButtons,
@@ -128,6 +140,7 @@ carouselBtnPrevious.addEventListener('click', () => {
 
 carouselViewButtons.forEach((button) => {
   button.addEventListener('click', (event) => {
+    // converts the viewNumber which is a string to a number by prepending +
     const viewNumber = +event.target.dataset.btn;
 
     switch (viewNumber) {
@@ -152,6 +165,7 @@ carouselViewButtons.forEach((button) => {
   });
 });
 
+// Eventlistener fetches a random image and changes the src of the ACTIVE image.
 carouselBtnRandom.addEventListener('click', () => {
   const carouselViewActive = document.querySelector('.carousel__view--active');
   const apiUrl = apiUrlBuilder(_APIURL, imageDimensions, forceNewRequest, getRandomNumber);
@@ -168,6 +182,7 @@ carouselBtnRandom.addEventListener('click', () => {
 
 // Start function will that will start the carousel and load in images from the unsplash API.
 const startCarousel = (numberOfViews) => {
+  // Boolean condition to check rendering state
   let loading = true;
 
   const imagePromises = [];
@@ -178,15 +193,18 @@ const startCarousel = (numberOfViews) => {
     imagePromises.push(fetchRandomImage(apiUrl));
   }
 
+  // Loops over the imagePromises array creates a new image element and Mounts it the views
   Promise.all(imagePromises).then((images) =>
     images.forEach((element, i) => {
       const newImageElement = createImageElement(element.url);
       mountElementToView(carouselViewElements[i], newImageElement);
 
+      // If there is an image in the first view the images must have loaded
       if (carouselViewElements[0].children.length > 0) {
         loading = false;
       }
 
+      // If we are not loading display carousel and remove the spinner from the DOM.
       if (!loading) {
         carousel.classList.add('flex');
         spinner.classList.remove('flex');
@@ -195,4 +213,5 @@ const startCarousel = (numberOfViews) => {
   );
 };
 
+// Initializes Carousel
 startCarousel(4);

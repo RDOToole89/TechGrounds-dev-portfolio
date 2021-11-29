@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <title>TechGrounds - Portfolio Website - Roibin O'Toole</title>
+  </head>
+  <body>
+    <header class="header contact">
+      <div id="particles-js"></div>
+
+      <div class="hamburger collapse"><span></span></div>
+      <a href="../../index.html" class="header__logo">&lt;RDO/&gt;</a>
+
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__list-item"><a href="../../index.html">Home</a></li>
+          <li class="nav__list-item"><a href="./about.html">About</a></li>
+          <li class="nav__list-item"><a href="./skills.html">Skills</a></li>
+          <li class="nav__list-item">
+            <a href="./projects.html">Projects</a>
+          </li>
+          <li class="nav__list-item"><a href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="container">
+        <nav class="nav-secondary">
+          <a href="../../index.html" class="header__logo--secondary">
+            &lt;RDO/&gt;
+          </a>
+
+          <ul class="nav-secondary__list">
+            <li class="nav-secondary__item">
+              <a class="link" href="../../index.html">Home</a>
+            </li>
+            <li class="nav-secondary__item ">
+              <a class="link" href="./about.html">About</a>
+            </li>
+            <li class="nav-secondary__item ">
+              <a class="link" href="./skills.html">Skills</a>
+            </li>
+            <li class="nav-secondary__item">
+              <a class="link" href="./projects.html">Projects</a>
+            </li>
+
+            <li class="nav-secondary__item active">
+              <a class="link" href="./contact.html">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+
+      <section class="section-contact">
+        <div class="circle"></div>
+       
+        <h2 class="heading-secondary contact-form__heading">Lets get in touch...</h2>
+        <form action="post" class="contact-form">
+   
+          <label class="contact-form__label" for="name">Full name: </label>
+          <input class="contact-form__input type="text" name="name" id="name" required />
+        
+          <label class="contact-form__label" for="email">Email: </label>
+          <input class="contact-form__input type="email" name="email" id="email" required />
+
+  
+          <label class="contact-form__label" for="story"
+            >Tell us your story:</label
+          >
+          <textarea class="contact-form__input id="story" name="story" rows="5" cols="33">
+          
+            </textarea
+          >
+          <input class="contact-form__input--submit" type="submit" value="submit">
+      
+        </form>
+      
+      </section>
+
+      <div class="socials">
+       <a href="https://www.linkedin.com/in/roibinotoole/"><ion-icon class="icon" name="logo-linkedin"></ion-icon></a> 
+       <a href="https://github.com/RDOToole89"><ion-icon class="icon" name="logo-github"></ion-icon></a>
+      </div>
+    </header>
+    <div class="ribbon"></div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+      particlesJS.load('particles-js', 'particles.json', function () {
+        console.log('particles.json loaded...');
+      });
+    </script>
+     <script defer src="../js/script.js"></script>
+  </body>
+</html>
