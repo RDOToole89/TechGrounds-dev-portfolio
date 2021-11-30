@@ -3,6 +3,7 @@ const hourNumber = document.querySelectorAll('.clock__number');
 const hourHand = document.querySelector('.clock__hand--hour');
 const minuteHand = document.querySelector('.clock__hand--minute');
 const secondHand = document.querySelector('.clock__hand--second');
+const segments = document.querySelectorAll('.clock__segment');
 
 // Rotates the hours with x deg for each number
 const rotateHours = () => {
@@ -23,6 +24,18 @@ const rotateHours = () => {
 };
 
 rotateHours();
+
+const rotateSegments = () => {
+  let rotation = 30;
+
+  segments.forEach((segment) => {
+    console.log(segment);
+    segment.style.transform = `rotate(${rotation}deg)`;
+    rotation += 30;
+  });
+};
+
+rotateSegments();
 
 // Function that takes in a clock hand a time ratio
 const setHand = (element, ratio) => {

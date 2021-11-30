@@ -41,8 +41,8 @@ body {
 .clock {
   position: relative;
   background: orange;
-  width: 60rem;
-  height: 60rem;
+  width: 65rem;
+  height: 65rem;
   border-radius: 50%;
   border: 20px solid black;
 }
@@ -83,14 +83,14 @@ body {
 .clock__hand--minute {
   -webkit-transform: translateX(-50%) rotate(30deg);
           transform: translateX(-50%) rotate(30deg);
-  height: 40%;
+  height: 38%;
   width: 0.6rem;
 }
 
 .clock__hand--second {
   -webkit-transform: translateX(-50%) rotate(60deg);
           transform: translateX(-50%) rotate(60deg);
-  height: 40%;
+  height: 38%;
   width: 0.3rem;
 }
 
@@ -107,5 +107,26 @@ body {
 .clock__number {
   position: absolute;
   z-index: 100;
+}
+
+.clock__segment {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+
+.clock__segment::after {
+  display: inline-block;
+  position: relative;
+  top: 0px;
+  left: 49.5%;
+  content: '';
+  width: 10px;
+  height: 20px;
+  background: white;
+  text-align: center;
 }
 /*# sourceMappingURL=main.css.map */
