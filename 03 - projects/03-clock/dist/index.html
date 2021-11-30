@@ -7,33 +7,62 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Raleway:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
     <link rel="shortcut icon" href="#" type="image/x-icon" />
     <script defer src="./js/script.js"></script>
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="../dist/css/main.css" />
     <title>Clock</title>
   </head>
   <body>
     <div id="spinner none" class="flex"></div>
 
     <div class="clock">
-      <div class="clock__hand clock__hour" data-hour-hand></div>
-      <div class="clock__hand clock__minute" data-minute-hand></div>
-      <div class="clock__hand clock__second" data-second-hand></div>
-      <div class="clock__hour clock__hour1">1</div>
-      <div class="clock__hour clock__hour2">2</div>
-      <div class="clock__hour clock__hour3">3</div>
-      <div class="clock__hour clock__hour4">4</div>
-      <div class="clock__hour clock__hour5">5</div>
-      <div class="clock__hour clock__hour6">6</div>
-      <div class="clock__hour clock__hour7">7</div>
-      <div class="clock__hour clock__hour8">8</div>
-      <div class="clock__hour clock__hour9">9</div>
-      <div class="clock__hour clock__hour10">10</div>
-      <div class="clock__hour clock__hour11">11</div>
-      <div class="clock__hour clock__hour12">12</div>
+      <div class="clock__date">
+        <div class="clock__digit clock__day">05</div>
+        <div class="clock__digit clock__month">03</div>
+        <div class="clock__digit clock__year">2021</div>
+      </div>
+      <div class="clock__digital">
+        <div class="clock__digit clock__hour-digit">17</div>
+        <div class="clock__digit clock__minute-digit">54</div>
+        <div class="clock__digit clock__second-digit">32</div>
+        <!-- <div class="clock__milisecond-digit">32</div> -->
+      </div>
+      <div class="clock__hand clock__hand--hour"></div>
+      <div class="clock__hand clock__hand--minute"></div>
+      <div class="clock__hand clock__hand--second"></div>
+      <div class="clock__hour clock__hour1"><span class="clock__number clock_number1">1</span></div>
+      <div class="clock__hour clock__hour2"><span class="clock__number clock_number2">2</span></div>
+      <div class="clock__hour clock__hour3"><span class="clock__number clock_number3">3</span></div>
+      <div class="clock__hour clock__hour4"><span class="clock__number clock_number4">4</span></div>
+      <div class="clock__hour clock__hour5"><span class="clock__number clock_number5">5</span></div>
+      <div class="clock__hour clock__hour6"><span class="clock__number clock_number6">6</span></div>
+      <div class="clock__hour clock__hour7"><span class="clock__number clock_number7">7</span></div>
+      <div class="clock__hour clock__hour8"><span class="clock__number clock_number8">8</span></div>
+      <div class="clock__hour clock__hour9"><span class="clock__number clock_number9">9</span></div>
+      <div class="clock__hour clock__hour10">
+        <span class="clock__number clock_number10">10</span>
+      </div>
+      <div class="clock__hour clock__hour11">
+        <span class="clock__number clock_number11">11</span>
+      </div>
+      <div class="clock__hour clock__hour12">
+        <span class="clock__number clock_number12">12</span>
+      </div>
+      <div class="clock__segment clock__segment1"></div>
+      <div class="clock__segment clock__segment2"></div>
+      <div class="clock__segment clock__segment3"></div>
+      <div class="clock__segment clock__segment4"></div>
+      <div class="clock__segment clock__segment5"></div>
+      <div class="clock__segment clock__segment6"></div>
+      <div class="clock__segment clock__segment7"></div>
+      <div class="clock__segment clock__segment8"></div>
+      <div class="clock__segment clock__segment9"></div>
+      <div class="clock__segment clock__segment10"></div>
+      <div class="clock__segment clock__segment11"></div>
+      <div class="clock__segment clock__segment12"></div>
     </div>
 
     <script
