@@ -33,12 +33,12 @@ const rotateHours = () => {
 rotateHours();
 
 const rotateSegments = () => {
-  let rotation = 30;
+  let rotation = 29.9;
 
   segments.forEach((segment) => {
     console.log(segment);
     segment.style.transform = `rotate(${rotation}deg)`;
-    rotation += 30;
+    rotation += 29.9;
   });
 };
 
