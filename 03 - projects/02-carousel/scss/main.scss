@@ -6,9 +6,13 @@
   padding: 0;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   height: 100vh;
-  background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+  background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,21 +36,21 @@ body {
   &__btn {
     display: flex;
     color: white;
-    font-size: 1.5rem;
+    font-size: 3.2rem;
     font-weight: 500;
     justify-content: center;
     align-items: center;
     position: absolute;
     top: 50%;
-    width: 4rem;
-    height: 2rem;
+    width: 6.8rem;
+    height: 3.2rem;
     background: rgba(0, 0, 0, 0.7);
     z-index: 110;
     transition: all 400ms ease;
     cursor: pointer;
 
     &--previous {
-      left: -2rem;
+      left: -3.2rem;
 
       &:hover {
         transform: scale(1.3);
@@ -55,7 +59,7 @@ body {
     }
 
     &--next {
-      right: -2rem;
+      right: -3.2rem;
     }
 
     &:hover {
@@ -76,18 +80,22 @@ body {
   }
 
   &__img {
+    display: inline-block;
+    // max-width: 100%;
+    // max-height: 100%;
     object-fit: cover;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border: 1px solid rgba(255, 223, 0, 0.1);
+    box-shadow: rgba(94, 129, 163, 0.2) 0px 8px 24px;
   }
 
   &__navigation-btns {
     display: flex;
-    padding: 0.3rem 1rem;
+    padding: 0.6rem 1.6rem;
     position: absolute;
-    bottom: -4rem;
+    bottom: -6.8rem;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    gap: 3.2rem;
     height: 8%;
     z-index: 100;
   }
@@ -99,9 +107,9 @@ body {
     background: rgba(0, 0, 0, 0.3);
     color: white;
     font-weight: 700;
-    font-size: 0.8rem;
-    width: 2rem;
-    height: 2rem;
+    font-size: 1.2rem;
+    width: 4rem;
+    height: 4rem;
     border-radius: 50%;
     cursor: pointer;
     transition: all 400ms ease;
@@ -112,7 +120,7 @@ body {
 
     &--random {
       text-transform: uppercase;
-      padding: 0.5rem 1.2rem;
+      padding: 2.2rem 4.8rem;
       letter-spacing: 2px;
       width: 5rem;
       height: 2rem;
@@ -138,8 +146,8 @@ body {
 
 #spinner::after {
   content: '';
-  width: 80px;
-  height: 80px;
+  width: 8rem;
+  height: 8rem;
   border: 2px solid #f3f3f3;
   border-top: 3px solid #f25a41;
   border-radius: 100%;
@@ -153,5 +161,11 @@ body {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 30%;
   }
 }
