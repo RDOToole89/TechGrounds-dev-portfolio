@@ -46,9 +46,40 @@ body {
   width: 65rem;
   height: 65rem;
   border-radius: 50%;
-  border: 20px solid #111827;
+  border: 2rem solid #111827;
   -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
           box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.clock::before {
+  position: absolute;
+  content: '';
+  width: 61rem;
+  height: 61rem;
+  top: 0rem;
+  left: 0rem;
+  -webkit-box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border-radius: 50%;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  z-index: 1;
+}
+
+.clock::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 5%;
+  height: 5%;
+  border-radius: 50%;
+  z-index: 100;
+  background: #dc2626;
 }
 
 .clock__date {
@@ -108,20 +139,6 @@ body {
 .clock__digit {
   color: rgba(0, 0, 0, 0.6);
   font-size: 1.5rem;
-}
-
-.clock::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  width: 5%;
-  height: 5%;
-  border-radius: 50%;
-  z-index: 100;
-  background: #dc2626;
 }
 
 .clock__hand {
