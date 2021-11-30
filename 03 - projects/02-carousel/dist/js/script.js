@@ -53,14 +53,14 @@ let imageNumber = 1;
 // This functions takes in an two arrays (nodeLists) of elements and removes the active class
 // appends the class to the correct view
 const makeActive = (elements, elements2, viewNumber, className1, className2) => {
-  // Sets the correct imageNumber as specifief in the arguments
+  // Sets the correct imageNumber as specified in the arguments
   imageNumber = viewNumber;
 
   elements.forEach((element) => {
     if (element.classList.contains(className1)) {
       element.classList.remove(className1);
 
-      // viewNumber - 1 because Array start at an index of 0
+      // viewNumber - 1 because Arrays start at an index of 0
       elements[viewNumber - 1].classList.add(className1);
     }
   });
@@ -78,7 +78,7 @@ const makeActive = (elements, elements2, viewNumber, className1, className2) => 
 const controls = (direction, max) => {
   if (imageNumber < 1 || imageNumber > max) return;
 
-  // If the user want the next view the makeActive function is called
+  // If the user wants the next view the makeActive function is called
   // imageNumber is increased with one to signal the forward movement
   if (direction === 'forward') {
     makeActive(
@@ -90,7 +90,7 @@ const controls = (direction, max) => {
     );
   }
 
-  // If the user wants the next view the makeActive function is called
+  // If the user wants the previous view the makeActive function is called
   // imageNumber is decreased with one to signal the backward movement
   if (direction === 'backward') {
     makeActive(
@@ -193,7 +193,7 @@ const startCarousel = (numberOfViews) => {
     imagePromises.push(fetchRandomImage(apiUrl));
   }
 
-  // Loops over the imagePromises array creates a new image element and Mounts it the views
+  // Loops over the imagePromises array creates a new image element and Mounts it to the views
   Promise.all(imagePromises).then((images) =>
     images.forEach((element, i) => {
       const newImageElement = createImageElement(element.url);
@@ -204,7 +204,7 @@ const startCarousel = (numberOfViews) => {
         loading = false;
       }
 
-      // If we are not loading display carousel and remove the spinner from the DOM.
+      // If we are not loading: display carousel and remove the spinner from the DOM.
       if (!loading) {
         carousel.classList.add('flex');
         spinner.classList.remove('flex');
