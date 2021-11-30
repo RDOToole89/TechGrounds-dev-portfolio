@@ -6,6 +6,10 @@
   padding: 0;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   height: 100vh;
   background-color: #bfdbfe;
@@ -13,6 +17,7 @@ body {
   justify-content: center;
   align-items: center;
   font-family: 'Lato', sans-serif;
+  background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);
 }
 
 .none {
@@ -21,4 +26,70 @@ body {
 
 .flex {
   display: flex;
+}
+
+.clock {
+  position: relative;
+  background: orange;
+  width: 60rem;
+  height: 60rem;
+  border-radius: 50%;
+  border: 20px solid black;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 5%;
+    height: 5%;
+    border-radius: 50%;
+    z-index: 100;
+    background: red;
+  }
+
+  &__hand {
+    position: absolute;
+    background: black;
+    left: 50%;
+    bottom: 50%;
+    transform-origin: bottom;
+    z-index: 100;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+
+    &--hour {
+      transform: translateX(-50%);
+      height: 28%;
+      width: 0.8rem;
+    }
+
+    &--minute {
+      transform: translateX(-50%) rotate(30deg);
+      height: 40%;
+      width: 0.6rem;
+    }
+
+    &--second {
+      transform: translateX(-50%) rotate(60deg);
+      height: 40%;
+      width: 0.3rem;
+    }
+  }
+
+  &__hour {
+    padding: 3rem;
+    color: white;
+    font-size: 3rem;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+
+  &__number {
+    position: absolute;
+    z-index: 100;
+  }
 }
