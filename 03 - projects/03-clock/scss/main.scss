@@ -12,12 +12,11 @@ html {
 
 body {
   height: 100vh;
-  background-color: #bfdbfe;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Raleway', sans-serif;
-  background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);
+  background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
 }
 
 .none {
@@ -34,13 +33,15 @@ body {
   width: 65rem;
   height: 65rem;
   border-radius: 50%;
-  border: 20px solid black;
+  border: 20px solid #111827;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
     rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
     rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
   &__date {
-    width: 22%;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    width: 25%;
     padding: 0.3rem;
     background: #fde68a;
     position: absolute;
@@ -57,7 +58,9 @@ body {
   }
 
   &__digital {
-    width: 22%;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.2rem;
+    width: 25%;
     padding: 0.3rem;
     background: #fde68a;
     position: absolute;
@@ -73,6 +76,11 @@ body {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   }
 
+  &__digit {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1.5rem;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -83,18 +91,19 @@ body {
     height: 5%;
     border-radius: 50%;
     z-index: 100;
-    background: red;
+    background: #dc2626;
   }
 
   &__hand {
     position: absolute;
-    background: black;
+    background: rgba(0, 0, 0, 0.85);
     left: 50%;
     bottom: 50%;
     transform-origin: bottom;
     z-index: 100;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
+    box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
 
     &--hour {
       transform: translateX(-50%);
@@ -109,7 +118,7 @@ body {
     }
 
     &--second {
-      background: red;
+      background: #dc2626;
       transform: translateX(-50%) rotate(60deg);
       height: 38%;
       width: 0.3rem;
@@ -118,7 +127,7 @@ body {
 
   &__hour {
     padding: 3rem;
-    color: white;
+    color: #f9f6ee;
     font-size: 3rem;
     position: absolute;
     width: 100%;
@@ -127,6 +136,7 @@ body {
   }
 
   &__number {
+    font-size: 3rem;
     position: absolute;
     z-index: 100;
   }
@@ -146,8 +156,32 @@ body {
       content: '';
       width: 10px;
       height: 20px;
-      background: white;
+      background: #fcf5e5;
       text-align: center;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 35%;
+  }
+
+  .clock__hour {
+    padding: 4.2rem;
+  }
+
+  .clock__hand {
+    &--hour {
+      height: 25%;
+    }
+
+    &--minute {
+      height: 32%;
+    }
+
+    &--second {
+      height: 34%;
     }
   }
 }

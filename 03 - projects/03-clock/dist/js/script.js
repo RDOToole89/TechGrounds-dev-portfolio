@@ -14,31 +14,31 @@ const miliSecondDigitEl = document.querySelector('.clock__milisecond-digit');
 
 // Rotates the hours with x deg for each number
 const rotateHours = () => {
-  let rotation = 29.6;
+  let rotation = 29.72;
 
   hours.forEach((hour) => {
     hour.style.transform = `rotate(${rotation}deg)`;
-    rotation += 29.6;
+    rotation += 29.72;
   });
 
-  rotation = 29.6;
+  rotation = 29.72;
 
   hourNumber.forEach((hourNumber, i) => {
     hourNumber.style.transform = `rotate(${-rotation}deg)`;
 
-    rotation += 29.6;
+    rotation += 29.72;
   });
 };
 
 rotateHours();
 
 const rotateSegments = () => {
-  let rotation = 29.9;
+  let rotation = 30;
 
   segments.forEach((segment) => {
     console.log(segment);
     segment.style.transform = `rotate(${rotation}deg)`;
-    rotation += 29.9;
+    rotation += 30;
   });
 };
 
@@ -50,24 +50,36 @@ const setHand = (element, ratio) => {
   element.style.transform = `rotate(${rotation}deg)`;
 };
 
+const digitToString = (number) => {
+  if (number < 10) {
+    return '0' + number.toString();
+  }
+
+  return number.toString();
+};
+
 const setDigit = (element, timeUnit) => {
   const currentDate = new Date();
+  const currentMiliSeconds = digitToString(currentDate.getMilliseconds());
+  const currentSeconds = digitToString(currentDate.getSeconds());
+  const currentMinutes = digitToString(currentDate.getMinutes());
+  const currentHours = digitToString(currentDate.getHours());
 
   switch (timeUnit) {
-    case 'hours': {
-      element.innerText = currentDate.getHours();
-      break;
-    }
-    case 'minutes': {
-      element.innerText = currentDate.getMinutes();
+    case 'miliSeconds': {
+      element.innerText = currentMiliSeconds;
       break;
     }
     case 'seconds': {
-      element.innerText = currentDate.getSeconds();
+      element.innerText = currentSeconds;
       break;
     }
-    case 'miliSeconds': {
-      element.innerText = currentDate.getMilliseconds();
+    case 'minutes': {
+      element.innerText = currentMinutes;
+      break;
+    }
+    case 'hours': {
+      element.innerText = currentHours;
       break;
     }
     default: {
@@ -89,6 +101,9 @@ const startClock = () => {
   year.innerText = currentYear;
 
   // Sets the hands
+
+  // Function that takes in a clock hand a time ratio
+
   const secondRatio = currentDate.getSeconds() / 60;
   const minuteRatio = (secondRatio + currentDate.getMinutes()) / 60;
   const hourRatio = (minuteRatio + currentDate.getHours()) / 12;
