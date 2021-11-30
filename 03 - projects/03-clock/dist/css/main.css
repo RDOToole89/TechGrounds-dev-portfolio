@@ -47,6 +47,22 @@ body {
   border: 20px solid black;
 }
 
+.clock__date {
+  padding: 0.3rem;
+  background: yellow;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  -webkit-transform: translate(-50%, 50%);
+          transform: translate(-50%, 50%);
+  font-size: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 2rem;
+  z-index: 1;
+}
+
 .clock::after {
   content: '';
   position: absolute;
@@ -88,6 +104,7 @@ body {
 }
 
 .clock__hand--second {
+  background: red;
   -webkit-transform: translateX(-50%) rotate(60deg);
           transform: translateX(-50%) rotate(60deg);
   height: 38%;

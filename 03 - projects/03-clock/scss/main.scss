@@ -36,6 +36,19 @@ body {
   border-radius: 50%;
   border: 20px solid black;
 
+  &__date {
+    padding: 0.3rem;
+    background: yellow;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    font-size: 2rem;
+    display: flex;
+    gap: 2rem;
+    z-index: 1;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -72,6 +85,7 @@ body {
     }
 
     &--second {
+      background: red;
       transform: translateX(-50%) rotate(60deg);
       height: 38%;
       width: 0.3rem;

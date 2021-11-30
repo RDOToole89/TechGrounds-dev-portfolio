@@ -4,6 +4,9 @@ const hourHand = document.querySelector('.clock__hand--hour');
 const minuteHand = document.querySelector('.clock__hand--minute');
 const secondHand = document.querySelector('.clock__hand--second');
 const segments = document.querySelectorAll('.clock__segment');
+const day = document.querySelector('.clock__day');
+const month = document.querySelector('.clock__month');
+const year = document.querySelector('.clock__year');
 
 // Rotates the hours with x deg for each number
 const rotateHours = () => {
@@ -45,7 +48,17 @@ const setHand = (element, ratio) => {
 
 const startClock = () => {
   const currentDate = new Date();
+  const currentDay = currentDate.getDay();
+  const currentMonth = currentDate.getMonth();
+  const currentYear = currentDate.getFullYear();
 
+  // Sets the date
+
+  day.innerText = '0' + currentDay.toString();
+  month.innerText = currentMonth < 10 ? '0' + currentMonth.toString() : currentMonth;
+  year.innerText = currentYear;
+
+  // Sets the hands
   const secondRatio = currentDate.getSeconds() / 60;
   const minuteRatio = (secondRatio + currentDate.getMinutes()) / 60;
   const hourRatio = (minuteRatio + currentDate.getHours()) / 12;
