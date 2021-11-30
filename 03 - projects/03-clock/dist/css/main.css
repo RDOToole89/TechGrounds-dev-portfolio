@@ -45,9 +45,12 @@ body {
   height: 65rem;
   border-radius: 50%;
   border: 20px solid black;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .clock__date {
+  width: 28%;
   padding: 0.3rem;
   background: yellow;
   position: absolute;
@@ -59,6 +62,29 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 2rem;
+  z-index: 1;
+}
+
+.clock__digital {
+  width: 28%;
+  padding: 0.3rem;
+  background: yellow;
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  -webkit-transform: translate(-50%, 50%);
+          transform: translate(-50%, 50%);
+  font-size: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 2rem;
   z-index: 1;
 }

@@ -35,8 +35,10 @@ body {
   height: 65rem;
   border-radius: 50%;
   border: 20px solid black;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   &__date {
+    width: 28%;
     padding: 0.3rem;
     background: yellow;
     position: absolute;
@@ -45,6 +47,22 @@ body {
     transform: translate(-50%, 50%);
     font-size: 2rem;
     display: flex;
+    justify-content: center;
+    gap: 2rem;
+    z-index: 1;
+  }
+
+  &__digital {
+    width: 28%;
+    padding: 0.3rem;
+    background: yellow;
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
     gap: 2rem;
     z-index: 1;
   }
