@@ -29,7 +29,11 @@ body {
 
 .clock {
   position: relative;
-  background: #fbbf24;
+  background: #fff1bf;
+  background: #f98511;
+  background: -webkit-linear-gradient(top left, #f98511, #d3762a);
+  background: -moz-linear-gradient(top left, #f98511, #d3762a);
+  background: linear-gradient(to bottom right, #f98511, #d3762a);
   width: 65rem;
   height: 65rem;
   border-radius: 50%;
