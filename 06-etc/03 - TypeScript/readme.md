@@ -417,3 +417,24 @@ class Car extends Vehicle {
 Why care about Classes and where do we use them?
 
 Because Interfaces + Classes create really strong robust code.
+
+### Section 09 - Design Patterns in TypeScript
+
+Library to easily run TypeScript files
+
+npm i -g parcel-bundler
+
+// Parcel is a library that makes it easy to run TypeScript files.
+// By linking ot the index.ts in the index.html file
+// Run parcel index.ts
+
+with many JS libraries we will get an error because type definition files are missing
+
+import faker from 'faker';
+
+// We get an error because the faker module does not include a type definition file
+// We need to install a type definition file manually
+// By running npm i @types/{library name} we can install the types necessary for many libraries
+
+folding levels in a file ctrl + shift + p
+folder level 1 - 6
