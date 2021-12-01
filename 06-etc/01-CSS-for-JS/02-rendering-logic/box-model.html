@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Box Model</title>
+    <style>
+      .border-box {
+        box-sizing: border-box;
+        width: 500px;
+      }
+
+      .border-box p {
+        box-sizing: inherit;
+        width: 100%;
+        border: 4px solid violet;
+        padding: 10px;
+        margin: 10px;
+      }
+
+      .content-box {
+        box-sizing: content-box;
+        width: 500px;
+      }
+
+      .content-box p {
+        box-sizing: inherit;
+        width: 100%;
+        border: 4px solid purple;
+        padding: 10px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="border-box">
+      <p>width: 500px;</p>
+      <p>border box includes => padding and border size</p>
+    </div>
+
+    <div class="content-box">
+      <p>width: 528px;</p>
+      <p>content box => add padding and border size</p>
+    </div>
+  </body>
+</html>

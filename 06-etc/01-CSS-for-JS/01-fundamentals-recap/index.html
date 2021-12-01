@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./01-hsl-color.css" />
+    <title>CSS For JS Developer - Module 0</title>
+
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .box {
+        width: 50px;
+        height: 50px;
+      }
+
+      .box.first {
+        background-color: hsl(340deg 100% 50% / 1);
+      }
+
+      .box.second {
+        background-color: hsl(340deg 100% 50% / 0.75);
+      }
+
+      .box.third {
+        background-color: hsl(340deg 100% 50% / 0.5);
+      }
+
+      .box.fourth {
+        background-color: hsl(340deg 100% 50% / 0.24);
+      }
+
+      p {
+        border: 1px solid hsl(0deg 0% 0% / 1);
+        padding: 1rem;
+      }
+
+      p em {
+        background-color: hsl(50deg 100% 50% / 0.6);
+      }
+
+      p.left {
+        text-align: left;
+        text-transform: uppercase;
+      }
+      p.right {
+        text-align: right;
+        text-transform: capitalize;
+      }
+      p.center {
+        text-align: center;
+      }
+      p {
+        margin-bottom: 32px;
+      }
+
+      div h3 + p {
+        font-size: 1.25rem;
+        color: hsl(0deg 0% 30% / 1);
+        letter-spacing: 3px;
+        line-height: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box first"></div>
+    <div class="box second"></div>
+    <div class="box third"></div>
+    <div class="box fourth"></div>
+    <p>This is a paragraph with a <em>highlighted section</em></p>
+
+    <div class="p-container">
+      <p class="left">This paragraph uses the default “left” alignment.</p>
+      <p class="right">
+        This one, meanwhile, pops over to the other side! It flips the default behaviour.
+      </p>
+      <p class="center">Finally, we end in the middle.</p>
+
+      <h3>About Us</h3>
+      <p>The Lumen Group was founded in 1984 in Berlin, Germany.</p>
+    </div>
+  </body>
+</html>
