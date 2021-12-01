@@ -16,38 +16,38 @@ const compareDates = (d1, d2) => {
 const todayDate = new Date().toISOString().slice(0, 10);
 console.log(todayDate);
 
-const date1 = document.querySelector('.date-one');
-const date2 = document.querySelector('.date-two');
+const dateOne = document.querySelector('.date-one');
+const dateTwo = document.querySelector('.date-two');
 
-date1.min = '1970-01-01';
-date1.min = '1970-01-01';
-date1.value = '1970-01-01';
+dateOne.min = '1970-01-01';
+dateOne.max = todayDate;
+dateOne.value = '1970-01-01';
 
-date2.value = todayDate;
-date2.max = todayDate;
-date2.max = todayDate;
+dateTwo.value = todayDate;
+dateTwo.min = '1970-01-01';
+dateTwo.max = todayDate;
 
 const submitBtn = document.querySelector('.submit-btn');
 const showDifference = document.querySelector('.display-date');
 
-let date1Value = null;
-let date2Value = null;
+let dateOneValue = '1970-01-01';
+let dateTwoValue = todayDate;
 
-date1.addEventListener('change', (e) => {
-  date1Value = e.target.value;
-  console.log('date1value => ', date1Value);
+dateOne.addEventListener('change', (e) => {
+  dateOneValue = e.target.value;
+  console.log('dateOneValue => ', dateOneValue);
 });
 
-date2.addEventListener('change', (e) => {
-  date2Value = e.target.value;
-  console.log('date2value => ', date2Value);
+dateTwo.addEventListener('change', (e) => {
+  dateTwoValue = e.target.value;
+  console.log('dateTwoValue => ', dateTwoValue);
 });
 
 submitBtn.addEventListener('click', () => {
-  if (!(date1Value || date2Value)) {
+  if (!(dateOneValue || dateTwoValue)) {
     showDifference.textContent = 'Not a valid value';
   }
 
-  const daysDifference = compareDates(date1Value, date2Value);
-  showDifference.value = daysDifference;
+  const daysDifference = compareDates(dateOneValue, dateTwoValue);
+  showDifference.textContent = `${daysDifference} days`;
 });

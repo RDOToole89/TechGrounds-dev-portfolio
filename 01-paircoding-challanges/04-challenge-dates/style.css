@@ -6,6 +6,10 @@
   padding: 0;
 }
 
+*:focus {
+  outline: none;
+}
+
 html,
 body {
   height: 100%;
@@ -15,38 +19,91 @@ body {
 body {
   height: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   font-family: 'Raleway', sans-serif;
-  background: #4ca1af; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #c4e0e5, #4ca1af); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #c4e0e5,
-    #4ca1af
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #c4e0e5, #4ca1af);
+  background: hsl(212, 32%, 8%);
+  gap: 1rem;
+  color: hsl(0, 0%, 100%);
+  letter-spacing: 1.6px;
+}
+
+.heading-secondary {
+  display: inline-block;
+  font-size: 2.4rem;
+  color: hsl(0, 0%, 100%);
+  padding: 1.2rem 0;
+  margin-top: -1.8rem;
+  margin-bottom: 1.2rem;
+  border-bottom: 2px solid hsl(333, 92%, 48%);
+}
+
+.subheading {
+  font-size: 1.2rem;
+
+  color: hsl(0, 0%, 100%);
+  margin-bottom: 2rem;
+}
+
+.hero {
+  position: relative;
 }
 
 .date-container {
-  position: relative;
-  padding: 6rem 4rem;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 4rem 4rem;
+  box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.16), 0 1px 4px -1px rgba(0, 0, 0, 0.04);
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
+  background: linear-gradient(0deg, rgba(59, 99, 121, 0.1), hsl(210deg, 30%, 10%));
 }
 
-/* .date-container::before {
-  position: absolute;
-  content: '';
-  width: 100%;
-  height: 100%;
-  top: 0rem;
-  left: 0rem;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  backdrop-filter: blur(30px);
-} */
+.date {
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(212, 26%, 13%);
+  padding: 1.2rem 2.4rem;
+  border: none;
+  border-bottom: 2px solid hsl(333, 92%, 48%);
+  cursor: pointer;
+  margin-bottom: 1.8rem;
+}
+
+.date:focus {
+  color: hsl(333, 92%, 48%);
+}
+
+.submit-btn {
+  border: none;
+  font-weight: 700;
+  background-color: hsl(203, 33%, 25%);
+  color: hsl(0, 0%, 100%);
+  padding: 1rem 2.4rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 1.8rem;
+}
+
+.submit-btn:hover {
+  background-color: hsl(203, 26%, 35%);
+  color: hsl(0, 0%, 100%);
+}
 
 .display-date {
-  font-size: 2rem;
+  font-size: 1.4rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  height: 5rem;
+  background-color: hsl(212, 26%, 13%);
+}
+
+@media (min-width: 500px) {
+  html,
+  body {
+    height: 100%;
+    font-size: 80%;
+  }
 }
