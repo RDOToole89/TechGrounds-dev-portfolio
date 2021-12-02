@@ -6,33 +6,19 @@
 // Run parcel index.ts and parcel-bundler will transform the TypeScript
 // into JavaScript and run it on a local server.
 
-// console.log('Hi there from TS!');
+import { User } from './User';
+import { Company } from './Company';
+import { CustomMap } from './CustomMap';
 
-// import { User } from './User';
-// import { Company } from './Company';
+const userOne = new User();
+const userTwo = new User();
+console.log(userOne);
 
-// const user = new User();
-// console.log(user);
+const companyOne = new Company();
+const companyTwo = new Company();
 
-// const company = new Company();
-
-// console.log(company);
-// console.log(google);
-
-const map = document.querySelector('#map') as HTMLElement;
-console.log(map);
-const mapOptions = {
-  zoom: 1,
-  center: {
-    lat: 52.373072104297016,
-    lng: 4.892650637158713,
-  },
-};
-
-new google.maps.Map(map, {
-  zoom: 2,
-  center: {
-    lat: 52.373072104297016,
-    lng: 4.892650637158713,
-  },
-});
+const customMap = new CustomMap('#map');
+customMap.addMarker(userOne);
+customMap.addMarker(userTwo);
+customMap.addMarker(companyOne);
+customMap.addMarker(companyTwo);

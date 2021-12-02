@@ -1,0 +1,20 @@
+:root {
+  --background-color: #fff;
+  --color: #222;
+  font-size: 100%;
+}
+
+@media (prefer-color-scheme: dark) {
+  :root {
+    --background-color: #222;
+    --color: #fff;
+  }
+}
+
+/* cj93w.csb.app */
+
+/* object-fit: cover;
+object-position: center; */
+
+/* gsap */
+/* ScrollTrigger */

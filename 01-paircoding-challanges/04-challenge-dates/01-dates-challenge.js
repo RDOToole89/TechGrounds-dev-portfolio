@@ -11,7 +11,8 @@ const compareDates = (d1, d2) => {
   return Math.abs((date2 - date1) / msDay);
 };
 
-// The Date object contains a Number that represents milliseconds passed since the // // Epoch, that is 1 January 1970.
+// The Date object contains a Number that represents milliseconds passed since the
+// Epoch (Unix) time, that is 1 January 1970.
 
 const todayDate = new Date().toISOString().slice(0, 10);
 console.log(todayDate);

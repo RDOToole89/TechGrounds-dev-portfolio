@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Grid</title>
+  </head>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 100%;
+    }
+
+    html,
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100%;
+    }
+
+    .wrapper {
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+
+    .overlay-grid {
+      display: grid;
+      align-items: center;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 200px;
+    }
+
+    .overlay-grid__box {
+      width: 400px;
+      height: 300px;
+      background: linear-gradient(to right, #f8ffae, #43c6ac);
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+    .overlay-grid__box--one {
+      grid-column: 1 / span 8;
+      grid-row: 1 / 2;
+      background-color: orangered;
+    }
+
+    .overlay-grid__box--two {
+      grid-column: 5 / span 8;
+      background-color: navy;
+      grid-row: 1 / 3;
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      <div class="overlay-grid">
+        <div class="overlay-grid__box overlay-grid__box--one"></div>
+        <div class="overlay-grid__box overlay-grid__box--two"></div>
+      </div>
+    </div>
+  </body>
+</html>

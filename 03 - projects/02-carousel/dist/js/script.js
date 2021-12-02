@@ -50,6 +50,12 @@ const fetchRandomImage = (url) => {
 
 let imageNumber = 1;
 
+const elementsActive = {
+  carouselViewElements,
+  carouselViewButtons,
+  imageNumber,
+};
+
 // This functions takes in an two arrays (nodeLists) of elements and removes the active class
 // appends the class to the correct view
 const makeActive = (elements, elements2, viewNumber, className1, className2) => {

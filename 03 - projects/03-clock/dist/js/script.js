@@ -13,36 +13,35 @@ const secondDigitEl = document.querySelector('.clock__second-digit');
 const miliSecondDigitEl = document.querySelector('.clock__milisecond-digit');
 
 // Rotates the hours with x deg for each number
-const rotateHours = () => {
-  let rotation = 29.72;
+const rotateHours = (degrees) => {
+  let rotation = degrees;
 
   hours.forEach((hour) => {
     hour.style.transform = `rotate(${rotation}deg)`;
-    rotation += 29.72;
+    rotation += degrees;
   });
 
-  rotation = 29.72;
+  rotation = degrees;
 
   hourNumber.forEach((hourNumber, i) => {
     hourNumber.style.transform = `rotate(${-rotation}deg)`;
 
-    rotation += 29.72;
+    rotation += degrees;
   });
 };
 
-rotateHours();
+rotateHours(29.72);
 
-const rotateSegments = () => {
-  let rotation = 30;
-
+const rotateSegments = (degrees) => {
+  let rotation = degrees;
   segments.forEach((segment) => {
     console.log(segment);
     segment.style.transform = `rotate(${rotation}deg)`;
-    rotation += 30;
+    rotation += degrees;
   });
 };
 
-rotateSegments();
+rotateSegments(30);
 
 // Function that takes in a clock hand a time ratio
 const setHand = (element, ratio) => {
