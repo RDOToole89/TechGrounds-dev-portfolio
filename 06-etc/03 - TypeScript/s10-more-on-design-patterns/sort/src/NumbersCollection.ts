@@ -1,3 +1,5 @@
+// This class abstracts out the logic of comparing and swapping a numbers array.
+
 export class NumbersCollection {
   data: number[];
   constructor(data: number[]) {
@@ -10,10 +12,13 @@ export class NumbersCollection {
     return this.data.length;
   }
 
+  // implements comparing the leftIndex [j] and rightIndex [j + 1]
+  // returns a boolean. This.data refers to an array of numbers.
   compare(leftIndex: number, rightIndex: number): boolean {
     return this.data[leftIndex] > this.data[rightIndex];
   }
 
+  // implements the swapping logic for a numbers array in TypeScript
   swap(leftIndex: number, rightIndex: number): void {
     const leftHand = this.data[leftIndex];
     this.data[leftIndex] = this.data[rightIndex];

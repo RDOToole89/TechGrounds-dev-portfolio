@@ -1,4 +1,5 @@
 "use strict";
+// This class abstracts out the logic of comparing and swapping a numbers array.
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NumbersCollection = void 0;
 class NumbersCollection {
@@ -10,9 +11,12 @@ class NumbersCollection {
     get length() {
         return this.data.length;
     }
+    // implements comparing the leftIndex [j] and rightIndex [j + 1]
+    // returns a boolean. This.data refers to an array of numbers.
     compare(leftIndex, rightIndex) {
         return this.data[leftIndex] > this.data[rightIndex];
     }
+    // implements the swapping logic for a numbers array in TypeScript
     swap(leftIndex, rightIndex) {
         const leftHand = this.data[leftIndex];
         this.data[leftIndex] = this.data[rightIndex];
