@@ -8,7 +8,6 @@ const spinner = document.querySelector('#spinner');
 const _APIURL = 'https://source.unsplash.com/random';
 const imageDimensions = '/800x600';
 const forceNewRequest = `/?sig=`;
-
 // Helper Functions
 
 const getRandomNumber = (min, max) => {
@@ -49,12 +48,6 @@ const fetchRandomImage = (url) => {
 // Variable holding the current image view on the carousel
 
 let imageNumber = 1;
-
-const elementsActive = {
-  carouselViewElements,
-  carouselViewButtons,
-  imageNumber,
-};
 
 // This functions takes in an two arrays (nodeLists) of elements and removes the active class
 // appends the class to the correct view

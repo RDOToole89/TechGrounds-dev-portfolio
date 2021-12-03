@@ -438,3 +438,34 @@ import faker from 'faker';
 
 folding levels in a file ctrl + shift + p
 folder level 1 - 6
+
+interfaces => describe what a class / method or object needs to adhere to be executed by that
+function.
+
+classes can implement an interface
+
+### Section 10 - More Design Patterns
+
+tsc index.ts => tells the compiler to compile the TypeScript file to JavaScript
+tsc --init => run to create a tsconfig file.
+
+to configure the compiler change the rootDir and outDir in the tsconfig.json
+
+now you can run tsc by itself and it will automatically output the root to the output folder.
+
+tsc => compiles root to output
+tsc -w => will watch all the files in the rootdir
+
+npm i nodemon concurrently
+
+nodemon will create live updates
+concurrently allows us to run multiple scripts
+
+"scripts": {
+"start:build": "tsc -w",
+"start:run": "nodemon build/index.js",
+"start": "concurrently npm:start:\*"
+},
+
+// Problem with the union | operator
+// The union operator will only allow access to methods and properties that are available on both types

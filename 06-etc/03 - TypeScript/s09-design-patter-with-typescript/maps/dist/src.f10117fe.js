@@ -136898,7 +136898,12 @@ function () {
       lat: parseFloat(faker_1.default.address.latitude()),
       lng: parseFloat(faker_1.default.address.longitude())
     };
+    this.color = 'color';
   }
+
+  User.prototype.markerContent = function () {
+    return "User Name: ".concat(this.name);
+  };
 
   return User;
 }();
@@ -136924,6 +136929,7 @@ var Company =
 /** @class */
 function () {
   function Company() {
+    this.color = 'color';
     this.companyName = faker_1.default.company.companyName();
     this.catchPhrase = faker_1.default.company.catchPhrase();
     this.location = {
@@ -136931,6 +136937,10 @@ function () {
       lng: +faker_1.default.address.longitude()
     };
   }
+
+  Company.prototype.markerContent = function () {
+    return "<div>\n              <h1>Company name: ".concat(this.companyName, "</h1> \n              <h3>Catchphrase: ").concat(this.catchPhrase, "</h3>\n            </div>\n              ");
+  };
 
   return Company;
 }();
@@ -136962,12 +136972,22 @@ function () {
 
 
   CustomMap.prototype.addMarker = function (mappable) {
-    new google.maps.Marker({
+    var _this = this;
+
+    var marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng
       }
+    });
+    marker.addListener('click', function () {
+      var infoWindow = new google.maps.InfoWindow({
+        // argument mappable now has a method called markerContent()
+        // attached to it.
+        content: mappable.markerContent()
+      });
+      infoWindow.open(_this.googleMap, marker);
     });
   };
 
@@ -137030,7 +137050,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38507" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40905" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

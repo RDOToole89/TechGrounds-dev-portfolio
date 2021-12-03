@@ -1,14 +1,17 @@
 // Any object implementing this interface must at least have a location
 // with a lat and a lng that is a number. Basically instructions to a class
 // on how the can be an argement to 'addMarker'.
-interface Mappable {
+export interface Mappable {
   location: {
     lat: number;
     lng: number;
   };
+  markerContent(): string;
+  color: string;
 }
 
 export class CustomMap {
+  // This private property means we can only reference methods from inside the CustomMap
   private googleMap: google.maps.Map;
 
   constructor(divId: string) {
@@ -26,12 +29,21 @@ export class CustomMap {
   // acts as a gatekeeper to the method AddMarker. It needs to at least
   // adhere to the interface. To be eligble as an argument to addMarker.
   addMarker(mappable: Mappable): void {
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng,
       },
+    });
+    marker.addListener('click', () => {
+      const infoWindow = new google.maps.InfoWindow({
+        // argument mappable now has a method called markerContent()
+        // attached to it.
+        content: mappable.markerContent(),
+      });
+
+      infoWindow.open(this.googleMap, marker);
     });
   }
 }
