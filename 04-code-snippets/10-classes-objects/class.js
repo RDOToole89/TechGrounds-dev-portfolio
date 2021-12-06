@@ -25,7 +25,7 @@
 const colorArray = ['red', 'blue', 'green'];
 console.log('COLOR ARRAY', colorArray[1]);
 
-// Key = value pairs
+// Key <=> value pairs
 const car = {
   brand: 'Honda',
   color: 'red',
@@ -37,17 +37,7 @@ const car = {
 
 car.honk();
 
-// Classes => blauwdruk van een object
-
-const promiseExample = new Promise((resolve, reject) => {
-  let resolver = true;
-
-  if (resolve) {
-    resolve('Promise resolved');
-  }
-
-  reject('Promise rejected');
-});
+// Classes => bluePrint of an object
 
 class PersonClass {
   constructor(name, age) {
