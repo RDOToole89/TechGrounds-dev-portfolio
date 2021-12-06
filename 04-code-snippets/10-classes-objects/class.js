@@ -64,15 +64,45 @@ const miki = new PersonClass('Miki', 40);
 miki.sayHello();
 
 class Car {
+  // Constructor function
   constructor(brand, buildyear) {
     this.brand = brand;
     this.buildyear = buildyear;
   }
 
+  // class method
   honk() {
     console.log('toet toet');
+    return `toet toet from ${this.brand}. I was made in ${this.buildyear}`;
+  }
+
+  drive() {
+    console.log(`I am driving, I am a ${this.brand}!`);
+    return `I am driving, I am a ${this.brand}!`;
   }
 }
+
+// Ferrari extends Car because we want to use the properties and methods of Car
+// We call super() in the constructor which references the Car or Parent's constructor.
+class Ferrari extends Car {
+  constructor(brand, buildYear, model) {
+    super(brand, buildYear);
+
+    // // console.log(super(brand, buildYear));
+    this.model = model;
+  }
+
+  // Polymorphism => changing the methods on the child class
+  honk() {
+    console.log(`Toet toet from ${this.brand} ${this.model}!`);
+    return `toet toet from ${this.brand} ${this.model}. I was made in ${this.buildyear}`;
+  }
+}
+
+const fastCar = new Ferrari('Ferrari', 1972, 'enzo');
+console.log('const fastCar; is an instance of the Ferrari class', fastCar);
+console.log('fastCar.honk()', fastCar.honk());
+console.log('fastCar.drive()', fastCar.drive());
 
 // Inheritance
 // Instance van de Class Car
