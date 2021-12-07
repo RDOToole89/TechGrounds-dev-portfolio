@@ -1,30 +1,3 @@
-// class Car {
-//   constructor(color, brand) {
-//     this.color = color;
-//     this.brand = brand;
-//     this.edition = 0;
-//   }
-
-//   get getEdition() {
-//     return this.edition;
-//   }
-
-//   set setEdition(number) {
-//     this.editon = number;
-//   }
-// }
-
-// const honda = new Car('red', 'Honda');
-
-// console.log('Log the whole car', honda);
-// console.log('Return the edition', honda.getEdition);
-// console.log('Log the whole car', honda);
-// console.log('Set the edition', (honda.setEdition = 5));
-// console.log('Log the whole car', honda);
-
-const colorArray = ['red', 'blue', 'green'];
-console.log('COLOR ARRAY', colorArray[1]);
-
 // Key <=> value pairs
 const car = {
   brand: 'Honda',
@@ -55,9 +28,10 @@ miki.sayHello();
 
 class Car {
   // Constructor function
-  constructor(brand, buildyear) {
+  constructor(brand, buildyear, edition) {
     this.brand = brand;
     this.buildyear = buildyear;
+    this.edition = 0;
   }
 
   // class method
@@ -69,6 +43,16 @@ class Car {
   drive() {
     console.log(`I am driving, I am a ${this.brand}!`);
     return `I am driving, I am a ${this.brand}!`;
+  }
+
+  // Getter & Setters
+
+  get getEdition() {
+    return this.edition;
+  }
+
+  set setEdtion(val) {
+    this.edition = val;
   }
 }
 
@@ -94,6 +78,8 @@ console.log('const fastCar; is an instance of the Ferrari class', fastCar);
 console.log('fastCar.honk()', fastCar.honk());
 console.log('fastCar.drive()', fastCar.drive());
 
+console.log('fastCar Edition Getter => fastCar.edition', fastCar.edition);
+console.log('fastCar Edition Setter => fastCar.edition = 10', (fastCar.edition = 10));
 // Inheritance
 // Instance van de Class Car
 const honda = new Car('Honda', 1976);

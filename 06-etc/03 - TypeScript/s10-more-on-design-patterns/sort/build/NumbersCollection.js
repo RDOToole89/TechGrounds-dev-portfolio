@@ -2,8 +2,10 @@
 // This class abstracts out the logic of comparing and swapping a numbers array.
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NumbersCollection = void 0;
-class NumbersCollection {
+const Sorter_1 = require("./Sorter");
+class NumbersCollection extends Sorter_1.Sorter {
     constructor(data) {
+        super();
         this.data = data;
     }
     // getters allow you to call functions that return a property value
@@ -25,4 +27,3 @@ class NumbersCollection {
 }
 exports.NumbersCollection = NumbersCollection;
 const collection = new NumbersCollection([1, 2, 3]);
-console.log(collection.length);

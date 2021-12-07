@@ -1,15 +1,13 @@
 // The Sortable interface describes what is necessary to be able to be accepted as an
 // argument to the Sorter function.
 
-import { Sorter } from './Sorter';
-
 interface Sortable {
   length: number;
   compare(leftIndex: number, rightIndex: number): boolean;
   swap(leftIndex: number, rightIndex: number): void;
 }
 
-export class Sorter {
+export class Sorterb42nd {
   // The constructor takes in a collection which needs to adhere to the the Sortable interface.
   constructor(public collection: Sortable) {}
 
