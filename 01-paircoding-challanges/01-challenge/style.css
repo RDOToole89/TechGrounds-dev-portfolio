@@ -1,10 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+/* Resets */
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 62.5%;
+  min-height: 100%;
+}
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #93c5fd;
   height: 100vh;
+  overflow: hidden;
 }
 
 h1,
@@ -13,6 +29,24 @@ p {
   padding: 0;
   margin: 0;
   text-transform: uppercase;
+}
+
+/* Typography */
+
+.header {
+  font-size: 12rem;
+}
+
+.subheader {
+  font-size: 10rem;
+  font-family: 'Courier Prime', monospace;
+  letter-spacing: 2.7px;
+}
+
+.paragraph {
+  font-size: 3rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 500;
 }
 
 .open-modal__btn {
@@ -25,7 +59,7 @@ p {
   letter-spacing: 1px;
   text-transform: uppercase;
   font-weight: 500;
-  padding: 0.8rem 1.8rem;
+  padding: 1.2rem 2.4rem;
   z-index: 100;
   cursor: pointer;
   opacity: 1;
@@ -65,7 +99,7 @@ p {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  box-shadow: rgba(100, 100, 111, 0.7) 0px 7px 29px 0;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -2px;
   transform: translateY(-150%);
   transition: all ease-in 200ms;
   z-index: 2;
@@ -77,7 +111,7 @@ p {
 
 .close {
   position: absolute;
-  font-size: 2rem;
+  font-size: 3rem;
   top: 20px;
   right: 20px;
   transition: all 200ms ease-in;
@@ -99,20 +133,4 @@ p {
   display: block;
   justify-content: center;
   align-items: center;
-}
-
-.header {
-  font-size: 8rem;
-}
-
-.subheader {
-  font-size: 7rem;
-  font-family: 'Courier Prime', monospace;
-  letter-spacing: 2.7px;
-}
-
-.paragraph {
-  font-size: 2.2rem;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: 500;
 }
