@@ -59,6 +59,7 @@ const digitToString = (number) => {
 
 const setDigit = (element, timeUnit) => {
   const currentDate = new Date();
+
   const currentMiliSeconds = digitToString(currentDate.getMilliseconds());
   const currentSeconds = digitToString(currentDate.getSeconds());
   const currentMinutes = digitToString(currentDate.getMinutes());
@@ -89,8 +90,9 @@ const setDigit = (element, timeUnit) => {
 
 const startClock = () => {
   const currentDate = new Date();
-  const currentDay = currentDate.getDay();
-  const currentMonth = currentDate.getMonth();
+
+  const currentDay = currentDate.getDate();
+  const currentMonth = currentDate.getMonth() + 1;
   const currentYear = currentDate.getFullYear();
 
   // Sets the date
@@ -117,4 +119,5 @@ const startClock = () => {
   setHand(hourHand, hourRatio);
 };
 
-let start = setInterval(startClock, 1000);
+// let start = setInterval(startClock, 1000);
+startClock();

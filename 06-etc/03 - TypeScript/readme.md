@@ -469,3 +469,5 @@ concurrently allows us to run multiple scripts
 
 // Problem with the union | operator
 // The union operator will only allow access to methods and properties that are available on both types
+
+### Section 11 - Reusable Code

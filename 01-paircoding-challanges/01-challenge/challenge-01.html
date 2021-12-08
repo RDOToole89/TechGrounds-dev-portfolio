@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
     <title>Challenge1</title>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
@@ -13,6 +14,14 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
+      }
+
+      h1,
+      h2,
+      p {
+        padding: 0;
+        margin: 0;
+        text-transform: uppercase;
       }
 
       button.open-modal {
@@ -37,7 +46,7 @@
         opacity: 0.8;
       }
 
-      #modal {
+      #overlay {
         display: none;
         position: absolute;
         z-index: 1;
@@ -50,7 +59,7 @@
         background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
       }
 
-      .box {
+      .modal {
         position: relative;
         background: linear-gradient(to right top, #e66465, #9198e5);
         height: 600px;
@@ -69,15 +78,15 @@
         display: none;
       }
 
-      .box.down {
+      .modal.down {
         transform: translateY(0);
       }
 
-      .box.down150 {
+      .modal.down150 {
         transform: translateY(150%);
       }
 
-      .box.up {
+      .modal.up {
         transform: translateY(-300%);
       }
 
@@ -96,36 +105,28 @@
         cursor: pointer;
       }
 
-      .box div {
+      .modal div {
         color: white;
         text-align: justify;
       }
 
-      #modal.open {
+      #overlay.open {
         display: block;
         justify-content: center;
         align-items: center;
       }
 
-      h1,
-      h2,
-      p {
-        padding: 0;
-        margin: 0;
-        text-transform: uppercase;
-      }
-
-      h1 {
+      .header {
         font-size: 8rem;
       }
 
-      h2 {
+      .subheader {
         font-size: 7rem;
         font-family: 'Courier Prime', monospace;
         letter-spacing: 2.7px;
       }
 
-      p {
+      .paragraph {
         font-size: 2.2rem;
         font-family: 'Courier New', Courier, monospace;
         font-weight: 500;
@@ -135,21 +136,33 @@
   <body>
     <button class="open-modal">Open Modal</button>
 
-    <div id="modal"></div>
-
-    <div class="box">
-      <div>
-        <span class="close">&times;</span>
-        <h1>TGG</h1>
-        <h2>Days</h2>
-        <p>CSS Challenge</p>
-      </div>
+    <div id="overlay"></div>
+    <div class="modal">
+      <span class="close">&times;</span>
+      <h1 class="header">TGG</h1>
+      <h2 class="subheading">Days</h2>
+      <p class="paragraph">CSS Challenge</p>
     </div>
+
     <script>
-      const modal = document.querySelector('#modal');
-      const content = document.querySelector('.box');
-      const openBtn = document.querySelector('.open-modal');
-      const close = document.querySelector('.close');
+      const modal = document.querySelector('.modal');
+
+      createModal = () => {
+        if (modal) return;
+
+        let newModal = document.createElement('div');
+        newModal.classList.add('modal');
+
+        contentBox.children.forEach((element) => {
+          modal.appendChild(document.ELEMENT_NODE);
+        });
+
+        console.log(string);
+
+        contentBox.insertAdjacentHTML('beforeend', string);
+      };
+
+      createModal();
 
       const removeClasses = (element, array) => {
         for (let i = 0; i < array.length; i++) {
