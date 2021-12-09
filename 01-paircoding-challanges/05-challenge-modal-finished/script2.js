@@ -1,5 +1,3 @@
-import AnimalModal from './modal';
-
 const catBtn = document.querySelector('.cat-btn');
 const dogBtn = document.querySelector('.dog-btn');
 const parrotBtn = document.querySelector('.parrot-btn');
@@ -34,14 +32,44 @@ const getRandom = (min, max) => {
   return Math.floor(Math.random() * max) + min;
 };
 
+// When I click on a button a modal has to be created.
+
+const createModal = () => {
+  overlay.classList.add('open');
+
+  // create and element with the class of modal that
+  // has a span with a close class and a fact class
+
+  const newModal = document.createElement('div');
+
+  // add the modal class to the newly created div
+  newModal.classList.add('modal');
+
+  // create a close span
+
+  const newCloseSpan = document.createElement('span');
+  newCloseSpan.classList.add('close');
+
+  newCloseSpan.innerText = 'X';
+
+  // create a fact span
+
+  const newFactSpan = document.createElement('span');
+  newFactSpan.classList.add('fact');
+
+  // add close and fact span to new innerHTML of newmodal
+
+  newModal.appendChild(newCloseSpan);
+  newModal.appendChild(newFactSpan);
+
+  buttonContainer.append(newModal);
+};
+
 // Loops over all the buttons and adds an onclick even
 for (let i = 0; i < buttons.length; i++) {
   buttons[i].onclick = () => {
     let modal = document.querySelector('.modal');
-    if (!modal) {
-      const newModal = new AnimalModal();
-      newModal.create(buttonContainer);
-    }
+    if (!modal) createModal();
 
     modal = document.querySelector('.modal');
 
@@ -50,7 +78,6 @@ for (let i = 0; i < buttons.length; i++) {
     }, 100);
 
     const fact = document.querySelector('.fact');
-    console.log(modal);
 
     const buttonType = buttons[i].textContent;
 
@@ -73,3 +100,18 @@ for (let i = 0; i < buttons.length; i++) {
     }
   };
 }
+
+window.addEventListener('click', (event) => {
+  const close = document.querySelector('.close');
+
+  if (event.target === close || event.target === overlay) {
+    overlay.classList.remove('open');
+    const modal = document.querySelector('.modal');
+
+    if (!modal) return;
+
+    modal.remove();
+  }
+
+  return;
+});
