@@ -1,51 +1,48 @@
-export default class AnimalModal {
-  constructor() {
-    this.showModal = window.addEventListener('click', closeModal);
+import { randomAnimalFact } from './randomAnimalFact.js';
+
+export class Modal {
+  constructor(overlay, target) {
+    this.overlay = overlay;
+    this.target = target;
+    this.modal = this.createModal();
   }
 
-  createModal(container) {
-    overlay.classList.add('open');
+  createModal() {
+    const activeModal = document.querySelector('.modal');
 
-    // create and element with the class of modal that
-    // has a span with a close class and a fact class
+    if (activeModal) {
+      return;
+    }
 
     const newModal = document.createElement('div');
-
-    // add the modal class to the newly created div
     newModal.classList.add('modal');
-
-    // create a close span
 
     const newCloseSpan = document.createElement('span');
     newCloseSpan.classList.add('close');
-
-    newCloseSpan.innerText = 'X';
-
-    // create a fact span
+    newCloseSpan.insertAdjacentHTML('afterbegin', '<ion-icon name="close-outline"></ion-icon>');
 
     const newFactSpan = document.createElement('span');
     newFactSpan.classList.add('fact');
 
-    // add close and fact span to new innerHTML of newmodal
-
     newModal.appendChild(newCloseSpan);
     newModal.appendChild(newFactSpan);
 
-    container.append(newModal);
+    this.target.append(newModal);
+
+    return newModal;
   }
 
-  closeModal(event) {
-    const close = document.querySelector('.close');
+  open() {
+    if (!this.modal) return;
 
-    if (event.target === close || event.target === overlay) {
-      overlay.classList.remove('open');
-      const modal = document.querySelector('.modal');
+    this.overlay.classList.add('open');
+    this.modal.classList.add('open');
+  }
 
-      if (!modal) return;
+  addFact(animalType) {
+    if (!this.modal) return;
 
-      modal.remove();
-    }
-
-    return;
+    // Add random animal fact to the ".fact" span element (2nd childNode)
+    this.modal.childNodes[1].innerText = randomAnimalFact(animalType);
   }
 }

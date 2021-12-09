@@ -39,6 +39,7 @@ body {
   box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.16), 0 1px 4px -1px rgba(0, 0, 0, 0.04);
   gap: 4rem;
   background: linear-gradient(0deg, rgba(59, 99, 121, 0.1), hsl(210deg, 30%, 10%));
+  border-radius: 12px;
 }
 
 .btn {
@@ -51,7 +52,7 @@ body {
   cursor: pointer;
   margin-bottom: 1.8rem;
   cursor: pointer;
-  z-index: 4;
+  z-index: 2;
 }
 
 .btn:hover {
@@ -69,6 +70,7 @@ body {
   opacity: 0;
   z-index: 1;
   transition: all 0.4s ease;
+  z-index: 1;
 }
 
 .overlay.open {
@@ -86,7 +88,7 @@ body {
   padding: 4rem 4rem;
   background-color: hsl(203, 26%, 15%);
   box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.16), 0 1px 4px -1px rgba(0, 0, 0, 0.04);
-  z-index: 5;
+  z-index: 3;
   opacity: 0;
   transition: all 500ms ease;
 }
@@ -103,10 +105,13 @@ body {
 }
 
 .close {
-  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
   position: absolute;
   top: 10px;
   right: 10px;
-  content: 'x';
   cursor: pointer;
+  z-index: 10000;
 }

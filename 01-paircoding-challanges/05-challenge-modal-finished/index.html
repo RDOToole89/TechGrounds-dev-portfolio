@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="#" type="image/x-icon" />
     <link rel="stylesheet" href="style.css" />
-    <script defer type="text/javascript" src="./script2.js"></script>
-    <script defer type="module" defer src="./modal.js"></script>
+    <script type="module" src="./script.js"></script>
 
     <title>Modal</title>
   </head>
@@ -24,9 +23,15 @@
 
     <div class="overlay"></div>
     <div class="button-container">
-      <button class="btn cat-btn">cat</button>
-      <button class="btn dog-btn">dog</button>
-      <button class="btn parrot-btn">parrot</button>
+      <button data-animal="cat" class="btn cat-btn">cat</button>
+      <button data-animal="dog" class="btn dog-btn">dog</button>
+      <button data-animal="parrot" class="btn parrot-btn">parrot</button>
     </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </body>
 </html>
