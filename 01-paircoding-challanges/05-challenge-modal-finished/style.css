@@ -29,6 +29,10 @@ body {
   letter-spacing: 1.6px;
 }
 
+.hero {
+  justify-self: flex-start;
+}
+
 .button-container {
   display: flex;
   justify-content: center;
@@ -49,8 +53,6 @@ body {
   color: hsl(0, 0%, 100%);
   padding: 1rem 2.4rem;
   transition: all 0.3s ease;
-  cursor: pointer;
-  margin-bottom: 1.8rem;
   cursor: pointer;
   z-index: 2;
 }
@@ -83,9 +85,7 @@ body {
   align-items: center;
   position: absolute;
   color: hsl(333, 92%, 48%);
-  width: 50rem;
-  height: 30rem;
-  padding: 4rem 4rem;
+  padding: 4rem 6rem;
   background-color: hsl(203, 26%, 15%);
   box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.16), 0 1px 4px -1px rgba(0, 0, 0, 0.04);
   z-index: 3;
@@ -110,8 +110,17 @@ body {
   align-items: center;
   font-size: 4rem;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5px;
+  right: 5px;
   cursor: pointer;
-  z-index: 10000;
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 45%;
+  }
+
+  .button-container {
+    width: inherit;
+  }
 }

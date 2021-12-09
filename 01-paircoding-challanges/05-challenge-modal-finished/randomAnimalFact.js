@@ -4,8 +4,8 @@ const getRandom = (min, max) => {
 
 export const randomAnimalFact = (animal) => {
   const catFacts = [
-    'Cats can jump up to 6 times their height',
-    'Cats have a total of 18 toes',
+    'Cats can jump up to 6 times their height.',
+    'Cats have a total of 18 toes.',
     'There are over 500 million pet cats!',
     'Cats sleep for around 13 to 16 hours a day (70% of their life).',
     ' One of the largest domestic cat breeds is a Maine Coon.',
@@ -22,9 +22,9 @@ export const randomAnimalFact = (animal) => {
   const parrotFacts = [
     'Parrots taste with the tops of their beaks.',
     'The heftiest Parrot weighs as much as a Cat.',
-    'Your pet Parrot may outlive you',
-    'The world record holder knew more Than 1,700 words',
-    "A third of the world's parrots face extinction",
+    'Your pet Parrot may outlive you.',
+    'The world record holder knew more Than 1,700 words.',
+    "A third of the world's parrots face extinction.",
   ];
 
   switch (animal) {

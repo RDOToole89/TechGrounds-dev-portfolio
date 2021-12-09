@@ -7,7 +7,6 @@ const overlay = document.querySelector('.overlay');
 // Loops over each button on the page and creates a modal based on the button data-set
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
-    //
     const animalType = button.dataset['animal'];
 
     const animalModal = new Modal(overlay, buttonContainer);
