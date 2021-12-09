@@ -53,7 +53,7 @@
       }
 
       #overlay.open {
-        height: 100%;
+        opacity: 1;
       }
 
       .modal {
@@ -89,7 +89,6 @@
       <button class="btn cat-btn">cat</button>
       <button class="btn dog-btn">dog</button>
       <button class="btn parrot-btn">parrot</button>
-      <!-- <div class="modal"><span class="close">X</span> <span class="fact"></span></div> -->
     </div>
 
     <script>
@@ -98,7 +97,6 @@
       const parrotBtn = document.querySelector('.parrot-btn');
       const buttons = document.querySelectorAll('.btn');
       const buttonContainer = document.querySelector('.button-container');
-      const overlay = document.getElementById('overlay');
       const fact = document.querySelector('.fact');
 
       console.log('BUTTON CONTAINER SELECTOR', buttonContainer);
@@ -120,6 +118,9 @@
       // When I click on a button a modal has to be created.
 
       const createModal = () => {
+        const overlay = document.getElementById('overlay');
+
+        if ((overlay.style.opacity = '0')) overlay.style.opacity = '1';
         // create and element with the class of modal that
         // has a span with a close class and a fact class
 
@@ -136,11 +137,9 @@
         newCloseSpan.innerText = 'X';
 
         newCloseSpan.onclick = () => {
-          overlay.style.height = '0%';
+          overlay.style.opacity = '0';
           newModal.remove();
         };
-
-        console.log('NEWCLOSE SPAN', newCloseSpan);
 
         // create a fact span
 
@@ -162,40 +161,9 @@
 
           if (modal) return;
 
-          console.log('CREATEMODAL CALL => ', createModal());
-          console.log(`${buttons[i]} click click`);
+          createModal();
         };
       }
-
-      // catBtn.onclick = () => {
-      //   const catFact = catFacts[getRandom(0, 5)];
-
-      //   console.log('CAT FACT', catFact);
-
-      //   // when button is clicked overlay height = 100%
-      //   overlay.style.height = '100%';
-      //   // modal opens
-      //   modal.style.display = 'block';
-      //   // random cat fact is inserted into the box
-
-      //   fact.textContent = catFact;
-      // };
-
-      // function closeFunction2() {
-      //   console.log('log something');
-      // }
-
-      // const closeFunc = () => {
-      //   console.log('somethimg');
-      // };
-
-      // close.addEventListener('click', () => {
-      //   console.log('click click click');
-      // });
-
-      // close.addEventListener('mouseover', function () {
-      //   console.log('mouseover');
-      // });
     </script>
   </body>
 </html>
