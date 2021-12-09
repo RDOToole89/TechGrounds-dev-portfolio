@@ -23,7 +23,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   font-family: 'Raleway', sans-serif;
-  background: hsl(212, 32%, 8%);
+  background: hsl(212, 32%, 20%);
   gap: 14rem;
   color: hsl(0, 0%, 100%);
   letter-spacing: 1.6px;
@@ -44,6 +44,7 @@ body {
   gap: 4rem;
   background: linear-gradient(0deg, rgba(59, 99, 121, 0.1), hsl(210deg, 30%, 10%));
   border-radius: 12px;
+  margin-bottom: auto;
 }
 
 .btn {
@@ -113,6 +114,12 @@ body {
   top: 5px;
   right: 5px;
   cursor: pointer;
+}
+
+.footer {
+  height: 3rem;
+  width: 100%;
+  background-color: hsl(212, 26%, 24%);
 }
 
 @media (max-width: 500px) {
