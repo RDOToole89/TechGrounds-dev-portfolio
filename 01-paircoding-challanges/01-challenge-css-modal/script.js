@@ -1,8 +1,8 @@
 const openBtn = document.querySelector('.open-modal__btn');
 const overlay = document.querySelector('.overlay');
-const modal = document.querySelector('.modal');
+let modalOpen = false;
 
-// Helper function to create a new element and add classname
+// Helper function to create a new element and add classname text and / or click event.
 const createElementAndAddClass = (el, className, text, clickFunction) => {
   const newElement = document.createElement(el);
   newElement.classList.add(className);
@@ -17,12 +17,13 @@ const createElementAndAddClass = (el, className, text, clickFunction) => {
 // Creates a modal on the page
 const createModal = () => {
   const modal = document.querySelector('.modal');
+
   // Returns if the modal is already on the page
   if (modal) return;
 
   // Creates the modal components
   const newModal = createElementAndAddClass('div', 'modal');
-  const newCloseSpan = createElementAndAddClass('span', 'close', null, openOrCloseModal);
+  const newCloseSpan = createElementAndAddClass('span', 'close', null, closeModal);
   const newIcon = `<ion-icon name='close-outline'></ion-icon>`;
   newCloseSpan.insertAdjacentHTML('afterbegin', newIcon);
   const newH1 = createElementAndAddClass('h1', 'header', 'TGG');
@@ -40,13 +41,26 @@ const createModal = () => {
   document.body.append(newModal);
 };
 
-const openOrCloseModal = () => {
-  const overlay = document.querySelector('.overlay');
+const openModal = () => {
   const modal = document.querySelector('.modal');
 
-  openBtn.classList.toggle('display');
-  overlay.classList.toggle('show');
-  modal.classList.toggle('open');
+  if (!modal) return;
+
+  modalOpen = true;
+  overlay.classList.add('show');
+  openBtn.classList.add('display');
+  modal.classList.add('open');
+};
+
+const closeModal = () => {
+  const modal = document.querySelector('.modal');
+
+  if (!modal) return;
+
+  modalOpen = false;
+  overlay.classList.remove('show');
+  openBtn.classList.remove('display');
+  modal.classList.remove('open');
 };
 
 openBtn.addEventListener('click', () => {
@@ -56,16 +70,15 @@ openBtn.addEventListener('click', () => {
   if (!modal) {
     createModal();
     setTimeout(() => {
-      openOrCloseModal();
-    }, 100);
-    return;
+      openModal();
+    }, 200);
   }
 
-  openOrCloseModal();
+  if (modal) openModal();
 });
 
 window.addEventListener('click', (event) => {
   if (event.target === close || event.target === overlay) {
-    openOrCloseModal();
+    closeModal();
   }
 });

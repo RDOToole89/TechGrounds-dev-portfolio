@@ -119,5 +119,4 @@ const startClock = () => {
   setHand(hourHand, hourRatio);
 };
 
-// let start = setInterval(startClock, 1000);
-startClock();
+let start = setInterval(startClock, 1000);
