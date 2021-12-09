@@ -66,7 +66,7 @@ const closeModal = () => {
 openBtn.addEventListener('click', () => {
   const modal = document.querySelector('.modal');
 
-  // If there is no modal create it and wait 100ms to display it
+  // If there is no modal create it and wait 200ms to display it
   if (!modal) {
     createModal();
     setTimeout(() => {

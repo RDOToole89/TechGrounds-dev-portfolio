@@ -93,8 +93,8 @@ p {
   position: relative;
   background: linear-gradient(to right top, #e66465, #9198e5);
   color: white;
-  height: 600px;
-  width: 600px;
+  height: 60rem;
+  width: 60rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -133,4 +133,10 @@ p {
   display: block;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 40%;
+  }
 }
