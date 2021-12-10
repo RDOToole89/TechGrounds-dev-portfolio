@@ -1,7 +1,7 @@
 .container {
   max-width: 90%;
-  padding: 1rem 3.2rem;
   margin: 0 auto;
+
   // background-color: orangered;
 }
 
@@ -11,3 +11,15 @@
   padding: 0rem 3.2rem;
   margin: 0 auto;
 }
+
+// Here are the material breakpoints:
+
+// < 480 / 4 cols / xsmall
+// 481 - 600 / 8 cols / xsmall
+// 601 - 840 / 8 cols / small
+// 841 - 960 / 12 cols / small
+// 961 - 1280 / 12 cols / medium
+// 1281 - 1440 / 12 cols / large
+// 1441 - 1600 / 12 cols / large
+// 1601 - 1920 / 12 cols / large (HD desktops)
+// > 1920 / 12 cols / large (Retina desktops)

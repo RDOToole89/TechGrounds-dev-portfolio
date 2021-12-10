@@ -1,7 +1,17 @@
-%header {
+%main {
   position: relative;
   height: calc(100vh - 11px);
   overflow: hidden;
+}
+
+%input {
+  background: transparent;
+  color: $primary-white;
+  border-color: $primary-shade-dark;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  transition: background 0.5s ease;
 }
 
 @mixin particles($color, $z-index) {

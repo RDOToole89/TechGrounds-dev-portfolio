@@ -12,16 +12,25 @@
   .about__subheading {
     width: 90%;
   }
+
+  .container {
+    max-width: 100%;
+  }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 620px) {
   // Header
 
   html {
     font-size: 75%;
   }
 
-  .header__logo {
+  .heading-tertiary {
+    font-size: 1.6rem;
+    align-self: flex-start;
+  }
+
+  .main__logo {
     display: none;
   }
 
@@ -34,10 +43,11 @@
   // Hero
 
   .hero {
-    height: 80%;
     flex-direction: row;
-    padding: 0rem 6.2rem;
+    padding: 0rem 6.2rem 6rem 6.2rem;
     gap: 4rem;
+    justify-content: center;
+    align-items: center;
 
     &__info {
       align-items: flex-start;
@@ -82,6 +92,23 @@
 
   .section-skills {
     max-width: 75%;
+    align-items: flex-start;
+
+    &-text {
+      max-width: 70%;
+      padding: 0 0 0 0;
+      margin-bottom: 6rem;
+    }
+  }
+
+  // Contact
+
+  .contact-form {
+    padding: 4rem 2.5rem;
+
+    &__heading {
+      padding-right: 0rem;
+    }
   }
 }
 

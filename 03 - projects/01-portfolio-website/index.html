@@ -15,11 +15,11 @@
     <title>TechGrounds - Portfolio Website - Roibin O'Toole</title>
   </head>
   <body>
-    <header class="header">
+    <main class="main">
       <div id="particles-js"></div>
 
       <div class="hamburger collapse"><span></span></div>
-      <a href="./index.html" class="header__logo">&lt;RDO/&gt;</a>
+      <a href="./index.html" class="main__logo">&lt;RDO/&gt;</a>
 
       <nav class="nav">
         <ul class="nav__list">
@@ -43,9 +43,7 @@
 
       <div class="container">
         <nav class="nav-secondary">
-          <a href="./index.html" class="header__logo--secondary">
-            &lt;RDO/&gt;
-          </a>
+          <a href="./index.html" class="main__logo--secondary"> &lt;RDO/&gt; </a>
 
           <ul class="nav-secondary__list">
             <li class="nav-secondary__item active">
@@ -71,47 +69,35 @@
       <div class="hero">
         <div class="hero__info">
           <p class="hero__subheading subheading">Hi I'm...</p>
-          <h1 class="hero__heading heading-primary">
-            ${Roibín} <span>O'Toole</span>
-          </h1>
-          <h2 class="hero__heading-tertiary heading-tertiary">
-            Aspiring Developer
-          </h2>
-          <button class="hero__info--btn btn btn--outline">
-            <a href="./dist/pages/contact.html">Contact Me...</a>
-          </button>
+          <h1 class="hero__heading heading-primary">${Roibín} <span>O'Toole</span></h1>
+          <h2 class="hero__heading-tertiary heading-tertiary">Software Developer</h2>
+          <a href="./dist/pages/contact.html"
+            ><button class="hero__info--btn btn btn--outline">Contact Me...</button></a
+          >
         </div>
         <div class="hero__image-box">
-          <img
-            src="./dist/img/me.jpg"
-            alt="picture of Roibin O'Toole"
-            class="hero__img"
-          />
-          <button class="hero__image-box--btn btn btn--outline">
-            <a href="./dist/pages/contact.html">Contact Me...</a>
-          </button>
+          <img src="./dist/img/me.jpg" alt="picture of Roibin O'Toole" class="hero__img" />
+          <a href="./dist/pages/contact.html"
+            ><button class="hero__image-box--btn btn btn--outline">Contact Me...</button></a
+          >
+        </div>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/roibinotoole/"
+            ><ion-icon class="icon" name="logo-linkedin"></ion-icon
+          ></a>
+          <a href="https://github.com/RDOToole89"
+            ><ion-icon class="icon" name="logo-github"></ion-icon
+          ></a>
         </div>
       </div>
-
-      <div class="socials">
-        <a href="https://www.linkedin.com/in/roibinotoole/"
-          ><ion-icon class="icon" name="logo-linkedin"></ion-icon
-        ></a>
-        <a href="https://github.com/RDOToole89"
-          ><ion-icon class="icon" name="logo-github"></ion-icon
-        ></a>
-      </div>
-    </header>
+    </main>
     <div class="ribbon"></div>
 
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
     ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
       particlesJS.load('particles-js', './dist/js/particles.json', function () {

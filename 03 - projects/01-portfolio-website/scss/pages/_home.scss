@@ -1,6 +1,7 @@
 .hero {
+  height: 100%;
   display: flex;
-  padding: 8.4rem 2rem;
+  padding: 3.6rem 1rem 3.6rem 1rem;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -8,7 +9,7 @@
   &__info {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    text-align: center;
 
     &--btn {
       display: none;
@@ -38,7 +39,8 @@
 
   &__heading-tertiary {
     position: relative;
-    margin-bottom: 6.4rem;
+    margin-bottom: 4.6rem;
+    align-self: center;
 
     &::after {
       position: absolute;
@@ -55,7 +57,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    align-items: center;
+    gap: 6rem;
     z-index: 4;
 
     &--btn {
@@ -77,7 +80,6 @@
     box-shadow: $primary-shadow;
     position: relative;
     animation: 3s ease-in-out 0s infinite alternate image-skew;
-    filter: drop-shadow(10px 10px 15px $primary-color) saturate(140%)
-      blur(0.4px);
+    filter: drop-shadow(10px 10px 15px $primary-color) saturate(140%) blur(0.4px);
   }
 }

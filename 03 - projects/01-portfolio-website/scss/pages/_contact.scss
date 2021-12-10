@@ -1,38 +1,3 @@
-%input {
-  background: transparent;
-  color: $primary-white;
-  border-color: $primary-shade-dark;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  transition: background 0.5s ease;
-}
-
-.header.contact {
-  position: relative;
-  height: calc(100vh - 11px);
-  overflow: hidden;
-
-  #particles-js {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-color: #047857;
-    z-index: -1;
-  }
-
-  &:after {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    z-index: -1;
-  }
-}
-
 .section-contact {
   height: 90%;
   display: flex;
@@ -41,9 +6,8 @@
   align-items: center;
 }
 
-.circle {
+.square {
   position: absolute;
-  // border-radius: 50%;
   top: 40%;
   left: 65%;
   width: 25rem;
@@ -70,6 +34,7 @@
     color: $primary-tint-light;
     margin-bottom: 5rem;
     letter-spacing: 1.6px;
+    padding-right: 2.4rem;
 
     &::after {
       position: absolute;
