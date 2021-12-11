@@ -1,0 +1,55 @@
+Jens zou zijn 'demos' wat beter kunnen voorbereiden. Het kan soms wat rommelig en van de hak op de tak zijn / ogen. 
+
+Hij wordt ook heel enthousiast als hij over dingen praat die hem boeien, en dit is goed en leuk maar kan soms vooral voor studenten die nog niet zo ver zijn met JavaScript overweldigend zijn denk ik. Het is soms moeilijk om er een woord tussen te krijgen. Ik begrijp dat wel omdat ik zelf ook zo ben haha ;-)
+
+Ik denk dat het moeilijk is om de juiste balans te slaan in diepgang en praktisch nut en dat hij daar zelf soms ook wel is lichtelijk in verdwaalt. Ik geloof dat dit ook de eerste cohort is in deze stijl en met dit selectieproces dus daar moet denk ik nog wat aan gesleuteld worden in hoe daar invulling aan te geven.
+
+Enthousiasme een 10, effectiviteit een 7 zou ik zeggen.
+
+Mitchell is voor alsnog niet heel aanwezig, maar dat is ook niet zo vreemd gezien hij in het onboarding proces zit. Ik heb niet echt een mening over hem op dit moment, behalve dat hij een hele vette achtergrond heeft op ZOOM. Misschien zou hij Jens wat meer kunnen ontlasten met name op het gebied van de basis concepten uitleggen en wat meer diepgang bieden aan studenten die het moeilijk hebben. Bijvoorbeeld een uurtje per dag van kamer naar kamer gaan en vragen of studenten in groepsverband of 1 op 1 hulp nodig hebben met iets of een concept. Of bijvoorbeeld zeggen van jongens tussen 2 en 3 kan je in deze room komen voor vragen! Als je dingen expliciet uitspreekt zijn mensen eerder geneigd er gebruik van te maken.
+
+Ik vind het moeilijk om me hier 'persoonlijk' over uit te spreken. Ik denk dat het curriculum terecht, heel erg gefocust is op de basics, en dit is ook goed. 
+
+Alleen vind ik het niet compleet genoeg. Ik vond het zelf heel erg makkelijk, maar ik ben al een jaar met JavaScript bezig. Ik zie dat mede studenten echt 'strugglen' met het begrip alleen op basis van de reader en dit is ook logisch. Als ik naar mezelf en mijn leerproces kijk, had ik (basis) JavaScript fundamentals niet kunnen leren op basis van de huidige reader. 
+
+De vraagstelling is ook soms wat onduidelijk al helemaal als je niet al voorkennis hebt. Ik denk dat studenten toch wat meer in de juiste richting geduwd moeten worden en je er niet op kan rekenen dat iedereen op zo een zelfontdekkingstocht gaat als de reader voor ogen heeft / verwacht. Ik begrijp het belang van, en de nadruk op peer-2-peer learning, maar in het begin kan je hier denk ik nog niet volledig op rekenen of vertrouwen dat het wel goed komt voor dat het fundament is gelegd.
+
+Misschien is het een idee om met een soort hint systeem te gaan werken. Bijvoorbeeld dat een student in meerdere stappen een vraag kan oplossen als hij / zij er niet uitkomt in plaatst van dat deze uren lang vast zit op iets wat met gemak door mijzelf als iemand met meer JavaScript ervaring, of een learning coach had kunnen worden uitgelegd. (de juiste richting in duwen). 
+
+Het gaat dan namelijk niet echt meer om kennis vergaren als iemand zo vast loopt. Meestal raakt iemand dan de weg kwijt in het web dat programmeren leren heet of een halve paniekaanval omdat het overweldigend is. Ik denk dat door het curriculum iets meer af te kaderen het ook makkelijker word om zo een groep met leerlingen te managen en het leerproces vlotter zou verlopen. Het is moeilijk om iemand in het diepe te gooien als hij niet eens kan peddelen zeg maar.
+
+Dit was met het Sass / HTML & CSS-gedeelte van het curriculum overigens veel minder het geval.
+
+Misschien gezien het startpunt en de kennis van studenten zo enorm varieert, zou er misschien iets van extra curriculum (diepgang) kunnen worden geboden aan studenten die wat verder zijn.
+
+Wellicht zou het ook een idee zijn om de leerlingen die al wat verder zijn meer te betrekken in het leerproces van anderen, dit valt ook goed met het hele idee van 'peer-to-peer learning' te combineren. Ikzelf merk dat ik echt heel erg groei in mijn kennis door het uitleggen aan anderen. Misschien kan er wat meer aandacht besteedt worden aan het belang daarvan of een systeem gecreëerd worden waarin die dynamiek wordt bevorderd. Dat zou uiteindelijk ook heel erg in het voordeel zijn van de coaches die het erg druk lijken te hebben op het moment. Ik zelf had bijvoorbeeld wat van die druk kunnen wegnemen als ik op basis van wat 'guidelines' andere leerlingen over concepten die ikzelf al begrijp, had kunnen uitleggen. (een soort toets of je een concept begrijpt voor je het 'officeel' mag uitleggen)!
+
+Ik denk ook dat het misschien voor de coaches goed zou zijn om iets van kleine video's op te nemen over bepaalde basis concepten. Ik snap dat dit geen Udemy cursus moet worden... maar met name als het gaat om de BEGIN-fase, denk ik dat dit ook de coaches enorm zou kunnen ontlasten omdat ze dan niet hetzelfde basis concept keer op keer opnieuw hoeven uit te leggen en de groep calls echt gebruikt kunnen worden voor diepgang in plaats van basics.
+
+Ik zeg 5 / 10 omdat ik het zeker niet 'makkelijk' vond. Gezien mijn voorkennis wel maar ik had hier een jaar geleden denk ik heel veel moeite mee gehad, dan was het een 8 / 10. Ik vond de opdrachten zoals de carousel en de klok leuk om te maken en ook zeker een uitdaging. 
+
+Het zou misschien een idee zijn om bijvoorbeeld zoals bij die modal challenge, studenten expliciet te vragen om het eerst functioneel te schrijven en het daarna te refactoren naar een class. Ik heb daar zelf heel veel van geleerd aan het onderzoeken van beide technieken om hetzelfde te bereiken.
+
+Extra opdrachten die als 'optioneel' bijvoorbeeld in een map zouden staan in plaats van dat ik specifiek naar een coach toe moet om hier om te vragen. 
+
+Ik merk dat ik dan persoonlijk minder snel geneigd ben om om extra werk te vragen als er niet al een soort specificatie klaar ligt. Ik ga dan al snel aan mijn eigen dingen werken.
+
+Ik denk dat het ook leuk zou zijn om voor de gevorderden een soort roadmap te hebben met extra topics om zich in te verdiepen. Denk bijvoorbeeld aan TypeScript of ... een opdracht zoals: 'Je hebt alle JavaScript frontend opdrachten af: '. 
+
+Laten we een super simpele blog website bouwen met een hele simpele CRUD backend met Node of we gaan leren hoe we packages kunnen downloaden met NPM etc. Hoewel veel leerlingen dit niet nodig hebben, of hier zelfs niet in geïnteresseerd zouden zijn, HOEVEN ze deze opdrachten niet te doen. De nadruk moet ECHT op optioneel liggen aangezien het curriculum nu al een pittig tempo heeft.
+
+Maar ik denk dat het een mooie toevoeging zou zijn aan het curriculum voor die gene die al wat verder zijn en dat het een bredere visie zou geven op web development in zijn geheel voor die dat willen.
+
+Hele fijne ervaring met gemotiveerde mensen die allemaal echt als doel voor ogen hebben om hun leven een andere wending te geven door middel van deze carrière switch. 
+
+TechGrounds, heeft mij persoonlijk heel erg ondersteunt door dat laatste zetje te bieden wat mij nu tot een baan bij mij nu tot een baan bij Deloitte heeft geleidt. Ik ben daar super dankbaar voor. 
+
+Ik geloof zelf heel erg in de effectiviteit van 'p2p learning'.
+
+Sorry voor dit lange betoog. Ik kon de eerste survey niet inloggen met Salesforce dus het is een beetje mijn mening over het gehele programma so far. Ik ben al met al heel erg tevreden, en vind het 'p2p leer systeem' een super interessant concept en ik denk dat dit meer uitgebouwd moet / kan worden. Ik ben oprecht verbaast hoe snel sommige mede studenten JavaScript oppikken door van en met elkaar leren. Een jaar geleden had ik hier misschien nog wel meer aan gehad dan ik nu heb. Ik vind TechGrounds echt een heel vet programma dat echt de mogelijkheid geeft om mensen hun leven te veranderen door nieuwe skills te leren. Ik ben er in ieder geval erg blij mee en enthousiast over. 
+
+De volgende survey zal een stuk korter zijn beloof ik ;-). 
+
+Fijn weekend. 
+
+Groetjes Roibin

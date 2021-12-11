@@ -29,15 +29,15 @@ export const randomAnimalFact = (animal) => {
 
   switch (animal) {
     case 'cat': {
-      return catFacts[getRandom(0, 5)];
+      return catFacts[getRandom(0, catFacts.length)];
     }
 
     case 'dog': {
-      return dogFacts[getRandom(0, 5)];
+      return dogFacts[getRandom(0, dogFacts.length)];
     }
 
     case 'parrot': {
-      return parrotFacts[getRandom(0, 5)];
+      return parrotFacts[getRandom(0, parrotFacts.length)];
     }
   }
 };

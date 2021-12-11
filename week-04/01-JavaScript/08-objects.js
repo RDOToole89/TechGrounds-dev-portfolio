@@ -31,35 +31,27 @@ function Person(name, age, country, city) {
   this.city = city;
 }
 
-const roibinFunctionObject = new Person(
-  'Roibin',
-  32,
-  'The Netherlands',
-  'Amsterdam'
-);
+const roibinFunctionObject = new Person('Roibin', 32, 'The Netherlands', 'Amsterdam');
 console.log('Roibin function constructor Person =>', roibinFunctionObject);
 
 // Factory function
 
 function createPerson(name, age, country, city) {
+  let counter = 0;
+
   return {
     name: name,
     age: age,
     country: country,
     city: city,
+    increment() {
+      this.counter++;
+    },
   };
 }
 
-const roibinFromFactoryFunction = createPerson(
-  'Roibin',
-  32,
-  'The Netherlands',
-  'Amsterdam'
-);
-console.log(
-  'Roibn constructed from a factory function =>',
-  roibinFromFactoryFunction
-);
+const roibinFromFactoryFunction = createPerson('Roibin', 32, 'The Netherlands', 'Amsterdam');
+console.log('Roibn constructed from a factory function =>', roibinFromFactoryFunction);
 
 // Singleton constructor => used for namespacing
 
@@ -104,10 +96,7 @@ const roibinSingleton = new (function () {
   };
 })();
 
-console.log(
-  'Roibin from singleton constructor => ',
-  roibinSingleton.getInstance()
-);
+console.log('Roibin from singleton constructor => ', roibinSingleton.getInstance());
 
 // Prototypal inheritance
 // The prototype is essentially the schematics that every instance of an type of object
@@ -147,16 +136,9 @@ class PersonClass {
   }
 }
 
-const roibinFromClassConstructor = new PersonClass(
-  'Roibin',
-  32,
-  'The Netherlands',
-  'Amsterdam'
-);
+const roibinFromClassConstructor = new PersonClass('Roibin', 32, 'The Netherlands', 'Amsterdam');
 console.log('Roibin from class constructor', roibinFromClassConstructor);
-console.log(
-  'Calling sayHello() method on the roibinFromClassConstructor object'
-);
+console.log('Calling sayHello() method on the roibinFromClassConstructor object');
 roibinFromClassConstructor.sayHello();
 
 // Opdracht 6.1
@@ -236,10 +218,7 @@ console.log('Object.create(dog) from new Object() constructor', dog2);
 const cat2 = Object.create(cat);
 console.log('Object.create(cat) from new Object() constructor', cat2);
 const hamster2 = Object.create(hamsterSingleton);
-console.log(
-  'Object.create(hamsterSingleton) from new Object() constructor',
-  hamsterSingleton
-);
+console.log('Object.create(hamsterSingleton) from new Object() constructor', hamsterSingleton);
 const parrot2 = Object.create(parrot);
 console.log('Object.create(parrot) from new Object() constructor', parrot2);
 

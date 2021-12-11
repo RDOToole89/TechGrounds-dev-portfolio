@@ -44,7 +44,7 @@
 
   .hero {
     flex-direction: row;
-    padding: 0rem 6.2rem 6rem 6.2rem;
+    padding: 0rem 6.2rem 15rem 6.2rem;
     gap: 4rem;
     justify-content: center;
     align-items: center;
@@ -120,13 +120,23 @@
   .section-skills {
     margin: 0 auto;
     max-width: 70%;
-    padding-top: 6.4rem;
+    padding-top: 4.2rem;
   }
 }
 
 @media (min-width: 1024px) {
   .section-skills-text__heading {
     justify-self: center;
+  }
+
+  .section-about {
+    max-width: 50%;
+    // padding-bottom: 15rem;
+  }
+
+  .main.about-section .nav-secondary,
+  .main.contact-section .nav-secondary {
+    margin-bottom: 0;
   }
 }
 

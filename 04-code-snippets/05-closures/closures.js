@@ -68,3 +68,35 @@ console.log(counterInstance.value());
 console.log(counterInstance.decrement());
 console.log(counterInstance.value());
 console.log(counterInstance);
+
+// Factory function
+
+function createPerson(name, age, country, city) {
+  // Here is a closure
+  let counter = 0;
+
+  return {
+    name: name,
+    age: age,
+    country: country,
+    city: city,
+    increment() {
+      counter++;
+    },
+    displayCount() {
+      console.log('DISPLAYCOUNT()', counter);
+      return counter;
+    },
+  };
+}
+
+const roibinFromFactoryFunction = createPerson('Roibin', 32, 'The Netherlands', 'Amsterdam');
+console.log('Roibn constructed from a factory function =>', roibinFromFactoryFunction);
+roibinFromFactoryFunction.increment();
+roibinFromFactoryFunction.displayCount();
+roibinFromFactoryFunction.increment();
+roibinFromFactoryFunction.displayCount();
+console.dir('console.dir', roibinFromFactoryFunction);
+console.log(roibinFromFactoryFunction);
+console.log(roibinFromFactoryFunction.__proto__);
+console.log(roibinFromFactoryFunction.__proto__ === Object.prototype);

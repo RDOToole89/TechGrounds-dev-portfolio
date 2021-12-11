@@ -13,20 +13,16 @@ buttons.forEach((button) => {
     const animalModal = new Modal(overlay, buttonContainer);
     animalModal.open();
     animalModal.addFact(animalType);
+    animalModal.close();
   });
 });
 
-window.addEventListener('click', (event) => {
-  const closeBtn = event.target.name;
+overlay.addEventListener('click', (event) => {
+  if (!document.querySelector('.modal')) return;
 
-  if (closeBtn === 'close-outline' || event.target === overlay) {
-    const modal = document.querySelector('.modal');
+  const modal = document.querySelector('.modal');
 
-    overlay.classList.remove('open');
+  console.log(modal);
 
-    if (!modal) return;
-
-    modal.remove();
-  }
-  return;
+  modal.close(event);
 });

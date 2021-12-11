@@ -11,6 +11,9 @@ const car = {
 car.honk();
 
 // Classes => bluePrint of an object
+// Everything declared with this in the constructor becomes a property on the object
+// Variables declared inside the constructor are remove from memory as soon as the
+// Constructor has run.
 
 class PersonClass {
   constructor(name, age) {

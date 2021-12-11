@@ -45,4 +45,15 @@ export class Modal {
     // Add random animal fact to the ".fact" span element (2nd childNode)
     this.modal.childNodes[1].innerText = randomAnimalFact(animalType);
   }
+
+  close(event) {
+    console.log(event);
+    if (!this.modal) return;
+
+    const modal = document.querySelector('.modal');
+    console.log(modal);
+
+    if (event.target === this.modal || event.target.name === 'close-outline')
+      this.modal.classList.remove('open');
+  }
 }
