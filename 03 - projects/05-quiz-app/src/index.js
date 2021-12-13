@@ -1,7 +1,28 @@
 import { Quiz } from './Quiz.js';
-const quizMount = document.querySelector('#quiz');
+import { MathQuestion } from './Question.js';
 
-console.log(quizMount);
+const quizMount = document.querySelector('body');
 
 const quizApp = new Quiz(quizMount);
-quizApp.createQuiz();
+quizApp.createQuiz(5);
+
+const mathQuestionInstance = new MathQuestion(5);
+const questionObject = mathQuestionInstance.createMathQuestion(100);
+console.log(questionObject);
+
+const populate = () => {
+  const questions = document.querySelectorAll('.quiz-question');
+  const question = document.querySelector('.quiz-top__display');
+
+  question.textContent = questionObject[0].question;
+
+  [...questions].forEach((question, i) => {
+    const questionContent = [...question.children].find((el) =>
+      el.classList.contains('quiz-question__answer')
+    );
+    questionContent.innerText = questionObject[0].possibleAnswers[i];
+  });
+  console.log(questions);
+};
+
+populate();
