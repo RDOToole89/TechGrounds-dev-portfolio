@@ -18,7 +18,7 @@ export class Quiz {
 
     // Child elements of quizTop
     const quizHeading = createElement('h1', 'quiz-top__heading', 'Math Problem');
-    const quizCount = createElement('p', 'quiz-top__count');
+    const quizCount = createElement('p', 'quiz-top__count', '1 / 6');
     const quizDisplay = createElement('p', 'quiz-top__display');
 
     // Mounts child elements of quiztop to quiz-top container
@@ -38,8 +38,6 @@ export class Quiz {
     for (let i = 1; i < numbers.length; i++) {
       // creates a question and adds the correct classes
       const question = createElement('div', ['quiz-question', `quiz-question__${numbers[i]}`]);
-
-      console.log('i', i);
 
       const questionNumber = createElement('div', 'quiz-question__number', i);
       const questionAnswer = createElement('p', 'quiz-question__answer');

@@ -74,3 +74,19 @@ export const createNumbersArray = (n) => {
   }
   return stringNumbersArray;
 };
+
+export const getRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min)) + min;
+};
+
+export const stringToOperator = {
+  '+'(a, b) {
+    return a + b;
+  },
+  '-'(a, b) {
+    return a - b;
+  },
+  '*'(a, b) {
+    return a * b;
+  },
+};
