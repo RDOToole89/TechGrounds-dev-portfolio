@@ -3,12 +3,12 @@ import { MathQuestion } from './Question.js';
 
 const quizMount = document.querySelector('body');
 
-const quizApp = new Quiz(quizMount);
-quizApp.createQuiz(5);
-
 const mathQuestionInstance = new MathQuestion(5);
 const questionObject = mathQuestionInstance.createMathQuestion(100);
-console.log(questionObject);
+// console.log(questionObject);
+
+const quizApp = new Quiz(quizMount, questionObject);
+quizApp.createQuiz(5);
 
 const populate = () => {
   const questions = document.querySelectorAll('.quiz-question');
@@ -22,7 +22,7 @@ const populate = () => {
     );
     questionContent.innerText = questionObject[0].possibleAnswers[i];
   });
-  console.log(questions);
+  // console.log(questions);
 };
 
 populate();
