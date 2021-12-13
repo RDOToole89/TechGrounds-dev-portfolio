@@ -1,3 +1,7 @@
-# TG-web-dev-rdotoole
+# TechGounds Web Development Portfolio Repo
 
-exercices => techgrounds
+## Welcome to my TechGrounds portfolio
+
+Feel free to browse around.
+
+## Most of my work can be found in the Projects and Pair-coding challenges folder. 
