@@ -1,8 +1,9 @@
 import { createElement, createNumbersArray, mountElements } from './helper.js';
 
 export class Quiz {
-  constructor(target) {
+  constructor(target, questionObject) {
     this.quiz = this.createQuiz();
+    this.questionObject = questionObject;
     this.target = target;
   }
 
@@ -41,6 +42,7 @@ export class Quiz {
 
       const questionNumber = createElement('div', 'quiz-question__number', i);
       const questionAnswer = createElement('p', 'quiz-question__answer');
+      this.isCorrect(questionAnswer);
 
       // Depending on if i is even or not it will be mounted in a different direction
       if (i % 2 === 0) {
@@ -68,5 +70,41 @@ export class Quiz {
     this.target?.appendChild(controls);
 
     return newQuiz;
+  }
+
+  isCorrect(element) {
+    element.addEventListener('click', () => {
+      const answer = Number(element.textContent);
+
+      if (this.questionObject) {
+        const questionObject = this.questionObject;
+
+        const correctAnswer = questionObject[0].correctAnswer;
+        const questionsOnPage = document?.querySelectorAll('.quiz-question');
+
+        if (answer === correctAnswer) {
+          questionsOnPage.forEach((question) => (question.style.pointerEvents = 'none'));
+
+          element.classList.add('correct');
+          return;
+        } else {
+          element.classList.add('incorrect');
+          questionsOnPage.forEach((question, i) => {
+            const findAnswerNode = [...question.children].find((node) =>
+              node.classList.contains('quiz-question__answer')
+            );
+
+            const foundAnswer = Number(findAnswerNode.textContent);
+
+            if (correctAnswer === foundAnswer) {
+              findAnswerNode.classList.add('correct');
+            }
+
+            question.style.pointerEvents = 'none';
+          });
+          return;
+        }
+      }
+    });
   }
 }

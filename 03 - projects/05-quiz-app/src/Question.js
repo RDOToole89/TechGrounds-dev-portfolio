@@ -57,6 +57,10 @@ export class MathQuestion {
         }
       }
     }
+
+    // Inserts correct answer in possible answers array
+    possibleAnswers[getRandomNumber(0, possibleAnswers.length)] = correctAnswer;
+
     return possibleAnswers;
   }
 }
