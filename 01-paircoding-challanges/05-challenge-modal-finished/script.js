@@ -16,13 +16,3 @@ buttons.forEach((button) => {
     animalModal.close();
   });
 });
-
-overlay.addEventListener('click', (event) => {
-  if (!document.querySelector('.modal')) return;
-
-  const modal = document.querySelector('.modal');
-
-  console.log(modal);
-
-  modal.close(event);
-});

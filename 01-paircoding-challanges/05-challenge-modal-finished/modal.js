@@ -33,10 +33,14 @@ export class Modal {
   }
 
   open() {
+    const close = document.querySelector('.close');
     if (!this.modal) return;
 
     this.overlay.classList.add('open');
     this.modal.classList.add('open');
+    close.classList.add('open');
+
+    console.log(this.modal);
   }
 
   addFact(animalType) {
@@ -46,14 +50,21 @@ export class Modal {
     this.modal.childNodes[1].innerText = randomAnimalFact(animalType);
   }
 
-  close(event) {
-    console.log(event);
+  close() {
     if (!this.modal) return;
+    const openElements = document.querySelectorAll('.open');
 
-    const modal = document.querySelector('.modal');
-    console.log(modal);
+    [...openElements].forEach((element) => {
+      element.addEventListener('click', (event) => {
+        const open = event.target.classList.contains('open');
+        const closeIcon = event.target.name;
 
-    if (event.target === this.modal || event.target.name === 'close-outline')
-      this.modal.classList.remove('open');
+        if (open || closeIcon) {
+          this.overlay.classList.remove('open');
+          this.modal.classList.remove('open');
+          this.modal.remove();
+        }
+      });
+    });
   }
 }
