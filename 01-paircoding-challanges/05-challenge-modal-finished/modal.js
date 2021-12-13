@@ -33,12 +33,10 @@ export class Modal {
   }
 
   open() {
-    const close = document.querySelector('.close');
     if (!this.modal) return;
 
     this.overlay.classList.add('open');
     this.modal.classList.add('open');
-    close.classList.add('open');
 
     console.log(this.modal);
   }
@@ -58,11 +56,12 @@ export class Modal {
       element.addEventListener('click', (event) => {
         const open = event.target.classList.contains('open');
         const closeIcon = event.target.name;
+        const modal = document.querySelector('.modal');
 
         if (open || closeIcon) {
+          modal.classList.remove('open');
+          modal.remove();
           this.overlay.classList.remove('open');
-          this.modal.classList.remove('open');
-          this.modal.remove();
         }
       });
     });
