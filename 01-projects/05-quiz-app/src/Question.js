@@ -11,9 +11,9 @@ export class MathQuestion {
     const questionArray = [];
 
     for (let i = 0; i < numberOfQuestions; i++) {
-      const numberOne = getRandomNumber(0, maxBound);
-      const numberTwo = getRandomNumber(0, maxBound);
-      const randomOperator = operators[getRandomNumber(0, operators.length)];
+      const numberOne = getRandomNumber(1, maxBound);
+      const numberTwo = getRandomNumber(1, maxBound);
+      const randomOperator = operators[getRandomNumber(1, operators.length)];
       let correctAnswerCalc = stringToOperator[randomOperator](numberOne, numberTwo);
 
       const mathQuestionObject = {
