@@ -5,8 +5,10 @@ export class Quiz {
     this.quiz = this.createQuiz();
     this.questionObject = questionObject;
     this.target = target;
-    this.questionNumber = 1;
+    this.questionNumber = 0;
     this.questionCount = questionCount;
+
+    console.log('QuestionObject', questionObject);
   }
 
   createQuiz(questionCount = this.questionCount) {
@@ -100,7 +102,7 @@ export class Quiz {
 
       case 'backward': {
         buttonElement.addEventListener('click', () => {
-          if (this.questionNumber === 1) return;
+          if (this.questionNumber < 1) return;
           this.questionNumber--;
           this.populate(this.questionNumber);
           console.log(this.questionNumber);
@@ -150,9 +152,10 @@ export class Quiz {
   }
 
   populate(questionNumber = this.questionNumber) {
-    console.log('HELLO');
+    console.log('QUESTION NUMBER INSIDE => populatem', questionNumber);
     const questions = document.querySelectorAll('.quiz-question');
     const question = document.querySelector('.quiz-top__display');
+    const questionCount = document.querySelector('.quiz-top__count');
 
     question.textContent = this.questionObject[questionNumber].question;
 
@@ -160,6 +163,8 @@ export class Quiz {
       const questionContent = [...question.children].find((el) =>
         el.classList.contains('quiz-question__answer')
       );
+
+      questionCount.textContent = `${this.questionNumber + 1} / 6`;
       questionContent.innerText = this.questionObject[questionNumber].possibleAnswers[i];
     });
   }

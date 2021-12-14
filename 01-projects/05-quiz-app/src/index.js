@@ -3,7 +3,7 @@ import { MathQuestion } from './Question.js';
 
 const quizMount = document.querySelector('body');
 
-const mathQuestionInstance = new MathQuestion(5);
+const mathQuestionInstance = new MathQuestion(6);
 // console.log('INSTANCE', mathQuestionInstance);
 
 const questionObject = mathQuestionInstance.createMathQuestion(12);
