@@ -1,13 +1,15 @@
 import { createElement, createNumbersArray, mountElements } from './helper.js';
 
 export class Quiz {
-  constructor(target, questionObject) {
+  constructor(target, questionObject, questionCount) {
     this.quiz = this.createQuiz();
     this.questionObject = questionObject;
     this.target = target;
+    this.imageNumber = 1;
+    this.questionCount = questionCount;
   }
 
-  createQuiz(questionCount) {
+  createQuiz(questionCount = this.questionCount) {
     const activeQuiz = document.querySelector('.quiz-container');
     if (activeQuiz) return;
 
@@ -59,8 +61,19 @@ export class Quiz {
     // Create controls
 
     const controls = createElement('div', 'controls');
-    const buttonNext = createElement('button', ['controls__btn', 'btn'], 'previous');
-    const buttonPrevious = createElement('button', ['controls__btn', 'btn'], 'next');
+    const buttonNext = createElement(
+      'button',
+      ['controls__btn', 'controls__btn--previous', 'btn'],
+      'previous'
+    );
+    this.controls(buttonNext, 'backward');
+
+    const buttonPrevious = createElement(
+      'button',
+      ['controls__btn', 'controls__btn--next', 'btn'],
+      'next'
+    );
+    this.controls(buttonPrevious, 'forward');
 
     mountElements([buttonNext, buttonPrevious], controls);
     mountElements([...quizQuestions], quizQuestionContainer);
@@ -70,6 +83,30 @@ export class Quiz {
     this.target?.appendChild(controls);
 
     return newQuiz;
+  }
+
+  controls(buttonElement, direction) {
+    switch (direction) {
+      case 'forward': {
+        buttonElement.addEventListener('click', () => {
+          if (this.imageNumber === this.questionCount + 1) return;
+          this.imageNumber++;
+          console.log(this.imageNumber);
+        });
+        break;
+      }
+
+      case 'backward': {
+        buttonElement.addEventListener('click', () => {
+          if (this.imageNumber === 1) return;
+          this.imageNumber--;
+        });
+        break;
+      }
+      default: {
+        break;
+      }
+    }
   }
 
   isCorrect(element) {

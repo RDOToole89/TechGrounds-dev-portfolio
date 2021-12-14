@@ -1,14 +1,18 @@
 import { Quiz } from './Quiz.js';
 import { MathQuestion } from './Question.js';
 
+let questionNumber = 1;
+
 const quizMount = document.querySelector('body');
 
 const mathQuestionInstance = new MathQuestion(5);
-const questionObject = mathQuestionInstance.createMathQuestion(100);
-// console.log(questionObject);
+// console.log('INSTANCE', mathQuestionInstance);
 
-const quizApp = new Quiz(quizMount, questionObject);
-quizApp.createQuiz(5);
+const questionObject = mathQuestionInstance.createMathQuestion(12);
+// console.log('QUESTION OBJECT', questionObject);
+
+const quizApp = new Quiz(quizMount, questionObject, 5);
+quizApp.createQuiz();
 
 const populate = () => {
   const questions = document.querySelectorAll('.quiz-question');
