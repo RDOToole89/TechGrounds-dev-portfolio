@@ -5,8 +5,10 @@ export class Quiz {
     this.quiz = this.createQuiz();
     this.questionObject = questionObject;
     this.target = target;
-    this.imageNumber = 1;
+    this.questionNumber = 0;
     this.questionCount = questionCount;
+
+    console.log('QuestionObject', questionObject);
   }
 
   createQuiz(questionCount = this.questionCount) {
@@ -89,18 +91,21 @@ export class Quiz {
     switch (direction) {
       case 'forward': {
         buttonElement.addEventListener('click', () => {
-          if (this.imageNumber === this.questionCount + 1) return;
-          this.imageNumber++;
-          console.log(this.imageNumber);
+          if (this.questionNumber === this.questionCount) return;
+          console.log(this.questionCount);
+          this.questionNumber++;
+          this.populate(this.questionNumber);
+          console.log(this.questionNumber);
         });
         break;
       }
 
       case 'backward': {
         buttonElement.addEventListener('click', () => {
-          if (this.imageNumber === 1) return;
-          this.imageNumber--;
-          console.log(this.imageNumber);
+          if (this.questionNumber < 1) return;
+          this.questionNumber--;
+          this.populate(this.questionNumber);
+          console.log(this.questionNumber);
         });
         break;
       }
@@ -143,6 +148,24 @@ export class Quiz {
           return;
         }
       }
+    });
+  }
+
+  populate(questionNumber = this.questionNumber) {
+    console.log('QUESTION NUMBER INSIDE => populatem', questionNumber);
+    const questions = document.querySelectorAll('.quiz-question');
+    const question = document.querySelector('.quiz-top__display');
+    const questionCount = document.querySelector('.quiz-top__count');
+
+    question.textContent = this.questionObject[questionNumber].question;
+
+    [...questions].forEach((question, i) => {
+      const questionContent = [...question.children].find((el) =>
+        el.classList.contains('quiz-question__answer')
+      );
+
+      questionCount.textContent = `${this.questionNumber + 1} / 6`;
+      questionContent.innerText = this.questionObject[questionNumber].possibleAnswers[i];
     });
   }
 }
