@@ -15,6 +15,24 @@ export const createElement = (element, className, text, clickHandler = null) => 
   return newElement;
 };
 
+export const removeClasses = (elements, classNames) => {
+  console.log('REMOVE CLASS => ARGUMENTS', elements, classNames);
+
+  console.log('REMOVING CLASS');
+  elements.forEach((element) => {
+    if (typeof classNames === 'string') {
+      console.log('REMOVING CLASS => typeof classname = string', typeof classNames === 'string');
+      element.classList.remove(classNames);
+    }
+
+    if (Array.isArray(classNames)) {
+      console.log('REMOVING CLASS => typeof classname = Array', Array.isArray(classNames));
+      classNames.forEach((className) => element.classList.remove(className));
+    }
+  });
+  return;
+};
+
 export const mountElements = (elements, parentElement) => {
   [...elements].forEach((element) => {
     parentElement.appendChild(element);

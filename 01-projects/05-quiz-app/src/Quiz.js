@@ -1,4 +1,4 @@
-import { createElement, createNumbersArray, mountElements } from './helper.js';
+import { createElement, createNumbersArray, mountElements, removeClasses } from './helper.js';
 
 export class Quiz {
   constructor(target, questionObject, questionCount) {
@@ -7,6 +7,9 @@ export class Quiz {
     this.target = target;
     this.questionNumber = 0;
     this.questionCount = questionCount;
+    this.questionsOnPage = document.querySelectorAll('.quiz-question');
+
+    // if (this.questionsOnPage) console.log(questionsOnPage);
 
     console.log('QuestionObject', questionObject);
   }
@@ -88,11 +91,15 @@ export class Quiz {
   }
 
   controls(buttonElement, direction) {
+    const quizQuestions = [...document.querySelectorAll('.quiz-questions')];
+    console.log(quizQuestions);
     switch (direction) {
       case 'forward': {
         buttonElement.addEventListener('click', () => {
           if (this.questionNumber === this.questionCount) return;
           this.questionNumber++;
+
+          removeClasses([], ['correct', 'incorrect']);
           this.populate(this.questionNumber);
         });
         break;
@@ -113,16 +120,18 @@ export class Quiz {
   }
 
   isCorrect(element) {
-    element.addEventListener('click', () => {
+    element.addEventListener('click', (event) => {
+      let questionObject = this.questionObject;
       const answer = Number(element.textContent);
+      const answeredSwitch = (questionObject[this.questionNumber].answered = true);
 
-      if (this.questionObject) {
-        const questionObject = this.questionObject;
+      console.log(questionObject);
 
-        const correctAnswer = questionObject[0].correctAnswer;
+      if (questionObject) {
+        const correctAnswer = questionObject[this.questionNumber].correctAnswer;
         const questionsOnPage = document.querySelectorAll('.quiz-question');
 
-        if (answer === correctAnswer) {
+        if (answer === correctAnswer && questionObject[this.questionNumber].answered) {
           questionsOnPage.forEach((question) => (question.style.pointerEvents = 'none'));
 
           element.classList.add('correct');
