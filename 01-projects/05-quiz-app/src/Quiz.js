@@ -92,10 +92,8 @@ export class Quiz {
       case 'forward': {
         buttonElement.addEventListener('click', () => {
           if (this.questionNumber === this.questionCount) return;
-          console.log(this.questionCount);
           this.questionNumber++;
           this.populate(this.questionNumber);
-          console.log(this.questionNumber);
         });
         break;
       }
@@ -105,7 +103,6 @@ export class Quiz {
           if (this.questionNumber < 1) return;
           this.questionNumber--;
           this.populate(this.questionNumber);
-          console.log(this.questionNumber);
         });
         break;
       }
@@ -123,7 +120,7 @@ export class Quiz {
         const questionObject = this.questionObject;
 
         const correctAnswer = questionObject[0].correctAnswer;
-        const questionsOnPage = document?.querySelectorAll('.quiz-question');
+        const questionsOnPage = document.querySelectorAll('.quiz-question');
 
         if (answer === correctAnswer) {
           questionsOnPage.forEach((question) => (question.style.pointerEvents = 'none'));
@@ -152,7 +149,6 @@ export class Quiz {
   }
 
   populate(questionNumber = this.questionNumber) {
-    console.log('QUESTION NUMBER INSIDE => populatem', questionNumber);
     const questions = document.querySelectorAll('.quiz-question');
     const question = document.querySelector('.quiz-top__display');
     const questionCount = document.querySelector('.quiz-top__count');

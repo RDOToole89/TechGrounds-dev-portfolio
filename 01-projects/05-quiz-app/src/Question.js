@@ -25,12 +25,11 @@ export class MathQuestion {
           correctAnswerCalc,
           numberOfQuestions
         ),
+        answered: false,
       };
 
       questionArray.push(mathQuestionObject);
     }
-
-    console.log(questionArray);
 
     return questionArray;
   }
@@ -80,8 +79,6 @@ export class MathQuestion {
       const difference = numberOfQuestions - possibleAnswers.length;
 
       for (let i = 0; i < difference; i++) {
-        console.log('I IN LOOP', i);
-
         let randomNumber = getRandomNumber(correctAnswer, getRandomNumber(1, 20));
 
         if (!possibleAnswers.includes(randomNumber)) {
