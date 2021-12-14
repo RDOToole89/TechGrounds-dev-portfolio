@@ -4,4 +4,4 @@
 
 Feel free to browse around.
 
-## Most of my work can be found in the Projects and Pair-coding challenges folder. 
+Most of my work can be found in the Projects and Pair-coding challenges folder. 
