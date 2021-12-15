@@ -84,7 +84,7 @@ export const createStringFromNumber = (n) => {
   return word.join(' ');
 };
 
-export const createNumbersArray = (n) => {
+export const createStringNumbersArray = (n) => {
   const stringNumbersArray = [];
 
   for (let i = 0; i <= n; i++) {

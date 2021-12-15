@@ -1,4 +1,4 @@
-import { createElement, createNumbersArray, mountElements, removeClasses } from './helper.js';
+import { createElement, createStringNumbersArray, mountElements, removeClasses } from './helper.js';
 
 export class Quiz {
   constructor(target, questionObject, questionCount) {
@@ -7,14 +7,12 @@ export class Quiz {
     this.target = target;
     this.questionNumber = 0;
     this.questionCount = questionCount;
-    this.questionsOnPage = document.querySelectorAll('.quiz-question');
-
-    // if (this.questionsOnPage) console.log(questionsOnPage);
 
     console.log('QuestionObject', questionObject);
   }
 
-  createQuiz(questionCount = this.questionCount) {
+  // Method which builds the quiz UI and mounts it to a target on the DOM
+  createQuiz() {
     const activeQuiz = document.querySelector('.quiz-container');
     if (activeQuiz) return;
 
@@ -39,7 +37,7 @@ export class Quiz {
     const quizQuestions = [];
 
     // Array to add the correct className to the question element
-    const numbers = createNumbersArray(questionCount);
+    const numbers = createStringNumbersArray(this.questionCount);
 
     // Loops over the numbers array and creates a question element
 
@@ -63,8 +61,7 @@ export class Quiz {
       }
     }
 
-    // Create controls
-
+    // Creates controls for the UI (previous and next button)
     const controls = createElement('div', 'controls');
     const buttonNext = createElement(
       'button',
@@ -80,23 +77,27 @@ export class Quiz {
     );
     this.controls(buttonPrevious, 'forward');
 
+    // Mounts elements to the different components f the UI
     mountElements([buttonNext, buttonPrevious], controls);
     mountElements([...quizQuestions], quizQuestionContainer);
     mountElements([quizTop, quizQuestionContainer], newQuiz);
 
+    // Appends the quiz and controls to DOM target
     this.target?.appendChild(newQuiz);
     this.target?.appendChild(controls);
 
     return newQuiz;
   }
 
+  // Controls dictate forward and backward movement on the on the quiz
+  // Takes in an element and a direction (previous / next)
   controls(buttonElement, direction) {
-    const quizQuestions = [...document.querySelectorAll('.quiz-questions')];
-    console.log(quizQuestions);
     switch (direction) {
       case 'forward': {
         buttonElement.addEventListener('click', () => {
+          // If the end of the quiz has been reach don't allow next
           if (this.questionNumber === this.questionCount) return;
+
           this.questionNumber++;
 
           removeClasses([], ['correct', 'incorrect']);
@@ -107,6 +108,7 @@ export class Quiz {
 
       case 'backward': {
         buttonElement.addEventListener('click', () => {
+          // If the user tries to go back in the quiz at count 0, dont allow previous.
           if (this.questionNumber < 1) return;
           this.questionNumber--;
           this.populate(this.questionNumber);
@@ -119,6 +121,7 @@ export class Quiz {
     }
   }
 
+  // Method that determines whether the answer that is being clicked on is correct
   isCorrect(element) {
     element.addEventListener('click', (event) => {
       let questionObject = this.questionObject;
@@ -127,50 +130,57 @@ export class Quiz {
 
       console.log(questionObject);
 
-      if (questionObject) {
-        const correctAnswer = questionObject[this.questionNumber].correctAnswer;
-        const questionsOnPage = document.querySelectorAll('.quiz-question');
+      // Grabs the correct answer in the questions
+      const correctAnswer = questionObject[this.questionNumber].correctAnswer;
+      console.log('CORRECT ANSWER', correctAnswer);
 
-        if (answer === correctAnswer && questionObject[this.questionNumber].answered) {
-          questionsOnPage.forEach((question) => (question.style.pointerEvents = 'none'));
+      const questionsOnPage = document.querySelectorAll('.quiz-question');
+      console.log('SELECT ALL QUESTIONS', questionsOnPage);
 
-          element.classList.add('correct');
-          return;
-        } else {
-          element.classList.add('incorrect');
-          questionsOnPage.forEach((question, i) => {
-            const findAnswerNode = [...question.children].find((node) =>
-              node.classList.contains('quiz-question__answer')
-            );
+      if (answer === correctAnswer && questionObject[this.questionNumber].answered) {
+        // questionsOnPage.forEach((question) => (question.style.pointerEvents = 'none'));
 
-            const foundAnswer = Number(findAnswerNode.textContent);
+        element.classList.add('correct');
+        return;
+      } else {
+        element.classList.add('incorrect');
+        questionsOnPage.forEach((question, i) => {
+          const findAnswerNode = [...question.children].find((node) =>
+            node.classList.contains('quiz-question__answer')
+          );
 
-            if (correctAnswer === foundAnswer) {
-              findAnswerNode.classList.add('correct');
-            }
+          const foundAnswer = Number(findAnswerNode.textContent);
 
-            question.style.pointerEvents = 'none';
-          });
-          return;
-        }
+          if (correctAnswer === foundAnswer) {
+            findAnswerNode.classList.add('correct');
+          }
+
+          // question.style.pointerEvents = 'none';
+        });
+        return;
       }
     });
   }
 
-  populate(questionNumber = this.questionNumber) {
+  // Method which populates the quiz with the questions and
+  populate() {
     const questions = document.querySelectorAll('.quiz-question');
     const question = document.querySelector('.quiz-top__display');
-    const questionCount = document.querySelector('.quiz-top__count');
+    const questionUiCounter = document.querySelector('.quiz-top__count');
 
-    question.textContent = this.questionObject[questionNumber].question;
+    question.textContent = this.questionObject[this.questionNumber].question;
 
+    // Loops over the question to select the answer part of the ui
     [...questions].forEach((question, i) => {
       const questionContent = [...question.children].find((el) =>
         el.classList.contains('quiz-question__answer')
       );
 
-      questionCount.textContent = `${this.questionNumber + 1} / 6`;
-      questionContent.innerText = this.questionObject[questionNumber].possibleAnswers[i];
+      // Appends the question count to the UI
+      questionUiCounter.textContent = `${this.questionNumber + 1} / 6`;
+
+      // Inserts the answers from the possible answers arrat into the UI
+      questionContent.innerText = this.questionObject[this.questionNumber].possibleAnswers[i];
     });
   }
 }
