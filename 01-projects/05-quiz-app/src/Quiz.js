@@ -1,12 +1,12 @@
 import { createElement, createStringNumbersArray, mountElements, removeClasses } from './helper.js';
 
 export class Quiz {
-  constructor(target, questionObject, questionCount) {
+  constructor(target, questionObject, questionTotalCount) {
     this.quiz = this.createQuiz();
     this.questionObject = questionObject;
     this.target = target;
     this.questionNumber = 0;
-    this.questionCount = questionCount;
+    this.questionTotalCount = questionTotalCount;
 
     console.log('QuestionObject', questionObject);
   }
@@ -37,7 +37,7 @@ export class Quiz {
     const quizQuestions = [];
 
     // Array to add the correct className to the question element
-    const numbers = createStringNumbersArray(this.questionCount);
+    const numbers = createStringNumbersArray(this.questionTotalCount);
 
     // Loops over the numbers array and creates a question element
 
@@ -68,14 +68,14 @@ export class Quiz {
       ['controls__btn', 'controls__btn--previous', 'btn'],
       'previous'
     );
-    this.controls(buttonNext, 'backward');
+    this.controls(buttonNext, 'previous');
 
     const buttonPrevious = createElement(
       'button',
       ['controls__btn', 'controls__btn--next', 'btn'],
       'next'
     );
-    this.controls(buttonPrevious, 'forward');
+    this.controls(buttonPrevious, 'next');
 
     // Mounts elements to the different components f the UI
     mountElements([buttonNext, buttonPrevious], controls);
@@ -93,10 +93,10 @@ export class Quiz {
   // Takes in an element and a direction (previous / next)
   controls(buttonElement, direction) {
     switch (direction) {
-      case 'forward': {
+      case 'next': {
         buttonElement.addEventListener('click', () => {
           // If the end of the quiz has been reach don't allow next
-          if (this.questionNumber === this.questionCount) return;
+          if (this.questionNumber === this.questionTotalCount) return;
 
           this.questionNumber++;
 
@@ -106,7 +106,7 @@ export class Quiz {
         break;
       }
 
-      case 'backward': {
+      case 'previous': {
         buttonElement.addEventListener('click', () => {
           // If the user tries to go back in the quiz at count 0, dont allow previous.
           if (this.questionNumber < 1) return;
@@ -134,23 +134,30 @@ export class Quiz {
       const correctAnswer = questionObject[this.questionNumber].correctAnswer;
       console.log('CORRECT ANSWER', correctAnswer);
 
+      // Grabs all questions on the current iteration
       const questionsOnPage = document.querySelectorAll('.quiz-question');
       console.log('SELECT ALL QUESTIONS', questionsOnPage);
 
-      if (answer === correctAnswer && questionObject[this.questionNumber].answered) {
+      // If the answer is correct add the correct class and disable further interaction with questions
+      if (answer === correctAnswer) {
         // questionsOnPage.forEach((question) => (question.style.pointerEvents = 'none'));
 
         element.classList.add('correct');
         return;
       } else {
+        // If the answer is not correct it must be incorrect
         element.classList.add('incorrect');
+
+        // Loop over all questions and find the correct answer
         questionsOnPage.forEach((question, i) => {
           const findAnswerNode = [...question.children].find((node) =>
             node.classList.contains('quiz-question__answer')
           );
 
+          // Convert the text to an integer for comparison
           const foundAnswer = Number(findAnswerNode.textContent);
 
+          // if the foundAnswer iteration is the correct answer add the 'correct' class.
           if (correctAnswer === foundAnswer) {
             findAnswerNode.classList.add('correct');
           }
