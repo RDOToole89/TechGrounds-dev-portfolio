@@ -1,18 +1,18 @@
 import { getRandomNumber, stringToOperator } from './helper.js';
 
-export class MathQuestion {
+export class Question {
   constructor(numberOfQuestions) {
     this.numberOfQuestions = numberOfQuestions;
   }
 
-  createMathQuestion(maxBound, numberOfQuestions = this.numberOfQuestions) {
+  createMathQuestion(numberUpperBound) {
     const operators = ['-', '+', '*'];
 
     const questionArray = [];
 
-    for (let i = 0; i < numberOfQuestions; i++) {
-      const numberOne = getRandomNumber(1, maxBound);
-      const numberTwo = getRandomNumber(1, maxBound);
+    for (let i = 0; i < this.numberOfQuestions; i++) {
+      const numberOne = getRandomNumber(1, numberUpperBound);
+      const numberTwo = getRandomNumber(1, numberUpperBound);
       const randomOperator = operators[getRandomNumber(1, operators.length)];
       let correctAnswerCalc = stringToOperator[randomOperator](numberOne, numberTwo);
 
@@ -23,23 +23,22 @@ export class MathQuestion {
         possibleAnswers: this.createPossibleAnswers(
           randomOperator,
           correctAnswerCalc,
-          numberOfQuestions
+          this.numberOfQuestions
         ),
+        answered: false,
       };
 
       questionArray.push(mathQuestionObject);
     }
 
-    console.log(questionArray);
-
     return questionArray;
   }
 
-  createPossibleAnswers(randomOperator, correctAnswer, numberOfQuestions) {
+  createPossibleAnswers(randomOperatorString, correctAnswer) {
     let possibleAnswers = [];
 
-    for (let i = 0; i < numberOfQuestions; i++) {
-      switch (randomOperator) {
+    for (let i = 0; i < this.numberOfQuestions; i++) {
+      switch (randomOperatorString) {
         case '-': {
           const randomNumber = getRandomNumber(
             correctAnswer - getRandomNumber(1, 20),
@@ -76,12 +75,10 @@ export class MathQuestion {
     possibleAnswers = [...possibleAnswers];
 
     // Checks the length
-    if (possibleAnswers.length < numberOfQuestions) {
-      const difference = numberOfQuestions - possibleAnswers.length;
+    if (possibleAnswers.length < this.numberOfQuestions) {
+      const difference = this.numberOfQuestions - possibleAnswers.length;
 
       for (let i = 0; i < difference; i++) {
-        console.log('I IN LOOP', i);
-
         let randomNumber = getRandomNumber(correctAnswer, getRandomNumber(1, 20));
 
         if (!possibleAnswers.includes(randomNumber)) {

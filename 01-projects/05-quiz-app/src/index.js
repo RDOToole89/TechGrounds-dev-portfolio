@@ -1,13 +1,11 @@
 import { Quiz } from './Quiz.js';
-import { MathQuestion } from './Question.js';
+import { Question } from './Question.js';
 
 const quizMount = document.querySelector('body');
 
-const mathQuestionInstance = new MathQuestion(6);
-// console.log('INSTANCE', mathQuestionInstance);
+const question = new Question(6);
 
-const questionObject = mathQuestionInstance.createMathQuestion(12);
-// console.log('QUESTION OBJECT', questionObject);
+const questionObject = question.createMathQuestion(12);
 
 const quizApp = new Quiz(quizMount, questionObject, 5);
 quizApp.createQuiz();
