@@ -1,4 +1,9 @@
-import { createElement, createStringNumbersArray, mountElements, removeClasses } from './helper.js';
+import {
+  createElement,
+  createStringNumbersArray,
+  mountElements,
+  removeClassesChildrenNodes,
+} from './helper.js';
 
 export class Quiz {
   constructor(target, questionObject, questionTotalCount) {
@@ -8,7 +13,7 @@ export class Quiz {
     this.questionNumber = 0;
     this.questionTotalCount = questionTotalCount;
 
-    console.log('QuestionObject', questionObject);
+    // console.log('QuestionObject', questionObject);
   }
 
   // Method which builds the quiz UI and mounts it to a target on the DOM
@@ -63,22 +68,22 @@ export class Quiz {
 
     // Creates controls for the UI (previous and next button)
     const controls = createElement('div', 'controls');
-    const buttonNext = createElement(
+    const buttonPrevious = createElement(
       'button',
       ['controls__btn', 'controls__btn--previous', 'btn'],
       'previous'
     );
-    this.controls(buttonNext, 'previous');
+    this.controls(buttonPrevious, 'previous');
 
-    const buttonPrevious = createElement(
+    const buttonNext = createElement(
       'button',
       ['controls__btn', 'controls__btn--next', 'btn'],
       'next'
     );
-    this.controls(buttonPrevious, 'next');
+    this.controls(buttonNext, 'next');
 
     // Mounts elements to the different components f the UI
-    mountElements([buttonNext, buttonPrevious], controls);
+    mountElements([buttonPrevious, buttonNext], controls);
     mountElements([...quizQuestions], quizQuestionContainer);
     mountElements([quizTop, quizQuestionContainer], newQuiz);
 
@@ -100,7 +105,9 @@ export class Quiz {
 
           this.questionNumber++;
 
-          removeClasses([], ['correct', 'incorrect']);
+          const questions = document.querySelectorAll('.quiz-question');
+
+          removeClassesChildrenNodes([...questions], ['correct', 'incorrect']);
           this.populate(this.questionNumber);
         });
         break;
@@ -126,27 +133,26 @@ export class Quiz {
     element.addEventListener('click', (event) => {
       let questionObject = this.questionObject;
       const answer = Number(element.textContent);
-      const answeredSwitch = (questionObject[this.questionNumber].answered = true);
+      questionObject[this.questionNumber].answered = answer;
 
-      console.log(questionObject);
+      // console.log('QUESTION-OBJECT', questionObject);
 
       // Grabs the correct answer in the questions
       const correctAnswer = questionObject[this.questionNumber].correctAnswer;
-      console.log('CORRECT ANSWER', correctAnswer);
+      // console.log('CORRECT ANSWER', correctAnswer);
 
       // Grabs all questions on the current iteration
       const questionsOnPage = document.querySelectorAll('.quiz-question');
-      console.log('SELECT ALL QUESTIONS', questionsOnPage);
+      // console.log('SELECT ALL QUESTIONS', questionsOnPage);
 
       // If the answer is correct add the correct class and disable further interaction with questions
       if (answer === correctAnswer) {
         // questionsOnPage.forEach((question) => (question.style.pointerEvents = 'none'));
 
-        element.classList.add('correct');
-        return;
+        element.parentNode.childNodes.forEach((element) => element.classList.add('correct'));
       } else {
         // If the answer is not correct it must be incorrect
-        element.classList.add('incorrect');
+        element.parentNode.childNodes.forEach((element) => element.classList.add('incorrect'));
 
         // Loop over all questions and find the correct answer
         questionsOnPage.forEach((question, i) => {
@@ -159,7 +165,9 @@ export class Quiz {
 
           // if the foundAnswer iteration is the correct answer add the 'correct' class.
           if (correctAnswer === foundAnswer) {
-            findAnswerNode.classList.add('correct');
+            findAnswerNode.parentNode.childNodes.forEach((element) =>
+              element.classList.add('correct')
+            );
           }
 
           // question.style.pointerEvents = 'none';

@@ -15,22 +15,20 @@ export const createElement = (element, className, text, clickHandler = null) => 
   return newElement;
 };
 
-export const removeClasses = (elements, classNames) => {
-  console.log('REMOVE CLASS => ARGUMENTS', elements, classNames);
-
-  console.log('REMOVING CLASS');
+export const removeClassesChildrenNodes = (elements, classNameArray) => {
   elements.forEach((element) => {
-    if (typeof classNames === 'string') {
-      console.log('REMOVING CLASS => typeof classname = string', typeof classNames === 'string');
-      element.classList.remove(classNames);
+    if (classNameArray.length === 1 && typeof classNameArray[0] === 'string') {
+      element.classList.remove(classNameArray[0]);
     }
 
-    if (Array.isArray(classNames)) {
-      console.log('REMOVING CLASS => typeof classname = Array', Array.isArray(classNames));
-      classNames.forEach((className) => element.classList.remove(className));
+    if (Array.isArray(classNameArray)) {
+      classNameArray.forEach((className) => {
+        element.childNodes.forEach((child) => {
+          child.classList.remove(className);
+        });
+      });
     }
   });
-  return;
 };
 
 export const mountElements = (elements, parentElement) => {
@@ -40,29 +38,29 @@ export const mountElements = (elements, parentElement) => {
 };
 
 export const createStringFromNumber = (n) => {
-  let word = [],
-    numbers = {
-      1: 'one',
-      2: 'two',
-      3: 'three',
-      4: 'four',
-      5: 'five',
-      6: 'six',
-      7: 'seven',
-      8: 'eight',
-      9: 'nine',
-      10: 'ten',
-      11: 'eleven',
-      12: 'twelve',
-      t3: 'thir',
-      t5: 'fif',
-      t8: 'eigh',
-      20: 'twenty',
-    },
-    hundreds = 0 | ((n % 1000) / 100),
-    tens = 0 | ((n % 100) / 10),
-    ones = n % 10,
-    part;
+  let word = [];
+  let numbers = {
+    1: 'one',
+    2: 'two',
+    3: 'three',
+    4: 'four',
+    5: 'five',
+    6: 'six',
+    7: 'seven',
+    8: 'eight',
+    9: 'nine',
+    10: 'ten',
+    11: 'eleven',
+    12: 'twelve',
+    t3: 'thir',
+    t5: 'fif',
+    t8: 'eigh',
+    20: 'twenty',
+  };
+  let hundreds = 0 | ((n % 1000) / 100);
+  let tens = 0 | ((n % 100) / 10);
+  let ones = n % 10;
+  let part;
 
   if (n === 0) {
     return 'Zero';

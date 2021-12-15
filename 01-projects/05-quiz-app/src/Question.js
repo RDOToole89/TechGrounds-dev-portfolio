@@ -25,7 +25,7 @@ export class Question {
           correctAnswerCalc,
           this.numberOfQuestions
         ),
-        answered: false,
+        answered: null,
       };
 
       questionArray.push(mathQuestionObject);
