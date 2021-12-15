@@ -1,12 +1,12 @@
 import { createElement, createStringNumbersArray, mountElements, removeClasses } from './helper.js';
 
 export class Quiz {
-  constructor(target, questionObject, questionCount) {
+  constructor(target, questionObject, questionTotalCount) {
     this.quiz = this.createQuiz();
     this.questionObject = questionObject;
     this.target = target;
     this.questionNumber = 0;
-    this.questionCount = questionCount;
+    this.questionTotalCount = questionTotalCount;
 
     console.log('QuestionObject', questionObject);
   }
@@ -37,7 +37,7 @@ export class Quiz {
     const quizQuestions = [];
 
     // Array to add the correct className to the question element
-    const numbers = createStringNumbersArray(this.questionCount);
+    const numbers = createStringNumbersArray(this.questionTotalCount);
 
     // Loops over the numbers array and creates a question element
 
@@ -96,7 +96,7 @@ export class Quiz {
       case 'next': {
         buttonElement.addEventListener('click', () => {
           // If the end of the quiz has been reach don't allow next
-          if (this.questionNumber === this.questionCount) return;
+          if (this.questionNumber === this.questionTotalCount) return;
 
           this.questionNumber++;
 
