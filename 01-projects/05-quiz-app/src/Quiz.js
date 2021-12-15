@@ -100,12 +100,21 @@ export class Quiz {
     switch (direction) {
       case 'next': {
         buttonElement.addEventListener('click', () => {
-          // If the end of the quiz has been reach don't allow next
+          // Why doesn't this work in the outerscope of the switch => ?!
+          const questions = document.querySelectorAll('.quiz-question');
+
+          // If the end of the quiz has been reached don't allow next
           if (this.questionNumber === this.questionTotalCount) return;
 
           this.questionNumber++;
 
-          const questions = document.querySelectorAll('.quiz-question');
+          // FIX THIS CODE!
+
+          // if (this.questionObject[this.questionNumber]) {
+          //   console.log(this.questionObject[this.questionNumber].answered);
+
+          //   this.isCorrect(questions[this.questionNumber]);
+          // }
 
           removeClassesChildrenNodes([...questions], ['correct', 'incorrect']);
           this.populate(this.questionNumber);
@@ -115,9 +124,19 @@ export class Quiz {
 
       case 'previous': {
         buttonElement.addEventListener('click', () => {
+          const questions = document.querySelectorAll('.quiz-question');
+
           // If the user tries to go back in the quiz at count 0, dont allow previous.
           if (this.questionNumber < 1) return;
           this.questionNumber--;
+
+          // if (this.questionObject[this.questionNumber]) {
+          //   console.log(this.questionObject[this.questionNumber].answered);
+
+          //   this.isCorrect(questions[this.questionNumber]);
+          // }
+
+          removeClassesChildrenNodes([...questions], ['correct', 'incorrect']);
           this.populate(this.questionNumber);
         });
         break;
@@ -130,7 +149,7 @@ export class Quiz {
 
   // Method that determines whether the answer that is being clicked on is correct
   isCorrect(element) {
-    element.addEventListener('click', (event) => {
+    element.addEventListener('click', () => {
       let questionObject = this.questionObject;
       const answer = Number(element.textContent);
       questionObject[this.questionNumber].answered = answer;
