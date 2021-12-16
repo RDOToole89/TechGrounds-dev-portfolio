@@ -68,21 +68,28 @@ export class Question {
     // Creates an array of unique values by transforming it to a set and
     let possibleAnswersSet = new Set([...possibleAnswers]);
 
+    // Generates a new possible answer
     let newPossibleNumber = getRandomNumber(
       correctAnswer - getRandomNumber(1, 20),
       correctAnswer + getRandomNumber(1, 20)
     );
 
+    // Condition checks for if the possibleAnswers Array has the right length
+    // Does NOT contain duplicates and does NOT contain the right answer
     if (
       !hasDuplicates(possibleAnswers) &&
       possibleAnswers.length === numberOfPossibleAnswers &&
       !possibleAnswers.includes(correctAnswer)
     ) {
+      // Insert correct answer and return
       possibleAnswers[getRandomNumber(0, numberOfPossibleAnswers - 1)] = correctAnswer;
 
       return possibleAnswers;
     }
-    let i = 0;
+
+    // Loop checks whether the possibleAnswersSet has the right size
+    // If not it keeps looping and adding a new random number until
+    // it forms a unique set with the correct number and returns
     while (possibleAnswersSet.size < numberOfPossibleAnswers) {
       possibleAnswersSet.add(newPossibleNumber);
       newPossibleNumber = getRandomNumber(
@@ -90,6 +97,7 @@ export class Question {
         correctAnswer + getRandomNumber(1, 20)
       );
 
+      // Checks if the a unique set has been created and contains the right answer if so it returns
       if (
         [...possibleAnswersSet].includes(correctAnswer) &&
         possibleAnswersSet.size === numberOfPossibleAnswers
@@ -99,6 +107,7 @@ export class Question {
         return possibleAnswers;
       }
 
+      // If the set is unique but does not contain the correct answer insert it and return
       if (
         possibleAnswersSet.size === numberOfPossibleAnswers &&
         ![...possibleAnswersSet].includes(correctAnswer)
@@ -108,9 +117,6 @@ export class Question {
 
         return possibleAnswers;
       }
-
-      possibleAnswersSet = new Set([...possibleAnswersSet]);
-      i++;
     }
     return possibleAnswers;
   }
