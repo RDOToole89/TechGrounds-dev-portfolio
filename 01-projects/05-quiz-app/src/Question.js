@@ -1,4 +1,4 @@
-import { getRandomNumber, stringToOperator } from './helper.js';
+import { getRandomNumber, hasDuplicates, popRandom, stringToOperator } from './helper.js';
 
 export class Question {
   constructor(numberOfQuestions) {
@@ -18,13 +18,9 @@ export class Question {
 
       const mathQuestionObject = {
         number: i + 1,
-        question: `${numberOne} ${randomOperator} ${numberTwo}`,
+        question: `Q: ${numberOne} ${randomOperator} ${numberTwo}`,
         correctAnswer: correctAnswerCalc,
-        possibleAnswers: this.createPossibleAnswers(
-          randomOperator,
-          correctAnswerCalc,
-          this.numberOfQuestions
-        ),
+        possibleAnswers: this.createPossibleAnswers(randomOperator, correctAnswerCalc, 5),
         answered: null,
       };
 
@@ -34,10 +30,10 @@ export class Question {
     return questionArray;
   }
 
-  createPossibleAnswers(randomOperatorString, correctAnswer) {
+  createPossibleAnswers(randomOperatorString, correctAnswer, numberOfPossibleAnswers) {
     let possibleAnswers = [];
 
-    for (let i = 0; i < this.numberOfQuestions; i++) {
+    for (let i = 0; i < numberOfPossibleAnswers; i++) {
       switch (randomOperatorString) {
         case '-': {
           const randomNumber = getRandomNumber(
@@ -70,29 +66,87 @@ export class Question {
     }
 
     // Creates an array of unique values by transforming it to a set and
-    // then reverting it back to an array
-    possibleAnswers = new Set([...possibleAnswers]);
-    possibleAnswers = [...possibleAnswers];
+    let possibleAnswersSet = new Set([...possibleAnswers]);
 
-    // Checks the length
-    if (possibleAnswers.length < this.numberOfQuestions) {
-      const difference = this.numberOfQuestions - possibleAnswers.length;
+    let newPossibleNumber = getRandomNumber(
+      correctAnswer - getRandomNumber(1, 20),
+      correctAnswer + getRandomNumber(1, 20)
+    );
+    // console.log(
+    //   `POSSIBLE ANSWER SET LENGTH: ${possibleAnswersSet.size} POSSIBLE ANSWERS LENGTH ${possibleAnswers.length}`
+    // );
 
-      for (let i = 0; i < difference; i++) {
-        let randomNumber = getRandomNumber(correctAnswer, getRandomNumber(1, 20));
+    if (
+      !hasDuplicates(possibleAnswers) &&
+      possibleAnswers.length === numberOfPossibleAnswers &&
+      !possibleAnswers.includes(correctAnswer)
+    ) {
+      possibleAnswers[getRandomNumber(0, numberOfPossibleAnswers - 1)] = correctAnswer;
 
-        if (!possibleAnswers.includes(randomNumber)) {
-          possibleAnswers.push(randomNumber);
-          randomNumber = getRandomNumber(correctAnswer, 20);
-        }
-
-        possibleAnswers.push(randomNumber);
-      }
+      // console.log('UNIQUE SET =>', possibleAnswers, 'ANSWER => ', correctAnswer);
+      return possibleAnswers;
     }
+    let i = 0;
+    while (possibleAnswersSet.size < numberOfPossibleAnswers) {
+      // console.log(
+      //   `INSIDE WHILE LOOP SET: ${possibleAnswersSet.size} POSSIBLEANSWERS ARRAY =>  ${possibleAnswers.length}, INDEX: ${i}`
+      // );
 
-    // Inserts correct answer in possible answers array
-    possibleAnswers[getRandomNumber(0, possibleAnswers.length - 1)] = correctAnswer;
+      possibleAnswersSet.add(newPossibleNumber);
+      newPossibleNumber = getRandomNumber(
+        correctAnswer - getRandomNumber(1, 20),
+        correctAnswer + getRandomNumber(1, 20)
+      );
 
+      if (
+        [...possibleAnswersSet].includes(correctAnswer) &&
+        possibleAnswersSet.size === numberOfPossibleAnswers
+      ) {
+        possibleAnswers = [...possibleAnswersSet];
+
+        return possibleAnswers;
+      }
+
+      // console.log(
+      //   'POSSIBLE ANSWER SET INSIDE LOOP after adding new random',
+      //   possibleAnswersSet,
+      //   'CORRECT ANSWER',
+      //   correctAnswer,
+      //   'index: ',
+      //   i
+      // );
+
+      if (
+        possibleAnswersSet.size === numberOfPossibleAnswers &&
+        ![...possibleAnswersSet].includes(correctAnswer)
+      ) {
+        // console.log(
+        //   'INSIDE THE IF BLOCK',
+        //   possibleAnswersSet,
+        //   'correct answer',
+        //   correctAnswer,
+        //   'index: ',
+        //   i
+        // );
+
+        possibleAnswers = [...possibleAnswersSet];
+        possibleAnswers[getRandomNumber(0, numberOfPossibleAnswers - 1)] = correctAnswer;
+        // console.log(
+        //   'INSIDE THE IF BLOCK AFTER ADDING CORRECT NUMBER',
+        //   possibleAnswers,
+        //   'correct answer',
+        //   correctAnswer,
+        //   'index: ',
+        //   i
+        // );
+        return possibleAnswers;
+      }
+
+      // console.log('POSSIBLE ANSWER SET AFTER IF STATEMENT', possibleAnswersSet, 'index: ', i);
+
+      possibleAnswersSet = new Set([...possibleAnswersSet]);
+      i++;
+    }
     return possibleAnswers;
   }
 }

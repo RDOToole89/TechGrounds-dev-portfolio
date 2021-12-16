@@ -13,7 +13,7 @@ export class Quiz {
     this.questionNumber = 0;
     this.questionTotalCount = questionTotalCount;
 
-    // console.log('QuestionObject', questionObject);
+    console.log('QuestionObject', questionObject);
   }
 
   // Method which builds the quiz UI and mounts it to a target on the DOM
@@ -42,13 +42,16 @@ export class Quiz {
     const quizQuestions = [];
 
     // Array to add the correct className to the question element
-    const numbers = createStringNumbersArray(this.questionTotalCount);
+    const stringNumbers = createStringNumbersArray(this.questionTotalCount);
 
     // Loops over the numbers array and creates a question element
 
-    for (let i = 1; i < numbers.length; i++) {
+    for (let i = 1; i < stringNumbers.length; i++) {
       // creates a question and adds the correct classes
-      const question = createElement('div', ['quiz-question', `quiz-question__${numbers[i]}`]);
+      const question = createElement('div', [
+        'quiz-question',
+        `quiz-question__${stringNumbers[i]}`,
+      ]);
 
       const questionNumber = createElement('div', 'quiz-question__number', i);
       const questionAnswer = createElement('p', 'quiz-question__answer');
@@ -213,7 +216,8 @@ export class Quiz {
       // Appends the question count to the UI
       questionUiCounter.textContent = `${this.questionNumber + 1} / 6`;
 
-      // Inserts the answers from the possible answers arrat into the UI
+      // Inserts the answers from the possible answers array into the UI
+
       questionContent.innerText = this.questionObject[this.questionNumber].possibleAnswers[i];
     });
   }

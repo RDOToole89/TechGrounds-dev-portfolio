@@ -114,3 +114,15 @@ export const stringToOperator = {
     return a * b;
   },
 };
+
+// Checks if there are no duplicates in an array and returns a boolean
+export const hasDuplicates = (array) => {
+  const noDuplicates = new Set(array);
+
+  return array.length !== noDuplicates.size;
+};
+
+export const popRandom = (array) => {
+  let i = (Math.random() * array.length) | 0;
+  return array.splice(i, 1)[0];
+};
