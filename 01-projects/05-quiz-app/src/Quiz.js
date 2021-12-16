@@ -12,8 +12,6 @@ export class Quiz {
     this.target = target;
     this.questionNumber = 0;
     this.questionTotalCount = questionTotalCount;
-
-    console.log('QuestionObject', questionObject);
   }
 
   // Method which builds the quiz UI and mounts it to a target on the DOM
