@@ -83,7 +83,7 @@ export class Quiz {
     );
     this.controls(buttonNext, 'next');
 
-    // Mounts elements to the different components f the UI
+    // Mounts elements to the different components of the UI
     mountElements([buttonPrevious, buttonNext], controls);
     mountElements([...quizQuestions], quizQuestionContainer);
     mountElements([quizTop, quizQuestionContainer], newQuiz);
@@ -96,7 +96,7 @@ export class Quiz {
   }
 
   // Controls dictate forward and backward movement on the on the quiz
-  // Takes in an element and a direction (previous / next)
+  // Takes in an element and a direction: (previous / next)
   controls(buttonElement, direction) {
     switch (direction) {
       case 'next': {
@@ -106,16 +106,7 @@ export class Quiz {
 
           // If the end of the quiz has been reached don't allow next
           if (this.questionNumber === this.questionTotalCount) return;
-
           this.questionNumber++;
-
-          // FIX THIS CODE!
-
-          // if (this.questionObject[this.questionNumber]) {
-          //   console.log(this.questionObject[this.questionNumber].answered);
-
-          //   this.isCorrect(questions[this.questionNumber]);
-          // }
 
           removeClassesChildrenNodes([...questions], ['correct', 'incorrect']);
           this.populate(this.questionNumber);
@@ -126,16 +117,9 @@ export class Quiz {
       case 'previous': {
         buttonElement.addEventListener('click', () => {
           const questions = document.querySelectorAll('.quiz-question');
-
           // If the user tries to go back in the quiz at count 0, dont allow previous.
           if (this.questionNumber < 1) return;
           this.questionNumber--;
-
-          // if (this.questionObject[this.questionNumber]) {
-          //   console.log(this.questionObject[this.questionNumber].answered);
-
-          //   this.isCorrect(questions[this.questionNumber]);
-          // }
 
           removeClassesChildrenNodes([...questions], ['correct', 'incorrect']);
           this.populate(this.questionNumber);
@@ -148,9 +132,33 @@ export class Quiz {
     }
   }
 
+  // HOW TO REPOPULATE ON NEXT AND PREVIOUS
+  // if (this.questionObject[this.questionNumber].answered) {
+  //   console.log(
+  //     'IF AN ANSWER EXISTS IN NEXT => ANSWER IS',
+  //     this.questionObject[this.questionNumber].answered
+  //   );
+
+  //   const iteratableNodelist = [...questions[this.questionNumber].childNodes];
+
+  //   if (iteratableNodelist) {
+  //     const answerNode = iteratableNodelist.find((node) =>
+  //       node.classList.contains('quiz-question__answer')
+  //     );
+
+  //     console.log('ANSWERNODE', answerNode);
+
+  //     this.isCorrect(answerNode);
+  //     this.populate(this.questionNumber);
+  //     return;
+  //   }
+  // }
+
   // Method that determines whether the answer that is being clicked on is correct
   isCorrect(element) {
+    console.log('ELEMENT in IS CORRECT', element);
     element.addEventListener('click', () => {
+      console.log('CLICK');
       let questionObject = this.questionObject;
       const answer = Number(element.textContent);
       questionObject[this.questionNumber].answered = answer;
@@ -197,7 +205,7 @@ export class Quiz {
     });
   }
 
-  // Method which populates the quiz with the questions and
+  // Method which populates the quiz with the questions
   populate() {
     const questions = document.querySelectorAll('.quiz-question');
     const question = document.querySelector('.quiz-top__display');
