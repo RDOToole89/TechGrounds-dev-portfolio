@@ -21,7 +21,7 @@ export class Question {
         question: `Q: ${numberOne} ${randomOperator} ${numberTwo}`,
         correctAnswer: correctAnswerCalc,
         possibleAnswers: this.createPossibleAnswers(randomOperator, correctAnswerCalc, 5),
-        answered: null,
+        userAnswer: null,
       };
 
       questionArray.push(mathQuestionObject);

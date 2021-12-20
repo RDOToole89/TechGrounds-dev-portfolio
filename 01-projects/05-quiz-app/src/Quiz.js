@@ -46,10 +46,13 @@ export class Quiz {
 
     for (let i = 1; i < stringNumbers.length; i++) {
       // creates a question and adds the correct classes
-      const question = createElement('div', [
-        'quiz-question',
-        `quiz-question__${stringNumbers[i]}`,
-      ]);
+      const question = createElement(
+        'div',
+        ['quiz-question', `quiz-question__${stringNumbers[i]}`],
+        null,
+        null,
+        ['number', `${i}`]
+      );
 
       const questionNumber = createElement('div', 'quiz-question__number', i);
       const questionAnswer = createElement('p', 'quiz-question__answer');
@@ -102,27 +105,78 @@ export class Quiz {
       case 'next': {
         buttonElement.addEventListener('click', () => {
           // Why doesn't this work in the outerscope of the switch => ?!
-          const questions = document.querySelectorAll('.quiz-question');
+          const questionNodes = document.querySelectorAll('.quiz-question');
 
           // If the end of the quiz has been reached don't allow next
           if (this.questionNumber === this.questionTotalCount) return;
           this.questionNumber++;
 
-          removeClassesChildrenNodes([...questions], ['correct', 'incorrect']);
+          removeClassesChildrenNodes([...questionNodes], ['correct', 'incorrect']);
           this.populate(this.questionNumber);
+
+          const userAnswer = this.questionObject[this.questionNumber].userAnswer?.toString();
+          const correctAnswer = this.questionObject[this.questionNumber]?.correctAnswer.toString();
+
+          if (userAnswer) {
+            [...questionNodes].forEach((node) => {
+              node.childNodes.forEach((child, i) => {
+                if (child.classList.contains('quiz-question__answer')) {
+                  if (child.textContent === correctAnswer) {
+                    child.classList.add('correct');
+                    if (child.previousSibling) child.previousSibling.classList.add('correct');
+                    if (child.nextElementSibling) child.nextElementSibling.classList.add('correct');
+                  }
+
+                  if (child.textContent === userAnswer && userAnswer !== correctAnswer) {
+                    child.classList.add('incorrect');
+
+                    if (child.previousSibling) child.previousSibling.classList.add('incorrect');
+                    if (child.nextElementSibling)
+                      child.nextElementSibling.classList.add('incorrect');
+                  }
+                }
+              });
+            });
+          }
         });
         break;
       }
 
       case 'previous': {
         buttonElement.addEventListener('click', () => {
-          const questions = document.querySelectorAll('.quiz-question');
+          const questionNodes = document.querySelectorAll('.quiz-question');
+
           // If the user tries to go back in the quiz at count 0, dont allow previous.
           if (this.questionNumber < 1) return;
           this.questionNumber--;
 
-          removeClassesChildrenNodes([...questions], ['correct', 'incorrect']);
+          removeClassesChildrenNodes([...questionNodes], ['correct', 'incorrect']);
           this.populate(this.questionNumber);
+
+          const userAnswer = this.questionObject[this.questionNumber].userAnswer?.toString();
+          const correctAnswer = this.questionObject[this.questionNumber]?.correctAnswer.toString();
+
+          if (userAnswer) {
+            [...questionNodes].forEach((node) => {
+              node.childNodes.forEach((child, i) => {
+                if (child.classList.contains('quiz-question__answer')) {
+                  if (child.textContent === correctAnswer) {
+                    child.classList.add('correct');
+                    if (child.previousSibling) child.previousSibling.classList.add('correct');
+                    if (child.nextElementSibling) child.nextElementSibling.classList.add('correct');
+                  }
+
+                  if (child.textContent === userAnswer && userAnswer !== correctAnswer) {
+                    child.classList.add('incorrect');
+
+                    if (child.previousSibling) child.previousSibling.classList.add('incorrect');
+                    if (child.nextElementSibling)
+                      child.nextElementSibling.classList.add('incorrect');
+                  }
+                }
+              });
+            });
+          }
         });
         break;
       }
@@ -132,38 +186,12 @@ export class Quiz {
     }
   }
 
-  // HOW TO REPOPULATE ON NEXT AND PREVIOUS
-  // if (this.questionObject[this.questionNumber].answered) {
-  //   console.log(
-  //     'IF AN ANSWER EXISTS IN NEXT => ANSWER IS',
-  //     this.questionObject[this.questionNumber].answered
-  //   );
-
-  //   const iteratableNodelist = [...questions[this.questionNumber].childNodes];
-
-  //   if (iteratableNodelist) {
-  //     const answerNode = iteratableNodelist.find((node) =>
-  //       node.classList.contains('quiz-question__answer')
-  //     );
-
-  //     console.log('ANSWERNODE', answerNode);
-
-  //     this.isCorrect(answerNode);
-  //     this.populate(this.questionNumber);
-  //     return;
-  //   }
-  // }
-
   // Method that determines whether the answer that is being clicked on is correct
   isCorrect(element) {
-    console.log('ELEMENT in IS CORRECT', element);
     element.addEventListener('click', () => {
-      console.log('CLICK');
       let questionObject = this.questionObject;
       const answer = Number(element.textContent);
-      questionObject[this.questionNumber].answered = answer;
-
-      // console.log('QUESTION-OBJECT', questionObject);
+      questionObject[this.questionNumber].userAnswer = answer;
 
       // Grabs the correct answer in the questions
       const correctAnswer = questionObject[this.questionNumber].correctAnswer;
@@ -171,7 +199,6 @@ export class Quiz {
 
       // Grabs all questions on the current iteration
       const questionsOnPage = document.querySelectorAll('.quiz-question');
-      // console.log('SELECT ALL QUESTIONS', questionsOnPage);
 
       // If the answer is correct add the correct class and disable further interaction with questions
       if (answer === correctAnswer) {

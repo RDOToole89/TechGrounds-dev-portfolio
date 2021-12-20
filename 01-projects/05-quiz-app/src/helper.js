@@ -1,5 +1,11 @@
 // Creates a DOM element and mounts it adding classname, text and if passed a clickHandler
-export const createElement = (element, className, text, clickHandler = null) => {
+export const createElement = (
+  element,
+  className,
+  text,
+  clickHandler = null,
+  dataAttributeArray = null
+) => {
   const newElement = document.createElement(element);
 
   if (typeof className === 'string') {
@@ -11,6 +17,13 @@ export const createElement = (element, className, text, clickHandler = null) => 
   }
 
   if (text) newElement.textContent = text;
+
+  if (dataAttributeArray) {
+    const [dataName, dataAttribute] = dataAttributeArray;
+
+    newElement.dataset[dataName] = dataAttribute;
+  }
+
   if (clickHandler) newElement.onclick = clickHandler;
 
   return newElement;
