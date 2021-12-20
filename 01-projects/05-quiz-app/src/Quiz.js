@@ -10,14 +10,17 @@ export class Quiz {
     this.target = target;
     this.questionObject = questionObject;
     this.questionTotalCount = questionTotalCount;
+    this.quiz = this.createQuiz();
     this.questionNumber = 0;
     this.questionsAnswered = 0;
+    this.questionsCorrectlyAnswered = 0;
+    this.start = false;
   }
 
   // Method which builds the quiz UI and mounts it to a target on the DOM
   createQuiz() {
-    const activeQuiz = document.querySelector('.quiz-container');
-    if (activeQuiz) return;
+    // const activeQuiz = document.querySelector('.quiz-container');
+    // if (activeQuiz) return;
 
     // Parent Element
     const newQuiz = createElement('div', 'quiz-container');
@@ -71,7 +74,7 @@ export class Quiz {
     }
 
     // Creates controls for the UI (previous and next button)
-    const controls = createElement('div', 'controls');
+    const controls = createElement('div', ['controls']);
     const buttonPrevious = createElement(
       'button',
       ['controls__btn', 'controls__btn--previous', 'btn'],
@@ -91,9 +94,22 @@ export class Quiz {
     mountElements([...quizQuestions], quizQuestionContainer);
     mountElements([quizTop, quizQuestionContainer], newQuiz);
 
-    // Appends the quiz and controls to DOM target
-    this.target?.appendChild(newQuiz);
-    this.target?.appendChild(controls);
+    // Start button with onClick handler function
+
+    const startOnClick = () => {
+      this.start = true;
+      this.init();
+    };
+
+    const startBtn = createElement(
+      'button',
+      ['controls__btn', 'controls__btn--start', 'btn'],
+      'start',
+      startOnClick
+    );
+
+    this.target.append(controls);
+    this.target.appendChild(startBtn);
 
     return newQuiz;
   }
@@ -112,8 +128,6 @@ export class Quiz {
           // Why doesn't this work in the outerscope of the switch => ?!
           const questionNodes = document.querySelectorAll('.quiz-question');
 
-          console.log(this.questionsAnswered);
-
           if (this.questionNumber + 1 === 6 && this.questionsAnswered === 5) {
             const nextButton = document.querySelector('.controls__btn--next');
             nextButton.innerText = 'finish';
@@ -128,8 +142,10 @@ export class Quiz {
             questionNodes.forEach((question) => (question.style.pointerEvents = 'initial'));
           }
 
+          // if (this.start) {
           removeClassesChildrenNodes([...questionNodes], ['correct', 'incorrect']);
           this.populate(this.questionNumber);
+          // }
 
           const userAnswer = this.questionObject[this.questionNumber].userAnswer?.toString();
           const correctAnswer = this.questionObject[this.questionNumber]?.correctAnswer.toString();
@@ -140,6 +156,7 @@ export class Quiz {
                 if (child.classList.contains('quiz-question__answer')) {
                   if (child.textContent === correctAnswer) {
                     child.classList.add('correct');
+
                     if (child.previousSibling) child.previousSibling.classList.add('correct');
                     if (child.nextElementSibling) child.nextElementSibling.classList.add('correct');
                   }
@@ -177,8 +194,10 @@ export class Quiz {
             questionNodes.forEach((question) => (question.style.pointerEvents = 'initial'));
           }
 
+          // if (this.start) {
           removeClassesChildrenNodes([...questionNodes], ['correct', 'incorrect']);
           this.populate(this.questionNumber);
+          // }
 
           const userAnswer = this.questionObject[this.questionNumber].userAnswer?.toString();
           const correctAnswer = this.questionObject[this.questionNumber]?.correctAnswer.toString();
@@ -235,6 +254,7 @@ export class Quiz {
 
       // If the answer is correct add the correct class and disable further interaction with questions
       if (answer === correctAnswer) {
+        this.questionsCorrectlyAnswered++;
         questionsOnPage.forEach((question) => (question.style.pointerEvents = 'none'));
 
         element.parentNode.childNodes.forEach((element) => element.classList.add('correct'));
@@ -286,5 +306,19 @@ export class Quiz {
 
       questionContent.innerText = this.questionObject[this.questionNumber].possibleAnswers[i];
     });
+  }
+
+  init() {
+    const startBtn = document.querySelector('.controls__btn--start');
+    const controls = document.querySelector('.controls');
+    console.log(this.quiz);
+    console.log(controls);
+
+    if (this.start) {
+      startBtn.remove();
+      this.target.insertAdjacentElement('afterbegin', this.quiz);
+      this.populate();
+      controls.classList.add('display-controls');
+    }
   }
 }

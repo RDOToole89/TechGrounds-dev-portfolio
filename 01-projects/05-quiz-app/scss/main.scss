@@ -22,6 +22,14 @@ body {
   background: linear-gradient(to right, #3a6073, #3a7bd5);
 }
 
+#quiz {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .correct {
   background-color: #4de167 !important;
 }
@@ -30,10 +38,14 @@ body {
   background-color: #d52929 !important;
 }
 
+.display-controls {
+  display: flex !important;
+}
+
 .quiz-container {
   background-color: #007f7f;
   padding: 2rem;
-  min-width: 25%;
+  width: 40rem;
   margin-bottom: 2rem;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
@@ -95,7 +107,7 @@ body {
 }
 
 .controls {
-  display: flex;
+  display: none;
   gap: 3rem;
 
   &__btn {
