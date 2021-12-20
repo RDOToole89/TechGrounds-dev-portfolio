@@ -30,6 +30,28 @@ body {
   width: 100%;
 }
 
+.quiz-outcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #007f7f;
+  padding: 2rem;
+  border: 3px solid #4de167;
+
+  &__heading {
+    font-size: 3.5rem;
+  }
+
+  &__text {
+    font-size: 1.8rem;
+  }
+
+  &__number {
+    color: #4de167;
+  }
+}
+
 .correct {
   background-color: #4de167 !important;
 }
@@ -119,6 +141,10 @@ body {
 
     &:hover {
       background: hsla(180, 96%, 38%, 0.5);
+    }
+
+    &--restart {
+      margin: 2rem 0rem 1rem 0rem;
     }
   }
 }

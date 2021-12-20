@@ -5,10 +5,12 @@ import {
   removeClassesChildrenNodes,
 } from './helper.js';
 
+import { Question } from './Question.js';
+
 export class Quiz {
-  constructor(target, questionObject, questionTotalCount) {
+  constructor(target, questionTotalCount) {
     this.target = target;
-    this.questionObject = questionObject;
+    this.questionObject = null;
     this.questionTotalCount = questionTotalCount;
     this.quiz = this.createQuiz();
     this.questionNumber = 0;
@@ -19,9 +21,6 @@ export class Quiz {
 
   // Method which builds the quiz UI and mounts it to a target on the DOM
   createQuiz() {
-    // const activeQuiz = document.querySelector('.quiz-container');
-    // if (activeQuiz) return;
-
     // Parent Element
     const newQuiz = createElement('div', 'quiz-container');
 
@@ -83,10 +82,11 @@ export class Quiz {
     this.controls(buttonPrevious, 'previous');
 
     const buttonNext = createElement(
-      'button',
+      'button', // document.createElement('button')
       ['controls__btn', 'controls__btn--next', 'btn'],
       'next'
     );
+
     this.controls(buttonNext, 'next');
 
     // Mounts elements to the different components of the UI
@@ -109,7 +109,7 @@ export class Quiz {
     );
 
     this.target.append(controls);
-    this.target.appendChild(startBtn);
+    this.target.append(startBtn);
 
     return newQuiz;
   }
@@ -120,13 +120,25 @@ export class Quiz {
     switch (direction) {
       case 'next': {
         buttonElement.addEventListener('click', () => {
-          if (this.questionNumber === 6 && this.questionsAnswered === 5) {
-            const nextButton = document.querySelector('.controls__btn--next');
-            nextButton.innerText = 'finish';
-          }
-
+          const buttons = document.querySelector('.controls');
+          const nextButton = document.querySelector('.controls__btn--next');
           // Why doesn't this work in the outerscope of the switch => ?!
           const questionNodes = document.querySelectorAll('.quiz-question');
+
+          if (this.questionNumber === 5 && this.questionsAnswered === 5) {
+            nextButton.textContent = 'finish';
+          }
+
+          if (nextButton.textContent === 'finish' && this.questionsAnswered === 5) {
+            this.start = false;
+            this.quiz.remove();
+            console.log('THIS.quiz', this.quiz);
+            buttons.style.display = 'none';
+            this.questionObject = null;
+
+            this.finish();
+            return;
+          }
 
           if (this.questionNumber + 1 === 6 && this.questionsAnswered === 5) {
             const nextButton = document.querySelector('.controls__btn--next');
@@ -142,10 +154,8 @@ export class Quiz {
             questionNodes.forEach((question) => (question.style.pointerEvents = 'initial'));
           }
 
-          // if (this.start) {
           removeClassesChildrenNodes([...questionNodes], ['correct', 'incorrect']);
           this.populate(this.questionNumber);
-          // }
 
           const userAnswer = this.questionObject[this.questionNumber].userAnswer?.toString();
           const correctAnswer = this.questionObject[this.questionNumber]?.correctAnswer.toString();
@@ -194,10 +204,8 @@ export class Quiz {
             questionNodes.forEach((question) => (question.style.pointerEvents = 'initial'));
           }
 
-          // if (this.start) {
           removeClassesChildrenNodes([...questionNodes], ['correct', 'incorrect']);
           this.populate(this.questionNumber);
-          // }
 
           const userAnswer = this.questionObject[this.questionNumber].userAnswer?.toString();
           const correctAnswer = this.questionObject[this.questionNumber]?.correctAnswer.toString();
@@ -308,17 +316,60 @@ export class Quiz {
     });
   }
 
+  finish() {
+    const quizOutcome = createElement('div', 'quiz-outcome');
+    const quizOutcomeHeadingWinner = createElement(
+      'h2',
+      'quiz-outcome__heading',
+      "You're pretty smart!"
+    );
+    const quizOutcomeTextWinner = createElement('p', 'quiz-outcome__text');
+    const quizOutcomeNumberOne = createElement('span', 'quiz-outcome__number', 3);
+    const quizOutcomeNumberTwo = createElement('span', 'quiz-outcome__number', 6);
+
+    console.log(quizOutcomeTextWinner);
+
+    const restartOnClick = () => {
+      const quizOutcomeContainer = document.querySelector('.quiz-outcome');
+
+      quizOutcomeContainer.remove();
+
+      this.start = true;
+      this.init();
+    };
+
+    const restartBtn = createElement(
+      'button',
+      ['btn', 'controls__btn', 'controls__btn--restart', 'display-controls'],
+      'restart',
+      restartOnClick
+    );
+
+    mountElements(
+      [
+        quizOutcomeHeadingWinner,
+        quizOutcomeTextWinner,
+        quizOutcomeNumberOne,
+        quizOutcomeNumberTwo,
+        restartBtn,
+      ],
+      quizOutcome
+    );
+
+    this.target.append(quizOutcome);
+  }
+
   init() {
     const startBtn = document.querySelector('.controls__btn--start');
     const controls = document.querySelector('.controls');
-    console.log(this.quiz);
-    console.log(controls);
+
+    this.questionObject = new Question(6).createMathQuestion(12);
 
     if (this.start) {
-      startBtn.remove();
+      startBtn?.remove();
       this.target.insertAdjacentElement('afterbegin', this.quiz);
       this.populate();
-      controls.classList.add('display-controls');
+      controls?.classList.add('display-controls');
     }
   }
 }
