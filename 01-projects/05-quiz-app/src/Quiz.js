@@ -123,6 +123,11 @@ export class Quiz {
           if (this.questionNumber === this.questionTotalCount) return;
           this.questionNumber++;
 
+          // Checks if the user has answered the question if not it will reset the pointer event to initial
+          if (!this.questionObject[this.questionNumber].userAnswer) {
+            questionNodes.forEach((question) => (question.style.pointerEvents = 'initial'));
+          }
+
           removeClassesChildrenNodes([...questionNodes], ['correct', 'incorrect']);
           this.populate(this.questionNumber);
 
@@ -166,6 +171,11 @@ export class Quiz {
           // If the user tries to go back in the quiz at count 0, dont allow previous.
           if (this.questionNumber < 1) return;
           this.questionNumber--;
+
+          // Checks if the user has answered the question if not it will reset the pointer event to initial
+          if (!this.questionObject[this.questionNumber].userAnswer) {
+            questionNodes.forEach((question) => (question.style.pointerEvents = 'initial'));
+          }
 
           removeClassesChildrenNodes([...questionNodes], ['correct', 'incorrect']);
           this.populate(this.questionNumber);
@@ -219,14 +229,13 @@ export class Quiz {
 
       // Grabs the correct answer in the questions
       const correctAnswer = questionObject[this.questionNumber].correctAnswer;
-      // console.log('CORRECT ANSWER', correctAnswer);
 
       // Grabs all questions on the current iteration
       const questionsOnPage = document.querySelectorAll('.quiz-question');
 
       // If the answer is correct add the correct class and disable further interaction with questions
       if (answer === correctAnswer) {
-        // questionsOnPage.forEach((question) => (question.style.pointerEvents = 'none'));
+        questionsOnPage.forEach((question) => (question.style.pointerEvents = 'none'));
 
         element.parentNode.childNodes.forEach((element) => element.classList.add('correct'));
       } else {
@@ -249,7 +258,7 @@ export class Quiz {
             );
           }
 
-          // question.style.pointerEvents = 'none';
+          question.style.pointerEvents = 'none';
         });
         return;
       }
