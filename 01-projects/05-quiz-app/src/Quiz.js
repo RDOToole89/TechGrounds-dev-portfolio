@@ -7,11 +7,11 @@ import {
 
 export class Quiz {
   constructor(target, questionObject, questionTotalCount) {
-    this.quiz = this.createQuiz();
-    this.questionObject = questionObject;
     this.target = target;
-    this.questionNumber = 0;
+    this.questionObject = questionObject;
     this.questionTotalCount = questionTotalCount;
+    this.questionNumber = 0;
+    this.questionsAnswered = 0;
   }
 
   // Method which builds the quiz UI and mounts it to a target on the DOM
@@ -104,8 +104,20 @@ export class Quiz {
     switch (direction) {
       case 'next': {
         buttonElement.addEventListener('click', () => {
+          if (this.questionNumber === 6 && this.questionsAnswered === 5) {
+            const nextButton = document.querySelector('.controls__btn--next');
+            nextButton.innerText = 'finish';
+          }
+
           // Why doesn't this work in the outerscope of the switch => ?!
           const questionNodes = document.querySelectorAll('.quiz-question');
+
+          console.log(this.questionsAnswered);
+
+          if (this.questionNumber + 1 === 6 && this.questionsAnswered === 5) {
+            const nextButton = document.querySelector('.controls__btn--next');
+            nextButton.innerText = 'finish';
+          }
 
           // If the end of the quiz has been reached don't allow next
           if (this.questionNumber === this.questionTotalCount) return;
@@ -144,6 +156,11 @@ export class Quiz {
 
       case 'previous': {
         buttonElement.addEventListener('click', () => {
+          if (this.questionNumber < 6) {
+            const nextButton = document.querySelector('.controls__btn--next');
+            nextButton.innerText = 'next';
+          }
+
           const questionNodes = document.querySelectorAll('.quiz-question');
 
           // If the user tries to go back in the quiz at count 0, dont allow previous.
@@ -189,6 +206,13 @@ export class Quiz {
   // Method that determines whether the answer that is being clicked on is correct
   isCorrect(element) {
     element.addEventListener('click', () => {
+      if (this.questionsAnswered < 5) this.questionsAnswered++;
+
+      if ((this.questionsAnswered === 5) & (this.questionNumber === 5)) {
+        const nextButton = document.querySelector('.controls__btn--next');
+        nextButton.innerText = 'finish';
+      }
+
       let questionObject = this.questionObject;
       const answer = Number(element.textContent);
       questionObject[this.questionNumber].userAnswer = answer;
