@@ -321,8 +321,8 @@ export class Quiz {
     const outcomeSenctence =
       this.questionsCorrectlyAnswered < 3 ? 'Time to go back to school!' : "You're pretty smart!";
 
-    const quizOutcomeHeading = createElement('h2', 'quiz-outcome__heading');
-    const quizOutcomeText = createElement('p', 'quiz-outcome__text', outcomeSenctence);
+    const quizOutcomeHeading = createElement('h2', 'quiz-outcome__heading', outcomeSenctence);
+    const quizOutcomeText = createElement('p', 'quiz-outcome__text');
 
     quizOutcomeText.insertAdjacentHTML(
       'afterbegin',
