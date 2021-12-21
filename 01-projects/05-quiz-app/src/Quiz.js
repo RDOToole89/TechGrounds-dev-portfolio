@@ -262,11 +262,22 @@ export class Quiz {
 
       // If the answer is correct add the correct class and disable further interaction with questions
       if (answer === correctAnswer) {
+        const correct = new Audio(
+          'https://www.freesoundslibrary.com/wp-content/uploads/2018/03/right-answer-ding-ding-sound-effect.mp3'
+        );
+        correct.play();
+
         this.questionsCorrectlyAnswered++;
+
         questionsOnPage.forEach((question) => (question.style.pointerEvents = 'none'));
 
         element.parentNode.childNodes.forEach((element) => element.classList.add('correct'));
       } else {
+        const wrong = new Audio(
+          'https://www.freesoundslibrary.com/wp-content/uploads/2018/03/game-show-buzzer-sound-effect.mp3'
+        );
+        wrong.play();
+
         // If the answer is not correct it must be incorrect
         element.parentNode.childNodes.forEach((element) => element.classList.add('incorrect'));
 
@@ -317,24 +328,37 @@ export class Quiz {
   }
 
   finish() {
+    if (this.questionsCorrectlyAnswered < 4) {
+      const loser = new Audio(
+        'https://www.freesoundslibrary.com/wp-content/uploads/2017/11/boo-sound.mp3'
+      );
+      loser.play();
+    } else {
+      const winner = new Audio(
+        'https://www.freesoundslibrary.com/wp-content/uploads/2018/05/crowd-sound-effect.mp3'
+      );
+      winner.play();
+    }
+
     const quizOutcomeClass =
-      this.questionsCorrectlyAnswered < 3 ? 'quiz-outcome--loser' : 'quiz-outcome--winner';
+      this.questionsCorrectlyAnswered < 4 ? 'quiz-outcome--loser' : 'quiz-outcome--winner';
     const quizOutcome = createElement('div', ['quiz-outcome', quizOutcomeClass]);
+
     const outcomeSenctence =
-      this.questionsCorrectlyAnswered < 3 ? 'Time to go back to school!' : "You're pretty smart!";
-
+      this.questionsCorrectlyAnswered < 4 ? 'Time to go back to school!' : "You're pretty smart!";
     const quizOutcomeHeading = createElement('h2', 'quiz-outcome__heading', outcomeSenctence);
-    const quizOutcomeText = createElement('p', 'quiz-outcome__text');
 
+    const quizOutcomeCountClass = this.questionsCorrectlyAnswered < 3 ? '--loser' : '--winner';
+    const quizOutcomeText = createElement('p', 'quiz-outcome__text');
     quizOutcomeText.insertAdjacentHTML(
       'afterbegin',
-      `You got <span class="quiz-outcome__number">
+      `You got <span class="quiz-outcome__number quiz-outcome__number${quizOutcomeCountClass}">
       ${this.questionsCorrectlyAnswered}</span> out of 
-      <span class="quiz-outcome__number">${this.questionTotalCount + 1}
+      <span class="quiz-outcome__number quiz-outcome__number${quizOutcomeCountClass}">${
+        this.questionTotalCount + 1
+      }
       </span>!`
     );
-
-    console.log(quizOutcomeText);
 
     const restartOnClick = () => {
       const quizOutcomeContainer = document.querySelector('.quiz-outcome');
