@@ -131,9 +131,9 @@ export class Quiz {
 
           if (nextButton.textContent === 'finish' && this.questionsAnswered === 5) {
             this.start = false;
-            this.quiz.remove();
-            console.log('THIS.quiz', this.quiz);
-            buttons.style.display = 'none';
+            this.quiz = this.quiz.remove();
+            console.log('BUTTONS', buttons);
+            buttons.classList.remove('display-controls');
             this.questionObject = null;
 
             this.finish();
@@ -318,23 +318,34 @@ export class Quiz {
 
   finish() {
     const quizOutcome = createElement('div', 'quiz-outcome');
-    const quizOutcomeHeadingWinner = createElement(
-      'h2',
-      'quiz-outcome__heading',
-      "You're pretty smart!"
-    );
-    const quizOutcomeTextWinner = createElement('p', 'quiz-outcome__text');
-    const quizOutcomeNumberOne = createElement('span', 'quiz-outcome__number', 3);
-    const quizOutcomeNumberTwo = createElement('span', 'quiz-outcome__number', 6);
+    const outcomeSenctence =
+      this.questionsCorrectlyAnswered < 3 ? 'Time to go back to school!' : "You're pretty smart!";
 
-    console.log(quizOutcomeTextWinner);
+    const quizOutcomeHeading = createElement('h2', 'quiz-outcome__heading');
+    const quizOutcomeText = createElement('p', 'quiz-outcome__text', outcomeSenctence);
+
+    quizOutcomeText.insertAdjacentHTML(
+      'afterbegin',
+      `You got <span class="quiz-outcome__number">
+      ${this.questionsCorrectlyAnswered}</span> out of 
+      <span class="quiz-outcome__number">${this.questionTotalCount + 1}
+      </span>!`
+    );
+
+    console.log(quizOutcomeText);
 
     const restartOnClick = () => {
       const quizOutcomeContainer = document.querySelector('.quiz-outcome');
-
       quizOutcomeContainer.remove();
 
-      this.start = true;
+      this.quiz = null;
+      this.questionObject = null;
+      this.quiz = this.createQuiz();
+      this.questionNumber = 0;
+      this.questionsAnswered = 0;
+      this.questionsCorrectlyAnswered = 0;
+
+      this.start = !this.start;
       this.init();
     };
 
@@ -345,16 +356,7 @@ export class Quiz {
       restartOnClick
     );
 
-    mountElements(
-      [
-        quizOutcomeHeadingWinner,
-        quizOutcomeTextWinner,
-        quizOutcomeNumberOne,
-        quizOutcomeNumberTwo,
-        restartBtn,
-      ],
-      quizOutcome
-    );
+    mountElements([quizOutcomeHeading, quizOutcomeText, restartBtn], quizOutcome);
 
     this.target.append(quizOutcome);
   }
@@ -366,10 +368,10 @@ export class Quiz {
     this.questionObject = new Question(6).createMathQuestion(12);
 
     if (this.start) {
-      startBtn?.remove();
+      startBtn.remove();
       this.target.insertAdjacentElement('afterbegin', this.quiz);
       this.populate();
-      controls?.classList.add('display-controls');
+      controls.classList.add('display-controls');
     }
   }
 }
