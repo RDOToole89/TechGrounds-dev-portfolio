@@ -300,7 +300,7 @@ export class Quiz {
     question.textContent = this.questionObject[this.questionNumber].question;
 
     // Loops over the question to select the answer part of the ui.
-    [...questions].forEach((question) => {
+    [...questions].forEach((question, i) => {
       const questionContent = [...question.children].find((el) =>
         el.classList.contains('quiz-question__answer')
       );
