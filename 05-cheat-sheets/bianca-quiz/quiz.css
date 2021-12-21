@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+body {
+    font-family: 'Indie Flower', bold;
+}
+
+.container {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    margin: 0 auto;
+}
+
+.start-button {
+    font-family: 'Indie Flower', bold;
+    font-size: 20px;
+    margin: 0 auto;
+    padding: 5px;
+    width: 60px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(26,122,126);
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.quiz-container {
+    position: relative;
+    width: 350px;
+    height: 500px;
+    margin: 0 auto;
+    background-color: rgb(26, 122, 126);
+    border: none;
+}
+
+.is-hidden {
+    display: none
+}
+
+.quiz-titel {
+    font-size: 50px;
+    font-weight: bold;
+    display:flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.quiz-count {
+    position:absolute;
+    width: 100%;
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    top: 60px;
+}
+
+.quiz-question {
+    position: absolute;
+    display: flex;
+    top: 100px;
+    width: 95%;
+    height: 20%;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    left: 2.5%;
+    font-family: 'Indie Flower', bold;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+p {
+    display:flex;
+}
+
+.quiz-answers {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 190px;
+    height: 200px;
+    font-family: 'Indie Flower', bold;
+    font-size: 18px;
+    /* background-color: white; */
+    left: 2.5%;
+    width: 83.5%;
+    gap: 15px;
+}
+
+.quiz-answer {
+    cursor: pointer;
+    background-color: white;
+}
+
+.bottom-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.prev-button, .next-button {
+    font-family: 'Indie Flower', bold;
+    background-color: rgb(36, 190, 196);
+    border: none;
+    position: relative;
+    top: 440px;
+    width: 80px;
+    height: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
+.prev-button:hover, .next-button:hover {
+    background-color: rgb(85, 238, 243);
+}
+
