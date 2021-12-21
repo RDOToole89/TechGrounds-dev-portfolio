@@ -328,7 +328,7 @@ export class Quiz {
 
     quizOutcomeText.insertAdjacentHTML(
       'afterbegin',
-      `You got <span class="quiz-outcome__number
+      `You got <span class="quiz-outcome__number">
       ${this.questionsCorrectlyAnswered}</span> out of 
       <span class="quiz-outcome__number">${this.questionTotalCount + 1}
       </span>!`
