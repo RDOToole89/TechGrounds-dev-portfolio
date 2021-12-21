@@ -370,6 +370,8 @@ export class Quiz {
       this.questionNumber = 0;
       this.questionsAnswered = 0;
       this.questionsCorrectlyAnswered = 0;
+      const nextButton = document.querySelector('.controls__btn--next');
+      nextButton.innerText = 'next';
 
       this.start = !this.start;
       this.init();
