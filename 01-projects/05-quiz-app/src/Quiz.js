@@ -317,7 +317,9 @@ export class Quiz {
   }
 
   finish() {
-    const quizOutcome = createElement('div', 'quiz-outcome');
+    const quizOutcomeClass =
+      this.questionsCorrectlyAnswered < 3 ? 'quiz-outcome--loser' : 'quiz-outcome--winner';
+    const quizOutcome = createElement('div', ['quiz-outcome', quizOutcomeClass]);
     const outcomeSenctence =
       this.questionsCorrectlyAnswered < 3 ? 'Time to go back to school!' : "You're pretty smart!";
 
@@ -326,7 +328,7 @@ export class Quiz {
 
     quizOutcomeText.insertAdjacentHTML(
       'afterbegin',
-      `You got <span class="quiz-outcome__number">
+      `You got <span class="quiz-outcome__number
       ${this.questionsCorrectlyAnswered}</span> out of 
       <span class="quiz-outcome__number">${this.questionTotalCount + 1}
       </span>!`
