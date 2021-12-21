@@ -1,4 +1,4 @@
-// Creates a DOM element and mounts it adding classname, text and if passed a clickHandler
+// Creates a DOM element and mounts it adding classname, text and if passed a clickHandler.
 export const createElement = (
   element,
   className,
@@ -29,8 +29,8 @@ export const createElement = (
   return newElement;
 };
 
-// Removes classes from childrenNodes nested in in Parent(DOM)Nodes
-// Very inefficient function refactor ?! triple nested loop
+// Removes classes from childrenNodes nested in in Parent(DOM)Nodes.
+// Very inefficient function refactor ?! triple nested loop.
 export const removeClassesChildrenNodes = (elements, classNameArray) => {
   elements.forEach((element) => {
     if (classNameArray.length === 1 && typeof classNameArray[0] === 'string') {
@@ -47,14 +47,14 @@ export const removeClassesChildrenNodes = (elements, classNameArray) => {
   });
 };
 
-// Mount elements to a parent element
+// Mount elements to a parent element.
 export const mountElements = (elements, parentElement) => {
   [...elements].forEach((element) => {
     parentElement.appendChild(element);
   });
 };
 
-// Function taken from stackoverflow to convert numbers to words
+// Function taken from stackoverflow to convert numbers to words.
 export const createStringFromNumber = (n) => {
   let word = [];
   let numbers = {
@@ -100,7 +100,7 @@ export const createStringFromNumber = (n) => {
   return word.join(' ');
 };
 
-// Creates an array with word 'string' numbers
+// Creates an array with word 'string' numbers.
 export const createStringNumbersArray = (n) => {
   const stringNumbersArray = [];
 
@@ -115,7 +115,7 @@ export const getRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
-// Takes in a string operator and returns a function to calculate two variables
+// Takes in a string operator and returns a function to calculate two variables.
 export const stringToOperator = {
   '+'(a, b) {
     return a + b;
@@ -128,7 +128,7 @@ export const stringToOperator = {
   },
 };
 
-// Checks if there are no duplicates in an array and returns a boolean
+// Checks if there are no duplicates in an array and returns a boolean.
 export const hasDuplicates = (array) => {
   const noDuplicates = new Set(array);
 
