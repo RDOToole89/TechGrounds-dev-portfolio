@@ -8,3 +8,15 @@ function notImpodent(num) {
 }
 
 console.log(notImpodent(10));
+
+// This function is not PURE because it communicates with the outside world
+// it logs something to the console. IT IS IMPODENT because the outcome
+// given the same input is always the same. PREDICTABLE.
+
+function isImpodent(word) {
+  console.log(word);
+}
+
+isImpodent('Hello World');
+
+console.log(Math.abs(Math.abs(-50)));
