@@ -23,5 +23,4 @@ function updateName(obj, newName) {
 
 console.log('ORIGINAL OBJECT', obj);
 console.log(updateName(obj, 'Harry'));
-
 console.log('ORIGINAL OBJECT AFTER updateName function', obj);
