@@ -210,6 +210,8 @@ class Page {
     // NEW CODE => ROIBIN
 
     // LOOP OVER ALL THE ANSWERS!
+    console.log('ALLANSWERS =>', this.allAnswers);
+
     this.allAnswers.childNodes.forEach((node, i) => {
       console.log('ANSWER!!!', node);
 
@@ -230,8 +232,10 @@ class Page {
         // check if the correctAnswerNode = the answer that was clicked on
         if (correctAnswerNode === answerOnClick) {
           console.log('ANSWER CORRECT!');
+          node.childNodes[0].style.backgroundColor = 'green';
           node.childNodes[1].style.backgroundColor = 'green';
         } else {
+          node.childNodes[0].style.backgroundColor = 'red';
           node.childNodes[1].style.backgroundColor = 'red';
         }
       });

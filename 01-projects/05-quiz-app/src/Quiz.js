@@ -247,6 +247,8 @@ export class Quiz {
       // Grabs all questions on the current iteration
       const questionsOnPage = document.querySelectorAll('.quiz-question');
 
+      console.log('QUESTION OBJECT', questionObject);
+
       // If the answer is correct add the correct class and disable further interaction with questions
       if (answer === correctAnswer) {
         const correct = new Audio(

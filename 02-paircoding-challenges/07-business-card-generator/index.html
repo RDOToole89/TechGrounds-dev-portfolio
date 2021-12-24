@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Challenge_8</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form class="contact_form">
+        <label for="name">Naam:</label>
+        <input data-info="naam" type="text" name="name" required />
+
+        <label for="telefoon">Telefoon</label
+        ><input data-info="telefoon" type="text" name="telefoon" required />
+
+        <label for="straat_naam">Straat naam</label
+        ><input data-info="straatnaam" type="text" name="straat_naam" required />
+
+        <label for="huisnummer">Huisnummer</label
+        ><input data-info="huisnummer" type="text" name="huisnummer" required />
+
+        <label for="postcode">Postcode</label
+        ><input data-info="postcode" type="text" name="postcode" required />
+
+        <label for="stad">Stad</label><input data-info="stad" type="text" name="stad" required />
+
+        <label for="email">Email</label
+        ><input data-info="email" type="text" name="email" required />
+
+        <button type="submit">Verzend</button>
+      </form>
+
+      <div class="contact_card">
+        <div class="card_info">
+          <div class="image"></div>
+        </div>
+        <div class="card_info">
+          <p>Naam:</p>
+          <p class="card_naam_input"></p>
+        </div>
+        <div class="card_info">
+          <p>Telefoonnummer:</p>
+          <p class="card_telefoonnummer_input"></p>
+        </div>
+        <div class="card_info">
+          <p>Adres:</p>
+          <p class="card_adres_input"></p>
+        </div>
+        <div class="card_info">
+          <p>Email:</p>
+          <p class="card_email_input"></p>
+        </div>
+        <div class="card_info">
+          <p>UserID:</p>
+          <p class="card_user_input"></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

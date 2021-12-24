@@ -25,6 +25,7 @@ const startBtnHandler = () => {
   container.append(startBtn);
 
   startBtn.onclick = () => {
+    // DEBUG LOGS
     console.log('COUNTER AT start OF QUIZ => ', counter);
     console.log('currentQuestion AT start OF QUIZ => ', currentQuestion);
     console.log('availableQuestions AT start OF QUIZ => ', availableQuestions);
@@ -103,22 +104,37 @@ const buttonsHandler = () => {
     counter++;
     console.log('nextButton clicked');
 
+    // DEBUG LOGS
     console.log('COUNTER IN next CLICK => ', counter);
     console.log('currentQuestion IN next CLICK => ', currentQuestion);
     console.log('availableQuestions IN next CLICK => ', availableQuestions);
     console.log('availableOptionsTER IN next CLICK => ', availableOptions);
     console.log('correctAnswers IN next CLICK => ', correctAnswers);
 
-    getNewQuestion();
-    // next();
+    // Ik heb die hele next functie we gedaan!
+    // Je kan die logica opzich apart schrijven maar noem het dan isFinsihed ofzo
+    // next is verwarrend als je al een click handler hebt op een next knop.
+    console.log('COUNTER', counter, 'QUESTION LENGTH', questions.length);
+    if (counter === questions.length) {
+      quizOver();
+    } else {
+      // removes all the questions?
+      document.querySelector('.answer_boxes').innerHTML = '';
+      getNewQuestion();
+    }
   };
 
   // On PREVIOUS click button logic
   prevButton.onclick = () => {
+    // Checkt of je onder de 0 gaat in je vragen array zo ja returned de functie zodat je niet meer
+    // kan klikken.
+    if (counter <= 0) return;
+
     counter--;
     console.log('nextButton clicked');
     document.querySelector('.answer_boxes').innerHTML = '';
 
+    // DEBUG LOGS
     console.log('COUNTER IN previous CLICK => ', counter);
     console.log('currentQuestion IN previous CLICK => ', currentQuestion);
     console.log('availableQuestions IN previous CLICK => ', availableQuestions);
@@ -127,23 +143,6 @@ const buttonsHandler = () => {
 
     getNewQuestion();
   };
-
-  // function NEXT gets called from the 'nextButton.onclick' event
-  function next() {
-    if (counter === questions.length) {
-      quizOver();
-    } else {
-      document.querySelector('.answer_boxes').innerHTML = '';
-
-      console.log('COUNTER IN function next() CLICK => ', counter);
-      console.log('currentQuestion IN function next() CLICK => ', currentQuestion);
-      console.log('availableQuestions IN function next() CLICK => ', availableQuestions);
-      console.log('availableOptionsTER IN function next() CLICK => ', availableOptions);
-      console.log('correctAnswers IN function next() CLICK => ', correctAnswers);
-
-      getNewQuestion();
-    }
-  }
 };
 
 //
@@ -159,8 +158,13 @@ const getNewQuestion = () => {
 
   //
   numberOfQuestion.innerText = counter + 1 + ' / ' + questions.length;
-  const questionIndex = availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
+
+  // const questionIndex = availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
+  // HIERDOOR KON DE QUIZ NIET OP EN NEER => door die randomnumber
+  const questionIndex = availableQuestions[counter];
+
   currentQuestion = questionIndex;
+
   questionBox.innerText = currentQuestion.question;
   //get the position of 'questionIndex' from the availableQuestion Array
   const index1 = availableQuestions.indexOf(questionIndex);
@@ -187,7 +191,8 @@ const getNewQuestion = () => {
     answerOptions.id = optionIndex;
     answerOptions.setAttribute('onclick', 'getResult(this)');
   }
-  counter++;
+  // Die counter hier is niet nodig als je hem al in the next clickhandler hebt
+  // counter++;
 };
 
 function setAvailableQuestions() {
