@@ -92,9 +92,10 @@ export class Quiz {
 
     // Mounts elements to the different components of the UI.
     mountElements([buttonPrevious, buttonNext], controls);
-    mountElements([...quizQuestions], quizQuestionContainer);
-    mountElements([quizTop, quizQuestionContainer], newQuiz);
-
+    mountElements([...quizQuestions], quizQuestionContainer); // const oldArray = [1,2,3,4,5]
+    mountElements([quizTop, quizQuestionContainer], newQuiz); // let newArray = [...oldArray]
+    // const obj = {key: value}
+    // const newoBJ = {...obj}
     // Start button with onClick handler function to initialize the quiz.
     const startOnClick = () => {
       this.start = true;
