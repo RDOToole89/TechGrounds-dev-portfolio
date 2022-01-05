@@ -1,0 +1,330 @@
+.eachAnswer, .quizContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.eachAnswer .answerNumber, .quizContainer .questionBox {
+  display: grid;
+  place-items: center;
+}
+
+.eachAnswer:nth-child(even)::before, .eachAnswer:nth-child(odd)::before {
+  content: "";
+  position: absolute;
+  width: 18vw;
+  height: 18vw;
+  border-radius: 50%;
+  background-color: white;
+  z-index: 0;
+}
+
+.eachAnswer .answerText, .eachAnswer .answerNumber, .quizContainer .questionBox {
+  border: 2px solid #C84B31;
+}
+
+.quizContainer {
+  background-color: white;
+  width: 90%;
+  height: 83%;
+  justify-content: space-evenly;
+  flex-direction: column;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 3px #000;
+}
+.quizContainer .quizTitle {
+  color: black;
+  font-size: 1.5rem;
+}
+.quizContainer .pageNumber {
+  color: black;
+  font-size: 1.1rem;
+  margin-top: -35px;
+}
+.quizContainer .questionBox {
+  width: 90%;
+  height: 12%;
+  background-color: white;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  margin-bottom: 9px;
+  padding: 2px 20px;
+  margin-top: -20px;
+}
+.quizContainer .answerBox {
+  height: 50%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  margin-top: -12px;
+}
+
+.eachAnswer {
+  height: 25%;
+  font-size: 1rem;
+  cursor: pointer;
+  position: relative;
+}
+.eachAnswer:nth-child(odd)::before {
+  left: 0;
+}
+.eachAnswer:nth-child(even) {
+  flex-direction: row-reverse;
+  border-radius: 0 25px 25px 0;
+}
+.eachAnswer:nth-child(even)::before {
+  right: 0;
+}
+.eachAnswer .answerNumber {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  z-index: 9;
+}
+.eachAnswer .answerText {
+  width: 85%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  padding-left: 20px;
+}
+
+.correct {
+  background-color: #34BE82;
+}
+
+.result {
+  font-size: 1.9rem;
+  background-color: white;
+  color: black;
+  width: 80%;
+  height: 30%;
+  padding: 10px 30px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 3px #000;
+}
+
+@media (min-width: 374px) and (max-width: 412px) {
+  .eachAnswer:nth-child(odd)::before, .eachAnswer:nth-child(even)::before {
+    content: "";
+    position: absolute;
+    width: 16.5vw;
+    height: 16.5vw;
+    border-radius: 50%;
+    background-color: white;
+    z-index: 0;
+  }
+}
+@media (min-width: 413px) and (max-width: 480px) {
+  .eachAnswer:nth-child(odd)::before, .eachAnswer:nth-child(even)::before {
+    content: "";
+    position: absolute;
+    width: 14.5vw;
+    height: 14.5vw;
+    border-radius: 50%;
+    background-color: white;
+    z-index: 0;
+  }
+}
+@media (min-width: 481px) and (max-width: 767px) {
+  .eachAnswer:nth-child(odd)::before, .eachAnswer:nth-child(even)::before {
+    content: "";
+    position: absolute;
+    width: 11.5vw;
+    height: 11vw;
+    border-radius: 50%;
+    background-color: white;
+    z-index: 0;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .generalContainer {
+    max-width: 70%;
+    max-height: 900px;
+  }
+
+  .eachAnswer:nth-child(odd)::before, .eachAnswer:nth-child(even)::before {
+    content: "";
+    position: absolute;
+    width: 8vw;
+    height: 8vw;
+    border-radius: 50%;
+    background-color: white;
+    z-index: 0;
+  }
+
+  .eachAnswer:nth-child(odd)::before {
+    left: 9px;
+  }
+  .eachAnswer:nth-child(even)::before {
+    right: 9px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1018px) {
+  .generalContainer {
+    max-width: 60%;
+    max-height: 900px;
+  }
+
+  .eachAnswer:nth-child(odd)::before, .eachAnswer:nth-child(even)::before {
+    content: "";
+    position: absolute;
+    width: 6.5vw;
+    height: 6.5vw;
+    border-radius: 50%;
+    background-color: white;
+    z-index: 0;
+  }
+
+  .eachAnswer:nth-child(odd)::before {
+    left: 4px;
+  }
+  .eachAnswer:nth-child(even)::before {
+    right: 4px;
+  }
+}
+@media (min-width: 1019px) and (max-width: 1077px) {
+  .generalContainer {
+    max-width: 60%;
+    max-height: 900px;
+  }
+
+  .eachAnswer:nth-child(odd)::before, .eachAnswer:nth-child(even)::before {
+    content: "";
+    position: absolute;
+    width: 6vw;
+    height: 6vw;
+    border-radius: 50%;
+    background-color: white;
+    z-index: 0;
+  }
+
+  .eachAnswer:nth-child(odd)::before {
+    left: 9px;
+  }
+  .eachAnswer:nth-child(even)::before {
+    right: 9px;
+  }
+}
+@media (min-width: 1078px) and (max-width: 1144px) {
+  .generalContainer {
+    max-width: 60%;
+    max-height: 900px;
+  }
+
+  .eachAnswer:nth-child(odd)::before, .eachAnswer:nth-child(even)::before {
+    content: "";
+    position: absolute;
+    width: 5.5vw;
+    height: 5.5vw;
+    border-radius: 50%;
+    background-color: white;
+    z-index: 0;
+  }
+
+  .eachAnswer:nth-child(odd)::before {
+    left: 13px;
+  }
+  .eachAnswer:nth-child(even)::before {
+    right: 13px;
+  }
+}
+@media (min-width: 1145px) and (max-width: 1231px) {
+  .generalContainer {
+    max-width: 60%;
+    max-height: 900px;
+  }
+
+  .eachAnswer:nth-child(odd)::before, .eachAnswer:nth-child(even)::before {
+    content: "";
+    position: absolute;
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    background-color: white;
+    z-index: 0;
+  }
+
+  .eachAnswer:nth-child(odd)::before {
+    left: 17px;
+  }
+  .eachAnswer:nth-child(even)::before {
+    right: 17px;
+  }
+}
+@media (min-width: 1232px) and (max-width: 1668px) {
+  .generalContainer {
+    max-width: 60%;
+    max-height: 900px;
+  }
+
+  .eachAnswer:nth-child(odd)::before, .eachAnswer:nth-child(even)::before {
+    content: "";
+    position: absolute;
+    width: 4.5vw;
+    height: 4.5vw;
+    border-radius: 50%;
+    background-color: white;
+    z-index: 0;
+  }
+
+  .eachAnswer:nth-child(odd)::before {
+    left: 21px;
+  }
+  .eachAnswer:nth-child(even)::before {
+    right: 21px;
+  }
+}
+@media (min-width: 1669px) and (max-width: 1819px) {
+  .generalContainer {
+    max-width: 60%;
+    max-height: 900px;
+  }
+
+  .eachAnswer:nth-child(odd)::before, .eachAnswer:nth-child(even)::before {
+    content: "";
+    position: absolute;
+    width: 4.55vw;
+    height: 4.55vw;
+    border-radius: 50%;
+    background-color: white;
+    z-index: 0;
+  }
+
+  .eachAnswer:nth-child(odd)::before {
+    left: 22px;
+  }
+  .eachAnswer:nth-child(even)::before {
+    right: 22px;
+  }
+}
+@media (min-width: 1820px) {
+  .generalContainer {
+    max-width: 60%;
+    max-height: 900px;
+  }
+
+  .eachAnswer:nth-child(odd)::before, .eachAnswer:nth-child(even)::before {
+    content: "";
+    position: absolute;
+    width: 3.5vw;
+    height: 3.5vw;
+    border-radius: 50%;
+    background-color: white;
+    z-index: 0;
+  }
+
+  .eachAnswer:nth-child(odd)::before {
+    left: 42px;
+  }
+  .eachAnswer:nth-child(even)::before {
+    right: 42px;
+  }
+}/*# sourceMappingURL=mediaquery.css.map */

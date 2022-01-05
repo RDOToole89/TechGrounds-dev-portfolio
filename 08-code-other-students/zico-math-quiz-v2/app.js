@@ -303,6 +303,13 @@ const quizOver = () => {
   }
 
   const restartBtn = document.createElement('button');
+
+  restartBtn.addEventListener('click', () => {
+    console.log(answers);
+
+    questions.forEach((question) => (question.userAnswer = null));
+  });
+
   restartBtn.classList.add('button');
   restartBtn.innerText = 'restart';
   container.appendChild(restartBtn);

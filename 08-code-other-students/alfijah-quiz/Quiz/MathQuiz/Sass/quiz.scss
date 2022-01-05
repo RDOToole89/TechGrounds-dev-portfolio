@@ -1,0 +1,135 @@
+@import './colors.scss';
+
+%standard-flexbox-use {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+%standard-grid-use {
+    display: grid;
+    place-items: center;
+}
+
+%answernumber-pseudo {
+    content: '';
+    position: absolute;
+    width: 18vw;
+    height: 18vw;
+    border-radius: 50%;
+    background-color: $light-color;
+    z-index: 0;
+}
+
+%border-style {
+    border: 2px solid $head-bgcolor;
+}
+
+.quizContainer {
+    background-color: $light-color;
+    width: 90%;
+    height: 83%;
+    @extend %standard-flexbox-use;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 3px #000;
+    
+    .quizTitle {
+        color: $dark-color;
+        font-size: 1.5rem;
+    }
+    
+    .pageNumber {
+        color: $dark-color;
+        font-size: 1.1rem;
+        margin-top: -35px;
+    }
+    
+    .questionBox {
+        width: 90%;
+        height: 12%;
+        background-color: $light-color;
+        @extend %standard-grid-use;
+        @extend %border-style;
+        border-radius: 15px;
+        font-size: 1.1rem;
+        margin-bottom: 9px;
+        padding: 2px 20px;
+        margin-top: -20px;
+
+    }
+    
+    .answerBox {
+        height: 50%;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+        margin-top: -12px;
+    }
+}
+
+.eachAnswer {
+    height: 25%;
+    @extend %standard-flexbox-use;
+    font-size: 1rem;
+    cursor: pointer;
+    position: relative;
+
+    &:nth-child(odd)::before {
+       @extend %answernumber-pseudo;
+       left: 0;
+    }
+    
+    &:nth-child(even) {
+        flex-direction: row-reverse;
+        border-radius: 0 25px 25px 0;
+
+        &::before {
+            @extend %answernumber-pseudo;
+            right: 0;
+        }
+    }
+    
+    .answerNumber {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        @extend %standard-grid-use;
+        @extend %border-style;
+        background-color: $light-color;
+        z-index: 9;
+        }
+    
+        .answerText {
+        @extend %border-style;
+        width: 85%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: $light-color;
+        padding-left: 20px;
+    }
+}
+
+.correct {
+    background-color: #34BE82;
+}
+
+.result {
+    font-size: 1.9rem;
+    background-color: white;
+    color: black;
+    width: 80%;
+    height: 30%;
+    padding: 10px 30px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 3px #000;
+}
+
+

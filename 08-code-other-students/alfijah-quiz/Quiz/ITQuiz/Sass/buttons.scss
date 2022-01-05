@@ -1,0 +1,43 @@
+@import './colors.scss';
+@import './quiz.scss';
+
+.button {
+    cursor: pointer;
+    box-shadow: 0 0 3px #000;
+    font-size: 1.1rem;
+    transition: all .2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.startBtn, .restartBtn {
+    width: 30%;
+    height: 8%;
+    background-color: $head-bgcolor;
+    display: grid;
+    place-items: center;
+    color: $light-color;
+    border-radius: 10px;
+}
+
+.navButtons {
+    width: 60%;
+    height: 8%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+
+    .previousBtn, .nextBtn {
+        background-color: $head-bgcolor;
+        height: 100%;
+        width: 60%;
+        // display: grid;
+        // place-items: center;
+        @extend %standard-grid-use;
+        color: $light-color;
+        border-radius: 10px;
+    }
+}
