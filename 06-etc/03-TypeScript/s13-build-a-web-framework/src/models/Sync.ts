@@ -3,14 +3,21 @@ import { UserProps } from './User';
 
 import axios, { AxiosPromise } from 'axios';
 
-export class Sync {
+// Generic contraint interface
+interface HasId {
+  id?: number;
+}
+
+// By extending T with the HasId interface we are telling TypeScript that
+// Sync will definite implement the poperties in that interface. Generic constraint.
+export class Sync<T extends HasId> {
   constructor(public rootUrl: string) {}
 
   fetch(id: number): AxiosPromise {
     return axios.get(`${this.rootUrl}/${id}`);
   }
 
-  save(data: UserProps): AxiosPromise {
+  save(data: T): AxiosPromise {
     const { id } = data;
 
     if (id) {

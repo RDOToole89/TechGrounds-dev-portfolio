@@ -1,7 +1,9 @@
+import { Sync } from './Sync';
 // Refactor with composition
 // We will the extract the logic for User into seperate classes
 
 import { Eventing } from './Eventing';
+import { Attributes } from './Attributes';
 
 export interface UserProps {
   id?: number;
@@ -9,16 +11,9 @@ export interface UserProps {
   age?: number;
 }
 
+const rootUrl = 'http://localhost:3000/users';
+
 export class User {
   public events: Eventing = new Eventing();
-
-  constructor(private data: UserProps) {}
-
-  get(propName: string): string | number {
-    return this.data[propName];
-  }
-
-  set(update: UserProps): void {
-    Object.assign(this.data, update);
-  }
+  public sync: Sync<UserProps> = new Sync<UserProps>(rootUrl);
 }
