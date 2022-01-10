@@ -1,11 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function Modal({ openModalCallback }) {
+export default function Modal({ openModalCallback, newImageCallback, imageUrl }) {
+  const clickHandler = () => {
+    openModalCallback();
+    newImageCallback();
+  };
+
   return (
     <StyledModal>
-      <StyledClose onClick={openModalCallback}>X</StyledClose>
-      <StyledImg src='https://source.unsplash.com/random/800x600' />
+      <StyledClose onClick={clickHandler}>X</StyledClose>
+      <StyledImg src={imageUrl} />
     </StyledModal>
   );
 }
