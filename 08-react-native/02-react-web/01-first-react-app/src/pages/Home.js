@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import DisplayText from '../components/displayText/DisplayText';
 import Button from '../components/Button/Button';
 import Modal from '../components/Modal/Modal';
+import Navbar from '../components/Navbar/Navbar';
 
 function Home() {
   const [displayText, setDisplayText] = useState('');
@@ -30,6 +31,7 @@ function Home() {
 
   return (
     <Wrapper>
+      <Navbar />
       <Title>First React App Input - Data Binding</Title>
       <InputText callback={textDisplayCallback} />
       <DisplayText displayText={displayText} />
@@ -41,14 +43,14 @@ function Home() {
         />
       )}
 
-      <Button openModalCallback={openModalCallback} />
+      <Button buttonText='click me!' onClickCallback={openModalCallback} />
     </Wrapper>
   );
 }
 
 export default Home;
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   max-width: 1200px;
   height: 100vh;
   background: orange;
@@ -59,7 +61,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const Title = styled.h1`
+export const Title = styled.h1`
   color: black;
   margin-bottom: 1.4rem;
 `;

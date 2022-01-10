@@ -8,7 +8,7 @@ export default function DisplayText({ displayText }) {
 const DisplayBox = styled.div`
   display: flex;
   justify-content: center;
-  align-item: center;
+  align-items: center;
   background-color: #3b82f6;
   margin: 2rem 0rem;
   width: 20rem;
