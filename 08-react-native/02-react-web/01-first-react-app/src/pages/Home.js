@@ -3,12 +3,18 @@ import InputText from '../components/inputText/InputText';
 import styled from 'styled-components';
 import DisplayText from '../components/displayText/DisplayText';
 import Button from '../components/Button/Button';
+import Modal from '../components/Modal/Modal';
 
 function Home() {
   const [displayText, setDisplayText] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
 
   const textDisplayCallback = (text) => {
     setDisplayText(text);
+  };
+
+  const openModalCallback = () => {
+    setModalOpen(!modalOpen);
   };
 
   return (
@@ -16,8 +22,9 @@ function Home() {
       <Title>First React App Input - Data Binding</Title>
       <InputText callback={textDisplayCallback} />
       <DisplayText displayText={displayText} />
+      {modalOpen && <Modal openModalCallback={openModalCallback} />}
 
-      <Button />
+      <Button openModalCallback={openModalCallback} />
     </Wrapper>
   );
 }

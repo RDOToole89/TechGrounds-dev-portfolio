@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function Button() {
-  return <StyledButton>Click Me!</StyledButton>;
+export default function Button({ openModalCallback }) {
+  return <StyledButton onClick={openModalCallback}>Click Me!</StyledButton>;
 }
 
 const StyledButton = styled.button`

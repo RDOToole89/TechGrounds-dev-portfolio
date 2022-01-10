@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+export default function DisplayText({ displayText }) {
+  return <DisplayBox>{displayText}</DisplayBox>;
+}
+
 const DisplayBox = styled.div`
   display: flex;
   justify-content: center;
@@ -10,7 +14,3 @@ const DisplayBox = styled.div`
   width: 20rem;
   height: 10rem;
 `;
-
-export default function DisplayText({ displayText }) {
-  return <DisplayBox>{displayText}</DisplayBox>;
-}
