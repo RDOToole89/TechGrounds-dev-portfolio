@@ -9,8 +9,16 @@ export default function Navbar() {
         <Link to='/'>
           <li>home</li>
         </Link>
+
         <Link to='/about'>
           <li>about</li>
+        </Link>
+
+        <Link to='/refs'>
+          <li>Refs</li>
+        </Link>
+        <Link to='/darkmode'>
+          <li>darkmode</li>
         </Link>
       </StyledNavList>
     </StyledNav>
