@@ -1,9 +1,9 @@
 import React from 'react';
 
-function InputText({ callback }) {
+function InputText({ textDisplayCallback }) {
   return (
     <div>
-      <input onChange={(e) => callback(e.target.value)} />
+      <input onChange={textDisplayCallback} />
     </div>
   );
 }

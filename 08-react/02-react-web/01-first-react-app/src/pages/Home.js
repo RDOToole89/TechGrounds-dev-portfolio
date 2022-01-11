@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import InputText from '../components/inputText/InputText';
+import InputText from '../components/InputText/InputText';
 import styled from 'styled-components';
-import DisplayText from '../components/displayText/DisplayText';
+import DisplayText from '../components/DisplayText/DisplayText';
 import Button from '../components/Button/Button';
 import Modal from '../components/Modal/Modal';
 import Navbar from '../components/Navbar/Navbar';
@@ -15,8 +15,8 @@ function Home() {
   const [modalOpen, setModalOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState('http://source.unsplash.com/800x600');
 
-  const textDisplayCallback = (text) => {
-    setDisplayText(text);
+  const textDisplayCallback = (event) => {
+    setDisplayText(event.target.value);
   };
 
   const newImageCallback = () => {
@@ -37,7 +37,7 @@ function Home() {
     <Wrapper>
       <Navbar />
       <Title>First React App Input - Data Binding</Title>
-      <InputText callback={textDisplayCallback} />
+      <InputText value={displayText} textDisplayCallback={textDisplayCallback} />
       <DisplayText displayText={displayText} />
       {modalOpen && (
         <Modal
