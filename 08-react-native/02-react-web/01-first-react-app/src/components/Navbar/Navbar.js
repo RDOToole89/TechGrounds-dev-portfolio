@@ -20,6 +20,9 @@ export default function Navbar() {
         <Link to='/darkmode'>
           <li>darkmode</li>
         </Link>
+        <Link to='/lists'>
+          <li>Lists</li>
+        </Link>
       </StyledNavList>
     </StyledNav>
   );
