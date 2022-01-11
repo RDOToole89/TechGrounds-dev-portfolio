@@ -1,4 +1,6 @@
 import React, { useState, useRef } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
 import Button from '../components/Button/Button';
 import Navbar from '../components/Navbar/Navbar';
 import { Wrapper } from './Home';
@@ -21,7 +23,7 @@ export default function Lists() {
       <Button buttonText='submit name' buttonColor='violet' onClickCallback={handleInput} />
       <ul>
         {names.map((name) => (
-          <li>{name}</li>
+          <li key={uuidv4()}>{name}</li>
         ))}
       </ul>
     </Wrapper>
