@@ -47,7 +47,12 @@ function Home() {
         />
       )}
 
-      <Button buttonText='click me!' onClickCallback={openModalCallback} />
+      <Button
+        buttonText='click me!'
+        buttonColor='red'
+        buttonOpacity={0.7}
+        onClickCallback={openModalCallback}
+      />
     </Wrapper>
   );
 }

@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar/Navbar';
 import { Title, Wrapper } from './Home';
 
 export default class About extends Component {
-  constructor(props) {
+  constructor() {
     super();
 
     this.state = {
@@ -34,8 +34,18 @@ export default class About extends Component {
         <Title>Counter!</Title>
         <div>{counter}</div>
         <StyledButtonWrapper>
-          <Button onClickCallback={this.decrease} buttonText='decrease' />
-          <Button onClickCallback={this.increase} buttonText='increase' />
+          <Button
+            buttonColor='red'
+            buttonOpacity={0.7}
+            onClickCallback={this.decrease}
+            buttonText='decrease'
+          />
+          <Button
+            buttonColor='pink'
+            buttonOpacity={0.8}
+            onClickCallback={this.increase}
+            buttonText='increase'
+          />
         </StyledButtonWrapper>
       </Wrapper>
     );
