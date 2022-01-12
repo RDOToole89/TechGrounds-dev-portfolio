@@ -9,11 +9,9 @@ export default function Navbar() {
         <Link to='/'>
           <li>home</li>
         </Link>
-
         <Link to='/about'>
           <li>about</li>
         </Link>
-
         <Link to='/refs'>
           <li>Refs</li>
         </Link>
@@ -22,6 +20,15 @@ export default function Navbar() {
         </Link>
         <Link to='/lists'>
           <li>Lists</li>
+        </Link>
+        <Link to='/lifecycle'>
+          <li>lifecycle</li>
+        </Link>
+        <Link to='/useeffect'>
+          <li>useeffect</li>
+        </Link>
+        <Link to='/api'>
+          <li>Api</li>
         </Link>
       </StyledNavList>
     </StyledNav>

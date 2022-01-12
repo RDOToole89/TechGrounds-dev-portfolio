@@ -4,6 +4,9 @@ import About from './pages/About';
 import Refs from './pages/Refs';
 import DarkModeView from './pages/DarkModeView';
 import Lists from './pages/Lists';
+import ApiRequest from './pages/ApiRequest';
+import Lifecycle from './pages/Lifecycle';
+import UseEffect from './pages/UseEffect';
 
 function App() {
   return (
@@ -14,6 +17,9 @@ function App() {
         <Route path='/refs' element={<Refs />} />
         <Route path='/darkmode' element={<DarkModeView />} />
         <Route path='/lists' element={<Lists />} />
+        <Route path='/lifecycle' element={<Lifecycle />} />
+        <Route path='/useeffect' element={<UseEffect />} />
+        <Route path='/api' element={<ApiRequest />} />
       </Routes>
     </div>
   );

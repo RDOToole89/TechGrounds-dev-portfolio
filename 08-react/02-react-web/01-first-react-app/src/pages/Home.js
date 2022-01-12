@@ -62,7 +62,7 @@ export default Home;
 export const Wrapper = styled.div`
   max-width: 1200px;
   height: 100vh;
-  background: orange;
+  background: papayawhip;
   margin: 0 auto;
   padding-top: 4rem;
   display: flex;
@@ -71,6 +71,6 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h1`
-  color: black;
+  color: palevioletred;
   margin-bottom: 1.4rem;
 `;
