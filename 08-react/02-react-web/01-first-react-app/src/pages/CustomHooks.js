@@ -8,15 +8,26 @@ function CustomHooks() {
     <Wrapper>
       <Navbar />
       <Title>Custom Hooks</Title>
-      <StyledLink target='_blank' href='https://reactjs.org/docs/hooks-custom.html'>
+      <StyledLink
+        style={{ textTransform: 'uppercase', fontWeight: '600' }}
+        target='_blank'
+        href='https://reactjs.org/docs/hooks-custom.html'>
         Official Documentation (custom) Hooks
       </StyledLink>
-      <StyledParagraph style={{ '--color': 'purple', width: '600px', textAlign: 'center' }}>
+      <StyledParagraph style={paragraphStyles}>
         A custom Hook is a JavaScript function whose name starts with ”use” and that may call other
-        Hooks.
+        Hooks. Building your own Hooks lets you extract component logic into reusable functions.
       </StyledParagraph>
     </Wrapper>
   );
 }
 
 export default CustomHooks;
+
+const paragraphStyles = {
+  '--color': 'purple',
+  padding: '1rem',
+  width: '600px',
+  lineHeight: 1.6,
+  backgroundColor: 'rgba(0,0,0,0.1)',
+};
