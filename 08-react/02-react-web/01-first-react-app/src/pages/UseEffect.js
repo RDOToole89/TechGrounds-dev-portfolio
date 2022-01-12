@@ -3,7 +3,21 @@ import Button from '../components/Button/Button';
 import Navbar from '../components/Navbar/Navbar';
 import { StyledButtonWrapper } from './About';
 import { Wrapper, Title } from './Home';
-import { StyledParagraph } from './Lifecycle';
+import { StyledLink, StyledParagraph } from './Lifecycle';
+
+// Rules of Hooks
+
+// Only Call Hooks at the Top Level => not inside loops, conditions or nested functions.
+// Always place them at the Top Level of you react function.
+
+// Only Call Hooks from React Functions
+// 1. Call Hooks from React function components
+// 2. Call Hooks from custom Hooks
+
+// By following these rules, you ENSURE that all stateful lofic in a component is clearly
+// visible from its source code.
+
+// If we want to run an effect conditionally, we can put it INSIDE a useEffect hook.
 
 export default function UseEffect() {
   const [count, setCount] = useState(0);
@@ -36,12 +50,21 @@ export default function UseEffect() {
 
     let countText = document.querySelector('.count-text');
     countText.textContent = `You clicked count: ${count} times!`;
-  });
+  }, [count]);
+  // The empty array at the end of the hook, is the  'dependency array'. It will tell
+  // the useEffect hook to ONLY rerender the component or run the effect only if certain
+  // values have changed! => optization step. If we feed an empty array[] as the second
+  // argument to useEffect it functions more like componentDidMount and componentWillUnmount.
+  // However there are usually better solutions.
 
   return (
     <Wrapper>
       <Navbar />
       <Title>UseEffect Hook</Title>
+
+      <StyledLink target='_blank' href='https://reactjs.org/docs/hooks-rules.html'>
+        Official Documentation for useEffect
+      </StyledLink>
       <StyledParagraph>{count}</StyledParagraph>
       <StyledParagraph className='count-text'></StyledParagraph>
       <StyledButtonWrapper>

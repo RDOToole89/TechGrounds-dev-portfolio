@@ -111,7 +111,7 @@ export default class Lifecycle extends Component {
   }
 }
 
-const StyledLink = styled.a`
+export const StyledLink = styled.a`
   color: palevioletred;
   text-decoration: none;
   margin: 1rem;

@@ -22,6 +22,7 @@ const StyledModal = styled.div`
   transform: translate(-50%, -50%);
   padding: 1rem;
   max-width: 400px;
+  z-index: 100;
 `;
 
 const StyledImg = styled.img`

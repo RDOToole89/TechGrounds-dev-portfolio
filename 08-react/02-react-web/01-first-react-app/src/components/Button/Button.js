@@ -24,6 +24,7 @@ const StyledButton = styled.button`
   text-transform: uppercase;
   font-weight: var(--font-weight-600);
   cursor: pointer;
+  z-index: 0;
 
   &:hover {
     background-color: violet;

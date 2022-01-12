@@ -13,13 +13,13 @@ export default function Navbar() {
           <li>about</li>
         </Link>
         <Link to='/refs'>
-          <li>Refs</li>
+          <li>refs</li>
         </Link>
         <Link to='/darkmode'>
           <li>darkmode</li>
         </Link>
         <Link to='/lists'>
-          <li>Lists</li>
+          <li>lists</li>
         </Link>
         <Link to='/lifecycle'>
           <li>lifecycle</li>
@@ -27,8 +27,11 @@ export default function Navbar() {
         <Link to='/useeffect'>
           <li>useeffect</li>
         </Link>
+        <Link to='/customhooks '>
+          <li>custom hooks</li>
+        </Link>
         <Link to='/api'>
-          <li>Api</li>
+          <li>api</li>
         </Link>
       </StyledNavList>
     </StyledNav>

@@ -7,6 +7,7 @@ import Lists from './pages/Lists';
 import ApiRequest from './pages/ApiRequest';
 import Lifecycle from './pages/Lifecycle';
 import UseEffect from './pages/UseEffect';
+import CustomHooks from './pages/CustomHooks';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/lists' element={<Lists />} />
         <Route path='/lifecycle' element={<Lifecycle />} />
         <Route path='/useeffect' element={<UseEffect />} />
+        <Route path='/customhooks' element={<CustomHooks />} />
         <Route path='/api' element={<ApiRequest />} />
       </Routes>
     </div>
