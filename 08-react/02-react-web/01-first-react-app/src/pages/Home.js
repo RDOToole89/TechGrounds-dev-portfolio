@@ -61,7 +61,7 @@ export default Home;
 
 export const Wrapper = styled.div`
   max-width: 1200px;
-  height: 100vh;
+
   background: papayawhip;
   margin: 0 auto;
   padding-top: 4rem;

@@ -45,7 +45,7 @@ const StyledNav = styled.nav`
   margin-bottom: 2rem;
 `;
 
-const StyledNavList = styled.ul`
+export const StyledNavList = styled.ul`
   display: flex;
   justify-content: flex-end;
   list-style: none;
