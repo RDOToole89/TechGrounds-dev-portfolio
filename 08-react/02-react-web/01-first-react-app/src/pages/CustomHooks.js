@@ -2,6 +2,7 @@ import React from 'react';
 import Coords from '../components/Coords.js/Coords';
 import Navbar from '../components/Navbar/Navbar';
 import useFetch from '../hooks/useFetch';
+import useMediaQuery from '../hooks/useMediaQuery';
 import { Navlist, Title, Wrapper } from '../styled/StyledComponents';
 import { StyledLink, StyledParagraph } from '../styled/StyledComponents';
 
@@ -10,7 +11,29 @@ const URL = 'https://hn.algolia.com/api/v1/search?query=react';
 function CustomHooks() {
   const { loading, error, data } = useFetch(URL);
 
-  console.log(data);
+  // Check if the device that an element is being displayed on matches
+  // a certain condition. In this case if you can hover over an element or not.
+  // Based on this result we can for example change the styling.
+  const canHover = useMediaQuery(
+    // Media queries
+    ['(hover: hover)'],
+    // Values corresponding the above media queries by array index
+    [true],
+    // Default value
+    false
+  );
+
+  const canHoverStyles = (bool) => {
+    return {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: '1rem',
+      marginTop: '2rem',
+      height: '30px',
+      backgroundColor: bool ? 'orangered' : 'green',
+    };
+  };
 
   if (loading) return 'Loading...';
   if (error) return 'Something went wrong!';
@@ -37,7 +60,6 @@ function CustomHooks() {
       </StyledParagraph>
       <Navlist style={{ marginTop: '3rem', display: 'flex', flexDirection: 'column' }}>
         {data?.hits?.map((item, i) => {
-          console.log(`${item} ${i}`);
           return (
             <li style={{ color: '#010101' }} key={item.objectID}>
               {i + 1}. <a href={item.url}>{item.title}</a>
@@ -45,6 +67,8 @@ function CustomHooks() {
           );
         })}
       </Navlist>
+
+      <div style={canHoverStyles(canHover)}>Hover Me!</div>
     </Wrapper>
   );
 }

@@ -56,7 +56,6 @@ export default class Lifecycle extends Component {
   };
 
   componentDidUpdate = (prevProps, prevState, snapshot) => {
-    console.log(prevProps);
     console.log(
       'LIFECYCLE 05 => log inside componentDidUpdate => runs when the props or state changes'
     );

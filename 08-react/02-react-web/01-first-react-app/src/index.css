@@ -21,6 +21,11 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.dark {
+  background: var(--color-background);
+  color: palevioletred;
+}
+
 a {
   text-decoration: none;
 }

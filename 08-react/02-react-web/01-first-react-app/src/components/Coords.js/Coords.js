@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import useEventListener from '../../hooks/useEventListener';
+import useEventListener from '../../hooks/useEventListener2';
 
 function Coords() {
   // State for storing mouse coordinates
@@ -11,7 +11,8 @@ function Coords() {
   const handler = useCallback(
     ({ clientX, clientY }) => {
       // Update coordinates
-      setCoords({ x: clientX, y: clientY });
+
+      return setCoords({ x: clientX, y: clientY });
     },
     [setCoords]
   );

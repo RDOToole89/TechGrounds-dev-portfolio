@@ -1,5 +1,5 @@
 import Home from './pages/Home';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Counter from './pages/Counter';
 import Refs from './pages/Refs';
 import DarkModeView from './pages/DarkModeView';
@@ -8,8 +8,17 @@ import ApiRequest from './pages/ApiRequest';
 import Lifecycle from './pages/Lifecycle';
 import UseEffect from './pages/UseEffect';
 import CustomHooks from './pages/CustomHooks';
+import { useEffect } from 'react';
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname !== '/darkmode') {
+      document.body.classList.remove('dark');
+    }
+  }, [location]);
+
   return (
     <div className='App'>
       <Routes>

@@ -1,12 +1,15 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import Button from '../components/Button/Button';
 import Navbar from '../components/Navbar/Navbar';
+import useLocalStorage from '../hooks/useLocalStorage';
 import { Title, Wrapper } from '../styled/StyledComponents';
 
+const nameList = ['Roibin', 'Wesley', 'Zico'];
+
 export default function Lists() {
-  const [names, setNames] = useState([]);
+  const [names, setNames] = useLocalStorage('names', nameList);
   const inputRef = useRef(null);
 
   const handleInput = (event) => {

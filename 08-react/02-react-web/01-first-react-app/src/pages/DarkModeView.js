@@ -1,9 +1,18 @@
 import React, { useState, useMemo, useEffect, useCallback } from 'react';
+import { useNavigate, useLocation } from 'react-router';
 import List from '../components/List/List';
 import Navbar from '../components/Navbar/Navbar';
+import useDarkMode from '../hooks/useDarkMode';
 import { Wrapper } from '../styled/StyledComponents';
 
 function DarkModeView() {
+  let navigate = useNavigate();
+  let location = useLocation();
+  console.log(navigate);
+  console.log(location);
+
+  const darkEnabled = useDarkMode();
+  console.log(darkEnabled);
   // Examples of useMemo and useCallback
   // useMemo: Returns and stores the calculated value of a function in a variable
   // useCallBack: Returns and stores the actual function itself in a variable
