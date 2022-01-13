@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import Button from '../components/Button/Button';
 import Navbar from '../components/Navbar/Navbar';
-import { Title, Wrapper } from './Home';
+import { Title, Wrapper } from '../styled/StyledComponents';
 
 export default function Lists() {
   const [names, setNames] = useState([]);

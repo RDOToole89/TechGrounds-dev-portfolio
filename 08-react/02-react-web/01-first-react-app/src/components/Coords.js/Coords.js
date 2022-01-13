@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import useEventListener from '../../customHooks/useEventListener';
+import useEventListener from '../../hooks/useEventListener';
 
 function Coords() {
   // State for storing mouse coordinates

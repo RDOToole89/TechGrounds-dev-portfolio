@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Button from '../components/Button/Button';
 import Navbar from '../components/Navbar/Navbar';
-import { StyledButtonWrapper } from './About';
-import { Wrapper, Title } from './Home';
-import { StyledLink, StyledParagraph } from './Lifecycle';
+import {
+  Wrapper,
+  Title,
+  StyledButtonWrapper,
+  StyledLink,
+  StyledParagraph,
+} from '../styled/StyledComponents';
 
 // Rules of Hooks
 

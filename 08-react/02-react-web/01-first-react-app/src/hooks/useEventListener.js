@@ -29,7 +29,7 @@ const useEventListener = (
     return () => {
       target.removeEventListener(eventType, eventListener, options);
     };
-  }, [eventType, target, options]);
+  }, [eventType, target, options, listener]);
 
   // We don't have to return anything from this hook because we are just
   // listening for events and running the handler function as an argument.

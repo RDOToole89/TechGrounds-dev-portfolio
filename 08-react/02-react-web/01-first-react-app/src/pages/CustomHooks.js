@@ -1,9 +1,9 @@
 import React from 'react';
 import Coords from '../components/Coords.js/Coords';
-import Navbar, { StyledNavList } from '../components/Navbar/Navbar';
-import useFetch from '../customHooks/useFetch';
-import { Title, Wrapper } from './Home';
-import { StyledLink, StyledParagraph } from './Lifecycle';
+import Navbar from '../components/Navbar/Navbar';
+import useFetch from '../hooks/useFetch';
+import { Navlist, Title, Wrapper } from '../styled/StyledComponents';
+import { StyledLink, StyledParagraph } from '../styled/StyledComponents';
 
 const URL = 'https://hn.algolia.com/api/v1/search?query=react';
 
@@ -35,8 +35,7 @@ function CustomHooks() {
         A custom Hook is a JavaScript function whose name starts with ”use” and that may call other
         Hooks. Building your own Hooks lets you extract component logic into reusable functions.
       </StyledParagraph>
-
-      <StyledNavList style={{ marginTop: '3rem', display: 'flex', flexDirection: 'column' }}>
+      <Navlist style={{ marginTop: '3rem', display: 'flex', flexDirection: 'column' }}>
         {data?.hits?.map((item, i) => {
           console.log(`${item} ${i}`);
           return (
@@ -45,7 +44,7 @@ function CustomHooks() {
             </li>
           );
         })}
-      </StyledNavList>
+      </Navlist>
     </Wrapper>
   );
 }

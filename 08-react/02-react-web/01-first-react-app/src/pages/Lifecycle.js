@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import Button from '../components/Button/Button';
 import Navbar from '../components/Navbar/Navbar';
-import { StyledButtonWrapper } from './About';
-import { Title, Wrapper } from './Home';
+import {
+  Title,
+  Wrapper,
+  StyledLink,
+  StyledParagraph,
+  StyledButtonWrapper,
+} from '../styled/StyledComponents';
 
 // Each component has several “lifecycle methods” that you can override
 // to run code at particular times in the process.
@@ -110,20 +114,6 @@ export default class Lifecycle extends Component {
     );
   }
 }
-
-export const StyledLink = styled.a`
-  color: palevioletred;
-  text-decoration: none;
-  margin: 1rem;
-
-  &:hover {
-    color: green;
-  }
-`;
-
-export const StyledParagraph = styled.p`
-  color: var(--color);
-`;
 
 // Mounting
 // These methods are called in the following order when an instance

@@ -1,6 +1,6 @@
 import Home from './pages/Home';
 import { Routes, Route } from 'react-router-dom';
-import About from './pages/About';
+import Counter from './pages/Counter';
 import Refs from './pages/Refs';
 import DarkModeView from './pages/DarkModeView';
 import Lists from './pages/Lists';
@@ -14,7 +14,7 @@ function App() {
     <div className='App'>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
+        <Route path='/counter' element={<Counter />} />
         <Route path='/refs' element={<Refs />} />
         <Route path='/darkmode' element={<DarkModeView />} />
         <Route path='/lists' element={<Lists />} />

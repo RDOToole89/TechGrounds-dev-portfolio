@@ -1,16 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Navlist } from '../../styled/StyledComponents';
+import styled from 'styled-components';
 
 export default function Navbar() {
   return (
     <StyledNav>
-      <StyledNavList>
+      <Navlist>
         <Link to='/'>
           <li>home</li>
         </Link>
-        <Link to='/about'>
-          <li>about</li>
+        <Link to='/counter'>
+          <li>counter</li>
         </Link>
         <Link to='/refs'>
           <li>refs</li>
@@ -33,28 +34,14 @@ export default function Navbar() {
         <Link to='/api'>
           <li>api</li>
         </Link>
-      </StyledNavList>
+      </Navlist>
     </StyledNav>
   );
 }
 
-const StyledNav = styled.nav`
+export const StyledNav = styled.nav`
   width: 100%;
   background: blue;
   padding: 1.2rem 2.4rem;
   margin-bottom: 2rem;
-`;
-
-export const StyledNavList = styled.ul`
-  display: flex;
-  justify-content: flex-end;
-  list-style: none;
-  gap: 2rem;
-
-  & li {
-    text-transform: uppercase;
-    font-weight: 600;
-    color: white;
-    cursor: pointer;
-  }
 `;

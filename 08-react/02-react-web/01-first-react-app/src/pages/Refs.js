@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import Button from '../components/Button/Button';
 import Navbar from '../components/Navbar/Navbar';
 
-import { Wrapper } from './Home';
+import { Wrapper } from '../styled/StyledComponents';
 
 // useRef and Callback Refs examples
 

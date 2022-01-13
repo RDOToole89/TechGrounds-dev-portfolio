@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import InputText from '../components/InputText/InputText';
-import styled from 'styled-components';
 import DisplayText from '../components/DisplayText/DisplayText';
 import Button from '../components/Button/Button';
 import Modal from '../components/Modal/Modal';
 import Navbar from '../components/Navbar/Navbar';
+import { Title, Wrapper } from '../styled/StyledComponents';
 
 // Hooks should only be called from the top level of your React function
 // Hooks must not be called from nested code (e.g., loops, conditions)
@@ -58,19 +58,3 @@ function Home() {
 }
 
 export default Home;
-
-export const Wrapper = styled.div`
-  max-width: 1200px;
-
-  background: papayawhip;
-  margin: 0 auto;
-  padding-top: 4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const Title = styled.h1`
-  color: palevioletred;
-  margin-bottom: 1.4rem;
-`;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { COLORS } from '../../contants';
+import { COLORS } from '../../utils/contants';
 
 export default function Button({ onClickCallback, buttonText, buttonColor, buttonOpacity }) {
   return (
@@ -15,7 +15,7 @@ export default function Button({ onClickCallback, buttonText, buttonColor, butto
   );
 }
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
   padding: 1.2rem 2.2rem;
   background-color: var(--color, grey);
   opacity: var(--buttonOpacity, 0.95);

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import Button from '../components/Button/Button';
 import Navbar from '../components/Navbar/Navbar';
-import { Title, Wrapper } from './Home';
+import { StyledButtonWrapper, Title, Wrapper } from '../styled/StyledComponents';
 
 export default class About extends Component {
   constructor() {
@@ -51,9 +50,3 @@ export default class About extends Component {
     );
   }
 }
-
-export const StyledButtonWrapper = styled.div`
-  padding: 2rem 0;
-  display: flex;
-  gap: 1rem;
-`;
