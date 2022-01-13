@@ -9,6 +9,7 @@ import Lifecycle from './pages/Lifecycle';
 import UseEffect from './pages/UseEffect';
 import CustomHooks from './pages/CustomHooks';
 import { useEffect } from 'react';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   const location = useLocation();
