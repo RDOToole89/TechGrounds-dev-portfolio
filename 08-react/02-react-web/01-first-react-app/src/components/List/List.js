@@ -4,9 +4,9 @@ export default function List({ getItems }) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    setItems(getItems());
+    setItems(getItems(5));
     console.log('Updating Items');
   }, [getItems]);
 
-  return items.map((item) => <div key={item}>{item}</div>);
+  return items.map((item) => <div key={item + Math.random()}>{item}</div>);
 }
