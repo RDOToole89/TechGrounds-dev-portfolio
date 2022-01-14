@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Button from '../components/Button/Button';
-import Navbar from '../components/Navbar/Navbar';
 import {
   Title,
   Wrapper,
@@ -91,7 +90,6 @@ export default class Lifecycle extends Component {
     console.log('LIFECYCLE 03 => log inside Render => runs during EACH render');
     return (
       <Wrapper>
-        <Navbar />
         <Title>Lifecyle Methods!</Title>
         <StyledLink
           target='_blank'

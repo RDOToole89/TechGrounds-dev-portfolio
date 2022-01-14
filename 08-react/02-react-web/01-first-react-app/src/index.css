@@ -8,9 +8,12 @@
 
 /* Root refers to the top level element so it's equivalent to the html selector */
 :root {
-  --color-text: #010101;
-  --color-background: #182635;
+  --color-text: #f80974;
+  --color-background-primary: #283f58;
+  --color-background-dark: #182635;
   --font-weight-600: 600;
+
+  --mg-bottom-md: 2.8rem;
 }
 
 html {
@@ -19,11 +22,14 @@ html {
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--color-background-primary);
+  color: var(--color-text);
+  max-height: 100vh;
 }
 
 .dark {
-  background: var(--color-background);
-  color: palevioletred;
+  background: var(--color-background-dark);
+  color: #f80974;
 }
 
 a {

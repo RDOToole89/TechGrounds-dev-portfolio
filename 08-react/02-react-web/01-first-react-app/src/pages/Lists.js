@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import Button from '../components/Button/Button';
-import Navbar from '../components/Navbar/Navbar';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { Title, Wrapper } from '../styled/StyledComponents';
 
@@ -28,13 +27,14 @@ export default function Lists() {
 
   return (
     <Wrapper>
-      <Navbar />
       <Title>Name list</Title>
       <input style={{ marginBottom: '20px' }} ref={inputRef} onKeyPress={handleInput} />
       <Button buttonText='submit name' buttonColor='violet' onClickCallback={handleInput} />
-      <ul>
-        {names.map((name) => (
-          <li key={uuidv4()}>{name}</li>
+      <ul style={{ marginTop: '2rem', listStyle: 'none' }}>
+        {names.map((name, i) => (
+          <li key={uuidv4()}>
+            {i}. === {name}`
+          </li>
         ))}
       </ul>
     </Wrapper>

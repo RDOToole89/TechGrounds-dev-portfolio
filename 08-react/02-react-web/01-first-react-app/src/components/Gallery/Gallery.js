@@ -10,7 +10,7 @@ export default function Gallery({ columns }) {
   const { loading, data } = useFetch(URL);
 
   const imagesResized = data?.map((image, i) => {
-    console.log(image);
+    // console.log(image);
 
     const difference = 12 - data.length;
     if (difference) {

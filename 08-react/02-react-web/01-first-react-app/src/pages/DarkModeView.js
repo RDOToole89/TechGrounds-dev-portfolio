@@ -1,9 +1,8 @@
 import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router';
 import List from '../components/List/List';
-import Navbar from '../components/Navbar/Navbar';
 import useDarkMode from '../hooks/useDarkMode';
-import { Wrapper } from '../styled/StyledComponents';
+import { Title, Wrapper } from '../styled/StyledComponents';
 
 function DarkModeView() {
   let navigate = useNavigate();
@@ -52,7 +51,7 @@ function DarkModeView() {
 
   return (
     <Wrapper>
-      <Navbar />
+      <Title>Dark Mode</Title>
 
       <div style={theme}>
         <input type='number' value={number} onChange={(e) => setNumber(parseInt(e.target.value))} />

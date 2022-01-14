@@ -8,7 +8,9 @@ import ApiRequest from './pages/ApiRequest';
 import Lifecycle from './pages/Lifecycle';
 import UseEffect from './pages/UseEffect';
 import CustomHooks from './pages/CustomHooks';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import Navbar from './components/Navbar/Navbar';
+import UseEffectExample from './pages/UseEffectExample';
 
 function App() {
   const location = useLocation();
@@ -21,6 +23,7 @@ function App() {
 
   return (
     <div className='App'>
+      <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/counter' element={<Counter />} />
@@ -34,6 +37,7 @@ function App() {
         <Route path='/useeffect' element={<UseEffect />} />
         <Route path='/customhooks' element={<CustomHooks />} />
         <Route path='/api' element={<ApiRequest />} />
+        <Route path='/example' element={<UseEffectExample />} />
       </Routes>
     </div>
   );

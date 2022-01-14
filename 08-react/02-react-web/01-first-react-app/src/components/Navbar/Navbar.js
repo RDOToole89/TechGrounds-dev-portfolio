@@ -34,14 +34,18 @@ export default function Navbar() {
         <Link to='/api'>
           <li>api</li>
         </Link>
+        <Link to='/example'>
+          <li>useEffect Example</li>
+        </Link>
       </Navlist>
     </StyledNav>
   );
 }
 
 export const StyledNav = styled.nav`
+  display: flex;
+  justify-content: center;
   width: 100%;
-  background: blue;
+  background: #141d24;
   padding: 1.2rem 2.4rem;
-  margin-bottom: 2rem;
 `;

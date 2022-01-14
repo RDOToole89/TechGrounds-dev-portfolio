@@ -3,7 +3,6 @@ import InputText from '../components/InputText/InputText';
 import DisplayText from '../components/DisplayText/DisplayText';
 import Button from '../components/Button/Button';
 import Modal from '../components/Modal/Modal';
-import Navbar from '../components/Navbar/Navbar';
 import { Title, Wrapper } from '../styled/StyledComponents';
 
 // Hooks should only be called from the top level of your React function
@@ -25,7 +24,7 @@ function Home() {
   };
 
   useEffect(() => {
-    console.log('Hello!');
+    // console.log('Hello!');
   }, []);
 
   const openModalCallback = () => {
@@ -34,7 +33,6 @@ function Home() {
 
   return (
     <Wrapper>
-      <Navbar />
       <Title>First React App Input - Data Binding</Title>
       <InputText value={displayText} textDisplayCallback={textDisplayCallback} />
       <DisplayText displayText={displayText} />

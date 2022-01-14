@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Button from '../components/Button/Button';
-import Navbar from '../components/Navbar/Navbar';
 import {
   Wrapper,
   Title,
@@ -63,7 +62,6 @@ export default function UseEffect() {
 
   return (
     <Wrapper>
-      <Navbar />
       <Title>UseEffect Hook</Title>
 
       <StyledLink target='_blank' href='https://reactjs.org/docs/hooks-rules.html'>

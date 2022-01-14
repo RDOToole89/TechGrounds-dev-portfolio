@@ -1,6 +1,5 @@
 import React from 'react';
 import Coords from '../components/Coords.js/Coords';
-import Navbar from '../components/Navbar/Navbar';
 import useFetch from '../hooks/useFetch';
 import useMediaQuery from '../hooks/useMediaQuery';
 import { Navlist, Title, Wrapper } from '../styled/StyledComponents';
@@ -40,7 +39,6 @@ function CustomHooks() {
 
   return (
     <Wrapper>
-      <Navbar />
       <Title>Custom Hooks</Title>
 
       <StyledLink target='_blank' href='https://usehooks.com/useEventListener/'>

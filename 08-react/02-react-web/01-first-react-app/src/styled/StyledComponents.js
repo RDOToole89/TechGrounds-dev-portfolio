@@ -2,18 +2,18 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   max-width: 1200px;
-  min-height: 100vh;
-  background: papayawhip;
+  background: var(--color-background-dark, papayawhip);
   margin: 0 auto;
-  padding: 4rem 0rem;
+  padding: 8rem 0rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
 `;
 
 export const Title = styled.h1`
-  color: palevioletred;
-  margin-bottom: 1.4rem;
+  color: var(--color-text);
+  margin-bottom: var(--mg-bottom-md, 1.4rem);
 `;
 
 export const StyledButtonWrapper = styled.div`

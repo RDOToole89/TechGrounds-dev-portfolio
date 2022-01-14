@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Button from '../components/Button/Button';
-import Navbar from '../components/Navbar/Navbar';
 import { StyledButtonWrapper, Title, Wrapper } from '../styled/StyledComponents';
 
 export default class About extends Component {
@@ -29,7 +28,6 @@ export default class About extends Component {
 
     return (
       <Wrapper>
-        <Navbar />
         <Title>Counter!</Title>
         <div>{counter}</div>
         <StyledButtonWrapper>
