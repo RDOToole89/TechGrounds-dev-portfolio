@@ -1,16 +1,23 @@
-body, .eachAnswer, .quizContainer {
+.quizContainer, .eachAnswer, body {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.eachAnswer .answerNumber, .quizContainer .questionBox {
+.quizContainer .questionBox, .eachAnswer .answerNumber {
+  display: -ms-grid;
   display: grid;
   place-items: center;
 }
 
-.eachAnswer:nth-child(even)::before, .eachAnswer:nth-child(odd)::before {
-  content: "";
+.eachAnswer:nth-child(odd)::before, .eachAnswer:nth-child(even)::before {
+  content: '';
   position: absolute;
   width: 18vw;
   height: 18vw;
@@ -19,7 +26,7 @@ body, .eachAnswer, .quizContainer {
   z-index: 0;
 }
 
-.eachAnswer .answerText, .eachAnswer .answerNumber, .quizContainer .questionBox {
+.quizContainer .questionBox, .eachAnswer .answerNumber, .eachAnswer .answerText {
   border: 2px solid #C84B31;
 }
 
@@ -27,21 +34,30 @@ body, .eachAnswer, .quizContainer {
   background-color: white;
   width: 90%;
   height: 83%;
-  justify-content: space-evenly;
-  flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin-bottom: 10px;
   border-radius: 10px;
-  box-shadow: 0 0 3px #000;
+  -webkit-box-shadow: 0 0 3px #000;
+          box-shadow: 0 0 3px #000;
 }
+
 .quizContainer .quizTitle {
   color: black;
   font-size: 1.5rem;
 }
+
 .quizContainer .pageNumber {
   color: black;
   font-size: 1.1rem;
   margin-top: -35px;
 }
+
 .quizContainer .questionBox {
   width: 90%;
   height: 12%;
@@ -52,12 +68,20 @@ body, .eachAnswer, .quizContainer {
   padding: 2px 20px;
   margin-top: -20px;
 }
+
 .quizContainer .answerBox {
   height: 50%;
   width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 8px;
   margin-top: -12px;
 }
@@ -68,16 +92,23 @@ body, .eachAnswer, .quizContainer {
   cursor: pointer;
   position: relative;
 }
+
 .eachAnswer:nth-child(odd)::before {
   left: 0;
 }
+
 .eachAnswer:nth-child(even) {
-  flex-direction: row-reverse;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
   border-radius: 0 25px 25px 0;
 }
+
 .eachAnswer:nth-child(even)::before {
   right: 0;
 }
+
 .eachAnswer .answerNumber {
   width: 50px;
   height: 50px;
@@ -85,12 +116,19 @@ body, .eachAnswer, .quizContainer {
   background-color: white;
   z-index: 9;
 }
+
 .eachAnswer .answerText {
   width: 85%;
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: white;
   padding-left: 20px;
 }
@@ -108,7 +146,8 @@ body, .eachAnswer, .quizContainer {
   padding: 10px 30px;
   margin-bottom: 10px;
   border-radius: 10px;
-  box-shadow: 0 0 3px #000;
+  -webkit-box-shadow: 0 0 3px #000;
+          box-shadow: 0 0 3px #000;
 }
 
 *,
@@ -116,11 +155,12 @@ body, .eachAnswer, .quizContainer {
 *::after {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
-  font-family: "Indie flower";
+  font-family: 'Indie flower';
   background: url("/Quiz/ITQuiz/Sass/assets/question-g64a92d398_1280.png") no-repeat center center fixed;
   background-size: cover;
   height: 100%;
@@ -130,8 +170,18 @@ body {
 .generalContainer {
   width: 100vw;
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}/*# sourceMappingURL=body.css.map */
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=body.css.map */

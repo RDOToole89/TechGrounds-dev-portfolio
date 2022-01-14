@@ -9,6 +9,7 @@ import { Title, Wrapper } from '../styled/StyledComponents';
 // Hooks should only be called from the top level of your React function
 // Hooks must not be called from nested code (e.g., loops, conditions)
 // Hooks may also be called at the top level from custom Hooks
+export const randomNumber = (min, max) => Math.floor(Math.random() * max) + min;
 
 function Home() {
   const [displayText, setDisplayText] = useState('');
@@ -20,9 +21,7 @@ function Home() {
   };
 
   const newImageCallback = () => {
-    const randomNumber = (min, max) => Math.floor(Math.random() * max) + min;
-
-    setImageUrl(`http://source.unsplash.com/800x600?=sig${randomNumber(1, 1000)}`);
+    setImageUrl(`http://source.unsplash.com/800x600?sig=${randomNumber(1, 1000)}`);
   };
 
   useEffect(() => {

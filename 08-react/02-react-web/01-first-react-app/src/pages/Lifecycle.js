@@ -13,10 +13,13 @@ import {
 // to run code at particular times in the process.
 
 export default class Lifecycle extends Component {
+  // If we are passing props to a component we should always pass props in the constructor
+  // If we want to call this.props inside the constuctor we must also pass it to super!
   constructor(props) {
-    super();
+    super(props);
+
     this.state = {
-      message: 'Hello World!',
+      message: this.props.message,
       counter: 0,
     };
 
