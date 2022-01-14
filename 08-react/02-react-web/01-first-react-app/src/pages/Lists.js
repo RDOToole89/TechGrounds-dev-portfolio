@@ -8,6 +8,13 @@ import { Title, Wrapper } from '../styled/StyledComponents';
 const nameList = ['Roibin', 'Wesley', 'Zico'];
 
 export default function Lists() {
+  // difference between local storage, session storage and cookies.
+  // cookies live in your browser and server and are sent with requests
+  // => expires: cookies are manually set and could expire after one minute or 10 years.
+
+  // local storage lives in your browser and persists data through sessions => expires: never
+  // session storage lives in your browser on your current tab => expires: on tab close
+
   const [names, setNames] = useLocalStorage('names', nameList);
   const inputRef = useRef(null);
 

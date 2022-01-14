@@ -59,7 +59,7 @@ function CustomHooks() {
       <Navlist style={{ marginTop: '3rem', display: 'flex', flexDirection: 'column' }}>
         {data?.hits?.map((item, i) => {
           return (
-            <li style={{ color: '#010101' }} key={item.objectID}>
+            <li style={{ color: 'var(--color-text)' }} key={item.objectID}>
               {i + 1}. <a href={item.url}>{item.title}</a>
             </li>
           );
@@ -74,7 +74,7 @@ function CustomHooks() {
 export default CustomHooks;
 
 const paragraphStyles = {
-  '--color': 'purple',
+  '--paragraph-color': '#fff',
   padding: '1rem',
   width: '600px',
   lineHeight: 1.6,

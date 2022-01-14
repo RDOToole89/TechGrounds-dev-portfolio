@@ -25,6 +25,7 @@ export const StyledButton = styled.button`
   font-weight: var(--font-weight-600);
   cursor: pointer;
   z-index: 0;
+  transition: all 0.4s ease;
 
   &:hover {
     background-color: violet;

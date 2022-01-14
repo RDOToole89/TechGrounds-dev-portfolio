@@ -102,12 +102,12 @@ export default class Lifecycle extends Component {
 
         <div style={{ margin: '1.4rem 0' }}>{this.state.counter}</div>
         <StyledButtonWrapper>
-          <Button buttonText='increase (change state)' onClickCallback={this.increment} />
           <Button
             buttonText='decrease (change state)'
             buttonColor={this.props.color}
             onClickCallback={this.decrease}
           />
+          <Button buttonText='increase (change state)' onClickCallback={this.increment} />
           <Button buttonText='force update (rerender)' onClickCallback={this.reRender} />
         </StyledButtonWrapper>
       </Wrapper>

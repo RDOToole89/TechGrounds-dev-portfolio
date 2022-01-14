@@ -16,15 +16,17 @@
   --mg-bottom-md: 2.8rem;
 }
 
-html {
-  font-size: initial;
+html,
+body {
+  height: 100%;
 }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: var(--color-background-primary);
   color: var(--color-text);
-  max-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 .dark {
@@ -33,5 +35,11 @@ body {
 }
 
 a {
+  color: white;
   text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-text);
 }

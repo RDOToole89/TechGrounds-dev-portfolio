@@ -37,6 +37,9 @@ export default function Navbar() {
         <Link to='/example'>
           <li>useEffect Example</li>
         </Link>
+        <Link to='/storage'>
+          <li>storage</li>
+        </Link>
       </Navlist>
     </StyledNav>
   );
