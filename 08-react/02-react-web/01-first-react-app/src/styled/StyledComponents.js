@@ -39,7 +39,7 @@ export const StyledParagraph = styled.p`
 export const StyledLink = styled.a`
   color: palevioletred;
   text-decoration: none;
-  margin: 1rem;
+  margin: 1rem 0 3.6rem 0;
 
   &:hover {
     color: green;

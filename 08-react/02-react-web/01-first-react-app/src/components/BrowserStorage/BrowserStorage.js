@@ -8,7 +8,7 @@ function BrowserStorage({ storageType }) {
   // access the storage type: local or session
   const currentStorage = window[storageType];
 
-  console.log('currentStorage', currentStorage);
+  // console.log('currentStorage', currentStorage);
 
   // Converts the storage to a string
   const currentStorageString = JSON.stringify(currentStorage);
@@ -57,12 +57,12 @@ function BrowserStorage({ storageType }) {
       <StyledParagraph style={{ '--paragraph-color': '#fff' }}>{storageJson}</StyledParagraph>
       <input
         ref={propertyNameRef}
-        placeholder='property name for local storage'
-        style={{ marginBottom: '2rem', alignSelf: 'flex-start', padding: '.4rem' }}
+        placeholder={`property name for ${storageTypeString}`}
+        style={{ marginBottom: '2rem', padding: '.4rem' }}
         onBlur={handleStorageChange}
       />
       <input
-        placeholder='add to localStorage'
+        placeholder={`add to ${storageTypeString} storage`}
         style={{ marginBottom: '2rem', padding: '.6rem' }}
         onKeyDown={handleInputPress}
       />
@@ -83,9 +83,9 @@ const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%;
-  padding-left: 10rem;
+
   margin-bottom: 2rem;
+  margin-right: 2rem;
 `;
 
 export default BrowserStorage;

@@ -9,7 +9,7 @@ const DisplayBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #3b82f6;
+  background-color: hsl(211, 38%, 20%);
   margin: 2rem 0rem;
   width: 20rem;
   height: 10rem;
