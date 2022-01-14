@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import Button from '../components/Button/Button';
 
-import { Wrapper } from '../styled/StyledComponents';
+import { Title, Wrapper } from '../styled/StyledComponents';
 
 // useRef and Callback Refs examples
 
@@ -50,32 +50,33 @@ export default function Refs() {
 
   return (
     <Wrapper>
+      <Title>References</Title>
       <input
         placeholder='ref with useRef'
         // onChange={() => console.log(inputRef.current.value)}
         ref={inputRef}
       />
-      <div style={{ height: '20px', margin: '20px 0' }}> divider</div>
+      <div style={{ height: '16px', margin: '20px 0' }}> divider</div>
       <Button
         style={{ color: 'grey' }}
         onClickCallback={handleOnClick}
         buttonText='click for ref on click!'
         buttonColor={'lightgreen'}
       />
-      <div style={{ height: '20px', margin: '20px 0' }}> divider</div>
+      <div style={{ height: '12px', margin: '20px 0' }}> divider</div>
       <Button
         onClickCallback={handleOnClickFocus}
         buttonText='Click for ref on focus!'
         buttonColor={'red'}
       />
-      <div style={{ height: '20px', margin: '20px 0' }}> divider</div>
+      <div style={{ height: '16px', margin: '20px 0' }}> divider</div>
       <input
         placeholder='ref with callbackRef'
         ref={(node) => {
           callbackRef = node;
         }}
       />
-      <div style={{ height: '20px', margin: '20px 0' }}> divider</div>
+      <div style={{ height: '16px', margin: '20px 0' }}> divider</div>
       <Button
         onClickCallback={handleOnClickCallbackRef}
         buttonText='Click for ref with callback!'

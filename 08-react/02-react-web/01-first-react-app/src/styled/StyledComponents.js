@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   max-width: 1200px;
   background: var(--color-background-dark, papayawhip);
   margin: 0 auto;
-  padding: 8rem 0rem;
+  padding: 6.4rem 0 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;

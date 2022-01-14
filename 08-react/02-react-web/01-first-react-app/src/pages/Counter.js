@@ -13,13 +13,13 @@ export default class About extends Component {
 
   increase = () => {
     console.log('clicked on increase');
-    console.log(this.state);
+    console.log('state after increase => ', this.state);
     this.setState({ counter: this.state.counter + 1 });
   };
 
   decrease = () => {
     console.log('clicked on decrease');
-    console.log(this.state);
+    console.log('state after decrease => ', this.state);
     this.setState({ counter: this.state.counter - 1 });
   };
 

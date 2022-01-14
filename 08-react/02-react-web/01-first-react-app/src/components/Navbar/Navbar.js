@@ -46,6 +46,8 @@ export default function Navbar() {
 }
 
 export const StyledNav = styled.nav`
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: center;
   width: 100%;

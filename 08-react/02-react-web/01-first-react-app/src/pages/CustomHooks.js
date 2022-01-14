@@ -52,7 +52,7 @@ function CustomHooks() {
         href='https://reactjs.org/docs/hooks-custom.html'>
         Official Documentation (custom) Hooks
       </StyledLink>
-      <StyledParagraph style={paragraphStyles}>
+      <StyledParagraph style={paragraphExtraStyles}>
         A custom Hook is a JavaScript function whose name starts with ”use” and that may call other
         Hooks. Building your own Hooks lets you extract component logic into reusable functions.
       </StyledParagraph>
@@ -73,7 +73,7 @@ function CustomHooks() {
 
 export default CustomHooks;
 
-const paragraphStyles = {
+const paragraphExtraStyles = {
   '--paragraph-color': '#fff',
   padding: '1rem',
   width: '600px',
