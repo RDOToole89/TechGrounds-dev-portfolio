@@ -1,0 +1,14 @@
+
+// the new URL Constructor 
+
+new URL('Path', 'Url')
+
+The new URL Constructor returns a detailed object with information about a URL
+
+Example: 
+https://unpkg.com/nested-test-pkg@1.0.0/src/index.js
+
+To grab only the path without the '/index.js'. You can pass './' as the first argument
+to the constructor.
+
+new URL('./', 'https://unpkg.com/nested-test-pkg@1.0.0/src/index.js')

@@ -1,0 +1,38 @@
+// useRef Hook
+
+The useRef Hook is a function that returns a mutable ref object whose .current property is initialized with the passed argument (initialValue). The returned object will persist for the full lifetime of the component.
+
+const refContainer = useRef(initialValue);
+
+!! Important - use createRef for class components 
+If you create a ref using createRef in a functional component, React will create a new instance of the ref on every re-render instead of keeping it between renders.
+
+// In this example we make a ref to the textInput and call .focus() 
+// By doing so the the .focus will be set on the input when the button is clicked
+Example:
+
+const CustomTextInput = () => {
+  const textInput = useRef();
+
+  focusTextInput = () => textInput.current.focus();
+
+  return (
+    <>
+      <input type="text" ref={textInput} />
+      <button onClick={focusTextInput}>Focus the text input</button>
+    </>
+  );
+}
+
+// In a ref: Equivalent to instance variables in class components. Mutating the .current property won’t cause a re-render.
+
+// Summing up
+
+The useRef Hook lets us create mutable variables inside functional components. There are three main key points that you should keep in mind when using the useRef Hook:
+
+.1) A ref created with useRef will be created only when the component has been mounted and preserved for the full lifecycle.
+
+.2) Refs can be used for accessing DOM nodes or React elements, and for storing mutable variables (like with instance variables in class components).
+
+.3) Updating a ref is a side effect so it should be done only inside a useEffect (or useLayoutEffect) or inside an event handler.
+

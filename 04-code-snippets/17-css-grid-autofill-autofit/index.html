@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>CSS Grid - auto-fit vs auto-fill</title>
+  </head>
+  <body>
+    <h2 style="margin-bottom: 3rem">Auto-fit and auto-fill</h2>
+
+    <h3>Main differences:</h3>
+
+    <div style="padding: 0.8rem 0">
+      <h3>auto-fit</h3>
+      <p>auto-fit will fit the columns you've definedinto the available space</p>
+    </div>
+
+    <div style="padding: 0.8rem 0; margin-bottom: 2rem">
+      <h3>auto-fill</h3>
+      <p>will keep adding in new columns, even if they're empty</p>
+    </div>
+
+    <h2>auto-fill</h2>
+
+    <div class="portfolio portfolio--autofill">
+      <div class="portfolio-card">
+        <img src="https://source.unsplash.com/random" alt="" />
+        <div class="portfolio-card__title">title</div>
+        <p class="portfolio-card__description">Project description</p>
+      </div>
+      <div class="portfolio-card">
+        <img src="https://source.unsplash.com/random" alt="" />
+        <div class="portfolio-card__title">title</div>
+        <p class="portfolio-card__description">Project description</p>
+      </div>
+      <div class="portfolio-card">
+        <img src="https://source.unsplash.com/random" alt="" />
+        <div class="portfolio-card__title">title</div>
+        <p class="portfolio-card__description">Project description</p>
+      </div>
+      <div class="portfolio-card">
+        <img src="https://source.unsplash.com/random" alt="" />
+        <div class="portfolio-card__title">title</div>
+        <p class="portfolio-card__description">Project description</p>
+      </div>
+      <div class="portfolio-card">
+        <img src="https://source.unsplash.com/random" alt="" />
+        <div class="portfolio-card__title">title</div>
+        <p class="portfolio-card__description">Project description</p>
+      </div>
+      <div class="portfolio-card">
+        <img src="https://source.unsplash.com/random" alt="" />
+        <div class="portfolio-card__title">title</div>
+        <p class="portfolio-card__description">Project description</p>
+      </div>
+    </div>
+
+    <h2>auto-fit => bit more usefull</h2>
+
+    <div class="portfolio portfolio--autofit">
+      <div class="portfolio-card">
+        <img src="https://source.unsplash.com/random" alt="" />
+        <div class="portfolio-card__title">title</div>
+        <p class="portfolio-card__description">Project description</p>
+      </div>
+      <div class="portfolio-card">
+        <img src="https://source.unsplash.com/random" alt="" />
+        <div class="portfolio-card__title">title</div>
+        <p class="portfolio-card__description">Project description</p>
+      </div>
+      <!-- <div class="portfolio-card">
+        <img src="https://source.unsplash.com/random" alt="" />
+        <div class="portfolio-card__title">title</div>
+        <p class="portfolio-card__description">Project description</p>
+      </div>
+      <div class="portfolio-card">
+        <img src="https://source.unsplash.com/random" alt="" />
+        <div class="portfolio-card__title">title</div>
+        <p class="portfolio-card__description">Project description</p>
+      </div>
+      <div class="portfolio-card">
+        <img src="https://source.unsplash.com/random" alt="" />
+        <div class="portfolio-card__title">title</div>
+        <p class="portfolio-card__description">Project description</p>
+      </div>
+      <div class="portfolio-card">
+        <img src="https://source.unsplash.com/random" alt="" />
+        <div class="portfolio-card__title">title</div>
+        <p class="portfolio-card__description">Project description</p>
+      </div>
+    </div> -->
+  </body>
+</html>
