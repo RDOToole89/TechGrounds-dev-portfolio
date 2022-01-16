@@ -96,7 +96,7 @@ export default function Refs() {
             <input placeholder='unlocked input' ref={callbackRefExample} />
             <Button
               onClickCallback={handleFocusOnSecondInput}
-              buttonText='Unlock next input'
+              buttonText='focus on upper input'
               buttonColor={'#AA2380'}
             />
           </div>
