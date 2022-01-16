@@ -20,6 +20,9 @@ function Navbar() {
       <Link href='/contact'>
         <button>contact</button>
       </Link>
+      <Link href='/posts'>
+        <button>posts</button>
+      </Link>
     </nav>
   );
 }
