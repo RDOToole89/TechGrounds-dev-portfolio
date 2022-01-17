@@ -1,23 +1,17 @@
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { spacing } from '../../utils/sizes';
-
-interface SubmitButton {
-  style?: {};
-  textStyle?: {};
-  size: number;
-  title?: string;
-  onClickSetCity(): void;
-}
+import Icon from 'react-native-vector-icons/Ionicons';
+import { SubmitButtonInterface } from './submitbutton';
 
 export const SubmitButton = ({
   style = {},
   textStyle = {},
   size = 125,
   ...props
-}: SubmitButton) => {
+}: SubmitButtonInterface) => {
   return (
     <TouchableOpacity style={[styles(size).submitBtn, style]} onPress={props.onClickSetCity}>
-      <Text style={[styles(size).submitText, textStyle]}>{props.title}</Text>
+      <Icon name='search-outline' size={20} color='#000' />
     </TouchableOpacity>
   );
 };

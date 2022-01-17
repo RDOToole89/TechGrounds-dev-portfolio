@@ -1,14 +1,9 @@
 import { View, TextInput, StyleSheet } from 'react-native';
 import { SubmitButton } from '../SubmitButton/SubmitButton';
 import { spacing } from '../../utils/sizes';
+import { SearchBarInterface } from './searchbar';
 
-interface SearchBar {
-  searchInput: string;
-  onChangeSearch(userInput: string): void;
-  onClickSetCity(): void;
-}
-
-export const SearchBar = ({ searchInput, onChangeSearch, onClickSetCity }: SearchBar) => {
+export const SearchBar = ({ searchInput, onChangeSearch, onClickSetCity }: SearchBarInterface) => {
   return (
     <View style={styles.inputContainer}>
       <TextInput
@@ -17,7 +12,7 @@ export const SearchBar = ({ searchInput, onChangeSearch, onClickSetCity }: Searc
         style={styles.searchInput}
         placeholder='enter a city'
       />
-      <SubmitButton title='+' size={40} onClickSetCity={onClickSetCity} />
+      <SubmitButton size={40} onClickSetCity={onClickSetCity} />
     </View>
   );
 };
