@@ -104,7 +104,6 @@ function Todos() {
                 </p>
                 <div
                   style={{ marginLeft: '2rem', border: '1px solid black' }}
-                  key={todo.id + Math.random()}
                   onClick={removeTodo(todo.id)}>
                   X
                 </div>
