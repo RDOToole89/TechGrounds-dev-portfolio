@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import UseEffectExample from './pages/UseEffectExample';
 import Storage from './pages/Storage';
+import Todos from './pages/Todos';
 
 function App() {
   const location = useLocation();
@@ -40,6 +41,7 @@ function App() {
         <Route path='/api' element={<ApiRequest />} />
         <Route path='/example' element={<UseEffectExample />} />
         <Route path='/storage' element={<Storage />} />
+        <Route path='/todos' element={<Todos />} />
       </Routes>
     </div>
   );

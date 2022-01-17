@@ -40,6 +40,9 @@ export default function Navbar() {
         <Link to='/storage'>
           <li>storage</li>
         </Link>
+        <Link to='/todos'>
+          <li>todos</li>
+        </Link>
       </Navlist>
     </StyledNav>
   );
