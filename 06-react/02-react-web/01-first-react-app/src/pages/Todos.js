@@ -29,8 +29,10 @@ function Todos() {
   };
 
   const addTask = (event) => {
+    const newTodo = { id: todos.length + 1, task: userInput, done: false };
+
     if (event.keyCode === 13) {
-      setTodos([...todos, { id: todos.length + 1, task: userInput, done: false }]);
+      setTodos([...todos, newTodo]);
 
       console.log(todos);
     }
