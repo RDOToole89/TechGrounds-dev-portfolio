@@ -4,12 +4,7 @@ import { useEffect, useState } from 'react';
 import { SearchBar } from './src/components/SearchBar/SearchBar';
 import { spacing } from './src/utils/sizes';
 import { CityScreen } from './src/screens/CityScreen';
-
-export interface WeatherData {
-  main?: {};
-  name?: string;
-  weather?: [{}];
-}
+import { WeatherData } from './src/types/app';
 
 export default function App() {
   const [searchInput, setSearchInput] = useState<string>('');
@@ -60,7 +55,7 @@ const styles = StyleSheet.create({
     flex: 1,
     borderWidth: 1,
     padding: spacing.lg,
-    backgroundColor: '#fff',
+    backgroundColor: '#BAE6FD',
     alignItems: 'center',
     justifyContent: 'center',
   },
