@@ -1,6 +1,6 @@
-import { View, Text, TextInput, StyleSheet } from 'react-native';
-import { SubmitButton } from '../components/SubmitButton/SubmitButton';
-import { spacing } from '../utils/sizes';
+import { View, TextInput, StyleSheet } from 'react-native';
+import { SubmitButton } from '../SubmitButton/SubmitButton';
+import { spacing } from '../../utils/sizes';
 
 interface SearchBar {
   searchInput: string;
@@ -21,13 +21,6 @@ export const SearchBar = ({ searchInput, onChangeSearch, onClickSetCity }: Searc
     </View>
   );
 };
-{
-  /* title='+' size={50}
-onPress=
-{() => {
-  addSubject(tmpItem);
-}} */
-}
 
 const styles = StyleSheet.create({
   inputContainer: {

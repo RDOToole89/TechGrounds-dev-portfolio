@@ -1,14 +1,21 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { API_KEY } from '@env';
 import { useEffect, useState } from 'react';
-import { SearchBar } from './src/features/SearchBar';
+import { SearchBar } from './src/components/SearchBar/SearchBar';
 import { spacing } from './src/utils/sizes';
+import { CityScreen } from './src/screens/CityScreen';
+
+export interface WeatherData {
+  main?: {};
+  name?: string;
+  weather?: [{}];
+}
 
 export default function App() {
   const [searchInput, setSearchInput] = useState<string>('');
-  const [city, setCity] = useState<string>('');
-  const [weatherData, setWeatherData] = useState<any>({});
-  const API_URL = `api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
+  const [city, setCity] = useState<string>('amsterdam');
+  const [weatherData, setWeatherData] = useState<WeatherData>({});
+  const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
 
   const onChangeSearch = (userInput: string) => {
     setSearchInput(userInput);
@@ -22,16 +29,16 @@ export default function App() {
     const fetchWeatherData = async () => {
       try {
         const response = await fetch(API_URL);
-        const data = response.json();
+        const data = await response.json();
 
-        console.log(data);
+        setWeatherData(data);
       } catch (error) {
         console.log(error);
       }
     };
 
     fetchWeatherData();
-  }, []);
+  }, [city]);
 
   return (
     <View style={styles.container}>
@@ -42,7 +49,7 @@ export default function App() {
           onClickSetCity={onClickSetCity}
         />
       ) : (
-        <Text>'Weather Forecast'</Text>
+        <CityScreen weatherData={weatherData} />
       )}
     </View>
   );
