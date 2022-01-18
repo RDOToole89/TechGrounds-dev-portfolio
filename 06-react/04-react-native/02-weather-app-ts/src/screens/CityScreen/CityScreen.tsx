@@ -9,7 +9,7 @@ import { spacing } from '../../utils/sizes';
 import { CityDetails } from '../CityDetails/CityDetails';
 
 export const CityScreen = ({ weatherData, resetCity, ...props }: CityScreenInterface) => {
-  const [cityDetailsActive, setCityDetailsActive] = useState(false);
+  const [cityDetailsActive, setCityDetailsActive] = useState(true);
   const { main: temperatures, name: cityName, weather: weatherInfo }: WeatherData = weatherData;
   // @ts-ignore
   // const [{ description }] = weather;

@@ -1,4 +1,5 @@
 import { View, Text, TouchableOpacity } from 'react-native';
+import { Accordion } from '../../components/Accordion/Accordion';
 
 export const CityDetails = ({ resetCity, activateSevenDayForecast }: CityDetailsInterface) => {
   const goBackToHomeScreen = () => {
@@ -12,6 +13,8 @@ export const CityDetails = ({ resetCity, activateSevenDayForecast }: CityDetails
       <TouchableOpacity onPress={goBackToHomeScreen}>
         <Text>Go back to home</Text>
       </TouchableOpacity>
+
+      <Accordion />
     </View>
   );
 };
