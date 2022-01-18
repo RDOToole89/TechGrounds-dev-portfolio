@@ -10,7 +10,12 @@ import { CityDetails } from '../CityDetails/CityDetails';
 
 export const CityScreen = ({ weatherData, resetCity, ...props }: CityScreenInterface) => {
   const [cityDetailsActive, setCityDetailsActive] = useState(true);
-  const { main: temperatures, name: cityName, weather: weatherInfo }: WeatherData = weatherData;
+  const {
+    coord: coordinates,
+    main: temperatures,
+    name: cityName,
+    weather: weatherInfo,
+  }: WeatherData = weatherData;
   // @ts-ignore
   // const [{ description }] = weather;
   // ts(2488) error
@@ -22,7 +27,7 @@ export const CityScreen = ({ weatherData, resetCity, ...props }: CityScreenInter
   if (weatherInfo) {
     description = weatherInfo[0].description;
     icon = weatherInfo[0].icon;
-    console.log('HERE', description, icon);
+    // console.log('HERE', description, icon);
   }
 
   const currentTemperature = temperatures?.temp;
@@ -43,8 +48,8 @@ export const CityScreen = ({ weatherData, resetCity, ...props }: CityScreenInter
     setCityDetailsActive(!cityDetailsActive);
   };
 
-  console.log('temps', temperatures);
-  console.log('weather', weatherInfo);
+  // console.log('temps', temperatures);
+  // console.log('weather', weatherInfo);
 
   return !cityDetailsActive ? (
     <View style={styles.dataContainer}>
@@ -75,7 +80,11 @@ export const CityScreen = ({ weatherData, resetCity, ...props }: CityScreenInter
       </TouchableOpacity>
     </View>
   ) : (
-    <CityDetails resetCity={resetCity} activateSevenDayForecast={activateSevenDayForecast} />
+    <CityDetails
+      resetCity={resetCity}
+      activateSevenDayForecast={activateSevenDayForecast}
+      coordinates={coordinates}
+    />
   );
 };
 

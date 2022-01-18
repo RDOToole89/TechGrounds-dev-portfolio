@@ -1,16 +1,37 @@
 import { useState } from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { formatDate, unixTimeStampCoverter } from '../../utils/computeTime';
+import { daysShort } from '../../utils/days';
 import { spacing } from '../../utils/sizes';
 
-export const Accordion = () => {
-  const [accordionActive, setArcordionActive] = useState(false);
+export const Accordion = ({ weatherDataPerDay }: Accordion) => {
+  const [accordionActive, setArcordionActive] = useState(true);
+  const unixTimeStamp = weatherDataPerDay.dt;
+  const { temp } = weatherDataPerDay;
+
+  const minTemperature = Math.floor(temp.min);
+  const maxTemperature = Math.floor(temp.max);
+  const mornTemperature = Math.floor(temp.morn);
+  const dayTemperature = Math.floor(temp.day);
+  const eveTemperature = Math.floor(temp.eve);
+  const nightTemperature = Math.floor(temp.morn);
+  const lowestTemperature = Math.floor(Math.min(...Object.values(temp)));
+  const highestTemperature = Math.floor(Math.max(...Object.values(temp)));
+  console.log(highestTemperature);
+
+  const currentDate = unixTimeStampCoverter(unixTimeStamp);
+  const day = daysShort[currentDate.getDay()];
+  const formattedDate = formatDate(currentDate.toISOString());
 
   return (
     <View style={{ width: 350 }}>
       <View style={styles.accordionWrapper}>
-        <Text>24-11-2020</Text>
-        <Text>5/8 °C</Text>
+        <Text>{day}</Text>
+        <Text>{formattedDate}</Text>
+        <Text>
+          {lowestTemperature} / {highestTemperature} °C
+        </Text>
         <Image
           style={styles.tinyLogo}
           source={{ uri: `http://openweathermap.org/img/wn/10d@2x.png` }}
@@ -23,23 +44,31 @@ export const Accordion = () => {
         />
       </View>
       {accordionActive && (
-        <View style={{ flexDirection: 'row', backgroundColor: '#fff', padding: spacing.md }}>
+        <View style={{ flexDirection: 'row', backgroundColor: '#fff', padding: spacing.sm }}>
           <Text style={{ alignSelf: 'flex-end', marginRight: spacing.md }}>Temp</Text>
           <View style={styles.accordionTimeOfDay}>
             <Text>Morning</Text>
-            <Text>5/8 °C</Text>
+            <Text>
+              {mornTemperature} / {highestTemperature} °C
+            </Text>
           </View>
           <View style={styles.accordionTimeOfDay}>
-            <Text>Morning</Text>
-            <Text>5/8 °C</Text>
+            <Text>Afternoon</Text>
+            <Text>
+              {dayTemperature} / {highestTemperature} °C
+            </Text>
           </View>
           <View style={styles.accordionTimeOfDay}>
-            <Text>Morning</Text>
-            <Text>5/8 °C</Text>
+            <Text>Evening</Text>
+            <Text>
+              {eveTemperature} / {highestTemperature} °C
+            </Text>
           </View>
           <View style={styles.accordionTimeOfDay}>
-            <Text>Morning</Text>
-            <Text>5/8 °C</Text>
+            <Text>Night</Text>
+            <Text>
+              {nightTemperature} / {highestTemperature} °C
+            </Text>
           </View>
         </View>
       )}
