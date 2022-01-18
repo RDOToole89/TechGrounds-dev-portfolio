@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     padding: spacing.md,
+    backgroundColor: 'rgba(255,255,255,0.6)',
   },
 
   searchInput: {
