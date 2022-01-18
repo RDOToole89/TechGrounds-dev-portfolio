@@ -9,6 +9,6 @@ export const computeTime = (cityName: string, offsetUTC: any) => {
   const newDateInstance = new Date(utcTime + 3600000 * offsetUTC);
 
   // in this step you have to return time as a string
-  console.log('Local time of ' + cityName + ' is ' + newDateInstance.toLocaleString());
+  // console.log('Local time of ' + cityName + ' is ' + newDateInstance.toLocaleString());
   return newDateInstance;
 };

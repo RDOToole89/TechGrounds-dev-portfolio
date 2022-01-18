@@ -6,12 +6,13 @@ import { spacing } from './src/utils/sizes';
 import { CityScreen } from './src/screens/CityScreen/CityScreen';
 import { WeatherData } from './src/types/app';
 import { LinearGradient } from 'expo-linear-gradient';
+import { buildCurrentWeatherUrl } from './src/services/weatherApi';
 
 export default function App() {
   const [searchInput, setSearchInput] = useState<string>('');
   const [city, setCity] = useState<string>('amsterdam');
   const [weatherData, setWeatherData] = useState<WeatherData>({});
-  const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+  const API_URL = buildCurrentWeatherUrl(city, API_KEY, 'metric');
 
   const onChangeSearch = (userInput: string) => {
     setSearchInput(userInput);
