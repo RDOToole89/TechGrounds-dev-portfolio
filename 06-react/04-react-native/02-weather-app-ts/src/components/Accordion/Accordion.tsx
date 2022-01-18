@@ -10,15 +10,12 @@ export const Accordion = ({ weatherDataPerDay }: Accordion) => {
   const unixTimeStamp = weatherDataPerDay.dt;
   const { temp } = weatherDataPerDay;
 
-  const minTemperature = Math.floor(temp.min);
-  const maxTemperature = Math.floor(temp.max);
   const mornTemperature = Math.floor(temp.morn);
   const dayTemperature = Math.floor(temp.day);
   const eveTemperature = Math.floor(temp.eve);
   const nightTemperature = Math.floor(temp.morn);
   const lowestTemperature = Math.floor(Math.min(...Object.values(temp)));
   const highestTemperature = Math.floor(Math.max(...Object.values(temp)));
-  console.log(highestTemperature);
 
   const currentDate = unixTimeStampCoverter(unixTimeStamp);
   const day = daysShort[currentDate.getDay()];

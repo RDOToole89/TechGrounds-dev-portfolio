@@ -8,7 +8,7 @@ import { computeTime } from '../../utils/computeTime';
 import { spacing } from '../../utils/sizes';
 import { CityDetails } from '../CityDetails/CityDetails';
 
-export const CityScreen = ({ weatherData, resetCity, ...props }: CityScreenInterface) => {
+export const CityScreen = ({ weatherData, resetCity }: CityScreenInterface) => {
   const [cityDetailsActive, setCityDetailsActive] = useState(true);
   const {
     coord: coordinates,
@@ -27,7 +27,6 @@ export const CityScreen = ({ weatherData, resetCity, ...props }: CityScreenInter
   if (weatherInfo) {
     description = weatherInfo[0].description;
     icon = weatherInfo[0].icon;
-    // console.log('HERE', description, icon);
   }
 
   const currentTemperature = temperatures?.temp;
@@ -35,8 +34,6 @@ export const CityScreen = ({ weatherData, resetCity, ...props }: CityScreenInter
   const minTemperature = temperatures?.temp_min;
   const humidity = temperatures?.humidity;
   const weatherString = { uri: `http://openweathermap.org/img/wn/${icon}@2x.png` };
-  // const description = weather;
-  // console.log(description);
 
   const currentDate = computeTime('Boston', '-5');
 
@@ -47,9 +44,6 @@ export const CityScreen = ({ weatherData, resetCity, ...props }: CityScreenInter
   const activateSevenDayForecast = () => {
     setCityDetailsActive(!cityDetailsActive);
   };
-
-  // console.log('temps', temperatures);
-  // console.log('weather', weatherInfo);
 
   return !cityDetailsActive ? (
     <View style={styles.dataContainer}>
@@ -84,6 +78,7 @@ export const CityScreen = ({ weatherData, resetCity, ...props }: CityScreenInter
       resetCity={resetCity}
       activateSevenDayForecast={activateSevenDayForecast}
       coordinates={coordinates}
+      cityName={cityName}
     />
   );
 };

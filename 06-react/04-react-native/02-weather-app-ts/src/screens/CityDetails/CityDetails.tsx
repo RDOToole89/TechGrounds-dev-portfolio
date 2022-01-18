@@ -9,6 +9,7 @@ export const CityDetails = ({
   resetCity,
   activateSevenDayForecast,
   coordinates,
+  ...props
 }: CityDetailsInterface) => {
   const [weatherData, setWeatherData] = useState<any>(null);
   let API_URL: string;
@@ -50,8 +51,9 @@ export const CityDetails = ({
   };
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={styles.headingPrimary}>7 DAY FORECAST</Text>
+    <View style={{ flex: 1, justifyContent: 'space-between' }}>
+      <Text style={styles.headingPrimary}>{props.cityName}</Text>
+      <Text style={styles.headingSecondary}>7 DAY FORECAST</Text>
       {weatherData &&
         weatherData?.daily.map((day: WeatherDataPerDay, i: number) => {
           return <Accordion key={day.dt + Math.random() + i} weatherDataPerDay={day} />;
@@ -68,6 +70,15 @@ const styles = StyleSheet.create({
     fontSize: fontSizes.lg,
     fontWeight: 'bold',
     marginBottom: spacing.lg,
+    textTransform: 'uppercase',
+    letterSpacing: 3,
+  },
+  headingSecondary: {
+    fontSize: fontSizes.md,
+    fontWeight: 'bold',
+    color: '#FFF',
+    marginBottom: spacing.lg,
+    letterSpacing: 3,
   },
   link: {
     fontSize: fontSizes.md,
