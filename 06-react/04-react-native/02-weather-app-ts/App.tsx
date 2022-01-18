@@ -3,12 +3,13 @@ import { API_KEY } from '@env';
 import { useEffect, useState } from 'react';
 import { SearchBar } from './src/components/SearchBar/SearchBar';
 import { spacing } from './src/utils/sizes';
-import { CityScreen } from './src/screens/CityScreen';
+import { CityScreen } from './src/screens/CityScreen/CityScreen';
 import { WeatherData } from './src/types/app';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function App() {
   const [searchInput, setSearchInput] = useState<string>('');
-  const [city, setCity] = useState<string>('');
+  const [city, setCity] = useState<string>('amsterdam');
   const [weatherData, setWeatherData] = useState<WeatherData>({});
   const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
 
@@ -18,6 +19,10 @@ export default function App() {
 
   const onClickSetCity = (): void => {
     setCity(searchInput);
+  };
+
+  const resetCity = (): void => {
+    setCity('');
   };
 
   useEffect(() => {
@@ -37,6 +42,12 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <LinearGradient
+        // Background Linear Gradient
+        colors={['#4c669f', '#3b5998', '#192f6a']}
+        style={styles.background}
+      />
+
       {!city ? (
         <SearchBar
           searchInput={searchInput}
@@ -44,7 +55,7 @@ export default function App() {
           onClickSetCity={onClickSetCity}
         />
       ) : (
-        <CityScreen weatherData={weatherData} />
+        <CityScreen weatherData={weatherData} resetCity={resetCity} />
       )}
     </View>
   );
@@ -58,5 +69,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#BAE6FD',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: '100%',
   },
 });

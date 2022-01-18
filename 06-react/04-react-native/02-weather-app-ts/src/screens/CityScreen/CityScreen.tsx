@@ -1,14 +1,16 @@
-import { View, Text, StyleSheet } from 'react-native';
-import { WeatherData } from '../types/app';
-import { digitToString } from '../utils/toDigit';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { WeatherData } from '../../types/app';
+import { digitToString } from '../../utils/toDigit';
 import { CityScreenInterface } from './cityscreen';
-import { days } from '../utils/days';
-import { computeTime } from '../utils/computeTime';
+import { days } from '../../utils/days';
+import { computeTime } from '../../utils/computeTime';
+import { spacing } from '../../utils/sizes';
 
-export const CityScreen = ({ weatherData, ...props }: CityScreenInterface) => {
+export const CityScreen = ({ weatherData, resetCity, ...props }: CityScreenInterface) => {
   const { main: temperatures, name: cityName, weather }: WeatherData = weatherData;
-  // @ts-ignore  // ts(2488) error
+  //@ts-ignore
   // const [{ desciption }] = weather;
+  // ts(2488) error
 
   // const description = weather[0]?.description;
   const currentTemperature = temperatures?.temp;
@@ -26,8 +28,8 @@ export const CityScreen = ({ weatherData, ...props }: CityScreenInterface) => {
   // console.log('weather', weather);
 
   return (
-    <View>
-      <View>
+    <View style={styles.dataContainer}>
+      <View style={styles.mgBottomContainer}>
         <Text>{cityName}</Text>
         <Text>
           {dayOfTheWeek} {currentHours}:{currentMinutes}
@@ -37,13 +39,27 @@ export const CityScreen = ({ weatherData, ...props }: CityScreenInterface) => {
         {/* <Text>{description}</Text> */}
         <Text>{currentTemperature} °C</Text>
       </View>
-      <View>
+      <View style={styles.mgBottomContainer}>
         <Text>min. temp {minTemperature} °C</Text>
         <Text>max. temp {maxTemperature} °C</Text>
         <Text>humidity {humidity}</Text>
       </View>
+      <TouchableOpacity onPress={resetCity}>
+        <Text>Go back to home</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  dataContainer: {
+    flex: 0.2,
+    width: '80%',
+    justifyContent: 'center',
+    backgroundColor: '#BAE6FD',
+    padding: spacing.lg,
+  },
+  mgBottomContainer: {
+    marginBottom: spacing.md,
+  },
+});
