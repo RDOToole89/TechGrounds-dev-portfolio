@@ -1,6 +1,6 @@
 import { View, TextInput, StyleSheet } from 'react-native';
 import { SubmitButton } from '../SubmitButton/SubmitButton';
-import { spacing } from '../../utils/sizes';
+import { spacing } from '../../constants/sizes';
 import { SearchBarInterface } from './searchbar';
 
 export const SearchBar = ({ searchInput, onChangeSearch, onClickSetCity }: SearchBarInterface) => {

@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { formatDate, unixTimeStampCoverter } from '../../utils/computeTime';
 import { daysShort } from '../../utils/days';
-import { fontSizes, spacing } from '../../utils/sizes';
+import { fontSizes, spacing } from '../../constants/sizes';
 
 export const Accordion = ({ weatherDataPerDay }: Accordion) => {
   const [accordionActive, setArcordionActive] = useState(true);

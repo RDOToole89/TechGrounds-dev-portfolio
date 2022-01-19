@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Accordion } from '../../components/Accordion/Accordion';
 import { buildOneCallForecastUrl } from '../../services/weatherApi';
-import { fontSizes, spacing } from '../../utils/sizes';
+import { fontSizes, spacing } from '../../constants/sizes';
 
 export const CityDetails = ({
   resetCity,

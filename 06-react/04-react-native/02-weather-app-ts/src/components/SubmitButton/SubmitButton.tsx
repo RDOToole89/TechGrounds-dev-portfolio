@@ -1,5 +1,5 @@
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { spacing } from '../../utils/sizes';
+import { spacing } from '../../constants/sizes';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { SubmitButtonInterface } from './submitbutton';
 

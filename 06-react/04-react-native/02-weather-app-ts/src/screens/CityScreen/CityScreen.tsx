@@ -5,8 +5,9 @@ import { digitToString } from '../../utils/toDigit';
 import { CityScreenInterface } from './cityscreen';
 import { days } from '../../utils/days';
 import { computeTime } from '../../utils/computeTime';
-import { spacing } from '../../utils/sizes';
+import { fontSizes, spacing } from '../../constants/sizes';
 import { CityDetails } from '../CityDetails/CityDetails';
+import { generateBoxShadowStyle } from '../../utils/boxShadow';
 
 export const CityScreen = ({ weatherData, resetCity }: CityScreenInterface) => {
   const [cityDetailsActive, setCityDetailsActive] = useState(false);
@@ -37,28 +38,41 @@ export const CityScreen = ({ weatherData, resetCity }: CityScreenInterface) => {
   };
 
   return !cityDetailsActive ? (
-    <View style={styles.dataContainer}>
+    <View style={[styles.dataContainer, styles.boxShadow]}>
       <View style={styles.mgBottomContainer}>
-        <Text>{cityName}</Text>
-        <Text>
-          {dayOfTheWeek} {currentHours}:{currentMinutes}
-        </Text>
+        <View style={{ alignSelf: 'flex-start' }}>
+          <Text
+            style={{
+              fontSize: fontSizes.md,
+              fontWeight: '600',
+              letterSpacing: 1.2,
+              textTransform: 'uppercase',
+              paddingTop: spacing.xl,
+              marginBottom: spacing.sm,
+            }}>
+            {cityName}
+          </Text>
+          <Text>
+            {dayOfTheWeek} {currentHours}:{currentMinutes}
+          </Text>
+        </View>
+        <View>
+          <Image style={styles.tinyLogo} source={weatherString} />
+          <Text>{description}</Text>
+          <Text>{currentTemperature} °C</Text>
+        </View>
       </View>
-      <View>
-        <Image style={styles.tinyLogo} source={weatherString} />
-        <Text>{description}</Text>
-        <Text>{currentTemperature} °C</Text>
-      </View>
+
       <View style={styles.mgBottomContainer}>
         <Text>min. temp {minTemperature} °C</Text>
         <Text>max. temp {maxTemperature} °C</Text>
         <Text>humidity {humidity}</Text>
       </View>
       <TouchableOpacity style={{ marginBottom: spacing.md }} onPress={activateSevenDayForecast}>
-        <Text>7 Day Forecast</Text>
+        <Text style={styles.link}>7 Day Forecast</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={resetCity}>
-        <Text>Go back to home</Text>
+        <Text style={styles.link}>Go back to home</Text>
       </TouchableOpacity>
     </View>
   ) : (
@@ -73,17 +87,40 @@ export const CityScreen = ({ weatherData, resetCity }: CityScreenInterface) => {
 
 const styles = StyleSheet.create({
   dataContainer: {
-    flex: 0.4,
     width: '80%',
     justifyContent: 'center',
-    backgroundColor: '#BAE6FD',
-    padding: spacing.lg,
+    backgroundColor: 'hsla(201, 94%, 88%, .2)',
+    padding: spacing.xl,
+    paddingTop: spacing.md,
+    borderRadius: 10,
   },
   mgBottomContainer: {
-    marginBottom: spacing.md,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: spacing.xl,
   },
+  boxShadow: generateBoxShadowStyle(
+    0,
+    2,
+    'hsla(200, 100%, 10%, 0.2)',
+    0.27,
+    4.65,
+    1,
+    'hsla(200, 100%, 10%, 0.2)'
+  ),
   tinyLogo: {
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
+  },
+  link: {
+    textTransform: 'uppercase',
+    fontFamily: 'ubuntu',
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm,
+    backgroundColor: 'hsla(201, 94%, 88%, .4)',
+    fontWeight: '500',
+    color: '#fff',
+    borderRadius: 10,
   },
 });

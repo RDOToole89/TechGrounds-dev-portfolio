@@ -1,38 +1,40 @@
 import { Platform } from 'react-native';
 
-interface GenerateBoxShadowStyles {
-  boxShadow: {
-    shadowColor?: string | null;
-    shadowOffset?: { width?: number; height?: number };
-    shadowOpacity?: number;
-    shadowRadius?: number;
-    elevation?: number;
-  };
+interface ShadowStylesInterface {
+  shadowColor?: string | null;
+  shadowOffset?: { width?: number; height?: number };
+  shadowOpacity?: number;
+  shadowRadius?: number;
+  elevation?: number;
 }
 
-const generateBoxShadowStyle = (
-  xOffset?: number,
-  yOffset?: number,
-  shadowColorIos?: string,
-  shadowOpacity?: number,
-  shadowRadius?: number,
-  elevation?: number,
-  shadowColorAndroid?: string
+export const generateBoxShadowStyle = (
+  xOffset: number = 0,
+  yOffset: number = 2,
+  shadowColorIos: string = '#000',
+  shadowOpacity: number = 0.23,
+  shadowRadius: number = 2.62,
+  elevation: number = 4,
+  shadowColorAndroid: string = '#000'
 ) => {
-  const styles: GenerateBoxShadowStyles = { boxShadow: { shadowColor: null } };
+  let styles = {
+    shadowColor: shadowColorAndroid,
+    shadowOffset: { width: xOffset, height: yOffset },
+    shadowOpacity,
+    shadowRadius,
+    elevation,
+  };
 
   if (Platform.OS === 'ios') {
-    styles.boxShadow = {
-      shadowColor: shadowColorIos,
-      shadowOffset: { width: xOffset, height: yOffset },
-      shadowOpacity,
-      shadowRadius,
-    };
-  } else if (Platform.OS === 'android') {
-    styles.boxShadow = {
-      elevation,
-      shadowColor: shadowColorAndroid,
-    };
+    styles.shadowColor = shadowColorIos;
+    styles.shadowOffset = { width: xOffset, height: yOffset };
+    styles.shadowOpacity = shadowOpacity;
+    styles.shadowRadius = shadowRadius;
+  }
+
+  if (Platform.OS === 'android') {
+    styles.elevation = elevation;
+    styles.shadowColor = shadowColorAndroid;
   }
 
   return styles;
