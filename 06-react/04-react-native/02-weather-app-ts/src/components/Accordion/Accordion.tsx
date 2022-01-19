@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { formatDate, unixTimeStampCoverter } from '../../utils/computeTime';
 import { daysShort } from '../../utils/days';
-import { spacing } from '../../utils/sizes';
+import { fontSizes, spacing } from '../../utils/sizes';
 
 export const Accordion = ({ weatherDataPerDay }: Accordion) => {
   const [accordionActive, setArcordionActive] = useState(true);
@@ -22,11 +22,11 @@ export const Accordion = ({ weatherDataPerDay }: Accordion) => {
   const formattedDate = formatDate(currentDate.toISOString());
 
   return (
-    <View style={{ width: 350 }}>
+    <View>
       <View style={styles.accordionWrapper}>
-        <Text>{day}</Text>
-        <Text>{formattedDate}</Text>
-        <Text>
+        <Text style={[styles.textSm, styles.textBold]}>{day}</Text>
+        <Text style={[styles.textSm, styles.textBold]}>{formattedDate}</Text>
+        <Text style={[styles.textSm, styles.textBold]}>
           {lowestTemperature} / {highestTemperature} °C
         </Text>
         <Image
@@ -42,28 +42,28 @@ export const Accordion = ({ weatherDataPerDay }: Accordion) => {
       </View>
       {accordionActive && (
         <View style={{ flexDirection: 'row', backgroundColor: '#fff', padding: spacing.sm }}>
-          <Text style={{ alignSelf: 'flex-end', marginRight: spacing.md }}>Temp</Text>
+          <Text style={[styles.textSm, styles.tempText]}>Temp</Text>
           <View style={styles.accordionTimeOfDay}>
-            <Text>Morning</Text>
-            <Text>
+            <Text style={styles.textSm}>Morning</Text>
+            <Text style={styles.textSm}>
               {mornTemperature} / {highestTemperature} °C
             </Text>
           </View>
           <View style={styles.accordionTimeOfDay}>
-            <Text>Afternoon</Text>
-            <Text>
+            <Text style={styles.textSm}>Afternoon</Text>
+            <Text style={styles.textSm}>
               {dayTemperature} / {highestTemperature} °C
             </Text>
           </View>
           <View style={styles.accordionTimeOfDay}>
-            <Text>Evening</Text>
-            <Text>
+            <Text style={styles.textSm}>Evening</Text>
+            <Text style={styles.textSm}>
               {eveTemperature} / {highestTemperature} °C
             </Text>
           </View>
           <View style={styles.accordionTimeOfDay}>
-            <Text>Night</Text>
-            <Text>
+            <Text style={styles.textSm}>Night</Text>
+            <Text style={styles.textSm}>
               {nightTemperature} / {highestTemperature} °C
             </Text>
           </View>
@@ -82,6 +82,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'grey',
   },
+  tempText: { alignSelf: 'flex-end', padding: spacing.sm },
+  textSm: {
+    fontSize: fontSizes.sm,
+  },
+  textBold: { fontWeight: '600' },
   tinyLogo: {
     width: 30,
     height: 30,

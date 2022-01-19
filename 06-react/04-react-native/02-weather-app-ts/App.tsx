@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { API_KEY } from '@env';
 import { useEffect, useState } from 'react';
 import { SearchBar } from './src/components/SearchBar/SearchBar';
@@ -10,7 +10,7 @@ import { buildCurrentWeatherUrl } from './src/services/weatherApi';
 
 export default function App() {
   const [searchInput, setSearchInput] = useState<string>('');
-  const [city, setCity] = useState<string>('amsterdam');
+  const [city, setCity] = useState<string>('');
   const [weatherData, setWeatherData] = useState<WeatherData>({});
   const API_URL = buildCurrentWeatherUrl(city, API_KEY, 'metric');
 
@@ -42,23 +42,35 @@ export default function App() {
   }, [city]);
 
   return (
-    <View style={styles.container}>
-      <LinearGradient
-        // Background Linear Gradient
-        colors={['#4c669f', '#3b5998', '#192f6a']}
-        style={styles.background}
-      />
-
-      {!city ? (
-        <SearchBar
-          searchInput={searchInput}
-          onChangeSearch={onChangeSearch}
-          onClickSetCity={onClickSetCity}
+    <>
+      <View style={{ height: 60, backgroundColor: 'hsla(200, 100%, 26%, 1)' }}></View>
+      <View style={styles.container}>
+        <LinearGradient
+          // Background Linear Gradient
+          colors={['#3286a7', '#b1dae1', '#d8eeee']}
+          style={styles.background}
         />
-      ) : (
-        <CityScreen weatherData={weatherData} resetCity={resetCity} />
-      )}
-    </View>
+
+        {!city ? (
+          <>
+            <View style={{ flex: 1, justifyContent: 'center' }}>
+              <Image
+                style={{ width: 150, height: 150 }}
+                source={require('./assets/cloud-sun.png')}
+              />
+            </View>
+            <SearchBar
+              searchInput={searchInput}
+              onChangeSearch={onChangeSearch}
+              onClickSetCity={onClickSetCity}
+            />
+          </>
+        ) : (
+          <CityScreen weatherData={weatherData} resetCity={resetCity} />
+        )}
+      </View>
+      <View style={{ height: 60, backgroundColor: 'hsla(200, 100%, 26%, .7)' }}></View>
+    </>
   );
 }
 

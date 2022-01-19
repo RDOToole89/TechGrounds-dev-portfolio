@@ -11,7 +11,7 @@ export const SubmitButton = ({
 }: SubmitButtonInterface) => {
   return (
     <TouchableOpacity style={[styles(size).submitBtn, style]} onPress={props.onClickSetCity}>
-      <Icon name='search-outline' size={20} color='#000' />
+      <Icon name='search-outline' size={20} color='#fff' />
     </TouchableOpacity>
   );
 };
@@ -19,9 +19,9 @@ export const SubmitButton = ({
 const styles = (size: number) =>
   StyleSheet.create({
     submitBtn: {
-      borderRadius: size / 6,
-      padding: spacing.md,
-      borderWidth: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: spacing.sm,
     },
     submitText: {
       color: '#000',

@@ -9,8 +9,8 @@ export const SearchBar = ({ searchInput, onChangeSearch, onClickSetCity }: Searc
       <TextInput
         onChangeText={(userInput) => onChangeSearch(userInput)}
         value={searchInput}
+        placeholder='Enter a City'
         style={styles.searchInput}
-        placeholder='enter a city'
       />
       <SubmitButton size={40} onClickSetCity={onClickSetCity} />
     </View>
@@ -21,15 +21,19 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 1,
-    padding: spacing.md,
-    backgroundColor: 'rgba(255,255,255,0.6)',
+    justifyContent: 'center',
+    borderRadius: 50,
+    paddingVertical: spacing.sm,
+    paddingLeft: spacing.xxl,
+    paddingRight: spacing.md,
+    backgroundColor: 'hsla(200, 51%, 41%, .5)',
+    marginBottom: 200,
   },
 
   searchInput: {
-    flex: 1,
     padding: spacing.md,
-    borderWidth: 1,
-    marginRight: spacing.lg,
+    color: '#fff',
+    fontWeight: '600',
+    letterSpacing: 1,
   },
 });

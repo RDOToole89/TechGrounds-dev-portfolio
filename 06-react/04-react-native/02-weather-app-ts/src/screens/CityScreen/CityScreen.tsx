@@ -9,25 +9,16 @@ import { spacing } from '../../utils/sizes';
 import { CityDetails } from '../CityDetails/CityDetails';
 
 export const CityScreen = ({ weatherData, resetCity }: CityScreenInterface) => {
-  const [cityDetailsActive, setCityDetailsActive] = useState(true);
+  const [cityDetailsActive, setCityDetailsActive] = useState(false);
   const {
     coord: coordinates,
     main: temperatures,
     name: cityName,
     weather: weatherInfo,
   }: WeatherData = weatherData;
+
   // @ts-ignore
-  // const [{ description }] = weather;
-  // ts(2488) error
-  // console.log('WEATHER', typeof weatherInfo, weatherInfo);
-
-  let description;
-  let icon;
-
-  if (weatherInfo) {
-    description = weatherInfo[0].description;
-    icon = weatherInfo[0].icon;
-  }
+  const { description, icon } = weatherInfo ? weatherInfo[0] : '';
 
   const currentTemperature = temperatures?.temp;
   const maxTemperature = temperatures?.temp_max;
@@ -55,10 +46,7 @@ export const CityScreen = ({ weatherData, resetCity }: CityScreenInterface) => {
       </View>
       <View>
         <Image style={styles.tinyLogo} source={weatherString} />
-        <Text>
-          {'Description Here!'}
-          {description}
-        </Text>
+        <Text>{description}</Text>
         <Text>{currentTemperature} °C</Text>
       </View>
       <View style={styles.mgBottomContainer}>
