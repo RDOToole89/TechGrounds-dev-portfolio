@@ -1,4 +1,4 @@
-export const computeTime = (cityName: string, offsetUTC: any) => {
+export const computeTime = (cityName: string, offsetUTC: number | string) => {
   // create new instance of Date
   const currentDate = new Date();
 
@@ -6,7 +6,7 @@ export const computeTime = (cityName: string, offsetUTC: any) => {
   const utcTime = currentDate.getTime() + currentDate.getTimezoneOffset() * 60000;
 
   // create instance of several cities
-  const newDateInstance = new Date(utcTime + 3600000 * offsetUTC);
+  const newDateInstance = new Date(utcTime + 3600000 * Number(offsetUTC));
 
   // in this step you have to return time as a string
   // console.log('Local time of ' + cityName + ' is ' + newDateInstance.toLocaleString());

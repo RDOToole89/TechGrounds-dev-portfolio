@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { WeatherData } from '../../types/app';
 import { digitToString } from '../../utils/toDigit';
@@ -9,7 +9,7 @@ import { fontSizes, spacing } from '../../constants/sizes';
 import { CityDetails } from '../CityDetails/CityDetails';
 import { generateBoxShadowStyle } from '../../utils/boxShadow';
 
-export const CityScreen = ({ weatherData, resetCity }: CityScreenInterface) => {
+export const CityScreen = ({ weatherData, resetCity, handleTempGradient }: CityScreenInterface) => {
   const [cityDetailsActive, setCityDetailsActive] = useState(false);
   const {
     coord: coordinates,
@@ -18,20 +18,30 @@ export const CityScreen = ({ weatherData, resetCity }: CityScreenInterface) => {
     weather: weatherInfo,
   }: WeatherData = weatherData;
 
-  // @ts-ignore
-  const { description, icon } = weatherInfo ? weatherInfo[0] : '';
+  let description;
+  let icon;
 
-  const currentTemperature = temperatures?.temp;
-  const maxTemperature = temperatures?.temp_max;
-  const minTemperature = temperatures?.temp_min;
-  const humidity = temperatures?.humidity;
-  const weatherString = { uri: `http://openweathermap.org/img/wn/${icon}@2x.png` };
+  if (weatherInfo) {
+    description = weatherInfo[0].description;
+    icon = weatherInfo[0].icon;
+  }
 
   const currentDate = computeTime('Boston', '-5');
-
   const dayOfTheWeek = days[currentDate.getDay()];
   const currentMinutes = digitToString(currentDate.getMinutes());
   const currentHours = digitToString(currentDate.getHours());
+
+  const maxTemperature = temperatures?.temp_max;
+  const minTemperature = temperatures?.temp_min;
+  const humidity = temperatures?.humidity;
+  const weatherString = { uri: icon && `http://openweathermap.org/img/wn/${icon}@2x.png` };
+  const currentTemperature = temperatures?.temp!;
+
+  useEffect(() => {
+    currentTemperature && currentTemperature > 20
+      ? handleTempGradient!(true)
+      : handleTempGradient!(false);
+  }, []);
 
   const activateSevenDayForecast = () => {
     setCityDetailsActive(!cityDetailsActive);
@@ -41,17 +51,7 @@ export const CityScreen = ({ weatherData, resetCity }: CityScreenInterface) => {
     <View style={[styles.dataContainer, styles.boxShadow]}>
       <View style={styles.mgBottomContainer}>
         <View style={{ alignSelf: 'flex-start' }}>
-          <Text
-            style={{
-              fontSize: fontSizes.md,
-              fontWeight: '600',
-              letterSpacing: 1.2,
-              textTransform: 'uppercase',
-              paddingTop: spacing.xl,
-              marginBottom: spacing.sm,
-            }}>
-            {cityName}
-          </Text>
+          <Text style={styles.headerMedium}>{cityName}</Text>
           <Text>
             {dayOfTheWeek} {currentHours}:{currentMinutes}
           </Text>
@@ -96,9 +96,17 @@ const styles = StyleSheet.create({
   },
   mgBottomContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    // alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: spacing.xl,
+  },
+  headerMedium: {
+    fontSize: fontSizes.md,
+    fontWeight: '600',
+    letterSpacing: 1.2,
+    textTransform: 'uppercase',
+    paddingTop: spacing.xl,
+    marginBottom: spacing.sm,
   },
   boxShadow: generateBoxShadowStyle(
     0,
@@ -117,10 +125,17 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     fontFamily: 'ubuntu',
     paddingHorizontal: spacing.md,
-    paddingVertical: spacing.sm,
+    paddingVertical: spacing.xsm,
     backgroundColor: 'hsla(201, 94%, 88%, .4)',
     fontWeight: '500',
     color: '#fff',
     borderRadius: 10,
+  },
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: '100%',
   },
 });

@@ -1,7 +1,7 @@
 export interface SubmitButtonInterface {
   style?: {};
   textStyle?: {};
-  size: number;
+  size?: number;
   title?: string;
-  onClickSetCity(): void;
+  onClickSetCity?(): void;
 }

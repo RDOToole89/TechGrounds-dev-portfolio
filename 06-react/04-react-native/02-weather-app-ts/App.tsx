@@ -1,21 +1,26 @@
 import { StyleSheet, Text, View, Image, Platform } from 'react-native';
-import { fonts } from './src/constants/fonts';
 import { API_KEY } from '@env';
 import { useEffect, useState } from 'react';
+
+import { TopBar } from './src/components/TopBar/TopBar';
 import { SearchBar } from './src/components/SearchBar/SearchBar';
+
 import { fontSizes, spacing } from './src/constants/sizes';
 import { CityScreen } from './src/screens/CityScreen/CityScreen';
 import { WeatherData } from './src/types/app';
 import { LinearGradient } from 'expo-linear-gradient';
 import { buildCurrentWeatherUrl } from './src/services/weatherApi';
+import { Footer } from './src/components/FooterBar/FooterBar';
 
 export default function App() {
   const [searchInput, setSearchInput] = useState<string>('');
   const [city, setCity] = useState<string>('');
   const [weatherData, setWeatherData] = useState<WeatherData>({});
+  const [viewCentered, setViewCentered] = useState<Boolean>(true);
+  const [tempHigh, setTempHigh] = useState<Boolean>(false);
   const API_URL = buildCurrentWeatherUrl(city, API_KEY, 'metric');
 
-  const onChangeSearch = (userInput: string) => {
+  const onChangeSearch = (userInput: string): void => {
     setSearchInput(userInput);
   };
 
@@ -25,31 +30,44 @@ export default function App() {
 
   const resetCity = (): void => {
     setCity('');
+    setSearchInput('');
+  };
+
+  const handleTempGradient = (bool: Boolean): void => {
+    setTempHigh(bool);
   };
 
   useEffect(() => {
-    const fetchWeatherData = async () => {
-      try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
+    console.log('Mounted APP!');
 
-        setWeatherData(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+    if (city) {
+      const fetchWeatherData = async () => {
+        try {
+          const response = await fetch(API_URL);
+          const data = await response.json();
 
-    fetchWeatherData();
+          setWeatherData(data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      fetchWeatherData();
+    }
   }, [city]);
 
   return (
     <>
-      <View style={styles.navWrapper}>
-        <Text style={styles.navTitle}>Open Weather</Text>
-        <Image style={styles.navLogo} source={require('./assets/paper-plane2.png')} />
-      </View>
-      <View style={styles.container}>
-        <LinearGradient colors={['#3286a7', '#b1dae1', '#d8eeee']} style={styles.background} />
+      <TopBar />
+      <View
+        style={[
+          styles.container,
+          viewCentered ? { alignItems: 'center' } : { alignItems: 'stretch' },
+        ]}>
+        <LinearGradient
+          colors={!tempHigh ? ['#3286a7', '#b1dae1', '#d8eeee'] : ['#f83600', '#f98712', '#f9d423']}
+          style={styles.background}
+        />
 
         {!city ? (
           <>
@@ -63,14 +81,14 @@ export default function App() {
             />
           </>
         ) : (
-          <CityScreen weatherData={weatherData} resetCity={resetCity} />
+          <CityScreen
+            weatherData={weatherData}
+            resetCity={resetCity}
+            handleTempGradient={handleTempGradient}
+          />
         )}
       </View>
-      <View style={styles.navWrapper}>
-        <Text style={styles.textSm}>Powered by: </Text>
-        <Image style={styles.smallImage} source={require('./assets/cloud-sun.png')} />
-        <Text style={styles.textSm}>OpenWeather API ©</Text>
-      </View>
+      <Footer />
     </>
   );
 }
@@ -80,51 +98,17 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: spacing.md,
     backgroundColor: '#BAE6FD',
-    alignItems: 'center',
+    // alignItems: 'center',
     justifyContent: 'center',
   },
-  textSm: {
-    fontSize: fontSizes.sm,
-    color: '#fff',
-    letterSpacing: 1.5,
-  },
-  navWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingVertical: spacing.md,
-    paddingHorizontal: spacing.lg,
-    alignItems: 'center',
-    backgroundColor: 'hsla(200, 100%, 26%, 1)',
-  },
-  navTitle: {
-    flex: 1,
-    justifyContent: 'center',
-    fontSize: fontSizes.md,
-    color: '#fff',
-    letterSpacing: 2,
-    textTransform: 'uppercase',
-    fontWeight: '700',
-    marginTop: spacing.sm,
-    fontFamily: fonts.primary,
-  },
-  navLogo: {
-    width: 40,
-    height: 40,
-    resizeMode: 'contain',
-    transform: [{ rotate: '25deg' }],
-  },
+
   mainImage: {
     flex: 1,
     width: 180,
     height: 180,
     resizeMode: 'contain',
   },
-  smallImage: {
-    flex: 1,
-    width: 40,
-    height: 40,
-    resizeMode: 'contain',
-  },
+
   background: {
     position: 'absolute',
     left: 0,

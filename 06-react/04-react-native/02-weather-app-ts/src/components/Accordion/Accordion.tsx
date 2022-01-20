@@ -5,7 +5,7 @@ import { formatDate, unixTimeStampCoverter } from '../../utils/computeTime';
 import { daysShort } from '../../utils/days';
 import { fontSizes, spacing } from '../../constants/sizes';
 
-export const Accordion = ({ weatherDataPerDay }: Accordion) => {
+export const Accordion = ({ weatherDataPerDay }: AccordionInterface) => {
   const [accordionActive, setArcordionActive] = useState(true);
   const unixTimeStamp = weatherDataPerDay.dt;
   const { temp } = weatherDataPerDay;
@@ -33,15 +33,24 @@ export const Accordion = ({ weatherDataPerDay }: Accordion) => {
           style={styles.tinyLogo}
           source={{ uri: `http://openweathermap.org/img/wn/10d@2x.png` }}
         />
-        <Icon
-          name='caret-down-outline'
-          size={20}
-          color='#000'
-          onPress={() => setArcordionActive(!accordionActive)}
-        />
+        {accordionActive ? (
+          <Icon
+            name='caret-down-outline'
+            size={20}
+            color='#000'
+            onPress={() => setArcordionActive(!accordionActive)}
+          />
+        ) : (
+          <Icon
+            name='caret-up-outline'
+            size={20}
+            color='#000'
+            onPress={() => setArcordionActive(!accordionActive)}
+          />
+        )}
       </View>
       {accordionActive && (
-        <View style={{ flexDirection: 'row', backgroundColor: '#fff', padding: spacing.sm }}>
+        <View style={styles.accordionActiveWrapper}>
           <Text style={[styles.textSm, styles.tempText]}>Temp</Text>
           <View style={styles.accordionTimeOfDay}>
             <Text style={styles.textSm}>Morning</Text>
@@ -75,24 +84,31 @@ export const Accordion = ({ weatherDataPerDay }: Accordion) => {
 
 const styles = StyleSheet.create({
   accordionWrapper: {
-    flex: 1,
+    // flex: 1,
+    // width: 280,
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: spacing.md,
     alignItems: 'center',
     backgroundColor: 'grey',
   },
+  accordionActiveWrapper: {
+    // width: 280,
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    padding: spacing.sm,
+  },
+  accordionTimeOfDay: {
+    flexDirection: 'column',
+    marginRight: spacing.md,
+  },
   tempText: { alignSelf: 'flex-end', padding: spacing.sm },
   textSm: {
-    fontSize: fontSizes.sm,
+    fontSize: fontSizes.xsm,
   },
   textBold: { fontWeight: '600' },
   tinyLogo: {
     width: 30,
     height: 30,
-  },
-  accordionTimeOfDay: {
-    flexDirection: 'column',
-    marginRight: spacing.md,
   },
 });

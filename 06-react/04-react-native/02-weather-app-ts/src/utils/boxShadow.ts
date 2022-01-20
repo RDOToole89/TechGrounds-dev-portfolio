@@ -1,7 +1,7 @@
 import { Platform } from 'react-native';
 
 interface ShadowStylesInterface {
-  shadowColor?: string | null;
+  shadowColor: string;
   shadowOffset?: { width?: number; height?: number };
   shadowOpacity?: number;
   shadowRadius?: number;

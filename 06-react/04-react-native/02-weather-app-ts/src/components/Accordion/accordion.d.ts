@@ -10,6 +10,6 @@ interface WeatherDataPerDay {
   };
 }
 
-interface Accordion {
+interface AccordionInterface {
   weatherDataPerDay: WeatherDataPerDay;
 }

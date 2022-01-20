@@ -41,6 +41,7 @@ export const CityDetails = ({
     }
 
     return () => {
+      // console.log('unmounted');
       mounted = false;
     };
   }, [mounted]);
@@ -51,17 +52,24 @@ export const CityDetails = ({
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: 'space-between' }}>
-      <Text style={styles.headingPrimary}>{props.cityName}</Text>
-      <Text style={styles.headingSecondary}>7 DAY FORECAST</Text>
-      {weatherData &&
-        weatherData?.daily.map((day: WeatherDataPerDay, i: number) => {
-          return <Accordion key={day.dt + Math.random() + i} weatherDataPerDay={day} />;
-        })}
-      <TouchableOpacity style={{ marginTop: spacing.xl }} onPress={goBackToHomeScreen}>
-        <Text style={styles.link}>Go back to home</Text>
-      </TouchableOpacity>
-    </View>
+    <>
+      <View style={{ flex: 1, justifyContent: 'space-between' }}>
+        <View>
+          <Text style={styles.headingPrimary}>{props.cityName}</Text>
+          <Text style={styles.headingSecondary}>7 DAY FORECAST</Text>
+        </View>
+        <View style={{ flex: 1, justifyContent: 'center' }}>
+          {weatherData &&
+            weatherData?.daily.map((day: WeatherDataPerDay, i: number) => {
+              if (i >= 7) return;
+              return <Accordion key={day.dt + Math.random() + i} weatherDataPerDay={day} />;
+            })}
+        </View>
+        <TouchableOpacity style={{ marginTop: spacing.md }} onPress={goBackToHomeScreen}>
+          <Text style={styles.link}>Go back to home</Text>
+        </TouchableOpacity>
+      </View>
+    </>
   );
 };
 
@@ -69,7 +77,7 @@ const styles = StyleSheet.create({
   headingPrimary: {
     fontSize: fontSizes.lg,
     fontWeight: 'bold',
-    marginBottom: spacing.lg,
+    marginBottom: spacing.md,
     textTransform: 'uppercase',
     letterSpacing: 3,
   },
@@ -77,13 +85,12 @@ const styles = StyleSheet.create({
     fontSize: fontSizes.md,
     fontWeight: 'bold',
     color: '#FFF',
-    marginBottom: spacing.lg,
+    marginBottom: spacing.sm,
     letterSpacing: 3,
   },
   link: {
     fontSize: fontSizes.md,
     fontWeight: 'bold',
-    marginBottom: spacing.md,
     textTransform: 'uppercase',
     color: '#FFF',
   },
