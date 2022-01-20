@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, Platform } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import { API_KEY } from '@env';
 import { useEffect, useState } from 'react';
 
@@ -13,10 +13,10 @@ import { buildCurrentWeatherUrl } from './src/services/weatherApi';
 import { Footer } from './src/components/FooterBar/FooterBar';
 
 export default function App() {
+  const [cityDetailsActive, setCityDetailsActive] = useState(false);
   const [searchInput, setSearchInput] = useState<string>('');
   const [city, setCity] = useState<string>('');
   const [weatherData, setWeatherData] = useState<WeatherData>({});
-  const [viewCentered, setViewCentered] = useState<Boolean>(true);
   const [tempHigh, setTempHigh] = useState<Boolean>();
 
   const API_URL = buildCurrentWeatherUrl(city, API_KEY, 'metric');
@@ -36,6 +36,15 @@ export default function App() {
 
   const handleTempGradient = (bool: Boolean): void => {
     setTempHigh(bool);
+  };
+
+  const activateCityDetails = () => {
+    setCityDetailsActive(true);
+  };
+
+  const goBackToHomeScreen = () => {
+    resetCity();
+    setCityDetailsActive(false);
   };
 
   const tempGradient = !tempHigh
@@ -61,12 +70,8 @@ export default function App() {
 
   return (
     <>
-      <TopBar />
-      <View
-        style={[
-          styles.container,
-          viewCentered ? { alignItems: 'center' } : { alignItems: 'stretch' },
-        ]}>
+      <TopBar goBackToHomeScreen={goBackToHomeScreen} />
+      <View style={[styles.container, { alignItems: 'center' }]}>
         <LinearGradient colors={tempGradient} style={styles.background} />
 
         {!city ? (
@@ -83,8 +88,10 @@ export default function App() {
         ) : (
           <CityScreen
             weatherData={weatherData}
-            resetCity={resetCity}
             handleTempGradient={handleTempGradient}
+            cityDetailsActive={cityDetailsActive}
+            activateCityDetails={activateCityDetails}
+            goBackToHomeScreen={goBackToHomeScreen}
           />
         )}
       </View>
@@ -97,6 +104,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: spacing.lg,
+    paddingHorizontal: spacing.lg,
     backgroundColor: '#BAE6FD',
     // alignItems: 'center',
     justifyContent: 'center',

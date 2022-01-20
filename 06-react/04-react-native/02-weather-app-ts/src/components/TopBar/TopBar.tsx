@@ -1,12 +1,18 @@
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { fonts } from '../../constants/fonts';
 import { fontSizes, spacing } from '../../constants/sizes';
+import { TopBarInterface } from './topbar';
 
-export const TopBar = () => {
+export const TopBar = ({ goBackToHomeScreen }: TopBarInterface) => {
   return (
     <View style={styles.infoBar}>
-      <Text style={styles.navTitle}>Open Weather</Text>
-      <Image style={styles.navLogo} source={require('../../../assets/paper-plane2.png')} />
+      <TouchableOpacity onPress={goBackToHomeScreen}>
+        <Text style={styles.navTitle}>Open Weather</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={goBackToHomeScreen}>
+        <Image style={styles.navLogo} source={require('../../../assets/paper-plane2.png')} />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -23,13 +29,13 @@ const styles = StyleSheet.create({
   navTitle: {
     flex: 1,
     justifyContent: 'center',
-    fontSize: fontSizes.md,
+    marginTop: spacing.sm,
     color: '#fff',
-    letterSpacing: 2,
+    fontFamily: fonts.primary,
     textTransform: 'uppercase',
     fontWeight: '700',
-    marginTop: spacing.sm,
-    fontFamily: fonts.primary,
+    letterSpacing: 2.5,
+    fontSize: fontSizes.md,
   },
   navLogo: {
     width: 40,

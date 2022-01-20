@@ -6,15 +6,15 @@ import { buildOneCallForecastUrl } from '../../services/weatherApi';
 import { fontSizes, spacing } from '../../constants/sizes';
 
 export const CityDetails = ({
-  resetCity,
-  activateSevenDayForecast,
   coordinates,
+  goBackToHomeScreen,
   ...props
 }: CityDetailsInterface) => {
   const [weatherData, setWeatherData] = useState<any>(null);
+  let mounted = false;
   let API_URL: string;
   const exludeString = 'current,minutely,hourly,alerts';
-  let mounted = false;
+
   const latitude = coordinates?.lat.toString()!;
   const longitude = coordinates?.lon.toString()!;
 
@@ -28,9 +28,7 @@ export const CityDetails = ({
       const fetchWeatherData = async () => {
         try {
           const response = await fetch(API_URL);
-
           const data = await response.json();
-
           setWeatherData(data);
         } catch (error) {
           console.log(error);
@@ -41,15 +39,9 @@ export const CityDetails = ({
     }
 
     return () => {
-      // console.log('unmounted');
       mounted = false;
     };
   }, [mounted]);
-
-  const goBackToHomeScreen = () => {
-    resetCity();
-    activateSevenDayForecast();
-  };
 
   return (
     <>

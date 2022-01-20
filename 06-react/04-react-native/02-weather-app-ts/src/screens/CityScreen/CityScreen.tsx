@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { WeatherData } from '../../types/app';
 import { digitToString } from '../../utils/toDigit';
@@ -8,9 +8,15 @@ import { computeTime } from '../../utils/computeTime';
 import { fontSizes, spacing } from '../../constants/sizes';
 import { CityDetails } from '../CityDetails/CityDetails';
 import { generateBoxShadowStyle } from '../../utils/boxShadow';
+import { fonts } from '../../constants/fonts';
 
-export const CityScreen = ({ weatherData, resetCity, handleTempGradient }: CityScreenInterface) => {
-  const [cityDetailsActive, setCityDetailsActive] = useState(false);
+export const CityScreen = ({
+  weatherData,
+  handleTempGradient,
+  cityDetailsActive,
+  activateCityDetails,
+  goBackToHomeScreen,
+}: CityScreenInterface) => {
   const {
     coord: coordinates,
     main: temperatures,
@@ -43,42 +49,37 @@ export const CityScreen = ({ weatherData, resetCity, handleTempGradient }: CityS
       : handleTempGradient!(false);
   }, []);
 
-  const activateSevenDayForecast = () => {
-    setCityDetailsActive(!cityDetailsActive);
-  };
-
   return !cityDetailsActive ? (
     <View style={[styles.dataContainer, styles.boxShadow]}>
       <View style={styles.mgBottomContainer}>
         <View style={{ alignSelf: 'flex-start' }}>
           <Text style={styles.headerMedium}>{cityName}</Text>
-          <Text>
+          <Text style={styles.textSmall}>
             {dayOfTheWeek} {currentHours}:{currentMinutes}
           </Text>
         </View>
         <View>
           <Image style={styles.tinyLogo} source={weatherString} />
-          <Text>{description}</Text>
-          <Text>{currentTemperature} °C</Text>
+          <Text style={styles.textSmall}>{description}</Text>
+          <Text style={styles.textSmall}>{currentTemperature} °C</Text>
         </View>
       </View>
 
       <View style={styles.mgBottomContainer}>
-        <Text>min. temp {minTemperature} °C</Text>
-        <Text>max. temp {maxTemperature} °C</Text>
-        <Text>humidity {humidity}</Text>
+        <Text style={styles.textSmall}>min. temp {minTemperature} °C</Text>
+        <Text style={styles.textSmall}> max. temp {maxTemperature} °C</Text>
+        <Text style={styles.textSmall}>humidity {humidity}</Text>
       </View>
-      <TouchableOpacity style={{ marginBottom: spacing.md }} onPress={activateSevenDayForecast}>
+      <TouchableOpacity style={{ marginBottom: spacing.md }} onPress={activateCityDetails}>
         <Text style={styles.link}>7 Day Forecast</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={resetCity}>
+      <TouchableOpacity onPress={goBackToHomeScreen}>
         <Text style={styles.link}>Go back to home</Text>
       </TouchableOpacity>
     </View>
   ) : (
     <CityDetails
-      resetCity={resetCity}
-      activateSevenDayForecast={activateSevenDayForecast}
+      goBackToHomeScreen={goBackToHomeScreen}
       coordinates={coordinates}
       cityName={cityName}
     />
@@ -87,7 +88,7 @@ export const CityScreen = ({ weatherData, resetCity, handleTempGradient }: CityS
 
 const styles = StyleSheet.create({
   dataContainer: {
-    width: '80%',
+    width: '90%',
     justifyContent: 'center',
     backgroundColor: 'hsla(201, 94%, 88%, .2)',
     padding: spacing.xl,
@@ -96,17 +97,21 @@ const styles = StyleSheet.create({
   },
   mgBottomContainer: {
     flexDirection: 'row',
-    // alignItems: 'center',
+    alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: spacing.xl,
   },
   headerMedium: {
+    fontFamily: fonts.primary,
     fontSize: fontSizes.md,
     fontWeight: '600',
     letterSpacing: 1.2,
     textTransform: 'uppercase',
     paddingTop: spacing.xl,
     marginBottom: spacing.sm,
+  },
+  textSmall: {
+    fontFamily: fonts.primary,
   },
   boxShadow: generateBoxShadowStyle(
     0,
@@ -123,7 +128,7 @@ const styles = StyleSheet.create({
   },
   link: {
     textTransform: 'uppercase',
-    fontFamily: 'ubuntu',
+    fontFamily: fonts.primary,
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.xsm,
     backgroundColor: 'hsla(201, 94%, 88%, .4)',

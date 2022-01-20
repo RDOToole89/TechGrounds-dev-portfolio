@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { formatDate, unixTimeStampCoverter } from '../../utils/computeTime';
 import { daysShort } from '../../utils/days';
 import { fontSizes, spacing } from '../../constants/sizes';
+import { fonts } from '../../constants/fonts';
 
 export const Accordion = ({ weatherDataPerDay }: AccordionInterface) => {
   const [accordionActive, setArcordionActive] = useState(true);
@@ -84,8 +85,6 @@ export const Accordion = ({ weatherDataPerDay }: AccordionInterface) => {
 
 const styles = StyleSheet.create({
   accordionWrapper: {
-    // flex: 1,
-    // width: 280,
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: spacing.md,
@@ -93,10 +92,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'grey',
   },
   accordionActiveWrapper: {
-    // width: 280,
     flexDirection: 'row',
     backgroundColor: '#fff',
-    padding: spacing.sm,
+    padding: spacing.xxsm,
   },
   accordionTimeOfDay: {
     flexDirection: 'column',
@@ -104,7 +102,10 @@ const styles = StyleSheet.create({
   },
   tempText: { alignSelf: 'flex-end', padding: spacing.sm },
   textSm: {
+    fontFamily: fonts.primary,
     fontSize: fontSizes.xsm,
+    fontWeight: '500',
+    letterSpacing: 0.4,
   },
   textBold: { fontWeight: '600' },
   tinyLogo: {

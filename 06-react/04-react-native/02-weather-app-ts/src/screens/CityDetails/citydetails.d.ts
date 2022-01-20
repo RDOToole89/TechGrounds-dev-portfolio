@@ -1,7 +1,6 @@
 interface CityDetailsInterface {
-  resetCity(): void;
-  activateSevenDayForecast(): void;
   handleViewCentered?(): void;
+  goBackToHomeScreen(): void;
   coordinates?: { lat: number; lon: number };
   cityName?: string;
 }

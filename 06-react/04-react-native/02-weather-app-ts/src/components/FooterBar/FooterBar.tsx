@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'hsla(200, 100%, 26%, 1)',
   },
   textSm: {
+    fontFamily: fonts.primary,
     fontSize: fontSizes.sm,
     color: '#fff',
     letterSpacing: 1.5,

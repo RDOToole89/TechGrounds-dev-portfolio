@@ -2,6 +2,7 @@ import { View, TextInput, StyleSheet } from 'react-native';
 import { SubmitButton } from '../SubmitButton/SubmitButton';
 import { spacing } from '../../constants/sizes';
 import { SearchBarInterface } from './searchbar';
+import { fonts } from '../../constants/fonts';
 
 export const SearchBar = ({ searchInput, onChangeSearch, onClickSetCity }: SearchBarInterface) => {
   return (
@@ -23,15 +24,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 50,
-    paddingVertical: spacing.sm,
-    paddingLeft: spacing.xxl,
-    paddingRight: spacing.md,
+    padding: spacing.sm,
+    paddingLeft: spacing.xl,
     backgroundColor: 'hsla(200, 51%, 41%, .5)',
     marginBottom: 200,
   },
 
   searchInput: {
-    padding: spacing.md,
+    fontFamily: fonts.primary,
+    padding: spacing.sm,
     color: '#fff',
     fontWeight: '600',
     letterSpacing: 1,
