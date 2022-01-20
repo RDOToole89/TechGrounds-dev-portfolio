@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { TopBar } from './src/components/TopBar/TopBar';
 import { SearchBar } from './src/components/SearchBar/SearchBar';
 
-import { fontSizes, spacing } from './src/constants/sizes';
+import { spacing } from './src/constants/sizes';
 import { CityScreen } from './src/screens/CityScreen/CityScreen';
 import { WeatherData } from './src/types/app';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -17,7 +17,8 @@ export default function App() {
   const [city, setCity] = useState<string>('');
   const [weatherData, setWeatherData] = useState<WeatherData>({});
   const [viewCentered, setViewCentered] = useState<Boolean>(true);
-  const [tempHigh, setTempHigh] = useState<Boolean>(false);
+  const [tempHigh, setTempHigh] = useState<Boolean>();
+
   const API_URL = buildCurrentWeatherUrl(city, API_KEY, 'metric');
 
   const onChangeSearch = (userInput: string): void => {
@@ -37,9 +38,11 @@ export default function App() {
     setTempHigh(bool);
   };
 
-  useEffect(() => {
-    console.log('Mounted APP!');
+  const tempGradient = !tempHigh
+    ? ['#3286a7', '#b1dae1', '#d8eeee']
+    : ['#f98712', '#f9ba1d', '#f9d423'];
 
+  useEffect(() => {
     if (city) {
       const fetchWeatherData = async () => {
         try {
@@ -64,10 +67,7 @@ export default function App() {
           styles.container,
           viewCentered ? { alignItems: 'center' } : { alignItems: 'stretch' },
         ]}>
-        <LinearGradient
-          colors={!tempHigh ? ['#3286a7', '#b1dae1', '#d8eeee'] : ['#f83600', '#f98712', '#f9d423']}
-          style={styles.background}
-        />
+        <LinearGradient colors={tempGradient} style={styles.background} />
 
         {!city ? (
           <>
@@ -96,7 +96,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: spacing.md,
+    padding: spacing.lg,
     backgroundColor: '#BAE6FD',
     // alignItems: 'center',
     justifyContent: 'center',
