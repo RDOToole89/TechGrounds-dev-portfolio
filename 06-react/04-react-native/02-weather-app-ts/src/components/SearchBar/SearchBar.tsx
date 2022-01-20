@@ -25,12 +25,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 50,
     padding: spacing.sm,
-    paddingLeft: spacing.xl,
+    paddingLeft: spacing.xxl,
     backgroundColor: 'hsla(200, 51%, 41%, .5)',
     marginBottom: 200,
   },
 
   searchInput: {
+    width: '80%',
     fontFamily: fonts.primary,
     padding: spacing.sm,
     color: '#fff',

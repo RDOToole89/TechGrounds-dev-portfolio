@@ -1,6 +1,6 @@
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, Text } from 'react-native';
 import { API_KEY } from '@env';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { TopBar } from './src/components/TopBar/TopBar';
 import { SearchBar } from './src/components/SearchBar/SearchBar';
@@ -17,9 +17,14 @@ export default function App() {
   const [searchInput, setSearchInput] = useState<string>('');
   const [city, setCity] = useState<string>('');
   const [weatherData, setWeatherData] = useState<WeatherData>({});
-  const [tempHigh, setTempHigh] = useState<Boolean>();
+  const [tempHigh, setTempHigh] = useState<Boolean>(false);
+  const [count, setCount] = useState<number>(0);
 
   const API_URL = buildCurrentWeatherUrl(city, API_KEY, 'metric');
+
+  const increment = () => {
+    setCount(count + 1);
+  };
 
   const onChangeSearch = (userInput: string): void => {
     setSearchInput(userInput);
@@ -34,9 +39,21 @@ export default function App() {
     setSearchInput('');
   };
 
-  const handleTempGradient = (bool: Boolean): void => {
-    setTempHigh(bool);
-  };
+  // const handleTempGradient = (bool: Boolean): void => {
+  //   setTempHigh(bool);
+  // };
+
+  let tempGradient = tempHigh
+    ? ['#f98712', '#f9ba1d', '#f9d423']
+    : ['#3286a7', '#b1dae1', '#d8eeee'];
+
+  const handleTempGradient = useCallback(
+    (bool: Boolean) => {
+      setTempHigh(bool);
+      console.log('Clicked!');
+    },
+    [tempHigh]
+  );
 
   const activateCityDetails = () => {
     setCityDetailsActive(true);
@@ -46,10 +63,6 @@ export default function App() {
     resetCity();
     setCityDetailsActive(false);
   };
-
-  const tempGradient = !tempHigh
-    ? ['#3286a7', '#b1dae1', '#d8eeee']
-    : ['#f98712', '#f9ba1d', '#f9d423'];
 
   useEffect(() => {
     if (city) {
@@ -104,19 +117,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: spacing.lg,
-    paddingHorizontal: spacing.lg,
     backgroundColor: '#BAE6FD',
-    // alignItems: 'center',
     justifyContent: 'center',
   },
-
   mainImage: {
     flex: 1,
     width: 180,
     height: 180,
     resizeMode: 'contain',
   },
-
   background: {
     position: 'absolute',
     left: 0,

@@ -45,8 +45,10 @@ export const CityScreen = ({
 
   useEffect(() => {
     currentTemperature && currentTemperature > 20
-      ? handleTempGradient!(true)
-      : handleTempGradient!(false);
+      ? handleTempGradient(true)
+      : handleTempGradient(false);
+
+    // increment();
   }, []);
 
   return !cityDetailsActive ? (
