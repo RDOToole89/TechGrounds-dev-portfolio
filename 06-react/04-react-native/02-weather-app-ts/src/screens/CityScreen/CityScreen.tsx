@@ -22,17 +22,20 @@ export const CityScreen = ({
     main: temperatures,
     name: cityName,
     weather: weatherInfo,
+    timezone,
   }: WeatherData = weatherData;
+  console.log(weatherData);
 
   let description;
   let icon;
+  const timezoneUtcOffset = timezone / 3600;
 
   if (weatherInfo) {
     description = weatherInfo[0].description;
     icon = weatherInfo[0].icon;
   }
 
-  const currentDate = computeTime('Boston', '-5');
+  const currentDate = computeTime(cityName!, timezoneUtcOffset);
   const dayOfTheWeek = days[currentDate.getDay()];
   const currentMinutes = digitToString(currentDate.getMinutes());
   const currentHours = digitToString(currentDate.getHours());
