@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import { WeatherData } from '../../types/app';
 import { digitToString } from '../../utils/toDigit';
 import { CityScreenInterface } from './cityscreen';
@@ -71,8 +72,11 @@ export const CityScreen = ({
       </View>
 
       <View style={styles.mgBottomContainer}>
+        <Icon name='temperature-low' size={15} color='#fff' />
         <Text style={styles.textSmall}>min. temp {minTemperature} °C</Text>
+        <Icon name='temperature-high' size={15} color='#fff' />
         <Text style={styles.textSmall}> max. temp {maxTemperature} °C</Text>
+        <Icon name='water' size={15} color='#fff' />
         <Text style={styles.textSmall}>humidity {humidity}</Text>
       </View>
       <TouchableOpacity style={{ marginBottom: spacing.md }} onPress={activateCityDetails}>

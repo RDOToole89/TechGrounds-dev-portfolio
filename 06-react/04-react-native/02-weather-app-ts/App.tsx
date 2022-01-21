@@ -16,7 +16,7 @@ import { ErrorMessage } from './src/components/ErrorMessage/ErrorMessage';
 export default function App() {
   const [cityDetailsActive, setCityDetailsActive] = useState(false);
   const [searchInput, setSearchInput] = useState<string>('');
-  const [city, setCity] = useState<string>('');
+  const [city, setCity] = useState<string>('dubai');
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [tempHigh, setTempHigh] = useState<Boolean>(false);
   const [error, setError] = useState<Boolean>(false);
