@@ -1,0 +1,107 @@
+.pageBTN {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  background: radial-gradient(circle, #54545f 0%, #1a1a28 100%);
+}
+
+.pageBTN::before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 5px;
+  top: 5px;
+  border-radius: 50%;
+  background-color: rgba(148, 152, 158, 0.2);
+}
+
+.pageBTN::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(148, 152, 158, 0.2);
+}
+
+.pageBTN:hover {
+  background: radial-gradient(circle, #84c2b8 0%, #0d0d8d 100%);
+}
+
+.pageButtonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5%;
+  width: 250px;
+  padding: 20px;
+}
+
+.App {
+  font-style: bold;
+  color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin: auto;
+  align-items: center;
+  padding: 20px;
+  background-color: lightslategray;
+  box-shadow: inset 0 0 0 2px rgba(26, 26, 40, 0.3), inset 10px 10px 8px 0px rgba(26, 26, 40, 0.3), inset -6px -1px 20px 0px #d0d2d4;
+  width: 300px;
+  border: 2px solid #1a1a28;
+  border-radius: 10px;
+}
+
+.input {
+  position: relative;
+  padding: 10px;
+  padding-left: 20px;
+  width: 260px;
+  margin: auto;
+  border: 1px solid #1a1a28;
+  background-color: #e8f0f8;
+  box-shadow: inset 0 0 0 2px rgba(26, 26, 40, 0.3), inset 10px 10px 20px rgba(26, 26, 40, 0.3);
+  color: #1a1a28;
+  border-radius: 10px;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.card {
+  position: relative;
+  padding: 20px;
+  margin-top: 20px;
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  border: 1px solid #1a1a28;
+  background-color: rgba(26, 26, 40, 0.3);
+  box-shadow: inset 0 0 0 2px rgba(26, 26, 40, 0.3), inset 10px 10px 20px rgba(26, 26, 40, 0.3);
+  line-height: 0.3;
+}
+.card .cityname {
+  font-size: 30px;
+  margin-bottom: 50px;
+  text-shadow: 4px 4px 10px #1a1a28;
+}
+
+.welcome {
+  line-height: 1.25;
+  font-size: 16px;
+  height: 300px;
+}
+
+.weatherIcon {
+  position: absolute;
+  right: -20px;
+  bottom: -40px;
+}/*# sourceMappingURL=App.css.map */

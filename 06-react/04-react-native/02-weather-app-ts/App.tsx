@@ -5,28 +5,25 @@ import { useCallback, useEffect, useState } from 'react';
 import { TopBar } from './src/components/TopBar/TopBar';
 import { SearchBar } from './src/components/SearchBar/SearchBar';
 
-import { spacing } from './src/constants/sizes';
+import { fontSizes, spacing } from './src/constants/sizes';
 import { CityScreen } from './src/screens/CityScreen/CityScreen';
 import { WeatherData } from './src/types/app';
 import { LinearGradient } from 'expo-linear-gradient';
 import { buildCurrentWeatherUrl } from './src/services/weatherApi';
 import { Footer } from './src/components/FooterBar/FooterBar';
+import { ErrorMessage } from './src/components/ErrorMessage/ErrorMessage';
 
 export default function App() {
   const [cityDetailsActive, setCityDetailsActive] = useState(false);
   const [searchInput, setSearchInput] = useState<string>('');
   const [city, setCity] = useState<string>('');
-  const [weatherData, setWeatherData] = useState<WeatherData>({});
+  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [tempHigh, setTempHigh] = useState<Boolean>(false);
-  const [count, setCount] = useState<number>(0);
+  const [error, setError] = useState<Boolean>(false);
 
   const API_URL = buildCurrentWeatherUrl(city, API_KEY, 'metric');
 
-  const increment = () => {
-    setCount(count + 1);
-  };
-
-  const onChangeSearch = (userInput: string): void => {
+  const handleSearchOnChange = (userInput: string): void => {
     setSearchInput(userInput);
   };
 
@@ -38,10 +35,6 @@ export default function App() {
     setCity('');
     setSearchInput('');
   };
-
-  // const handleTempGradient = (bool: Boolean): void => {
-  //   setTempHigh(bool);
-  // };
 
   let tempGradient = tempHigh
     ? ['#f98712', '#f9ba1d', '#f9d423']
@@ -70,8 +63,16 @@ export default function App() {
         try {
           const response = await fetch(API_URL);
           const data = await response.json();
+          console.log(response);
+
+          if (response.status !== 200) {
+            console.log(`${data.cod} ERROR ${data.message}`);
+            setError(true);
+            return;
+          }
 
           setWeatherData(data);
+          setError(false);
         } catch (error) {
           console.log(error);
         }
@@ -85,16 +86,17 @@ export default function App() {
     <>
       <TopBar goBackToHomeScreen={goBackToHomeScreen} />
       <View style={[styles.container, { alignItems: 'center' }]}>
+        {error && <ErrorMessage errorColor='hsl(0,72.2%,50.6%)' />}
         <LinearGradient colors={tempGradient} style={styles.background} />
 
-        {!city ? (
+        {!city || !weatherData ? (
           <>
             <View style={{ flex: 1, justifyContent: 'center' }}>
               <Image style={styles.mainImage} source={require('./assets/cloud-sun.png')} />
             </View>
             <SearchBar
               searchInput={searchInput}
-              onChangeSearch={onChangeSearch}
+              handleSearchOnChange={handleSearchOnChange}
               onClickSetCity={onClickSetCity}
             />
           </>

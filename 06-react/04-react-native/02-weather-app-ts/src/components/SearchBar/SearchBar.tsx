@@ -4,11 +4,15 @@ import { spacing } from '../../constants/sizes';
 import { SearchBarInterface } from './searchbar';
 import { fonts } from '../../constants/fonts';
 
-export const SearchBar = ({ searchInput, onChangeSearch, onClickSetCity }: SearchBarInterface) => {
+export const SearchBar = ({
+  searchInput,
+  handleSearchOnChange,
+  onClickSetCity,
+}: SearchBarInterface) => {
   return (
     <View style={styles.inputContainer}>
       <TextInput
-        onChangeText={(userInput) => onChangeSearch(userInput)}
+        onChangeText={(userInput) => handleSearchOnChange(userInput)}
         value={searchInput}
         placeholder='Enter a City'
         style={styles.searchInput}
