@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { TopBar } from './src/components/TopBar/TopBar';
 import { SearchBar } from './src/components/SearchBar/SearchBar';
 
-import { fontSizes, spacing } from './src/constants/sizes';
+import { spacing } from './src/constants/sizes';
 import { CityScreen } from './src/screens/CityScreen/CityScreen';
 import { WeatherData } from './src/types/app';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -36,17 +36,9 @@ export default function App() {
     setSearchInput('');
   };
 
-  let tempGradient = tempHigh
-    ? ['#f98712', '#f9ba1d', '#f9d423']
-    : ['#3286a7', '#b1dae1', '#d8eeee'];
-
-  const handleTempGradient = useCallback(
-    (bool: Boolean) => {
-      setTempHigh(bool);
-      console.log('Clicked!');
-    },
-    [tempHigh]
-  );
+  const handleErrorOnClick = (): void => {
+    setError(!error);
+  };
 
   const activateCityDetails = () => {
     setCityDetailsActive(true);
@@ -57,13 +49,26 @@ export default function App() {
     setCityDetailsActive(false);
   };
 
+  let tempGradient = tempHigh
+    ? ['#f98712', '#f9ba1d', '#f9d423']
+    : ['#3286a7', '#b1dae1', '#d8eeee'];
+
+  const handleTempGradient = useCallback(
+    (bool: Boolean) => {
+      setTempHigh(bool);
+    },
+    [tempHigh]
+  );
+
   useEffect(() => {
+    setWeatherData(null);
+
     if (city) {
       const fetchWeatherData = async () => {
         try {
           const response = await fetch(API_URL);
           const data = await response.json();
-          console.log(response);
+          // console.log(response);
 
           if (response.status !== 200) {
             console.log(`${data.cod} ERROR ${data.message}`);
@@ -86,7 +91,12 @@ export default function App() {
     <>
       <TopBar goBackToHomeScreen={goBackToHomeScreen} />
       <View style={[styles.container, { alignItems: 'center' }]}>
-        {error && <ErrorMessage errorColor='hsl(0,72.2%,50.6%)' />}
+        {error && (
+          <ErrorMessage
+            errorColor='hsla(0,72.2%,50.6%, .8)'
+            handleErrorOnClick={handleErrorOnClick}
+          />
+        )}
         <LinearGradient colors={tempGradient} style={styles.background} />
 
         {!city || !weatherData ? (
