@@ -73,18 +73,18 @@ export const CityScreen = ({
       </View>
 
       <View style={styles.mgBottomContainer}>
-        <View>
-          <Icon name='temperature-low' size={15} color='#fff' />
+        <View style={styles.temperatureDetail}>
+          <Icon name='temperature-low' size={25} color='#cdfcff' />
           <Text style={styles.textSmall}>min. temp </Text>
           <Text>{minTemperature} °C</Text>
         </View>
-        <View>
-          <Icon name='temperature-high' size={15} color='#fff' />
+        <View style={styles.temperatureDetail}>
+          <Icon name='temperature-high' size={25} color='#ec6e4c' />
           <Text style={styles.textSmall}> max. temp </Text>
           <Text>{maxTemperature} °C</Text>
         </View>
-        <View>
-          <Icon name='water' size={15} color='#fff' />
+        <View style={styles.temperatureDetail}>
+          <Icon name='water' size={25} color='#7cc6cc' />
           <Text style={styles.textSmall}>humidity </Text>
           <Text>{humidity}</Text>
         </View>
@@ -119,6 +119,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: spacing.xl,
+  },
+  temperatureDetail: {
+    height: 70,
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   headerMedium: {
     fontFamily: fonts.primary,

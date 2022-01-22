@@ -1,16 +1,18 @@
-import { StyleSheet, View, Image, Text } from 'react-native';
+import { useEffect, useState } from 'react';
+import { StyleSheet, View, Image } from 'react-native';
 import { API_KEY } from '@env';
-import { useCallback, useEffect, useState } from 'react';
 
 import { TopBar } from './src/components/TopBar/TopBar';
 import { SearchBar } from './src/components/SearchBar/SearchBar';
-
-import { spacing } from './src/constants/sizes';
-import { CityScreen } from './src/screens/CityScreen/CityScreen';
-import { WeatherData } from './src/types/app';
-import { LinearGradient } from 'expo-linear-gradient';
-import { buildCurrentWeatherUrl } from './src/services/weatherApi';
 import { Footer } from './src/components/FooterBar/FooterBar';
+
+import { CityScreen } from './src/screens/CityScreen/CityScreen';
+
+import { WeatherData } from './src/types/app';
+import { spacing } from './src/constants/sizes';
+import { buildCurrentWeatherUrl } from './src/services/weatherApi';
+import { LinearGradient } from 'expo-linear-gradient';
+
 import { ErrorMessage } from './src/components/ErrorMessage/ErrorMessage';
 import { DarkModeProvider } from './src/context/DarkModeContext';
 
@@ -29,7 +31,7 @@ export default function App() {
     if (temperature >= 0) setGradient(['#3286a7', '#b1dae1', '#d8eeee']);
     if (temperature >= 7) setGradient(['#4792b0', '#6ca8c0', '#5dbf99']);
     if (temperature >= 12) setGradient(['#6ca8c0', '#d0e9ed', '#fde4a5']);
-    if (temperature >= 18) setGradient(['#fa8f45', '#FCD34D', '#fcdd8e']);
+    if (temperature >= 18) setGradient(['#fcd34d', '#FCD34D', '#fcdd8e']);
     if (temperature >= 28) setGradient(['#a33232', '#f9ba1d', '#fadd4f']);
   };
 
@@ -57,6 +59,7 @@ export default function App() {
   const goBackToHomeScreen = () => {
     resetCity();
     setCityDetailsActive(false);
+    setGradient(['#3286a7', '#b1dae1', '#d8eeee']);
   };
 
   useEffect(() => {
