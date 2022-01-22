@@ -2,7 +2,7 @@ import { WeatherData } from '../types/app';
 
 export interface CityScreenInterface {
   weatherData: WeatherData;
-  handleTempGradient(bool: Boolean): void;
+  handleTempGradient(number): void;
   activateCityDetails(): void;
   goBackToHomeScreen(): void;
   cityDetailsActive: Boolean;

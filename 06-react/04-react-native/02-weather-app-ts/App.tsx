@@ -12,16 +12,26 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { buildCurrentWeatherUrl } from './src/services/weatherApi';
 import { Footer } from './src/components/FooterBar/FooterBar';
 import { ErrorMessage } from './src/components/ErrorMessage/ErrorMessage';
+import { DarkModeProvider } from './src/context/DarkModeContext';
 
 export default function App() {
   const [cityDetailsActive, setCityDetailsActive] = useState(false);
   const [searchInput, setSearchInput] = useState<string>('');
-  const [city, setCity] = useState<string>('dubai');
+  const [city, setCity] = useState<string>('');
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-  const [tempHigh, setTempHigh] = useState<Boolean>(false);
   const [error, setError] = useState<Boolean>(false);
-
+  const [gradient, setGradient] = useState(['#3286a7', '#b1dae1', '#d8eeee']);
   const API_URL = buildCurrentWeatherUrl(city, API_KEY, 'metric');
+
+  const handleTempGradient = (temperature: number) => {
+    if (temperature >= -30) setGradient(['#44b5fe', '#37f1fe', '#9bf8ff']);
+    if (temperature >= -10) setGradient(['#a4c7fd', '#b1d6fc', '#c1e7fb']);
+    if (temperature >= 0) setGradient(['#3286a7', '#b1dae1', '#d8eeee']);
+    if (temperature >= 7) setGradient(['#4792b0', '#6ca8c0', '#5dbf99']);
+    if (temperature >= 12) setGradient(['#6ca8c0', '#d0e9ed', '#fde4a5']);
+    if (temperature >= 18) setGradient(['#fa8f45', '#FCD34D', '#fcdd8e']);
+    if (temperature >= 28) setGradient(['#a33232', '#f9ba1d', '#fadd4f']);
+  };
 
   const handleSearchOnChange = (userInput: string): void => {
     setSearchInput(userInput);
@@ -48,17 +58,6 @@ export default function App() {
     resetCity();
     setCityDetailsActive(false);
   };
-
-  let tempGradient = tempHigh
-    ? ['#f98712', '#f9ba1d', '#f9d423']
-    : ['#3286a7', '#b1dae1', '#d8eeee'];
-
-  const handleTempGradient = useCallback(
-    (bool: Boolean) => {
-      setTempHigh(bool);
-    },
-    [tempHigh]
-  );
 
   useEffect(() => {
     setWeatherData(null);
@@ -89,38 +88,40 @@ export default function App() {
 
   return (
     <>
-      <TopBar goBackToHomeScreen={goBackToHomeScreen} />
-      <View style={[styles.container, { alignItems: 'center' }]}>
-        {error && (
-          <ErrorMessage
-            errorColor='hsla(0,72.2%,50.6%, .8)'
-            handleErrorOnClick={handleErrorOnClick}
-          />
-        )}
-        <LinearGradient colors={tempGradient} style={styles.background} />
-
-        {!city || !weatherData ? (
-          <>
-            <View style={{ flex: 1, justifyContent: 'center' }}>
-              <Image style={styles.mainImage} source={require('./assets/cloud-sun.png')} />
-            </View>
-            <SearchBar
-              searchInput={searchInput}
-              handleSearchOnChange={handleSearchOnChange}
-              onClickSetCity={onClickSetCity}
+      <DarkModeProvider>
+        <TopBar goBackToHomeScreen={goBackToHomeScreen} />
+        <View style={[styles.container, { alignItems: 'center' }]}>
+          {error && (
+            <ErrorMessage
+              errorColor='hsla(0,72.2%,50.6%, .8)'
+              handleErrorOnClick={handleErrorOnClick}
             />
-          </>
-        ) : (
-          <CityScreen
-            weatherData={weatherData}
-            handleTempGradient={handleTempGradient}
-            cityDetailsActive={cityDetailsActive}
-            activateCityDetails={activateCityDetails}
-            goBackToHomeScreen={goBackToHomeScreen}
-          />
-        )}
-      </View>
-      <Footer />
+          )}
+          <LinearGradient colors={gradient} style={styles.background} />
+
+          {!city || !weatherData ? (
+            <>
+              <View style={{ flex: 1, justifyContent: 'center' }}>
+                <Image style={styles.mainImage} source={require('./assets/cloud-sun.png')} />
+              </View>
+              <SearchBar
+                searchInput={searchInput}
+                handleSearchOnChange={handleSearchOnChange}
+                onClickSetCity={onClickSetCity}
+              />
+            </>
+          ) : (
+            <CityScreen
+              weatherData={weatherData}
+              handleTempGradient={handleTempGradient}
+              cityDetailsActive={cityDetailsActive}
+              activateCityDetails={activateCityDetails}
+              goBackToHomeScreen={goBackToHomeScreen}
+            />
+          )}
+        </View>
+        <Footer />
+      </DarkModeProvider>
     </>
   );
 }

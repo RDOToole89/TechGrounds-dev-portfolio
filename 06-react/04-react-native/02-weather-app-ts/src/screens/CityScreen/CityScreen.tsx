@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { WeatherData } from '../../types/app';
@@ -10,6 +10,7 @@ import { fontSizes, spacing } from '../../constants/sizes';
 import { CityDetails } from '../CityDetails/CityDetails';
 import { generateBoxShadowStyle } from '../../utils/boxShadow';
 import { fonts } from '../../constants/fonts';
+import { DarkModeContext } from '../../context/DarkModeContext';
 
 export const CityScreen = ({
   weatherData,
@@ -26,6 +27,10 @@ export const CityScreen = ({
     timezone,
   }: WeatherData = weatherData;
   console.log(weatherData);
+
+  // @ts-ignore
+  const [darkMode, setDarkMode] = useContext(DarkModeContext);
+  // console.log('DARKMODE CONTEXT', darkMode);
 
   let description;
   let icon;
@@ -48,12 +53,8 @@ export const CityScreen = ({
   const currentTemperature = temperatures?.temp!;
 
   useEffect(() => {
-    currentTemperature && currentTemperature > 20
-      ? handleTempGradient(true)
-      : handleTempGradient(false);
-
-    // increment();
-  }, []);
+    handleTempGradient(currentTemperature);
+  }, [currentTemperature]);
 
   return !cityDetailsActive ? (
     <View style={[styles.dataContainer, styles.boxShadow]}>
@@ -72,12 +73,21 @@ export const CityScreen = ({
       </View>
 
       <View style={styles.mgBottomContainer}>
-        <Icon name='temperature-low' size={15} color='#fff' />
-        <Text style={styles.textSmall}>min. temp {minTemperature} °C</Text>
-        <Icon name='temperature-high' size={15} color='#fff' />
-        <Text style={styles.textSmall}> max. temp {maxTemperature} °C</Text>
-        <Icon name='water' size={15} color='#fff' />
-        <Text style={styles.textSmall}>humidity {humidity}</Text>
+        <View>
+          <Icon name='temperature-low' size={15} color='#fff' />
+          <Text style={styles.textSmall}>min. temp </Text>
+          <Text>{minTemperature} °C</Text>
+        </View>
+        <View>
+          <Icon name='temperature-high' size={15} color='#fff' />
+          <Text style={styles.textSmall}> max. temp </Text>
+          <Text>{maxTemperature} °C</Text>
+        </View>
+        <View>
+          <Icon name='water' size={15} color='#fff' />
+          <Text style={styles.textSmall}>humidity </Text>
+          <Text>{humidity}</Text>
+        </View>
       </View>
       <TouchableOpacity style={{ marginBottom: spacing.md }} onPress={activateCityDetails}>
         <Text style={styles.link}>7 Day Forecast</Text>
