@@ -9,7 +9,7 @@
 }
 
 .pageBTN::before {
-  content: "";
+  content: '';
   position: absolute;
   width: 22px;
   height: 22px;
@@ -20,7 +20,7 @@
 }
 
 .pageBTN::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 10px;
   height: 10px;
@@ -33,10 +33,18 @@
 }
 
 .pageButtonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 5%;
   width: 250px;
   padding: 20px;
-}/*# sourceMappingURL=buttons.css.map */
+}
+/*# sourceMappingURL=buttons.css.map */

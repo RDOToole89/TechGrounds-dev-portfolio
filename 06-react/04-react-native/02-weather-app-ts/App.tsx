@@ -70,7 +70,6 @@ export default function App() {
         try {
           const response = await fetch(API_URL);
           const data = await response.json();
-          // console.log(response);
 
           if (response.status !== 200) {
             console.log(`${data.cod} ERROR ${data.message}`);
