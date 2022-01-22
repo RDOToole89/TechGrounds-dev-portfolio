@@ -32,25 +32,23 @@ export const CityScreen = ({
   const [darkMode, setDarkMode] = useContext(DarkModeContext);
   // console.log('DARKMODE CONTEXT', darkMode);
 
-  let description;
-  let icon;
   const timezoneUtcOffset = timezone / 3600;
 
-  if (weatherInfo) {
-    description = weatherInfo[0].description;
-    icon = weatherInfo[0].icon;
-  }
+  const { description, icon } = weatherInfo[0];
 
   const currentDate = computeTime(cityName!, timezoneUtcOffset);
   const dayOfTheWeek = days[currentDate.getDay()];
   const currentMinutes = digitToString(currentDate.getMinutes());
   const currentHours = digitToString(currentDate.getHours());
 
-  const maxTemperature = temperatures?.temp_max;
-  const minTemperature = temperatures?.temp_min;
-  const humidity = temperatures?.humidity;
-  const weatherString = { uri: icon && `http://openweathermap.org/img/wn/${icon}@2x.png` };
-  const currentTemperature = temperatures?.temp!;
+  const {
+    temp: currentTemperature,
+    temp_max: maxTemperature,
+    temp_min: minTemperature,
+    humidity,
+  } = temperatures;
+
+  const weatherString = { uri: `http://openweathermap.org/img/wn/${icon}@2x.png` };
 
   useEffect(() => {
     handleTempGradient(currentTemperature);
