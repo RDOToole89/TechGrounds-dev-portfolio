@@ -37,3 +37,33 @@ type Person = {
   name: string;
   age: Age;
 };
+
+// Types that mean an absence of something
+
+// null => absence of a a value
+const a = (x: number) => {
+  if (x > 10) return x;
+  return null;
+};
+
+// undefined => variable that has not been assigned a value yet
+const b = () => {
+  return undefined;
+};
+
+// void => function that doest have a return statement console.log() for example
+const log = (x: string) => {
+  console.log(x);
+};
+
+// never => function that never return for example when you throw an exception
+
+const never = (x: number) => {
+  while (true) {
+    console.log(x);
+  }
+};
+
+const thow = (x: string) => {
+  throw Error(x);
+};

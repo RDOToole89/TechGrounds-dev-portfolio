@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "lib": ["es2015"], // which API's should TS expect
+    "module": "CommonJS", // which module system should TSC compile your code in?
+    "outDir": "dist", // which folder should TS put your code in?
+    "sourceMap": true,
+    "strict": true, // enfore strict mode
+    "target": "es2015" // which JS version should TS compile your code to?
+  },
+  "include": ["src"] // which folder should ts look in for ts files?
+}
