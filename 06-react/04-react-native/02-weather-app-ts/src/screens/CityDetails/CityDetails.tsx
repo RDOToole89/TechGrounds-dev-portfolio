@@ -5,23 +5,20 @@ import { Accordion } from '../../components/Accordion/Accordion';
 import { buildOneCallForecastUrl } from '../../services/weatherApi';
 import { fontSizes, spacing } from '../../constants/sizes';
 
-export const CityDetails = ({
-  coordinates,
-  goBackToHomeScreen,
-  ...props
-}: CityDetailsInterface) => {
+export const CityDetails = ({ coordinates, goBackToHomeScreen, ...props }: ICityDetails) => {
   const [weatherData, setWeatherData] = useState<any>(null);
-  let mounted = false;
-  let API_URL: string;
+
   const exludeString = 'current,minutely,hourly,alerts';
 
-  const latitude = coordinates?.lat.toString()!;
-  const longitude = coordinates?.lon.toString()!;
+  const { lat: latitude, lon: longitude } = coordinates;
 
-  if (latitude && longitude) {
-    API_URL = buildOneCallForecastUrl(latitude, longitude, exludeString, 'metric', API_KEY);
-    mounted = true;
-  }
+  const API_URL = buildOneCallForecastUrl(
+    latitude.toString(),
+    longitude.toString(),
+    exludeString,
+    'metric',
+    API_KEY
+  );
 
   useEffect(() => {
     if (API_URL) {
@@ -37,11 +34,7 @@ export const CityDetails = ({
 
       fetchWeatherData();
     }
-
-    return () => {
-      mounted = false;
-    };
-  }, [mounted]);
+  }, [API_URL]);
 
   return (
     <>
@@ -57,7 +50,7 @@ export const CityDetails = ({
               return <Accordion key={day.dt + Math.random() + i} weatherDataPerDay={day} />;
             })}
         </View>
-        <TouchableOpacity style={{ marginBottom: spacing.md }} onPress={goBackToHomeScreen}>
+        <TouchableOpacity style={{ marginVertical: spacing.md }} onPress={goBackToHomeScreen}>
           <Text style={styles.link}>Go back to home</Text>
         </TouchableOpacity>
       </View>

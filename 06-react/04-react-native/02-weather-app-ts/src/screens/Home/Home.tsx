@@ -21,7 +21,7 @@ import { DarkModeContext, DarkModeProvider } from '../../context/DarkModeContext
 export const Home = () => {
   const [cityDetailsActive, setCityDetailsActive] = useState(false);
   const [searchInput, setSearchInput] = useState<string>('');
-  const [city, setCity] = useState<string>('bangkok');
+  const [city, setCity] = useState<string>('');
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [error, setError] = useState<Boolean>(false);
   const [gradient, setGradient] = useState(['#3286a7', '#b1dae1', '#d8eeee']);
