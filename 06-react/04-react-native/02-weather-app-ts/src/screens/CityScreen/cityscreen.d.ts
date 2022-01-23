@@ -1,6 +1,6 @@
 import { WeatherData } from '../types/app';
 
-export interface CityScreenInterface {
+export interface ICityScreen {
   weatherData: WeatherData;
   handleTempGradient(number): void;
   activateCityDetails(): void;

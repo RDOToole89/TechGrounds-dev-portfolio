@@ -3,11 +3,11 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { fonts } from '../../constants/fonts';
 import { fontSizes, spacing } from '../../constants/sizes';
 import { DarkModeContext } from '../../context/DarkModeContext';
-import { TopBarInterface } from './topbar';
+import { ITopBar } from './topbar';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export const TopBar = ({ goBackToHomeScreen }: TopBarInterface) => {
+export const TopBar = ({ goBackToHomeScreen }: ITopBar) => {
   const { dark, toggleDark } = useContext(DarkModeContext);
 
   return (

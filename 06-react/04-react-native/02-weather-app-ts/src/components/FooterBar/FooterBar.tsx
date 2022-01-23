@@ -9,14 +9,14 @@ export const Footer = () => {
 
   return (
     <View style={styles(dark).infoBar}>
-      <Text style={styles(dark).textSm}>Powered by: </Text>
-      <Image style={styles(dark).smallImage} source={require('../../../assets/cloud-sun.png')} />
-      <Text style={styles(dark).textSm}>OpenWeather API ©</Text>
+      <Text style={styles().textSm}>Powered by: </Text>
+      <Image style={styles().smallImage} source={require('../../../assets/cloud-sun.png')} />
+      <Text style={styles().textSm}>OpenWeather API ©</Text>
     </View>
   );
 };
 
-const styles = (darkMode: boolean) =>
+const styles = (darkMode: boolean = false) =>
   StyleSheet.create({
     infoBar: {
       flexDirection: 'row',

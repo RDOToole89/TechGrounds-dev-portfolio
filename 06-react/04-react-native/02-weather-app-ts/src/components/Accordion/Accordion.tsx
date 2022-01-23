@@ -6,7 +6,7 @@ import { daysShort } from '../../utils/days';
 import { fontSizes, spacing } from '../../constants/sizes';
 import { fonts } from '../../constants/fonts';
 
-export const Accordion = ({ weatherDataPerDay }: AccordionInterface) => {
+export const Accordion = ({ weatherDataPerDay }: IAccordion) => {
   const [accordionActive, setArcordionActive] = useState(true);
   const unixTimeStamp = weatherDataPerDay.dt;
   const { temp } = weatherDataPerDay;

@@ -1,9 +1,9 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { WeatherData } from '../../types/app';
 import { digitToString } from '../../utils/toDigit';
-import { CityScreenInterface } from './cityscreen';
+import { ICityScreen } from './cityscreen';
 import { days } from '../../utils/days';
 import { computeTime } from '../../utils/computeTime';
 import { fontSizes, spacing } from '../../constants/sizes';
@@ -17,7 +17,7 @@ export const CityScreen = ({
   cityDetailsActive,
   activateCityDetails,
   goBackToHomeScreen,
-}: CityScreenInterface) => {
+}: ICityScreen) => {
   const {
     coord: coordinates,
     main: temperatures,

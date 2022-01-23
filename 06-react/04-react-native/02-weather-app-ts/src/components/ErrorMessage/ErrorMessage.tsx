@@ -1,8 +1,8 @@
 import { Text, StyleSheet, View } from 'react-native';
 import { fontSizes, spacing } from '../../constants/sizes';
-import { ErrorMessageInterface } from './errormessage';
+import { IErrorMessage } from './errormessage';
 
-export const ErrorMessage = ({ errorColor, handleErrorOnClick }: ErrorMessageInterface) => {
+export const ErrorMessage = ({ errorColor, handleErrorOnClick }: IErrorMessage) => {
   return (
     <View style={[styles(errorColor).errorWrapper]}>
       <Text style={[styles(errorColor).text]}>Enter valid City</Text>

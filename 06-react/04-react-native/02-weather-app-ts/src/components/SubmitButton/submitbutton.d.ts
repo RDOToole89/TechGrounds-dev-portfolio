@@ -1,4 +1,4 @@
-export interface SubmitButtonInterface {
+export interface ISubmitButton {
   style?: {};
   textStyle?: {};
   size?: number;

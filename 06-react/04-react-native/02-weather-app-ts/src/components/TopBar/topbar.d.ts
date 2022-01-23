@@ -1,3 +1,3 @@
-export interface TopBarInterface {
+export interface ITopBar {
   goBackToHomeScreen(): void;
 }
