@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   headerMedium: {
-    fontFamily: fonts.primary,
+    fontFamily: fonts.secondary,
     fontSize: fontSizes.md,
     fontWeight: '600',
     letterSpacing: 1.2,
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.sm,
   },
   textSmall: {
-    fontFamily: fonts.primary,
+    fontFamily: fonts.secondary,
   },
   boxShadow: generateBoxShadowStyle(
     0,
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   },
   link: {
     textTransform: 'uppercase',
-    fontFamily: fonts.primary,
+    fontFamily: fonts.secondary,
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.xsm,
     backgroundColor: 'hsla(201, 94%, 88%, .4)',

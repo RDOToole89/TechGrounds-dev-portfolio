@@ -5,7 +5,7 @@ import { fontSizes, spacing } from '../../constants/sizes';
 import { DarkModeContext } from '../../context/DarkModeContext';
 
 export const Footer = () => {
-  const { dark, toggleDark } = useContext(DarkModeContext);
+  const { dark } = useContext(DarkModeContext);
 
   return (
     <View style={styles(dark).infoBar}>
@@ -27,7 +27,7 @@ const styles = (darkMode: boolean) =>
       backgroundColor: darkMode ? '#000' : 'hsla(200, 100%, 26%, 1)',
     },
     textSm: {
-      fontFamily: fonts.primary,
+      fontFamily: fonts.secondary,
       fontSize: fontSizes.sm,
       color: '#fff',
       letterSpacing: 1.5,

@@ -13,25 +13,11 @@ import { spacing } from './src/constants/sizes';
 import { buildCurrentWeatherUrl } from './src/services/weatherApi';
 
 import { LinearGradient } from 'expo-linear-gradient';
-import {
-  useFonts,
-  Ubuntu_400Regular,
-  Ubuntu_500Medium,
-  Ubuntu_700Bold,
-} from '@expo-google-fonts/ubuntu';
 
 import { ErrorMessage } from './src/components/ErrorMessage/ErrorMessage';
 import { DarkModeProvider } from './src/context/DarkModeContext';
 
 export default function App() {
-  let [fontsLoaded] = useFonts({
-    Ubuntu_400Regular,
-    Ubuntu_500Medium,
-    Ubuntu_700Bold,
-  });
-
-  console.log(fontsLoaded);
-
   const [cityDetailsActive, setCityDetailsActive] = useState(false);
   const [searchInput, setSearchInput] = useState<string>('');
   const [city, setCity] = useState<string>('');
@@ -105,8 +91,8 @@ export default function App() {
 
   return (
     <>
-      <TopBar goBackToHomeScreen={goBackToHomeScreen} />
       <DarkModeProvider>
+        <TopBar goBackToHomeScreen={goBackToHomeScreen} />
         <View style={[styles.container, { alignItems: 'center' }]}>
           {error && (
             <ErrorMessage

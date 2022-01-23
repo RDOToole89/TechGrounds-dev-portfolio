@@ -4,10 +4,12 @@ import { fonts } from '../../constants/fonts';
 import { fontSizes, spacing } from '../../constants/sizes';
 import { DarkModeContext } from '../../context/DarkModeContext';
 import { TopBarInterface } from './topbar';
+
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export const TopBar = ({ goBackToHomeScreen }: TopBarInterface) => {
   const { dark, toggleDark } = useContext(DarkModeContext);
+
   return (
     <View style={styles(dark).infoBar}>
       <TouchableOpacity onPress={goBackToHomeScreen}>
@@ -54,7 +56,7 @@ const styles = (darkMode: boolean) =>
       flex: 1,
       justifyContent: 'center',
       color: '#fff',
-      fontFamily: fonts.primary,
+      fontFamily: fonts.secondary,
       textTransform: 'uppercase',
       fontWeight: '700',
       letterSpacing: 2.5,

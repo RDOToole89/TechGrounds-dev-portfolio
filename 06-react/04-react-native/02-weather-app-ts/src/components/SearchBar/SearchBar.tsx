@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 
   searchInput: {
     width: '80%',
-    fontFamily: fonts.primary,
+    fontFamily: fonts.secondary,
     padding: spacing.sm,
     color: '#fff',
     fontWeight: '600',
