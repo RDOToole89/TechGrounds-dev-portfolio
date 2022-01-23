@@ -10,7 +10,6 @@ import { fontSizes, spacing } from '../../constants/sizes';
 import { CityDetails } from '../CityDetails/CityDetails';
 import { generateBoxShadowStyle } from '../../utils/boxShadow';
 import { fonts } from '../../constants/fonts';
-import { DarkModeContext } from '../../context/DarkModeContext';
 
 export const CityScreen = ({
   weatherData,
@@ -26,11 +25,6 @@ export const CityScreen = ({
     weather: weatherInfo,
     timezone,
   }: WeatherData = weatherData;
-  console.log(weatherData);
-
-  // @ts-ignore
-  const [darkMode, setDarkMode] = useContext(DarkModeContext);
-  // console.log('DARKMODE CONTEXT', darkMode);
 
   const timezoneUtcOffset = timezone / 3600;
 
