@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>CSS Grid vs Flexbox</title>
+  </head>
+  <body>
+    <h2 style="margin-bottom: 3rem">Grid VS Flexbox</h2>
+
+    <h2>Flexbox</h2>
+    <p>=> Better when the intrinsic size of an element matters</p>
+    <div class="flex-container">
+      <div class="item">Lorem.</div>
+      <div class="item">Lorem ipsum dolor sit amet.</div>
+      <div class="item">Lorem ipsum dolor amet.</div>
+      <div class="item">Lorem dolor sit.</div>
+      <div class="item">Lorem ipsumes dolors sit amedet.</div>
+      <div class="item">Lorem ipsum dolor siteam.</div>
+      <div class="item">Lorem, ipsum dolor ametam.</div>
+    </div>
+
+    <p>Cards</p>
+    <br />
+    <div class="cards cards-flex">
+      <div class="card card-flex">
+        <h3 class="card__title">Fun Stuff</h3>
+        <p>Lorem ipsum dolor sit amet!</p>
+        <ul class="card-list">
+          <li class="card-list__item">Lorem</li>
+          <li class="card-list__item">Ipsum</li>
+          <li class="card-list__item">dolors</li>
+        </ul>
+      </div>
+      <div class="card card-flex">
+        <h3 class="card__title">Fun Stuff</h3>
+        <p>Lorem ipsum dolor sit amet!</p>
+        <ul class="card-list">
+          <li class="card-list__item">Lorem</li>
+          <li class="card-list__item">Ipsum</li>
+          <li class="card-list__item">dolors</li>
+        </ul>
+      </div>
+      <div class="card card-flex">
+        <h3 class="card__title">Fun Stuff</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur!</p>
+        <ul class="card-list">
+          <li class="card-list__item">Lorem</li>
+          <li class="card-list__item">Ipsum</li>
+          <li class="card-list__item">dolors</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>grid</h2>
+    <p>=> Better when you need a structured 2Dimensional grid type of layout</p>
+    <div class="grid-container">
+      <div class="item">Lorem.</div>
+      <div class="item">Lorem ipsum dolor sit amet.</div>
+      <div class="item">Lorem ipsum dolor amet.</div>
+      <div class="item">Lorem dolor sit.</div>
+      <div class="item">Lorem ipsumes dolors sit amedet.</div>
+      <div class="item">Lorem ipsum dolor siteam.</div>
+      <div class="item">Lorem, ipsum dolor ametam.</div>
+    </div>
+  </body>
+
+  <p>Cards</p>
+  <br />
+  <div class="cards cards-grid">
+    <div class="card card-grid card-grid--one">
+      <h3 class="card__title">Fun Stuff</h3>
+      <p>Lorem ipsum dolor sit amet!</p>
+      <ul class="card-list">
+        <li class="card-list__item">Lorem</li>
+        <li class="card-list__item">Ipsum</li>
+        <li class="card-list__item">dolors</li>
+      </ul>
+    </div>
+    <div class="card card-grid">
+      <h3 class="card__title">Fun Stuff</h3>
+      <p>Lorem ipsum dolor sit amet!</p>
+      <ul class="card-list">
+        <li class="card-list__item">Lorem</li>
+        <li class="card-list__item">Ipsum</li>
+        <li class="card-list__item">dolors</li>
+      </ul>
+    </div>
+    <div class="card card-grid">
+      <h3 class="card__title">Fun Stuff</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur!</p>
+      <ul class="card-list">
+        <li class="card-list__item">Lorem</li>
+        <li class="card-list__item">Ipsum</li>
+        <li class="card-list__item">dolors</li>
+      </ul>
+    </div>
+  </div>
+</html>
