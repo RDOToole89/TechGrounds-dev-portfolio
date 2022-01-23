@@ -89,11 +89,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: spacing.md,
     alignItems: 'center',
-    backgroundColor: 'grey',
+    backgroundColor: 'hsla(200, 51%, 41%, .7)',
   },
   accordionActiveWrapper: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: ' 	hsla(0, 0%, 100%, .5)',
     padding: spacing.xxsm,
   },
   accordionTimeOfDay: {
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
   },
   tempText: { alignSelf: 'flex-end', padding: spacing.sm },
   textSm: {
-    fontFamily: fonts.primary,
+    fontFamily: fonts.secondary,
     fontSize: fontSizes.xsm,
     fontWeight: '500',
     letterSpacing: 0.4,

@@ -57,7 +57,7 @@ export const CityDetails = ({
               return <Accordion key={day.dt + Math.random() + i} weatherDataPerDay={day} />;
             })}
         </View>
-        <TouchableOpacity style={{ marginTop: spacing.md }} onPress={goBackToHomeScreen}>
+        <TouchableOpacity style={{ marginBottom: spacing.md }} onPress={goBackToHomeScreen}>
           <Text style={styles.link}>Go back to home</Text>
         </TouchableOpacity>
       </View>
@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
   headingPrimary: {
     fontSize: fontSizes.lg,
     fontWeight: 'bold',
+    marginTop: spacing.sm,
     marginBottom: spacing.md,
     textTransform: 'uppercase',
     letterSpacing: 3,
