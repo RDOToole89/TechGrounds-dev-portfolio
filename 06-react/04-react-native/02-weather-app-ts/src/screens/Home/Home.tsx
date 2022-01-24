@@ -16,9 +16,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useKeyboard } from '@react-native-community/hooks';
 
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
-import { DarkModeContext, DarkModeProvider } from '../../context/DarkModeContext';
+import { DarkModeContext } from '../../context/DarkModeContext';
 
-export const Home = () => {
+export const Home = ({}) => {
   const [cityDetailsActive, setCityDetailsActive] = useState(false);
   const [searchInput, setSearchInput] = useState<string>('');
   const [city, setCity] = useState<string>('');
@@ -36,7 +36,8 @@ export const Home = () => {
     if (temperature >= 7) setGradient(['#4792b0', '#6ca8c0', '#5dbf99']);
     if (temperature >= 12) setGradient(['#6ca8c0', '#d0e9ed', '#fde4a5']);
     if (temperature >= 18) setGradient(['#fde4a5', '#FCD34D', '#fcdd8e']);
-    if (temperature >= 28) setGradient(['#fcdd8e', '#fadd4f', '#FCD34D', '#a33232']);
+    if (temperature >= 28)
+      setGradient(['#fcdd8e', '#fadd4f', '#FCD34D', '#a33232']);
   };
 
   const handleSearchOnChange = (userInput: string): void => {
@@ -98,7 +99,10 @@ export const Home = () => {
       <View
         style={[
           styles.container,
-          { alignItems: 'center', paddingTop: keyboard.keyboardShown ? spacing.md : 0 },
+          {
+            alignItems: 'center',
+            paddingTop: keyboard.keyboardShown ? spacing.md : 0,
+          },
         ]}>
         {error && (
           <ErrorMessage
@@ -109,7 +113,11 @@ export const Home = () => {
         <LinearGradient colors={gradient} style={styles.background} />
         {dark && (
           <LinearGradient
-            colors={['rgba(0,0,0, 0.15)', 'rgba(0,0,0, 0.15)', 'rgba(0,0,0,0.15)']}
+            colors={[
+              'rgba(0,0,0, 0.15)',
+              'rgba(0,0,0, 0.15)',
+              'rgba(0,0,0,0.15)',
+            ]}
             style={[styles.background, { zIndex: 0 }]}
           />
         )}
@@ -117,7 +125,10 @@ export const Home = () => {
         {!city || !weatherData ? (
           <>
             <View style={{ flex: 1, justifyContent: 'center' }}>
-              <Image style={styles.mainImage} source={require('../../../assets/cloud-sun.png')} />
+              <Image
+                style={styles.mainImage}
+                source={require('../../../assets/cloud-sun.png')}
+              />
             </View>
             <SearchBar
               searchInput={searchInput}

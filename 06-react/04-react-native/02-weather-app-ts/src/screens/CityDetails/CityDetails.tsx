@@ -5,7 +5,11 @@ import { Accordion } from '../../components/Accordion/Accordion';
 import { buildOneCallForecastUrl } from '../../services/weatherApi';
 import { fontSizes, spacing } from '../../constants/sizes';
 
-export const CityDetails = ({ coordinates, goBackToHomeScreen, ...props }: ICityDetails) => {
+export const CityDetails = ({
+  coordinates,
+  goBackToHomeScreen,
+  ...props
+}: ICityDetails) => {
   const [weatherData, setWeatherData] = useState<any>(null);
 
   const exludeString = 'current,minutely,hourly,alerts';
@@ -43,14 +47,21 @@ export const CityDetails = ({ coordinates, goBackToHomeScreen, ...props }: ICity
           <Text style={styles.headingPrimary}>{props.cityName}</Text>
           <Text style={styles.headingSecondary}>7 DAY FORECAST</Text>
         </View>
-        <View style={{ flex: 1, justifyContent: 'center' }}>
+        <View style={{ flex: 1, justifyContent: 'space-between' }}>
           {weatherData &&
             weatherData?.daily.map((day: WeatherDataPerDay, i: number) => {
               if (i >= 7) return;
-              return <Accordion key={day.dt + Math.random() + i} weatherDataPerDay={day} />;
+              return (
+                <Accordion
+                  key={day.dt + Math.random() + i}
+                  weatherDataPerDay={day}
+                />
+              );
             })}
         </View>
-        <TouchableOpacity style={{ marginVertical: spacing.md }} onPress={goBackToHomeScreen}>
+        <TouchableOpacity
+          style={{ marginVertical: spacing.md }}
+          onPress={goBackToHomeScreen}>
           <Text style={styles.link}>Go back to home</Text>
         </TouchableOpacity>
       </View>

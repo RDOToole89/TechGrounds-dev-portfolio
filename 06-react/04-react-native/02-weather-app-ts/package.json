@@ -12,6 +12,8 @@
   "dependencies": {
     "@expo-google-fonts/ubuntu": "^0.2.2",
     "@react-native-community/hooks": "^2.8.1",
+    "@react-navigation/native": "^6.0.6",
+    "@react-navigation/native-stack": "^6.2.5",
     "@types/react-native-vector-icons": "^6.4.10",
     "expo": "~44.0.0",
     "expo-font": "~10.0.4",
@@ -24,6 +26,8 @@
     "react-native": "0.64.3",
     "react-native-dotenv": "^3.3.1",
     "react-native-global-props": "^1.1.5",
+    "react-native-safe-area-context": "3.3.2",
+    "react-native-screen": "^1.0.1",
     "react-native-vector-icons": "^9.0.0",
     "react-native-web": "0.17.1"
   },

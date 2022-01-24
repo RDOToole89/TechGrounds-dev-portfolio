@@ -42,7 +42,9 @@ export const CityScreen = ({
     humidity,
   } = temperatures;
 
-  const weatherString = { uri: `http://openweathermap.org/img/wn/${icon}@2x.png` };
+  const weatherString = {
+    uri: `http://openweathermap.org/img/wn/${icon}@2x.png`,
+  };
 
   useEffect(() => {
     handleTempGradient(currentTemperature);
@@ -81,7 +83,12 @@ export const CityScreen = ({
           <Text>{humidity}</Text>
         </View>
       </View>
-      <TouchableOpacity style={{ marginBottom: spacing.md }} onPress={activateCityDetails}>
+      <TouchableOpacity
+        style={{ marginBottom: spacing.md }}
+        onPress={activateCityDetails}>
+        {/* <TouchableOpacity
+        style={{ marginBottom: spacing.md }}
+        onPress={() => console.log('hello')}> */}
         <Text style={styles.link}>7 Day Forecast</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={goBackToHomeScreen}>
