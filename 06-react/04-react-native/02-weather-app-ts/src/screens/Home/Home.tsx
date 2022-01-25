@@ -17,6 +17,7 @@ import { useKeyboard } from '@react-native-community/hooks';
 
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { DarkModeContext } from '../../context/DarkModeContext';
+import useFetch from '../../hooks/useFetch';
 
 export const Home = ({}) => {
   const [cityDetailsActive, setCityDetailsActive] = useState(false);
@@ -25,7 +26,7 @@ export const Home = ({}) => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [error, setError] = useState<Boolean>(false);
   const [gradient, setGradient] = useState(['#3286a7', '#b1dae1', '#d8eeee']);
-  const API_URL = buildCurrentWeatherUrl(city, API_KEY, 'metric');
+
   const { dark } = useContext(DarkModeContext);
   const keyboard = useKeyboard();
 
@@ -67,31 +68,17 @@ export const Home = ({}) => {
     setGradient(['#3286a7', '#b1dae1', '#d8eeee']);
   };
 
+  const API_URL = !city
+    ? null
+    : buildCurrentWeatherUrl(city, API_KEY, 'metric');
+
+  const { data } = useFetch(API_URL);
+
   useEffect(() => {
-    setWeatherData(null);
-
     if (city) {
-      const fetchWeatherData = async () => {
-        try {
-          const response = await fetch(API_URL);
-          const data = await response.json();
-
-          if (response.status !== 200) {
-            console.log(`${data.cod} ERROR ${data.message}`);
-            setError(true);
-            return;
-          }
-
-          setWeatherData(data);
-          setError(false);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
-      fetchWeatherData();
+      setWeatherData(data);
     }
-  }, [city]);
+  }, [data]);
 
   return (
     <>
