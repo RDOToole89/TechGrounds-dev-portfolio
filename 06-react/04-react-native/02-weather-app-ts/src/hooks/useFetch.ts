@@ -25,7 +25,7 @@ const useFetch = <T>(url: string | null) => {
       .finally(() => isMounted && setLoading(false));
 
     const cleanUp = () => {
-      console.log('CLEAN UP FUNCTION');
+      // console.log('CLEAN UP FUNCTION');
       isMounted = false;
     };
 

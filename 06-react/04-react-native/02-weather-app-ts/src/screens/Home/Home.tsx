@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { StyleSheet, View, Image, Keyboard } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import { API_KEY } from '@env';
 
 import { TopBar } from '../../components/TopBar/TopBar';
@@ -23,6 +23,7 @@ export const Home = ({}) => {
   const [cityDetailsActive, setCityDetailsActive] = useState(false);
   const [searchInput, setSearchInput] = useState<string>('');
   const [city, setCity] = useState<string>('');
+
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [error, setError] = useState<Boolean>(false);
   const [gradient, setGradient] = useState(['#3286a7', '#b1dae1', '#d8eeee']);
@@ -71,7 +72,6 @@ export const Home = ({}) => {
   const API_URL = !city
     ? null
     : buildCurrentWeatherUrl(city, API_KEY, 'metric');
-
   const { data } = useFetch(API_URL);
 
   useEffect(() => {
