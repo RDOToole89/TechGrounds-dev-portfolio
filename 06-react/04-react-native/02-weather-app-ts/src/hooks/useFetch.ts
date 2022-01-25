@@ -18,6 +18,7 @@ const useFetch = <T>(url: string | null) => {
       })
       .catch((error) => {
         if (isMounted) {
+          console.log('ERROR', error);
           setError(error);
           setData(null);
         }

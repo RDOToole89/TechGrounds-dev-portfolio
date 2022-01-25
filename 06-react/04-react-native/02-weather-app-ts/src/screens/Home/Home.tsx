@@ -25,12 +25,17 @@ export const Home = ({}) => {
   const [city, setCity] = useState<string>('');
 
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-  const [error, setError] = useState<Boolean>(false);
+  const [errorToggle, setErrorToggle] = useState<Boolean>(false);
+
+  // default background gradient
   const [gradient, setGradient] = useState(['#3286a7', '#b1dae1', '#d8eeee']);
 
+  // darkmode context
   const { dark } = useContext(DarkModeContext);
   const keyboard = useKeyboard();
 
+  // function which sets the background gradient based on the temperature in
+  // the city query.
   const handleTempGradient = (temperature: number) => {
     if (temperature >= -30) setGradient(['#44b5fe', '#37f1fe', '#9bf8ff']);
     if (temperature >= -10) setGradient(['#a4c7fd', '#b1d6fc', '#c1e7fb']);
@@ -38,9 +43,10 @@ export const Home = ({}) => {
     if (temperature >= 7) setGradient(['#4792b0', '#6ca8c0', '#5dbf99']);
     if (temperature >= 12) setGradient(['#6ca8c0', '#d0e9ed', '#fde4a5']);
     if (temperature >= 18) setGradient(['#fde4a5', '#FCD34D', '#fcdd8e']);
-    if (temperature >= 28)
-      setGradient(['#fcdd8e', '#fadd4f', '#FCD34D', '#a33232']);
+    if (temperature >= 28) setGradient(['#fcdd8e', '#FCD34D', '#a33232']);
   };
+
+  // Handler functions
 
   const handleSearchOnChange = (userInput: string): void => {
     setSearchInput(userInput);
@@ -56,26 +62,35 @@ export const Home = ({}) => {
   };
 
   const handleErrorOnClick = (): void => {
-    setError(!error);
+    setErrorToggle(!errorToggle);
   };
 
   const activateCityDetails = () => {
     setCityDetailsActive(true);
   };
 
+  // Function which resets the app to default
   const goBackToHomeScreen = () => {
     resetCity();
     setCityDetailsActive(false);
     setGradient(['#3286a7', '#b1dae1', '#d8eeee']);
   };
 
+  // If a city query has been entered create the API_URL
   const API_URL = !city
     ? null
     : buildCurrentWeatherUrl(city, API_KEY, 'metric');
-  const { data } = useFetch(API_URL);
+
+  // Custom fetching logic
+  const { data, loading } = useFetch(API_URL);
+  console.log(data);
 
   useEffect(() => {
-    if (city) {
+    // Check if the query was valid if not show error
+    if (data?.message) setErrorToggle(true);
+
+    // If the the request was succesfull set the weather state
+    if (city && !data.message) {
       setWeatherData(data);
     }
   }, [data]);
@@ -91,7 +106,7 @@ export const Home = ({}) => {
             paddingTop: keyboard.keyboardShown ? spacing.md : 0,
           },
         ]}>
-        {error && (
+        {errorToggle && (
           <ErrorMessage
             errorColor='hsla(0,72.2%,50.6%, .8)'
             handleErrorOnClick={handleErrorOnClick}
@@ -100,11 +115,7 @@ export const Home = ({}) => {
         <LinearGradient colors={gradient} style={styles.background} />
         {dark && (
           <LinearGradient
-            colors={[
-              'rgba(0,0,0, 0.15)',
-              'rgba(0,0,0, 0.15)',
-              'rgba(0,0,0,0.15)',
-            ]}
+            colors={['rgba(0,0,0, 0.1)', 'rgba(0,0,0, 0.1)', 'rgba(0,0,0,0.1)']}
             style={[styles.background, { zIndex: 0 }]}
           />
         )}

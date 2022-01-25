@@ -11,10 +11,11 @@ export const CityDetails = ({
   goBackToHomeScreen,
   ...props
 }: ICityDetails) => {
+  // Grabs lat and lon and the data to exclude from the API request
   const exludeString = 'current,minutely,hourly,alerts';
-
   const { lat: latitude, lon: longitude } = coordinates;
 
+  // Builds the API_URL based on the the above variables
   const API_URL = buildOneCallForecastUrl(
     latitude.toString(),
     longitude.toString(),
@@ -23,6 +24,7 @@ export const CityDetails = ({
     API_KEY
   );
 
+  // Fetch the data with useFetch
   const { data } = useFetch<WeatherDataDetails>(API_URL);
 
   return (

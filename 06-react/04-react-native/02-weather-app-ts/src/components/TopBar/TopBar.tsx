@@ -47,7 +47,7 @@ const styles = (darkMode: boolean) =>
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      paddingVertical: spacing.sm,
+      paddingBottom: spacing.md,
       paddingHorizontal: spacing.lg,
       paddingTop: spacing.xxxl,
       backgroundColor: darkMode ? '#000' : 'hsla(200, 100%, 26%, 1)',
