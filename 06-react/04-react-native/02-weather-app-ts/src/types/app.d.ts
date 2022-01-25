@@ -10,3 +10,23 @@ export interface WeatherData {
   ];
   timezone: number;
 }
+
+export interface WeatherDataDaily {
+  dt: number;
+  temp: {
+    day: number;
+    min: number;
+    max: number;
+    eve: number;
+    morn: number;
+    night: number;
+  };
+}
+
+export interface WeatherDataDetails {
+  lat: number;
+  lon: number;
+  timezone: string;
+  timezone_offset: 14400;
+  daily: WeatherDataDaily[];
+}

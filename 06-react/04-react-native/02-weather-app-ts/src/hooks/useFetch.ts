@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
 
-const useFetch = (url: string, dependencies: string[], options?: RequestInit | null) => {
-  const [data, setData] = useState(null);
+const useFetch = <T>(url: string) => {
+  const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!url) return;
+    setLoading(true);
     let isMounted = true;
 
-    fetch(url, options!)
+    fetch(url)
       .then((response) => response.json())
       .then((data) => {
         setData(data);
@@ -22,7 +23,7 @@ const useFetch = (url: string, dependencies: string[], options?: RequestInit | n
         }
       })
       .finally(() => isMounted && setLoading(false));
-  }, [...dependencies, options]);
+  }, [url]);
 
   return { loading, error, data };
 };

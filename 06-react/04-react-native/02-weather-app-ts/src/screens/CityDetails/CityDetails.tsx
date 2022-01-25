@@ -1,17 +1,16 @@
 import { API_KEY } from '@env';
-import { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { WeatherDataDetails } from '../../types/app.d';
 import { Accordion } from '../../components/Accordion/Accordion';
 import { buildOneCallForecastUrl } from '../../services/weatherApi';
 import { fontSizes, spacing } from '../../constants/sizes';
+import useFetch from '../../hooks/useFetch';
 
 export const CityDetails = ({
   coordinates,
   goBackToHomeScreen,
   ...props
 }: ICityDetails) => {
-  const [weatherData, setWeatherData] = useState<any>(null);
-
   const exludeString = 'current,minutely,hourly,alerts';
 
   const { lat: latitude, lon: longitude } = coordinates;
@@ -24,21 +23,7 @@ export const CityDetails = ({
     API_KEY
   );
 
-  useEffect(() => {
-    if (API_URL) {
-      const fetchWeatherData = async () => {
-        try {
-          const response = await fetch(API_URL);
-          const data = await response.json();
-          setWeatherData(data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
-      fetchWeatherData();
-    }
-  }, [API_URL]);
+  const { data } = useFetch<WeatherDataDetails>(API_URL);
 
   return (
     <>
@@ -48,8 +33,8 @@ export const CityDetails = ({
           <Text style={styles.headingSecondary}>7 DAY FORECAST</Text>
         </View>
         <View style={{ flex: 1, justifyContent: 'space-between' }}>
-          {weatherData &&
-            weatherData?.daily.map((day: WeatherDataPerDay, i: number) => {
+          {data &&
+            data.daily.map((day: WeatherDataPerDay, i: number) => {
               if (i >= 7) return;
               return (
                 <Accordion
