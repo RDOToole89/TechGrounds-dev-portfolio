@@ -10,6 +10,7 @@ import { fontSizes, spacing } from '../../constants/sizes';
 import { CityDetails } from '../CityDetails/CityDetails';
 import { generateBoxShadowStyle } from '../../utils/boxShadow';
 import { fonts } from '../../constants/fonts';
+// import { useNavigation } from '@react-navigation/native';
 
 export const CityScreen = ({
   weatherData,
@@ -18,6 +19,9 @@ export const CityScreen = ({
   activateCityDetails,
   goBackToHomeScreen,
 }: ICityScreen) => {
+  // const navigation = useNavigation();
+
+  // Destructure all the data needed for the UI
   const {
     coord: coordinates,
     main: temperatures,
@@ -26,6 +30,7 @@ export const CityScreen = ({
     timezone,
   }: WeatherData = weatherData;
 
+  // converts the timezoneUTC offset to unix time stamp for conversion
   const timezoneUtcOffset = timezone / 3600;
 
   const { description, icon } = weatherInfo[0];
@@ -47,6 +52,7 @@ export const CityScreen = ({
   };
 
   useEffect(() => {
+    // Changes the background gradient based on the current temperature
     handleTempGradient(currentTemperature);
   }, [currentTemperature]);
 
@@ -85,6 +91,11 @@ export const CityScreen = ({
       </View>
       <TouchableOpacity
         style={{ marginBottom: spacing.md }}
+        // passing route params
+        // onPress={() =>
+        //   //@ts-ignore
+        //   // navigation.navigate('CityDetails', { cityName, coordinates })
+        // }
         onPress={activateCityDetails}>
         <Text style={styles.link}>7 Day Forecast</Text>
       </TouchableOpacity>

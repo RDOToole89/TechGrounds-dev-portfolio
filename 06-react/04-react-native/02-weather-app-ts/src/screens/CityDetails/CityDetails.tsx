@@ -9,8 +9,11 @@ import useFetch from '../../hooks/useFetch';
 export const CityDetails = ({
   coordinates,
   goBackToHomeScreen,
+  route,
   ...props
 }: ICityDetails) => {
+  // console.log('ROUTEPARAMS', route);
+
   // Grabs lat and lon and the data to exclude from the API request
   const exludeString = 'current,minutely,hourly,alerts';
   const { lat: latitude, lon: longitude } = coordinates;

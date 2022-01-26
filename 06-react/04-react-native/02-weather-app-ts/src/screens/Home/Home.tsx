@@ -22,7 +22,7 @@ import useFetch from '../../hooks/useFetch';
 export const Home = ({}) => {
   const [cityDetailsActive, setCityDetailsActive] = useState(false);
   const [searchInput, setSearchInput] = useState<string>('');
-  const [city, setCity] = useState<string>('');
+  const [city, setCity] = useState<string>('detroit');
 
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [errorToggle, setErrorToggle] = useState<Boolean>(false);
@@ -83,14 +83,14 @@ export const Home = ({}) => {
 
   // Custom fetching logic
   const { data, loading } = useFetch(API_URL);
-  console.log(data);
+  // console.log(data);
 
   useEffect(() => {
     // Check if the query was valid if not show error
     if (data?.message) setErrorToggle(true);
 
     // If the the request was succesfull set the weather state
-    if (city && !data.message) {
+    if (city && !data?.message) {
       setWeatherData(data);
     }
   }, [data]);
