@@ -30,7 +30,7 @@ export const CityScreen = ({
 
   const { description, icon } = weatherInfo[0];
 
-  const currentDate = computeTime(cityName!, timezoneUtcOffset);
+  const currentDate = computeTime(cityName, timezoneUtcOffset);
   const dayOfTheWeek = days[currentDate.getDay()];
   const currentMinutes = digitToString(currentDate.getMinutes());
   const currentHours = digitToString(currentDate.getHours());
@@ -86,9 +86,6 @@ export const CityScreen = ({
       <TouchableOpacity
         style={{ marginBottom: spacing.md }}
         onPress={activateCityDetails}>
-        {/* <TouchableOpacity
-        style={{ marginBottom: spacing.md }}
-        onPress={() => console.log('hello')}> */}
         <Text style={styles.link}>7 Day Forecast</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={goBackToHomeScreen}>
