@@ -18,18 +18,22 @@ export default function App() {
   // Loads fonts with custom hook
   const isLoaded = useCachedResources();
 
-  return (
-    <DarkModeProvider>
-      <NavigationContainer>
-        {/* Navigator used for testing purposes not properly implemented in the app yet. */}
-        <RootStack.Navigator
-          initialRouteName='Home'
-          screenOptions={{ headerShown: false }}>
-          <RootStack.Screen name='Home' component={Home} />
-          <RootStack.Screen name='CityScreen' component={CityScreen} />
-          <RootStack.Screen name='CityDetails' component={CityDetails} />
-        </RootStack.Navigator>
-      </NavigationContainer>
-    </DarkModeProvider>
-  );
+  if (isLoaded) {
+    return (
+      <DarkModeProvider>
+        <NavigationContainer>
+          {/* Navigator used for testing purposes not properly implemented in the app yet. */}
+          <RootStack.Navigator
+            initialRouteName='Home'
+            screenOptions={{ headerShown: false }}>
+            <RootStack.Screen name='Home' component={Home} />
+            <RootStack.Screen name='CityScreen' component={CityScreen} />
+            <RootStack.Screen name='CityDetails' component={CityDetails} />
+          </RootStack.Navigator>
+        </NavigationContainer>
+      </DarkModeProvider>
+    );
+  } else {
+    return null;
+  }
 }
