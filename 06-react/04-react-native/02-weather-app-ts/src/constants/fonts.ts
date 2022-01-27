@@ -1,4 +1,4 @@
 export const fonts = {
-  primary: 'ubuntu',
-  secondary: 'sans-serif',
+  ubuntu: 'ubuntu',
+  ubuntuBold: 'ubuntu-bold',
 };

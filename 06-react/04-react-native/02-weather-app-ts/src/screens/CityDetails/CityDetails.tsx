@@ -5,6 +5,7 @@ import { Accordion } from '../../components/Accordion/Accordion';
 import { buildOneCallForecastUrl } from '../../services/weatherApi';
 import { fontSizes, spacing } from '../../constants/sizes';
 import useFetch from '../../hooks/useFetch';
+import { Colors } from '../../constants/colors';
 
 export const CityDetails = ({
   coordinates,
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
   headingSecondary: {
     fontSize: fontSizes.md,
     fontWeight: 'bold',
-    color: '#FFF',
+    color: Colors.primaryWhite,
     marginBottom: spacing.sm,
     letterSpacing: 3,
   },
@@ -79,6 +80,6 @@ const styles = StyleSheet.create({
     fontSize: fontSizes.md,
     fontWeight: 'bold',
     textTransform: 'uppercase',
-    color: '#FFF',
+    color: Colors.primaryWhite,
   },
 });

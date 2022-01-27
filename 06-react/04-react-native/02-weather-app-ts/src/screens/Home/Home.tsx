@@ -18,6 +18,7 @@ import { useKeyboard } from '@react-native-community/hooks';
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { DarkModeContext } from '../../context/DarkModeContext';
 import useFetch from '../../hooks/useFetch';
+import { Colors } from '../../constants/colors';
 
 export const Home = ({}) => {
   const [cityDetailsActive, setCityDetailsActive] = useState(false);
@@ -69,7 +70,7 @@ export const Home = ({}) => {
     setCityDetailsActive(true);
   };
 
-  // Function which resets the app to default
+  // Function which resets the app to default state
   const goBackToHomeScreen = () => {
     resetCity();
     setCityDetailsActive(false);
@@ -122,7 +123,7 @@ export const Home = ({}) => {
 
         {!city || !weatherData ? (
           <>
-            <View style={{ flex: 1, justifyContent: 'center' }}>
+            <View style={[styles.imageWrapper]}>
               <Image
                 style={styles.mainImage}
                 source={require('../../../assets/cloud-sun.png')}
@@ -153,7 +154,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: spacing.lg,
-    backgroundColor: '#BAE6FD',
+    backgroundColor: Colors.backgroundBlue,
+    justifyContent: 'center',
+  },
+  imageWrapper: {
+    flex: 1,
     justifyContent: 'center',
   },
   mainImage: {

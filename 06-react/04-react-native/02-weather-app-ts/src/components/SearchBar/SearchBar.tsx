@@ -5,8 +5,13 @@ import { ISearchBar } from './searchbar';
 import { fonts } from '../../constants/fonts';
 import { useContext } from 'react';
 import { DarkModeContext } from '../../context/DarkModeContext';
+import { Colors } from '../../constants/colors';
 
-export const SearchBar = ({ searchInput, handleSearchOnChange, onClickSetCity }: ISearchBar) => {
+export const SearchBar = ({
+  searchInput,
+  handleSearchOnChange,
+  onClickSetCity,
+}: ISearchBar) => {
   const { dark } = useContext(DarkModeContext);
 
   return (
@@ -31,15 +36,17 @@ const styles = (darkMode: boolean = false) =>
       borderRadius: 50,
       padding: spacing.sm,
       paddingLeft: spacing.xxl,
-      backgroundColor: darkMode ? 'hsla(0, 0%,100%, .7)' : 'hsla(200, 51%, 41%, .5)',
+      backgroundColor: darkMode
+        ? 'hsla(0, 0%,100%, .7)'
+        : 'hsla(200, 51%, 41%, .5)',
       marginBottom: 200,
     },
 
     searchInput: {
       width: '80%',
-      fontFamily: fonts.secondary,
+      fontFamily: fonts.ubuntu,
       padding: spacing.sm,
-      color: darkMode ? '#000' : '#fff',
+      color: darkMode ? Colors.primaryBlack : Colors.primaryWhite,
       fontWeight: '600',
       letterSpacing: 1,
     },

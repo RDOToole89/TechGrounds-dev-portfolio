@@ -1,9 +1,10 @@
-import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { TouchableOpacity, StyleSheet } from 'react-native';
 import { spacing } from '../../constants/sizes';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { ISubmitButton } from './submitbutton';
 import { useContext } from 'react';
 import { DarkModeContext } from '../../context/DarkModeContext';
+import { Colors } from '../../constants/colors';
 
 export const SubmitButton = ({
   style = {},
@@ -14,8 +15,14 @@ export const SubmitButton = ({
   const { dark } = useContext(DarkModeContext);
 
   return (
-    <TouchableOpacity style={[styles(size).submitBtn, style]} onPress={props.onClickSetCity}>
-      <Icon name='search-outline' size={20} color={dark ? '#000' : '#fff'} />
+    <TouchableOpacity
+      style={[styles(size).submitBtn, style]}
+      onPress={props.onClickSetCity}>
+      <Icon
+        name='search-outline'
+        size={20}
+        color={dark ? Colors.primaryBlack : Colors.primaryWhite}
+      />
     </TouchableOpacity>
   );
 };
@@ -28,6 +35,6 @@ const styles = (size: number) =>
       padding: spacing.sm,
     },
     submitText: {
-      color: '#000',
+      color: Colors.primaryBlack,
     },
   });

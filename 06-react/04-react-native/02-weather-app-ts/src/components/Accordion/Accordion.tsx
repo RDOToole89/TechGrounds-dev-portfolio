@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
   },
   tempText: { alignSelf: 'flex-end', padding: spacing.sm },
   textSm: {
-    fontFamily: fonts.secondary,
+    fontFamily: fonts.ubuntu,
     fontSize: fontSizes.xsm,
     fontWeight: '500',
     letterSpacing: 0.4,

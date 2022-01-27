@@ -10,6 +10,7 @@ import { fontSizes, spacing } from '../../constants/sizes';
 import { CityDetails } from '../CityDetails/CityDetails';
 import { generateBoxShadowStyle } from '../../utils/boxShadow';
 import { fonts } from '../../constants/fonts';
+import { Colors } from '../../constants/colors';
 // import { useNavigation } from '@react-navigation/native';
 
 export const CityScreen = ({
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   headerMedium: {
-    fontFamily: fonts.secondary,
+    fontFamily: fonts.ubuntuBold,
     fontSize: fontSizes.md,
     fontWeight: '600',
     letterSpacing: 1.2,
@@ -142,7 +143,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.sm,
   },
   textSmall: {
-    fontFamily: fonts.secondary,
+    fontFamily: fonts.ubuntu,
   },
   boxShadow: generateBoxShadowStyle(
     0,
@@ -159,19 +160,13 @@ const styles = StyleSheet.create({
   },
   link: {
     textTransform: 'uppercase',
-    fontFamily: fonts.secondary,
+    fontFamily: fonts.ubuntu,
+    letterSpacing: 1.2,
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.xsm,
     backgroundColor: 'hsla(201, 94%, 88%, .4)',
     fontWeight: '500',
-    color: '#fff',
+    color: Colors.primaryWhite,
     borderRadius: 10,
-  },
-  background: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    height: '100%',
   },
 });
