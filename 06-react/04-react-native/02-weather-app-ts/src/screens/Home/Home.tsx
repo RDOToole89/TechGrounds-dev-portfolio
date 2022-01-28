@@ -19,6 +19,7 @@ import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { DarkModeContext } from '../../context/DarkModeContext';
 import useFetch from '../../hooks/useFetch';
 import { Colors } from '../../constants/colors';
+import { imgStyles } from '../../global/imgStyles';
 
 export const Home = ({}) => {
   const [cityDetailsActive, setCityDetailsActive] = useState(false);
@@ -125,7 +126,7 @@ export const Home = ({}) => {
           <>
             <View style={[styles.imageWrapper]}>
               <Image
-                style={styles.mainImage}
+                style={imgStyles.mainImage}
                 source={require('../../../assets/cloud-sun.png')}
               />
             </View>
@@ -160,13 +161,6 @@ const styles = StyleSheet.create({
   imageWrapper: {
     flex: 1,
     justifyContent: 'center',
-  },
-  mainImage: {
-    flex: 1,
-    width: 180,
-    height: 180,
-    resizeMode: 'contain',
-    marginBottom: spacing.lg,
   },
   background: {
     position: 'absolute',

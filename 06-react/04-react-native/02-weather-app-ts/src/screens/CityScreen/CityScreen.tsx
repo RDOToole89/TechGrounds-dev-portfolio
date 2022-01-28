@@ -11,6 +11,9 @@ import { CityDetails } from '../CityDetails/CityDetails';
 import { generateBoxShadowStyle } from '../../utils/boxShadow';
 import { fonts } from '../../constants/fonts';
 import { Colors } from '../../constants/colors';
+import { textStyles } from '../../global/textStyles';
+import { boxShadowStyles } from '../../global/boxShadow';
+import { imgStyles } from '../../global/imgStyles';
 // import { useNavigation } from '@react-navigation/native';
 
 export const CityScreen = ({
@@ -58,35 +61,35 @@ export const CityScreen = ({
   }, [currentTemperature]);
 
   return !cityDetailsActive ? (
-    <View style={[styles.dataContainer, styles.boxShadow]}>
+    <View style={[styles.dataContainer, boxShadowStyles.boxShadow]}>
       <View style={styles.mgBottomContainer}>
         <View style={{ alignSelf: 'flex-start' }}>
-          <Text style={styles.headerMedium}>{cityName}</Text>
-          <Text style={styles.textSmall}>
+          <Text style={textStyles.headerMedium}>{cityName}</Text>
+          <Text style={textStyles.textSm}>
             {dayOfTheWeek} {currentHours}:{currentMinutes}
           </Text>
         </View>
         <View>
-          <Image style={styles.tinyLogo} source={weatherString} />
-          <Text style={styles.textSmall}>{description}</Text>
-          <Text style={styles.textSmall}>{currentTemperature} °C</Text>
+          <Image style={imgStyles.smallLogo} source={weatherString} />
+          <Text style={textStyles.textSm}>{description}</Text>
+          <Text style={textStyles.textSm}>{currentTemperature} °C</Text>
         </View>
       </View>
 
       <View style={styles.mgBottomContainer}>
         <View style={styles.temperatureDetail}>
           <Icon name='temperature-low' size={25} color='#cdfcff' />
-          <Text style={styles.textSmall}>min. temp </Text>
+          <Text style={textStyles.textSm}>min. temp </Text>
           <Text>{minTemperature} °C</Text>
         </View>
         <View style={styles.temperatureDetail}>
           <Icon name='temperature-high' size={25} color='#ec6e4c' />
-          <Text style={styles.textSmall}> max. temp </Text>
+          <Text style={textStyles.textSm}> max. temp </Text>
           <Text>{maxTemperature} °C</Text>
         </View>
         <View style={styles.temperatureDetail}>
           <Icon name='water' size={25} color='#7cc6cc' />
-          <Text style={styles.textSmall}>humidity </Text>
+          <Text style={textStyles.textSm}>humidity </Text>
           <Text>{humidity}</Text>
         </View>
       </View>
@@ -98,10 +101,10 @@ export const CityScreen = ({
         //   // navigation.navigate('CityDetails', { cityName, coordinates })
         // }
         onPress={activateCityDetails}>
-        <Text style={styles.link}>7 Day Forecast</Text>
+        <Text style={textStyles.linkReturn}>7 Day Forecast</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={goBackToHomeScreen}>
-        <Text style={styles.link}>Go back to home</Text>
+        <Text style={textStyles.linkReturn}>Go back to home</Text>
       </TouchableOpacity>
     </View>
   ) : (
@@ -132,41 +135,5 @@ const styles = StyleSheet.create({
     height: 70,
     alignItems: 'center',
     justifyContent: 'space-between',
-  },
-  headerMedium: {
-    fontFamily: fonts.ubuntuBold,
-    fontSize: fontSizes.md,
-    fontWeight: '600',
-    letterSpacing: 1.2,
-    textTransform: 'uppercase',
-    paddingTop: spacing.xl,
-    marginBottom: spacing.sm,
-  },
-  textSmall: {
-    fontFamily: fonts.ubuntu,
-  },
-  boxShadow: generateBoxShadowStyle(
-    0,
-    2,
-    'hsla(200, 100%, 10%, 0.2)',
-    0.27,
-    4.65,
-    1,
-    'hsla(200, 100%, 10%, 0.2)'
-  ),
-  tinyLogo: {
-    width: 100,
-    height: 100,
-  },
-  link: {
-    textTransform: 'uppercase',
-    fontFamily: fonts.ubuntu,
-    letterSpacing: 1.2,
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.xsm,
-    backgroundColor: 'hsla(201, 94%, 88%, .4)',
-    fontWeight: '500',
-    color: Colors.primaryWhite,
-    borderRadius: 10,
   },
 });

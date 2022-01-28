@@ -41,7 +41,6 @@ const styles = (darkMode: boolean = false) =>
         : 'hsla(200, 51%, 41%, .5)',
       marginBottom: 200,
     },
-
     searchInput: {
       width: '80%',
       fontFamily: fonts.ubuntu,

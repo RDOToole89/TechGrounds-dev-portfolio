@@ -6,6 +6,7 @@ import { buildOneCallForecastUrl } from '../../services/weatherApi';
 import { fontSizes, spacing } from '../../constants/sizes';
 import useFetch from '../../hooks/useFetch';
 import { Colors } from '../../constants/colors';
+import { textStyles } from '../../global/textStyles';
 
 export const CityDetails = ({
   coordinates,
@@ -35,8 +36,8 @@ export const CityDetails = ({
     <>
       <View style={{ flex: 1, justifyContent: 'space-between' }}>
         <View>
-          <Text style={styles.headingPrimary}>{props.cityName}</Text>
-          <Text style={styles.headingSecondary}>7 DAY FORECAST</Text>
+          <Text style={textStyles.headingPrimary}>{props.cityName}</Text>
+          <Text style={textStyles.headingSecondary}>7 DAY FORECAST</Text>
         </View>
         <View style={{ flex: 1, justifyContent: 'space-between' }}>
           {data &&
@@ -53,33 +54,9 @@ export const CityDetails = ({
         <TouchableOpacity
           style={{ marginVertical: spacing.md }}
           onPress={goBackToHomeScreen}>
-          <Text style={styles.link}>Go back to home</Text>
+          <Text style={textStyles.linkText}>Go back to home</Text>
         </TouchableOpacity>
       </View>
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  headingPrimary: {
-    fontSize: fontSizes.lg,
-    fontWeight: 'bold',
-    marginTop: spacing.sm,
-    marginBottom: spacing.md,
-    textTransform: 'uppercase',
-    letterSpacing: 3,
-  },
-  headingSecondary: {
-    fontSize: fontSizes.md,
-    fontWeight: 'bold',
-    color: Colors.primaryWhite,
-    marginBottom: spacing.sm,
-    letterSpacing: 3,
-  },
-  link: {
-    fontSize: fontSizes.md,
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-    color: Colors.primaryWhite,
-  },
-});

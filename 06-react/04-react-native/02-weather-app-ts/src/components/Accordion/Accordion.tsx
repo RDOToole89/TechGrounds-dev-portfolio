@@ -3,8 +3,10 @@ import { View, StyleSheet, Text, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { formatDate, unixTimeStampCoverter } from '../../utils/computeTime';
 import { daysShort } from '../../utils/days';
-import { fontSizes, spacing } from '../../constants/sizes';
-import { fonts } from '../../constants/fonts';
+import { textStyles } from '../../global/textStyles';
+import { Colors } from '../../constants/colors';
+import { imgStyles } from '../../global/imgStyles';
+import { spacing } from '../../constants/sizes';
 
 export const Accordion = ({ weatherDataPerDay }: IAccordion) => {
   const [accordionActive, setArcordionActive] = useState(true);
@@ -25,55 +27,57 @@ export const Accordion = ({ weatherDataPerDay }: IAccordion) => {
   return (
     <View>
       <View style={styles.accordionWrapper}>
-        <Text style={[styles.textSm, styles.textBold]}>{day}</Text>
-        <Text style={[styles.textSm, styles.textBold]}>{formattedDate}</Text>
-        <Text style={[styles.textSm, styles.textBold]}>
+        <Text style={[textStyles.textSm, textStyles.textBold]}>{day}</Text>
+        <Text style={[textStyles.textSm, textStyles.textBold]}>
+          {formattedDate}
+        </Text>
+        <Text style={[textStyles.textSm, textStyles.textBold]}>
           {lowestTemperature} / {highestTemperature} °C
         </Text>
         <Image
-          style={styles.tinyLogo}
+          style={imgStyles.tinyLogo}
           source={{ uri: `http://openweathermap.org/img/wn/10d@2x.png` }}
         />
         {accordionActive ? (
           <Icon
             name='caret-down-outline'
             size={20}
-            color='#000'
+            color={Colors.primaryBlack}
             onPress={() => setArcordionActive(!accordionActive)}
           />
         ) : (
           <Icon
             name='caret-up-outline'
             size={20}
-            color='#000'
+            color={Colors.primaryBlack}
             onPress={() => setArcordionActive(!accordionActive)}
           />
         )}
       </View>
       {accordionActive && (
         <View style={styles.accordionActiveWrapper}>
-          <Text style={[styles.textSm, styles.tempText]}>Temp</Text>
+          <Text style={[textStyles.textSmBlack, styles.tempText]}>Temp</Text>
           <View style={styles.accordionTimeOfDay}>
-            <Text style={styles.textSm}>Morning</Text>
-            <Text style={styles.textSm}>
+            <Text style={textStyles.textSmBlack}>Morning</Text>
+            <Text style={textStyles.textSmBlack}>
               {mornTemperature} / {highestTemperature} °C
             </Text>
           </View>
           <View style={styles.accordionTimeOfDay}>
-            <Text style={styles.textSm}>Afternoon</Text>
-            <Text style={styles.textSm}>
+            <Text style={textStyles.textSmBlack}>Afternoon</Text>
+            <Text style={textStyles.textSmBlack}>
               {dayTemperature} / {highestTemperature} °C
             </Text>
           </View>
           <View style={styles.accordionTimeOfDay}>
-            <Text style={styles.textSm}>Evening</Text>
-            <Text style={styles.textSm}>
+            <Text style={textStyles.textSmBlack}>Evening</Text>
+            <Text style={textStyles.textSmBlack}>
               {eveTemperature} / {highestTemperature} °C
             </Text>
-          </View>
+          </View>{' '}
           <View style={styles.accordionTimeOfDay}>
-            <Text style={styles.textSm}>Night</Text>
-            <Text style={styles.textSm}>
+            <Text style={textStyles.textSmBlack}>Night</Text>
+            <Text style={textStyles.textSmBlack}>
               {nightTemperature} / {highestTemperature} °C
             </Text>
           </View>
@@ -101,15 +105,4 @@ const styles = StyleSheet.create({
     marginRight: spacing.md,
   },
   tempText: { alignSelf: 'flex-end', padding: spacing.sm },
-  textSm: {
-    fontFamily: fonts.ubuntu,
-    fontSize: fontSizes.xsm,
-    fontWeight: '500',
-    letterSpacing: 0.4,
-  },
-  textBold: { fontWeight: '600' },
-  tinyLogo: {
-    width: 30,
-    height: 30,
-  },
 });
