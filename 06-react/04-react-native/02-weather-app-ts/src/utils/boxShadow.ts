@@ -11,7 +11,7 @@ interface ShadowStylesInterface {
 export const generateBoxShadowStyle = (
   xOffset: number = 0,
   yOffset: number = 2,
-  shadowColorIos: string = '#000',
+  shadowColorIos: string = '#010101',
   shadowOpacity: number = 0.23,
   shadowRadius: number = 2.62,
   elevation: number = 4,

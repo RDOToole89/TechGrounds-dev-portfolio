@@ -1,30 +1,31 @@
 import { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { WeatherData } from '../../types/app';
 import { digitToString } from '../../utils/toDigit';
-import { ICityScreen } from './cityscreen';
 import { days } from '../../utils/days';
 import { computeTime } from '../../utils/computeTime';
-import { fontSizes, spacing } from '../../constants/sizes';
+import { spacing } from '../../constants/sizes';
 import { CityDetails } from '../CityDetails/CityDetails';
-import { generateBoxShadowStyle } from '../../utils/boxShadow';
-import { fonts } from '../../constants/fonts';
-import { Colors } from '../../constants/colors';
+
 import { textStyles } from '../../global/textStyles';
 import { boxShadowStyles } from '../../global/boxShadow';
 import { imgStyles } from '../../global/imgStyles';
-// import { useNavigation } from '@react-navigation/native';
+
+import { WeatherData } from '../..///types/app';
+
+export interface ICityScreen {
+  weatherData: WeatherData;
+  handleCityDetailsActive(): void;
+  handleGoBackToMainSceen(): void;
+  cityDetailsActive: boolean;
+}
 
 export const CityScreen = ({
   weatherData,
-  handleTempGradient,
+  handleCityDetailsActive,
   cityDetailsActive,
-  activateCityDetails,
-  goBackToHomeScreen,
+  handleGoBackToMainSceen,
 }: ICityScreen) => {
-  // const navigation = useNavigation();
-
   // Destructure all the data needed for the UI
   const {
     coord: coordinates,
@@ -55,12 +56,15 @@ export const CityScreen = ({
     uri: `http://openweathermap.org/img/wn/${icon}@2x.png`,
   };
 
-  useEffect(() => {
-    // Changes the background gradient based on the current temperature
-    handleTempGradient(currentTemperature);
-  }, [currentTemperature]);
-
-  return !cityDetailsActive ? (
+  return cityDetailsActive ? (
+    <CityDetails
+      cityDetailsActive={cityDetailsActive}
+      handleGoBackToMainSceen={handleGoBackToMainSceen}
+      coordinates={coordinates}
+      cityName={cityName}
+      handleCityDetailsActive={handleCityDetailsActive}
+    />
+  ) : (
     <View style={[styles.dataContainer, boxShadowStyles.boxShadow]}>
       <View style={styles.mgBottomContainer}>
         <View style={{ alignSelf: 'flex-start' }}>
@@ -72,7 +76,9 @@ export const CityScreen = ({
         <View>
           <Image style={imgStyles.smallLogo} source={weatherString} />
           <Text style={textStyles.textSm}>{description}</Text>
-          <Text style={textStyles.textSm}>{currentTemperature} °C</Text>
+          <Text style={textStyles.textSm}>
+            {Math.floor(currentTemperature)} °C
+          </Text>
         </View>
       </View>
 
@@ -80,12 +86,12 @@ export const CityScreen = ({
         <View style={styles.temperatureDetail}>
           <Icon name='temperature-low' size={25} color='#cdfcff' />
           <Text style={textStyles.textSm}>min. temp </Text>
-          <Text>{minTemperature} °C</Text>
+          <Text>{Math.floor(minTemperature)} °C</Text>
         </View>
         <View style={styles.temperatureDetail}>
           <Icon name='temperature-high' size={25} color='#ec6e4c' />
           <Text style={textStyles.textSm}> max. temp </Text>
-          <Text>{maxTemperature} °C</Text>
+          <Text>{Math.floor(maxTemperature)} °C</Text>
         </View>
         <View style={styles.temperatureDetail}>
           <Icon name='water' size={25} color='#7cc6cc' />
@@ -100,19 +106,13 @@ export const CityScreen = ({
         //   //@ts-ignore
         //   // navigation.navigate('CityDetails', { cityName, coordinates })
         // }
-        onPress={activateCityDetails}>
+        onPress={handleCityDetailsActive}>
         <Text style={textStyles.linkReturn}>7 Day Forecast</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={goBackToHomeScreen}>
+      <TouchableOpacity onPress={handleGoBackToMainSceen}>
         <Text style={textStyles.linkReturn}>Go back to home</Text>
       </TouchableOpacity>
     </View>
-  ) : (
-    <CityDetails
-      goBackToHomeScreen={goBackToHomeScreen}
-      coordinates={coordinates}
-      cityName={cityName}
-    />
   );
 };
 

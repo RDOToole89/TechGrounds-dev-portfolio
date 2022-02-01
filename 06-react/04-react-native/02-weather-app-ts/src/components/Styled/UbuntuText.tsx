@@ -5,7 +5,7 @@ import { fonts } from '../../constants/fonts';
 
 export const UbuntuText = (props: Text['props']) => {
   return (
-    <Text {...props} style={[props.style, { fontFamily: fonts.ubuntu }]} />
+    <Text {...props} style={[props.style, { fontFamily: fonts.primary }]} />
   );
 };
 

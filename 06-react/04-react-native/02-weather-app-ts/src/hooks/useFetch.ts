@@ -1,37 +1,50 @@
+import { WeatherData } from './../types/app.d';
 import { useState, useEffect } from 'react';
 
 const useFetch = <T>(url: string | null) => {
-  const [data, setData] = useState<T | any>(null);
-  const [error, setError] = useState(null);
+  const [data, setData] = useState<T | null>(null);
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!url) return;
-    let isMounted = true;
+
     setLoading(true);
 
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        if (isMounted) setData(data);
-        setError(null);
-      })
-      .catch((error) => {
-        if (isMounted) {
-          setError(error);
-          setData(null);
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          setError(true);
+          setErrorMessage(
+            `ERROR: ${response.status} city: ${response.statusText}`
+          );
         }
-      })
-      .finally(() => isMounted && setLoading(false));
+
+        if (response.ok) {
+          const data = await response.json();
+
+          setData(data);
+        }
+      } catch (error) {
+        console.log(error);
+        setError(true);
+      }
+    };
+    fetchData();
 
     const cleanUp = () => {
-      isMounted = false;
+      setError(false);
+      setLoading(false);
+      setErrorMessage('');
     };
 
     return cleanUp;
   }, [url]);
 
-  return { loading, error, data };
+  return { loading, error, data, errorMessage };
 };
 
 export default useFetch;

@@ -18,8 +18,8 @@ export default function App() {
   // Loads fonts with custom hook
   const isLoaded = useCachedResources();
 
-  if (isLoaded) {
-    return (
+  return (
+    isLoaded && (
       <DarkModeProvider>
         <NavigationContainer>
           {/* Navigator used for testing purposes not properly implemented in the app yet. */}
@@ -32,8 +32,6 @@ export default function App() {
           </RootStack.Navigator>
         </NavigationContainer>
       </DarkModeProvider>
-    );
-  } else {
-    return null;
-  }
+    )
+  );
 }

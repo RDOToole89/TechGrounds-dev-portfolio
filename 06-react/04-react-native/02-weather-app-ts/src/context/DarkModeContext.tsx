@@ -2,11 +2,12 @@ import React, { useState, createContext, FC } from 'react';
 
 interface IDarkModeContext {
   dark: boolean;
-  toggleDark?: () => void;
+  toggleDark: () => void;
 }
 
 const defaultState = {
   dark: false,
+  toggleDark: () => {},
 };
 
 export const DarkModeContext = createContext<IDarkModeContext>(defaultState);
@@ -19,6 +20,8 @@ export const DarkModeProvider: FC = ({ children }) => {
   };
 
   return (
-    <DarkModeContext.Provider value={{ dark, toggleDark }}>{children}</DarkModeContext.Provider>
+    <DarkModeContext.Provider value={{ dark, toggleDark }}>
+      {children}
+    </DarkModeContext.Provider>
   );
 };
