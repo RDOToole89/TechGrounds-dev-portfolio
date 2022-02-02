@@ -9,7 +9,7 @@ import { Home } from './src/screens/Home/Home';
 export type RootStackParams = {
   Home: undefined;
   CityScreen: undefined;
-  CityDetails: undefined;
+  CityDetails: any;
 };
 
 const RootStack = createNativeStackNavigator<RootStackParams>();
@@ -18,11 +18,12 @@ export default function App() {
   // Loads fonts with custom hook
   const isLoaded = useCachedResources();
 
+  // * Navigator used for testing purposes not properly implemented in the app yet. */
+
   return (
     isLoaded && (
       <DarkModeProvider>
         <NavigationContainer>
-          {/* Navigator used for testing purposes not properly implemented in the app yet. */}
           <RootStack.Navigator
             initialRouteName='Home'
             screenOptions={{ headerShown: false }}>

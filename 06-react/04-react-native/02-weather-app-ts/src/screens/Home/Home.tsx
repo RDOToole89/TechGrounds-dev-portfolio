@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { StyleSheet, View, Image, KeyboardAvoidingView } from 'react-native';
 import { API_KEY } from '@env';
 
@@ -52,19 +52,19 @@ export const Home = () => {
   };
 
   const handleSwitchDetailsScreen = () => {
-    setCityDetailsActive(false);
+    setCityDetailsActive(!cityDetailsActive);
   };
 
   const handleCityDetailsActive = () => {
-    setCityDetailsActive(!cityDetailsActive);
+    setCityDetailsActive(true);
   };
 
   // Function which resets the app to default state
   const handleGoBackToMainSceen = () => {
     handleResetDefaults();
-    handleSwitchDetailsScreen();
-    if (!cityDetailsActive) setGradient(['#3286a7', '#b1dae1', '#d8eeee']);
-    else handleTempGradients(temperature, setGradient);
+    handleCityDetailsActive();
+    setGradient(['#3286a7', '#b1dae1', '#d8eeee']);
+    handleTempGradients(temperature, setGradient);
   };
 
   // If a city query has been entered create the API_URL
@@ -85,14 +85,16 @@ export const Home = () => {
 
       setTemperature(temp);
       setWeatherData(data);
-
-      handleTempGradients(temperature, setGradient);
     }
 
     () => {
       setErrorToggle(false);
     };
   }, [data, error]);
+
+  useMemo(() => {
+    handleTempGradients(temperature, setGradient);
+  }, [temperature]);
 
   return (
     <>
@@ -125,6 +127,7 @@ export const Home = () => {
             weatherData={weatherData}
             handleCityDetailsActive={handleCityDetailsActive}
             handleGoBackToMainSceen={handleGoBackToMainSceen}
+            handleSwitchDetailsScreen={handleSwitchDetailsScreen}
             cityDetailsActive={cityDetailsActive}
           />
         ) : (

@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { digitToString } from '../../utils/toDigit';
@@ -17,6 +16,7 @@ export interface ICityScreen {
   weatherData: WeatherData;
   handleCityDetailsActive(): void;
   handleGoBackToMainSceen(): void;
+  handleSwitchDetailsScreen(): void;
   cityDetailsActive: boolean;
 }
 
@@ -25,6 +25,7 @@ export const CityScreen = ({
   handleCityDetailsActive,
   cityDetailsActive,
   handleGoBackToMainSceen,
+  handleSwitchDetailsScreen,
 }: ICityScreen) => {
   // Destructure all the data needed for the UI
   const {
@@ -55,6 +56,7 @@ export const CityScreen = ({
   const weatherString = {
     uri: `http://openweathermap.org/img/wn/${icon}@2x.png`,
   };
+  console.log(cityDetailsActive);
 
   return cityDetailsActive ? (
     <CityDetails
@@ -63,6 +65,7 @@ export const CityScreen = ({
       coordinates={coordinates}
       cityName={cityName}
       handleCityDetailsActive={handleCityDetailsActive}
+      handleSwitchDetailsScreen={handleSwitchDetailsScreen}
     />
   ) : (
     <View style={[styles.dataContainer, boxShadowStyles.boxShadow]}>
@@ -106,11 +109,11 @@ export const CityScreen = ({
         //   //@ts-ignore
         //   // navigation.navigate('CityDetails', { cityName, coordinates })
         // }
-        onPress={handleCityDetailsActive}>
+        onPress={handleSwitchDetailsScreen}>
         <Text style={textStyles.linkReturn}>7 Day Forecast</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={handleGoBackToMainSceen}>
-        <Text style={textStyles.linkReturn}>Go back to home</Text>
+        <Text style={textStyles.linkReturn}>Go back to main screen</Text>
       </TouchableOpacity>
     </View>
   );
