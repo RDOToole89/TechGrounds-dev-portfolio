@@ -1,0 +1,17 @@
+{
+  "name": "12-how-typescript-transpiles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^17.0.14",
+    "ts-node": "^10.4.0",
+    "tslib": "^2.3.1"
+  }
+}
