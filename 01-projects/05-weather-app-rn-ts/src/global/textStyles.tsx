@@ -20,7 +20,7 @@ export const textStyles = StyleSheet.create({
     letterSpacing: 3,
   },
   headerMedium: {
-    fontFamily: fonts.ubuntuBold,
+    fontFamily: fonts.primaryBold,
     fontSize: fontSizes.md,
     fontWeight: '600',
     letterSpacing: 1.2,
@@ -36,20 +36,20 @@ export const textStyles = StyleSheet.create({
     color: Colors.primaryBlack,
   },
   textXsm: {
-    fontFamily: fonts.ubuntu,
+    fontFamily: fonts.primary,
     fontSize: fontSizes.sm,
     color: Colors.primaryWhite,
     fontWeight: '500',
     letterSpacing: 0.4,
   },
   textSm: {
-    fontFamily: fonts.ubuntu,
+    fontFamily: fonts.primary,
     fontSize: fontSizes.sm,
     color: Colors.primaryWhite,
     letterSpacing: 1.5,
   },
   textSmBlack: {
-    fontFamily: fonts.ubuntu,
+    fontFamily: fonts.primary,
     fontSize: fontSizes.xsm,
     color: Colors.primaryBlack,
     letterSpacing: 1.5,
@@ -67,7 +67,7 @@ export const textStyles = StyleSheet.create({
   },
   linkReturn: {
     textTransform: 'uppercase',
-    fontFamily: fonts.ubuntu,
+    fontFamily: fonts.primary,
     letterSpacing: 1.2,
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.xsm,
