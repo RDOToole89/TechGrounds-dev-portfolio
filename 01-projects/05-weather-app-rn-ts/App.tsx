@@ -3,13 +3,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { DarkModeProvider } from './src/context/DarkModeContext';
 import useCachedResources from './src/hooks/useCachedResources';
 import { CityDetails } from './src/screens/CityDetails/CityDetails';
+
 import { CityScreen } from './src/screens/CityScreen/CityScreen';
 import { Home } from './src/screens/Home/Home';
 
 export type RootStackParams = {
   Home: undefined;
   CityScreen: undefined;
-  CityDetails: any;
+  CityDetails: undefined;
 };
 
 const RootStack = createNativeStackNavigator<RootStackParams>();
