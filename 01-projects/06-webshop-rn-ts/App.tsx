@@ -15,6 +15,7 @@ const RootStack = createNativeStackNavigator<RootStackParams>();
 
 export default function App() {
   const isLoaded = useCachedResources();
+  console.log(isLoaded);
 
   return (
     isLoaded && (
