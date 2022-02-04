@@ -10,7 +10,7 @@ export const imgStyles = StyleSheet.create({
     width: 100,
     height: 100,
   },
-  mainImage: {
+  mediumImage: {
     flex: 1,
     width: 180,
     height: 180,

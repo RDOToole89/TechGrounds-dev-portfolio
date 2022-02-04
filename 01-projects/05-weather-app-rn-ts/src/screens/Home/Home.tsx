@@ -61,10 +61,9 @@ export const Home = () => {
 
   // Function which resets the app to default state
   const handleGoBackToMainSceen = () => {
+    setCityDetailsActive(false);
     handleResetDefaults();
-    handleCityDetailsActive();
     setGradient(['#3286a7', '#b1dae1', '#d8eeee']);
-    handleTempGradients(temperature, setGradient);
   };
 
   // If a city query has been entered create the API_URL
@@ -99,7 +98,7 @@ export const Home = () => {
   return (
     <>
       <TopBar handleGoBackToMainSceen={handleGoBackToMainSceen} />
-      <View
+      <KeyboardAvoidingView
         style={[
           styles.container,
           {
@@ -117,7 +116,7 @@ export const Home = () => {
         <LinearGradient colors={gradient} style={styles.background} />
         {dark && (
           <LinearGradient
-            colors={['rgba(0,0,0, 0.1)', 'rgba(0,0,0, 0.1)', 'rgba(0,0,0,0.1)']}
+            colors={['rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.4)', 'rgba(0,0,0,0.6)']}
             style={[styles.background, { zIndex: 0 }]}
           />
         )}
@@ -134,7 +133,7 @@ export const Home = () => {
           <View>
             <View style={styles.imageWrapper}>
               <Image
-                style={imgStyles.mainImage}
+                style={imgStyles.mediumImage}
                 source={require('../../../assets/cloud-sun.png')}
               />
             </View>
@@ -145,7 +144,7 @@ export const Home = () => {
             />
           </View>
         )}
-      </View>
+      </KeyboardAvoidingView>
       <Footer />
     </>
   );
@@ -168,6 +167,6 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     top: 0,
-    height: '100%',
+    height: '120%',
   },
 });

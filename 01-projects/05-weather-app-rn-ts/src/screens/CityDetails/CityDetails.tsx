@@ -9,27 +9,23 @@ import {
 import { spacing } from '../../constants/sizes';
 import useFetch from '../../hooks/useFetch';
 import { textStyles } from '../../global/textStyles';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import React from 'react';
+// import { NativeStackScreenProps } from '@react-navigation/native-stack';
 // import { RootStackParams } from '../../../App';
 // coordinates = { coordinates };
-
 // type Props = NativeStackScreenProps<RootStackParams, 'CityScreen'>;
 
 interface ICityDetails {
   handleGoBackToMainSceen(): void;
   handleCityDetailsActive(): void;
   handleSwitchDetailsScreen(): void;
-  cityDetailsActive: boolean;
   coordinates: { lat: number; lon: number };
   cityName: string;
-  // route?: Props;
 }
 
 export const CityDetails = ({
-  handleGoBackToMainSceen,
   handleSwitchDetailsScreen,
   cityName,
-  cityDetailsActive,
   coordinates,
 }: ICityDetails) => {
   const { lat: latitude, lon: longitude } = coordinates;
@@ -47,24 +43,24 @@ export const CityDetails = ({
   const { data } = useFetch<WeatherDataDetails>(API_URL);
 
   return (
-    cityDetailsActive && (
+    <View style={{ flex: 1, justifyContent: 'space-between' }}>
+      <View>
+        <Text style={textStyles.headingPrimary}>{cityName}</Text>
+        <Text style={textStyles.headingSecondary}>7 DAY FORECAST</Text>
+      </View>
       <View style={{ flex: 1, justifyContent: 'space-between' }}>
-        <View>
-          <Text style={textStyles.headingPrimary}>{cityName}</Text>
-          <Text style={textStyles.headingSecondary}>7 DAY FORECAST</Text>
-        </View>
-        <View style={{ flex: 1, justifyContent: 'space-between' }}>
-          {data?.daily.map((day: WeatherDataPerDay, i: number) => {
-            if (i >= 7) return;
-            return <Accordion key={day.dt} weatherDataPerDay={day} />;
-          })}
-        </View>
+        {data?.daily.map(
+          (day: WeatherDataPerDay, i: number) =>
+            i > 0 && i < 8 && <Accordion key={day.dt} weatherDataPerDay={day} />
+        )}
+      </View>
+      <View>
         <TouchableOpacity
           style={{ marginVertical: spacing.md }}
           onPress={handleSwitchDetailsScreen}>
           <Text style={textStyles.linkText}>Go back to Today's weather</Text>
         </TouchableOpacity>
       </View>
-    )
+    </View>
   );
 };

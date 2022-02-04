@@ -1,4 +1,3 @@
-import { WeatherData } from './../types/app.d';
 import { useState, useEffect } from 'react';
 
 const useFetch = <T>(url: string | null) => {

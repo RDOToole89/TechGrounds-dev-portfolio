@@ -56,11 +56,9 @@ export const CityScreen = ({
   const weatherString = {
     uri: `http://openweathermap.org/img/wn/${icon}@2x.png`,
   };
-  console.log(cityDetailsActive);
 
   return cityDetailsActive ? (
     <CityDetails
-      cityDetailsActive={cityDetailsActive}
       handleGoBackToMainSceen={handleGoBackToMainSceen}
       coordinates={coordinates}
       cityName={cityName}
@@ -104,12 +102,7 @@ export const CityScreen = ({
       </View>
       <TouchableOpacity
         style={{ marginBottom: spacing.md }}
-        // passing route params
-        // onPress={() =>
-        //   //@ts-ignore
-        //   // navigation.navigate('CityDetails', { cityName, coordinates })
-        // }
-        onPress={handleSwitchDetailsScreen}>
+        onPress={handleCityDetailsActive}>
         <Text style={textStyles.linkReturn}>7 Day Forecast</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={handleGoBackToMainSceen}>
