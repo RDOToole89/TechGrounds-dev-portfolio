@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import { PassParamsScreen } from './screens/PassParamsScreen';
 import { CreatePostScreen } from './screens/CreatePostScreen';
 import { LoginStack } from './navigation/AuthNavigator';
+import { LogoTrialStack } from './navigation/LogoExampleStack';
 
 const Stack = createNativeStackNavigator();
 
@@ -43,7 +44,9 @@ export default function App() {
           options={{ title: 'Overview' }}
           initialParams={{ someText: 'Route Title passed from stack' }}
         />
+
         <Stack.Screen name='Auth' component={LoginStack} />
+        <Stack.Screen name='Logo' component={LogoTrialStack} />
         <Stack.Screen name='Details' component={DetailsScreen} />
         <Stack.Screen name='PropsPassed'>
           {(props) => <MemoizedPropsScreen {...props} extraData={someData} />}

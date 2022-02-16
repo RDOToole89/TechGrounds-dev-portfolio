@@ -58,6 +58,16 @@ export const HomeScreen = ({ navigation, route }) => {
       />
       <Br />
       <Text style={{ margin: 10 }}>Post: {route.params?.post}</Text>
+      <Br />
+      <Button
+        title='Go to logostack'
+        onPress={() =>
+          navigation.navigate('Logo', {
+            screen: 'Login',
+            params: { user: 'Roibin' },
+          })
+        }
+      />
     </View>
   );
 };
