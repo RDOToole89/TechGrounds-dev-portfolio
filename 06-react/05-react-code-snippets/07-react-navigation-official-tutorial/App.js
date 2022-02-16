@@ -12,6 +12,9 @@ import { CreatePostScreen } from './screens/CreatePostScreen';
 import { LoginStack } from './navigation/AuthNavigator';
 import { LogoTrialStack } from './navigation/LogoExampleStack';
 
+import Icon from 'react-native-vector-icons/Ionicons';
+import { BottomTabNavigator } from './navigation/TabNavigator';
+
 // https://reactnavigation.org/docs/native-stack-navigator/#options
 const Stack = createNativeStackNavigator();
 
@@ -36,9 +39,16 @@ export default function App() {
       {/* If we want to specify the same options for all screen in the navigator we can pass 
         screenOptions*/}
       <Stack.Navigator
-        initialRouteName='Home'
-        screenOptions={{ title: 'NavTitle from screenOptions' }}>
+        initialRouteName='HomeTab'
+        screenOptions={{
+          title: 'NavTitle from screenOptions',
+        }}>
         {/* Screen component accepts a name and a component */}
+        <Stack.Screen
+          name='HomeTab'
+          component={BottomTabNavigator}
+          options={{ headerShown: true }}
+        />
         <Stack.Screen
           name='Home'
           component={HomeScreen}
@@ -71,7 +81,14 @@ export default function App() {
           // You can set initial params on a screen with the initialParams prop
           initialParams={{ itemId: 42 }}
         />
-        <Stack.Screen name='CreatePost' component={CreatePostScreen} />
+        <Stack.Screen
+          name='CreatePost'
+          options={{
+            // ADD A REQUIRE STATEMENT TO GET THE THE IMAGE SOURCE TO WORK
+            headerBackImageSource: require('./assets/carot-ios-icon.png'),
+          }}
+          component={CreatePostScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

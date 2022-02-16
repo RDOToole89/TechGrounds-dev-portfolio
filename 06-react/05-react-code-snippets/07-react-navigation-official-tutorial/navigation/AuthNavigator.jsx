@@ -2,6 +2,7 @@ import { LoginScreen } from '../screens/LoginScreen';
 import { createStackNavigator } from '@react-navigation/stack';
 import { RotateInUpLeft } from 'react-native-reanimated';
 import { ProfileScreen } from '../screens/ProfileScreen';
+import { BottomTabNavigator } from './TabNavigator';
 
 const AuthStack = createStackNavigator();
 
@@ -12,7 +13,12 @@ export const LoginStack = () => {
   // https://reactnavigation.org/docs/status-bar/
 
   return (
-    <AuthStack.Navigator initialRouteName='Login'>
+    <AuthStack.Navigator initialRouteName='HomeTab'>
+      <AuthStack.Screen
+        name='HomeTab'
+        component={BottomTabNavigator}
+        options={{ headerShown: true }}
+      />
       <AuthStack.Screen
         name='Login'
         component={LoginScreen}
