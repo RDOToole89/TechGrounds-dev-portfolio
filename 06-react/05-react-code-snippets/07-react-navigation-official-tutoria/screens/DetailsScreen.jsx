@@ -1,3 +1,4 @@
+
 import { useRef, useState } from 'react';
 import { Text, View, Button } from 'react-native';
 
@@ -44,6 +45,4 @@ export const DetailsScreen = ({ navigation }) => {
         title='Go back with the .popToTop() function'
         onPress={() => navigation.popToTop()}
       />
-    </View>
-  );
-};
+

@@ -7,10 +7,13 @@ import { MemoizedPropsScreen } from './screens/PropsScreen';
 import { MoviesScreen } from './screens/MoviesScreen';
 import { MovieViewsRealtime } from './screens/MoviesViewsRealTimeScreen';
 import { useEffect, useState } from 'react';
+
 import { PassParamsScreen } from './screens/PassParamsScreen';
 import { CreatePostScreen } from './screens/CreatePostScreen';
 import { LoginStack } from './navigation/AuthNavigator';
 import { LogoTrialStack } from './navigation/LogoExampleStack';
+
+
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +25,7 @@ export default function App() {
     name: 'Roibin',
     lastname: 'OToole',
   };
+
 
   // *** TURN ON TO SEE THE EFFECTS OF MEMOIZING THE MOVIE COMPONENT ***
   // useEffect(() => {
@@ -42,11 +46,14 @@ export default function App() {
           name='Home'
           component={HomeScreen}
           options={{ title: 'Overview' }}
+
           initialParams={{ someText: 'Route Title passed from stack' }}
         />
 
         <Stack.Screen name='Auth' component={LoginStack} />
         <Stack.Screen name='Logo' component={LogoTrialStack} />
+   
+
         <Stack.Screen name='Details' component={DetailsScreen} />
         <Stack.Screen name='PropsPassed'>
           {(props) => <MemoizedPropsScreen {...props} extraData={someData} />}
@@ -62,6 +69,7 @@ export default function App() {
             />
           )}
         </Stack.Screen>
+
         <Stack.Screen
           name='ParamScreen'
           component={PassParamsScreen}
@@ -69,10 +77,12 @@ export default function App() {
           initialParams={{ itemId: 42 }}
         />
         <Stack.Screen name='CreatePost' component={CreatePostScreen} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -89,3 +99,16 @@ const styles = StyleSheet.create({
 // To research: setParams , setOptions
 // https://reactnavigation.org/docs/navigation-prop/#setparams
 // https://reactnavigation.org/docs/navigation-prop/#setoptions
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });
+
+//Use React context and wrap the navigator with a context provider to pass data to the screens (recommended).
+//Use a render callback for the screen instead of specifying a component prop:
+

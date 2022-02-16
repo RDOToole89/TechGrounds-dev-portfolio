@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { Text, View, Button } from 'react-native';
 import { Br } from './DetailsScreen';
@@ -80,3 +81,4 @@ export const HomeScreen = ({ navigation, route }) => {
 // Data to fill inputs on a screen to compose something, e.g. navigation.navigate('ComposeTweet', { title: 'Hello world!' })
 
 // In essence, pass the least amount of data required to identify a screen in params, for a lot of cases, this simply means passing the ID of // an object instead of passing a full object. Keep your application data separate from the navigation state.
+
